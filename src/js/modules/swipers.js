@@ -23,8 +23,8 @@ function initSwiper(selector) {
     ...(!isNews
       ? {
           navigation: {
-            nextEl: container.querySelector(".swiper__btn--next"),
-            prevEl: container.querySelector(".swiper__btn--prev"),
+            nextEl: container.querySelector(".products__btn--next"),
+            prevEl: container.querySelector(".products__btn--prev"),
           },
         }
       : {}),
