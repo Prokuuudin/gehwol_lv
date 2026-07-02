@@ -1,172 +1,121 @@
 .about {
-  background-color: #fff;
+	background-color: var(--page-bg);
 }
 
 .about__row {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-  gap: 40px;
-  padding: 20px 0 40px;
-  align-items: stretch;
-  
-  @include tablet {
-    grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
-    gap: 24px;
-    padding: 20px 0;
-  }
+	display: grid;
+	grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+	gap: 40px;
+	align-items: stretch;
 
-  @include tablet-small {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    padding: 12px 0 0;
-  }
+	@include tablet {
+		grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+		gap: 24px;
+	}
 
-  @include mobile {
-    gap: 12px;
-    padding: 0;
-  }
-}
-
-.about__content {
-  text-align: left;
-  padding: 20px;
-  min-width: 0;
-
-  @include tablet {
-    padding: 12px;
-  }
-
-  @include mobile {
-    padding: 0;
-  }
+	@include tablet-small {
+		grid-template-columns: 1fr;
+		gap: 18px;
+	}
 }
 
 .about__image {
-  width: 100%;
-  min-width: 0;
-  height: 100%;
-  min-height: 360px;
-  align-self: stretch;
-  justify-self: stretch;
-  background-image: url('./../../img/products/about.jpg');
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+	width: 100%;
+	min-height: 360px;
+	background-color: var(--accent-tint);
+	border-left: 4px solid var(--accent);
 
-  @include tablet {
-    min-height: 320px;
-  }
+	@include tablet {
+		min-height: 320px;
+	}
 
-  @include tablet-small {
-    min-height: 260px;
-    border-radius: 12px;
-  }
-
-  @include mobile {
-    align-self: start;
-    min-height: 210px;
-  }
+	@include tablet-small {
+		min-height: 220px;
+	}
 }
 
-p.about__text {
-  line-height: 1.55;
+.about__content {
+	text-align: left;
+	min-width: 0;
+}
 
-  @include tablet {
-    padding: 0 8px;
-  }
-
-  @include mobile {
-    line-height: 1.35;
-    padding: 0;
-  }
+.about__text {
+	line-height: 1.55;
 }
 
 .about__how {
-  margin-top: 20px;
-  padding: 18px 20px 20px;
-  border-radius: 12px;
-  background: var(--accent2);
-  border-left: 4px solid var(--accent);
+	margin-top: 20px;
+	padding: 18px 20px 20px;
+	background: var(--accent-tint);
+	border-left: 4px solid var(--accent);
 
-  @include mobile {
-    padding: 10px 10px 12px;
-  }
+	@include mobile {
+		padding: 10px 10px 12px;
+	}
 }
 
 .about__how-title {
-  font-size: 18px;
-  font-weight: 700;
-  margin: 0 0 10px;
-  color: #111;
-
-  @include mobile {
-    text-align: center;
-  }
-}
-
-.about__how-subtitle {
-  font-size: 14px;
-  color: #555;
-  margin: 0 0 14px;
-  line-height: 1.5;
+	font-size: 18px;
+	font-weight: 700;
+	margin: 0 0 10px;
+	color: var(--text-color);
 }
 
 .about__how-steps {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  counter-reset: how-steps;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	counter-reset: how-steps;
 }
 
 .about__how-step {
-  counter-increment: how-steps;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding-left: 34px;
-  position: relative;
+	counter-increment: how-steps;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding-left: 34px;
+	position: relative;
 
-  &::before {
-    content: counter(how-steps);
-    position: absolute;
-    left: 0;
-    top: 1px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: #fff;
-    font-size: 12px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+	&::before {
+		content: counter(how-steps);
+		position: absolute;
+		left: 0;
+		top: 1px;
+		width: 22px;
+		height: 22px;
+		background: var(--accent);
+		color: #fff;
+		font-size: 12px;
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 }
 
 .about__how-step-name {
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 1.4;
-  color: #111;
+	font-weight: 600;
+	font-size: 15px;
+	line-height: 1.4;
+	color: var(--text-color);
 }
 
 .about__how-step-desc {
-  font-size: 14px;
-  color: #555;
-  line-height: 1.45;
+	font-size: 14px;
+	color: var(--text-secondary);
+	line-height: 1.45;
 }
 
-.about__content .btn-link {
-  margin-top: 24px;
+.about__cta {
+	margin-top: 24px;
 
-  @include mobile {
-    display: block;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-  }
+	@include mobile {
+		display: block;
+		width: fit-content;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
