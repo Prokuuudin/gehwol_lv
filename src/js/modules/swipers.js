@@ -7,9 +7,9 @@ function initSwiper(selector) {
   const container = document.querySelector(selector);
   if (!container) return;
 
-  const isBlog = selector === ".swiper-blog";
+  const isNews = selector === ".swiper-news";
   return new Swiper(container, {
-    modules: isBlog ? [Navigation, Autoplay] : [Navigation],
+    modules: isNews ? [Navigation, Autoplay] : [Navigation],
     loop: true,
     slidesPerView: 3,
     spaceBetween: 20,
@@ -20,7 +20,7 @@ function initSwiper(selector) {
       1024: { slidesPerView: 3 },
     },
 
-    ...(!isBlog
+    ...(!isNews
       ? {
           navigation: {
             nextEl: container.querySelector(".swiper__btn--next"),
@@ -29,7 +29,7 @@ function initSwiper(selector) {
         }
       : {}),
 
-    ...(isBlog
+    ...(isNews
       ? {
           autoplay: {
             delay: 2500,
@@ -45,5 +45,5 @@ function initSwiper(selector) {
 
 export default function initAllSwipers() {
   initSwiper(".swiper-products");
-  initSwiper(".swiper-blog");
+  initSwiper(".swiper-news");
 }
