@@ -1,115 +1,37 @@
-h1.title-1 {
+.title-1 {
 	margin: 1em 0 0.5em;
-	font-size:clamp(2.5rem, 2.227rem + 1.36vw, 3.25rem);
-	font-size: clamp(2.563rem, 2.313rem + 1.25vw, 3.25rem);
-	font-weight: 300;
-	text-transform: uppercase;
+	font-size: clamp(2.5rem, 2.227rem + 1.36vw, 3.25rem);
+	font-weight: 700;
 	color: #fff;
-	
 }
 
 .title-2 {
-	margin: 1em 0 0.5em;	
-	font-size: clamp(1.75rem, 1.477rem + 1.36vw, 2.5rem);	
-	font-weight: 500;
+	position: relative;
+	margin: 0 0 40px;
+	padding-bottom: 16px;
+	font-size: clamp(1.75rem, 1.477rem + 1.36vw, 2.5rem);
+	font-weight: 700;
 	line-height: 1.2;
-	font-family: var(--font-main);
-	text-transform: initial;
-	text-align: center;	
-	display: flex;
-	align-items: flex-start;
-	justify-content: center;
-	gap: 10px;
+	font-family: var(--font-titles);
+	text-align: center;
+	color: var(--text-color);
+
+	&::after {
+		content: "";
+		position: absolute;
+		left: 50%;
+		bottom: 0;
+		transform: translateX(-50%);
+		width: 56px;
+		height: 3px;
+		background-color: var(--accent);
+	}
 
 	@include tablet {
-		margin: 32px;
+		margin-bottom: 32px;
 	}
 
 	@include mobile {
-		margin: 15px;
-		gap: 8px;
-	}
-
-	&::before {
-		content: "";
-		width: 22px;
-		height: 16px;
-		display: inline-block;
-		margin-top: calc((1.2em - 16px) / 2);
-		border-radius: 100% 0 100% 0;
-		transform: rotate(-35deg);
-		background: linear-gradient(135deg, #97C11F 0%, #4E9A06 100%);
-		box-shadow: inset -2px -2px 0 rgba(255, 255, 255, 0.45);
-		flex-shrink: 0;
-
-		@include mobile {
-			width: 18px;
-			height: 12px;
-			margin-top: calc((1.2em - 12px) / 2);
-		}
-	}
-	
-}
-
-h2.about__title.title-2 {
-	margin: 0;
-	margin-bottom: 40px;	
-}
-
-.title-3 {
-	margin: 1em 0 0.5em;
-	font-size: clamp(1.313rem, 1.199rem + 0.57vw, 1.625rem);
-	font-weight: 700;
-	font-family: var(--font-titles);
-	text-transform: uppercase;
-	text-align: center;
-}
-
-h1.hero__title.title-1 {
-  color: #fff;
-  font-weight: 600;
-  margin: 0;
-  margin-bottom: 40px;
-
-  @include mobile {
-	  margin-bottom: 8px;
-  }
-}
-
-h3.applications__subtitle,
-h3.uses-cases__subtitle {
-	text-align: left;
-	font-size: 22px;
-    font-weight: 600;
-
-	  @include mobile-large {
-    font-size: 20px;
-  }
-
-  @include mobile {
-    font-size: 18px;
-	margin-bottom: 0;
-	text-align: center;
-  }
-}
-
-h3.delivery-payment__card-title {
-	text-align: left;
-	
-	@include mobile {
-		font-size: 20px;
-		text-align: center;
-	}
-
-}
-
-.title-4 {
-	margin: 1em 0 0.5em;
-	font-size: 18px;
-	font-weight: 700;
-	font-family: var(--font-titles);
-
-	@include mobile {
-		margin: 0;
+		margin-bottom: 24px;
 	}
 }

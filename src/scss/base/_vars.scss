@@ -2,30 +2,24 @@
 	--container-width: 1200px;
 	--container-padding: 15px;
 
-	--font-main:'Arial', sans-serif;
-	--font-accent:'Arial', sans-serif;
+	--font-main: 'Open Sans', Arial, Helvetica, sans-serif;
+	--font-accent: 'Open Sans', Arial, Helvetica, sans-serif;
 	--font-titles: var(--font-main);
 
-	--page-bg:#FFF;
+	--page-bg: #fff;
 	--text-color: #000;
-	--accent: #f0a901;
-	--accent2:#ffeeee;
-	--btn-link-color:rgb(8, 159, 214);
-	--btn-link-hover-color: rgb(8, 214, 53);
-	--footer-bg: #ffeeee;
+	--text-secondary: #6d6d6e;
 	--link-color: var(--text-color);
-	--gradient:  linear-gradient(90deg, rgba(240, 169, 1, 0.12) 0%, #fff 42%);
+
+	--accent: #45797c;
+	--accent-dark: #345c5e;
+	--accent-tint: #eaf1f1;
+
 	--section-space-y: 48px;
 	--section-space-y-tablet: 40px;
 	--section-space-y-mobile: 28px;
 
-    --laptop-size: 1199px;
+	--laptop-size: 1199px;
 	--tablet-size: 959px;
 	--mobile-size: 599px;
 }
-
-.dark {
-    --page-bg: #252526;
-    --text-color: #fff;
-}
-
