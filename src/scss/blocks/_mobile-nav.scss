@@ -1,6 +1,5 @@
 .mobile-nav {
 	position: fixed;
-	// top: 0;
 	top: -100%;
 	width: 100%;
 	height: 100%;
@@ -13,15 +12,17 @@
 	padding-top: 40px;
 	padding-bottom: 40px;
 	background: var(--accent);
-	transition: all 0.2s ease-in;
+	transition: top 0.2s ease-in;
 }
 
 .mobile-nav--open {
 	top: 0;
 }
 
-.mobile-nav a {
+.mobile-nav__link {
 	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
 
 	&:hover {
 		opacity: 0.8;
@@ -33,9 +34,5 @@
 	flex-direction: column;
 	align-items: center;
 	row-gap: 20px;
-	font-size: 28px;
-
-	& .active {
-		opacity: 0.5;
-	}
+	font-size: 24px;
 }

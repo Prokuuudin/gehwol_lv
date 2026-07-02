@@ -4,14 +4,8 @@ function headerScroll() {
 
   window.addEventListener(
     "scroll",
-    function() {
-      if (window.scrollY > 24) {
-        header.classList.add("small");
-        header.classList.add("header--elevated");
-      } else {
-        header.classList.remove("small");
-        header.classList.remove("header--elevated");
-      }
+    function () {
+      header.classList.toggle("header--elevated", window.scrollY > 24);
     },
     { passive: true },
   );

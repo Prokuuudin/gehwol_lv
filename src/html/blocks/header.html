@@ -1,49 +1,24 @@
 <header class="header" id="header">
-    <div class="container">
-        <div class="header__row">
-            <a href="index.html" class="logo">
-                <img src="./img/svgicons/logo.svg" alt="" class="logo__img">
-                <span class="visually-hidden">Dufta</span>
-            </a>
-            <nav class="header__nav nav">
-                <ul class="nav__list">
-                    <li><a href="index.html#about" class="active" data-key="nav-about">о Dufta</a></li>
-                    <li class="eshop-link">
-                        <a href="https://thomas-shop.eu/en/21-odor-removers" target="_blank" data-key="nav-shop">интернет-магазин</a>
-                    </li>
-                    <li><a href="index.html#products" data-key="nav-products">Удалители запахов</a></li>
-                    <li><a href="index.html#blog" data-key="nav-blog">статьи</a></li>
-                    <li><a href="index.html#contacts" data-key="nav-contacts">контакты</a></li>
-                </ul>
-            </nav>
+	<div class="container">
+		<div class="header__row">
+			<a href="index.html" class="logo">
+				<span class="logo__text">Gehwole</span>
+			</a>
+			<nav class="header__nav nav">
+				<ul class="nav__list">
+					<li><a href="index.html#about" class="nav__link">Par mums</a></li>
+					<li><a href="index.html#news" class="nav__link">Jaunumi</a></li>
+					<li><a href="index.html#products" class="nav__link">Produkcija</a></li>
+					<li><a href="index.html#solutions" class="nav__link">Risinājumi</a></li>
+					<li><a href="index.html#contacts" class="nav__link">Kontakti</a></li>
+				</ul>
+			</nav>
 
-            <div class="header__right-side">
-                <div class="switcher-wrapper">
-                    <input type="radio" name="language" value="lv" id="lang-lv" checked>
-                    <label class="switcher" for="lang-lv">LV</label>
-
-                    <input type="radio" name="language" value="lt" id="lang-lt">
-                    <label class="switcher" for="lang-lt">LT</label>
-
-                    <input type="radio" name="language" value="ee" id="lang-ee">
-                    <label class="switcher" for="lang-ee">EE</label>
-
-                    <input type="radio" name="language" value="en" id="lang-eng">
-                    <label class="switcher" for="lang-eng">EN</label>
-
-                    <input type="radio" name="language" value="ru" id="lang-ru">
-                    <label class="switcher" for="lang-ru">RU</label>
-
-                    <div class="lang-placeholder"></div>
-                </div>
-
-            </div>
-
-            <button class="mobile-nav-btn" id="mobile-nav-btn">
-                <span class="nav-icon"></span>
-            </button>
-        </div>
-    </div>
+			<button class="mobile-nav-btn" id="mobile-nav-btn">
+				<span class="nav-icon"></span>
+			</button>
+		</div>
+	</div>
 </header>
 
 @@include('mobile-nav.html')
