@@ -1,0 +1,32 @@
+  .logo {
+      width: 150px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: width 0.3s ease, height 0.3s ease;
+
+      @include mobile {
+          width: 55px;
+          height: 55px;
+      }
+  }
+
+  .header.small .logo {
+    width: 100px;
+    height: 70px;
+}
+
+.logo__img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.footer__logo .footer__logo-link{
+  width: 150px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

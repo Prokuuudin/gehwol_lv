@@ -1,0 +1,88 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    color: var(--text-color);
+    padding: 10px 0;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
+    z-index: 1000;
+    box-shadow: 0 6px 14px -12px rgba(0, 0, 0, 0.35);
+
+    @include mobile {
+        padding: 0;
+    }
+}
+
+.header.small {
+    padding: 10px 0;
+}
+
+.header.header--elevated {
+    background-color: #fff;
+    box-shadow: 0 8px 22px rgba(38, 45, 64, 0.14);
+}
+
+.header__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mobile {
+        gap: 12px;
+    }
+}
+
+.nav__list {
+    display: flex;
+    gap: 30px;
+
+    @include tablet-small {
+        display: none;
+    }
+}
+
+.eshop-link {
+}
+
+.nav__list a {
+    position: relative;
+    font-family: var(--font-accent);
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 500;
+    transition: font-size 0.3s ease;
+}
+
+.header.small .nav__list a {
+    font-size: 16px;
+}
+
+.header__right-side {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    @include mobile {
+        gap: 10px;
+    }
+}
+
+.nav__list a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.nav__list a:hover::after {
+    transform: scaleX(1.0);
+}

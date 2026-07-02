@@ -1,0 +1,209 @@
+// .delivery-payment__container {
+// 	background: #fff;
+// 	border-radius: 12px;
+// 	padding: 40px;
+
+// 	@include tablet {
+// 		padding: 30px 24px;
+// 	}
+
+// 	@include mobile {
+// 		padding: 20px 14px;
+// 	}
+// }
+
+.delivery-payment__title {
+	margin-bottom: 24px;
+}
+
+.delivery-payment__content {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 40px;
+
+	@include tablet {
+		gap: 24px;
+	}
+
+	@include mobile-large {
+		flex-direction: column;
+		
+	}
+
+	@include mobile {
+		gap: 16px;
+	}
+}
+
+.delivery-payment__card {
+	position: relative;
+	flex: 0 0 calc((100% - 80px) / 3);
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	min-height: 100%;
+	padding: 20px 22px;
+	background: transparent;
+
+	@include mobile-large {
+		flex-basis: 100%;
+		padding: 16px 0;
+	}
+
+
+}
+
+.delivery-payment__card:not(:nth-child(3n))::after {
+	content: "";
+	position: absolute;
+	top: 6px;
+	right: -20px;
+	width: 1px;
+	height: calc(100% - 6px);
+	background: linear-gradient(180deg, transparent 0%, rgba(29, 33, 40, 0.18) 12%, rgba(29, 33, 40, 0.18) 88%, transparent 100%);
+	z-index: 1;
+}
+
+
+@include tablet {
+	.delivery-payment__card {
+		flex-basis: calc((100% - 24px) / 2);
+		padding: 18px 0;
+	}
+
+	.delivery-payment__card::after {
+		display: none;
+	}
+
+	.delivery-payment__card:not(:nth-child(2n))::after {
+		content: "";
+		position: absolute;
+		display: block;
+		top: 6px;
+		right: -12px;
+		width: 1px;
+		height: calc(100% - 6px);
+		background: linear-gradient(180deg, transparent 0%, rgba(29, 33, 40, 0.18) 12%, rgba(29, 33, 40, 0.18) 88%, transparent 100%);
+	}
+
+	.delivery-payment__card:last-child::after {
+		display: none;
+	}
+}
+
+
+@include mobile-large {
+	.delivery-payment__card {
+		padding: 16px 0;
+	}
+
+	.delivery-payment__card::after {
+		display: none;
+	}
+
+	.delivery-payment__card:not(:last-child)::after {
+		content: "";
+		position: absolute;
+		display: block;
+		top: auto;
+		right: auto;
+		left: 50%;
+		bottom: -8px;
+		transform: translateX(-50%);
+		width: 72%;
+		height: 1px;
+		background: linear-gradient(90deg, transparent 0%, rgba(29, 33, 40, 0.18) 12%, rgba(29, 33, 40, 0.18) 88%, transparent 100%);
+	}
+
+	.delivery-payment__card:not(:nth-child(3n))::after {
+		content: "";
+		position: absolute;
+		display: block;
+		top: auto;
+		right: auto;
+		left: 50%;
+		bottom: -8px;
+		transform: translateX(-50%);
+		width: 72%;
+		height: 1px;
+		background: linear-gradient(90deg, transparent 0%, rgba(29, 33, 40, 0.18) 12%, rgba(29, 33, 40, 0.18) 88%, transparent 100%);
+	}
+
+	.delivery-payment__card:not(:nth-child(2n))::after {
+		display: block;
+	}
+
+	.delivery-payment__card:last-child::after {
+		display: none;
+	}
+}
+
+.delivery-payment__card-head {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 14px;
+}
+
+.delivery-payment__card-title {
+	margin: 0;
+	font-size: 22px;
+	font-weight: 600;
+	line-height: 1.25;
+	flex: 0 1 auto;
+	text-align: center;
+
+	@include mobile {
+		font-size: 20px;
+	}
+}
+
+.delivery-payment__card-icon {
+	flex-shrink: 0;
+	width: 44px;
+	height: 44px;
+	fill: #111;
+
+	@include mobile {
+		width: 38px;
+		height: 38px;
+	}
+}
+
+.delivery-payment .delivery-payment__list {
+	margin: 0;
+	padding-left: 1.2em;
+	list-style: disc;
+	display: grid;
+	gap: 8px;
+
+	@include tablet-small {
+		gap: 10px;
+	}
+}
+
+.delivery-payment .delivery-payment__item {
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+	line-height: 1.45;
+
+	@include mobile {
+		font-size: 16px;
+	}
+}
+
+.delivery-payment .delivery-payment__list li {
+	list-style: disc;
+}
+
+.delivery-payment ul.delivery-payment__list li::marker {
+	color: #333;
+}
+
+.delivery-payment__actions {
+	margin-top: 24px;
+	display: flex;
+	justify-content: center;
+}

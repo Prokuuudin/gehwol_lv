@@ -1,0 +1,128 @@
+html {
+	scroll-behavior: smooth;
+	background-color: rgb(39, 39, 39);
+}
+
+:target {
+	scroll-margin-top: 20px;
+}
+
+#about,
+#products,
+#blog {
+	scroll-margin-top: 96px;
+
+	@include tablet {
+		scroll-margin-top: 88px;
+	}
+
+	@include mobile-large {
+		scroll-margin-top: 76px;
+	}
+
+	@include mobile {
+		scroll-margin-top: 68px;
+	}
+}
+
+body {
+	background-color: var(--page-bg);
+	color: var(--text-color);
+	font-family: var(--font-main);
+	text-wrap: balance;
+}
+
+img {
+	display: block;
+}
+
+a {
+	color: var(--link-color);
+
+	&:hover {
+		color: var(--accent);
+	}
+}
+
+code {
+	background-color: #e9f1f6;
+	padding: 0.2rem;
+	border-radius: 4px;
+}
+
+pre.code {
+	overflow-x: auto;
+	background-color: #e9f1f6;
+	padding: 1rem;
+	border-radius: 4px;
+}
+
+p {
+	line-height: 1.6;
+	margin-bottom: 1em;
+	font-size: 18px;
+	font-weight: 400;
+	font-family: var(--font-accent);
+	color: var(--text-color);
+
+	@include mobile {
+		font-size: 16px;
+		line-height: 1.35;
+		margin-bottom: 0.5em;
+	}
+}
+
+main > section:not(.hero) {
+	padding: var(--section-space-y) 0;
+
+	@include tablet {
+		padding: var(--section-space-y-tablet) 0;
+	}
+
+	@include mobile {
+		padding: var(--section-space-y-mobile) 0;
+	}
+}
+
+main > section:not(.hero) > .container {
+	> :first-child {
+		margin-top: 0;
+	}
+
+	> :last-child {
+		margin-bottom: 0;
+	}
+}
+
+main > section + section {
+	position: relative;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: min(1180px, calc(100% - 48px));
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			rgba(0, 0, 0, 0) 0%,
+			rgba(151, 193, 31, 0.55) 24%,
+			rgba(240, 169, 1, 0.65) 50%,
+			rgba(151, 193, 31, 0.55) 76%,
+			rgba(0, 0, 0, 0) 100%
+		);
+		pointer-events: none;
+		z-index: 2;
+	}
+
+	@include mobile {
+		&::before {
+			width: calc(100% - 28px);
+		}
+	}
+}
+
+
+
