@@ -1,16 +1,14 @@
 import Swiper from "swiper";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
 
-function initSwiper(selector) {
-  const container = document.querySelector(selector);
+function initNewsSwiper() {
+  const container = document.querySelector(".swiper-news");
   if (!container) return;
 
-  const isNews = selector === ".swiper-news";
   return new Swiper(container, {
-    modules: isNews ? [Navigation, Autoplay] : [Navigation],
-    loop: !isNews,
+    modules: [Autoplay],
+    loop: false,
     slidesPerView: 3,
     spaceBetween: 20,
 
@@ -20,30 +18,16 @@ function initSwiper(selector) {
       1024: { slidesPerView: 3 },
     },
 
-    ...(!isNews
-      ? {
-          navigation: {
-            nextEl: container.querySelector(".products__btn--next"),
-            prevEl: container.querySelector(".products__btn--prev"),
-          },
-        }
-      : {}),
-
-    ...(isNews
-      ? {
-          autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-            reverseDirection: false,
-            pauseOnMouseEnter: true,
-          },
-          speed: 700,
-        }
-      : {}),
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+      reverseDirection: false,
+      pauseOnMouseEnter: true,
+    },
+    speed: 700,
   });
 }
 
 export default function initAllSwipers() {
-  initSwiper(".swiper-products");
-  initSwiper(".swiper-news");
+  initNewsSwiper();
 }
