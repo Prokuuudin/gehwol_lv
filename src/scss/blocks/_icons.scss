@@ -19,3 +19,18 @@
 		margin-right: 0;
 	}
 }
+
+.icon--logo {
+	width: 130px;
+	height: 40px;
+	fill: var(--text-color);
+	stroke: var(--text-color);
+	flex-shrink: 0;
+	transition: all 0.2s ease-in;
+
+	@include mobile {
+		width: 100px;
+		height: 100px;
+		margin-right: 0;
+	}
+}
