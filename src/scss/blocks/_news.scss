@@ -18,3 +18,51 @@
 	line-height: 1.4;
 	color: var(--text-color);
 }
+
+.news__tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-bottom: 30px;
+}
+
+.news__tab {
+	padding: 12px 24px;
+	border: none;
+	border-radius: 0;
+	background: var(--accent-tint);
+	color: var(--text-color);
+	font-family: inherit;
+	font-size: 16px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in, color 0.2s ease-in;
+
+	&:hover,
+	&:focus-visible {
+		background: #d9e6e6;
+	}
+
+	@include mobile {
+		padding: 10px 14px;
+		font-size: 14px;
+	}
+}
+
+.news__tab--active {
+	background: var(--accent);
+	color: #fff;
+	cursor: default;
+
+	&:hover,
+	&:focus-visible {
+		background: var(--accent);
+	}
+}
+
+// swiper/css может задавать display на .swiper — [hidden] обязан победить
+.news__slider[hidden] {
+	display: none;
+}
