@@ -16,6 +16,7 @@
 }
 
 .products__card {
+	position: relative;
 	padding: 24px 24px 28px;
 	background-color: var(--accent-tint);
 	border-left: 4px solid var(--accent);
@@ -36,12 +37,21 @@
 	letter-spacing: 0.04em;
 	color: var(--accent-dark);
 
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+	}
+
 	&:hover {
 		color: var(--accent);
 	}
 }
 
 .products__list {
+	position: relative;
+	z-index: 1;
 	display: grid;
 	gap: 10px;
 }
@@ -57,6 +67,8 @@
 }
 
 .products__subtitle {
+	position: relative;
+	z-index: 1;
 	display: inline-block;
 	margin-top: 6px;
 	font-family: var(--font-accent);
