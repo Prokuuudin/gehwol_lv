@@ -56,9 +56,17 @@ function scrollRevealFunc() {
     distance: "18px",
   });
 
-  ScrollReveal().reveal(`.swiper-news .news__slide, .products__card, .btn-link`, {
+  ScrollReveal().reveal(`.products__card, .btn-link`, {
     delay: 120,
     interval: 80,
+    origin: "bottom",
+    distance: "20px",
+  });
+
+  // Слайды свайпера не ревилим поштучно — IntersectionObserver не видит
+  // обрезанный клипом последний слайд, он остаётся с opacity:0 навсегда.
+  ScrollReveal().reveal(`.news__slider`, {
+    delay: 120,
     origin: "bottom",
     distance: "20px",
   });
