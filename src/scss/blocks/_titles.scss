@@ -4,3 +4,34 @@
 	font-weight: 700;
 	color: #fff;
 }
+
+.title-2 {
+	position: relative;
+	margin: 0 0 40px;
+	padding-bottom: 16px;
+	font-size: clamp(1.75rem, 1.477rem + 1.36vw, 2.5rem);
+	font-weight: 700;
+	line-height: 1.2;
+	font-family: var(--font-titles);
+	text-align: center;
+	color: var(--text-color);
+
+	&::after {
+		content: "";
+		position: absolute;
+		left: 50%;
+		bottom: 0;
+		transform: translateX(-50%);
+		width: 56px;
+		height: 3px;
+		background-color: var(--accent);
+	}
+
+	@include tablet {
+		margin-bottom: 32px;
+	}
+
+	@include mobile {
+		margin-bottom: 24px;
+	}
+}
