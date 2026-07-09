@@ -1,0 +1,35 @@
+.product-detail {
+	max-width: 640px;
+}
+
+.product-detail__media {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 240px;
+	max-width: 100%;
+	aspect-ratio: 1 / 1;
+	margin-bottom: 24px;
+	background: var(--accent);
+	border-radius: 8px;
+}
+
+.product-detail__placeholder {
+	font-family: var(--font-accent);
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.product-detail__description {
+	margin: 0 0 24px;
+	font-size: 16px;
+	line-height: 1.5;
+	color: var(--text-color);
+}
+
+.product-detail__cta {
+	display: inline-block;
+}
