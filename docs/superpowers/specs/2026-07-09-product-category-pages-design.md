@@ -116,9 +116,9 @@ Block: `.product-card` — reusable, currently mock, real catalog data can repla
 
 ## Linking updates
 
-In `products.html` and `header.html` (mega-menu), for each of the 17 leaf `<a href="#" class="products__link">` / `<a href="#" class="mega-menu__link">`, change `href="#"` to `href="<slug>.html"` (both partials are included into pages living at html root, so plain filename is correct — matches existing `href="index.html#about"` style already used in `header.html`).
+Three files duplicate the same 17-leaf-link list: `products.html`, `header.html` (mega-menu), and `header.html`'s included `mobile-nav.html` (responsive menu — found during plan write-up, not part of the original two-file assumption). In all three, for each leaf `<a href="#" class="products__link|mega-menu__link|mobile-nav__sublink">`, change `href="#"` to `href="<slug>.html"` (all three are included into pages living at html root, so plain filename is correct — matches existing `href="index.html#about"` style already used in `header.html`).
 
-Group heading links (`products__subtitle` / `mega-menu__subtitle` "Rotējošie instrumenti") stay `href="#"` — not a leaf, out of scope.
+Group heading links (`products__subtitle` / `mega-menu__subtitle` "Rotējošie instrumenti", and its `<button class="mobile-nav__toggle">` equivalent in mobile-nav) stay untouched — not a leaf, out of scope.
 
 ## Styling
 
