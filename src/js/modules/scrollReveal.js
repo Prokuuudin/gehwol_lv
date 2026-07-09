@@ -56,7 +56,10 @@ function scrollRevealFunc() {
     distance: "18px",
   });
 
-  ScrollReveal().reveal(`.swiper-news .news__slide, .products__card, .btn-link`, {
+  // Внутренние элементы свайпера (.swiper-slide и т.п.) сюда не включать —
+  // IntersectionObserver не учитывает clip карусели, слайды на краю
+  // никогда не пересекают viewFactor и остаются с opacity:0 навсегда.
+  ScrollReveal().reveal(`.products__card, .btn-link`, {
     delay: 120,
     interval: 80,
     origin: "bottom",
