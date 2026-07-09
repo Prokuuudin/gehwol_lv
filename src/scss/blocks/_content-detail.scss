@@ -1,0 +1,25 @@
+.content-detail {
+	max-width: 640px;
+}
+
+.content-detail__meta {
+	margin: 0 0 16px;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--text-secondary);
+}
+
+.content-detail__media {
+	width: 100%;
+	height: 240px;
+	margin-bottom: 24px;
+	background-color: var(--accent-tint);
+	border-left: 4px solid var(--accent);
+}
+
+.content-detail__text {
+	margin: 0;
+	font-size: 16px;
+	line-height: 1.5;
+	color: var(--text-color);
+}
