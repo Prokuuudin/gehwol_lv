@@ -23,14 +23,19 @@ existing static build/deploy process.
   per-product data anywhere yet.
 - All 6 mock cards link to **shared** generic detail pages `produkts-1.html`..`produkts-6.html`
   (`blocks/product-detail-page.html`) — same placeholder text/media on all of them.
-- News (`blocks/news.html`) and articles use the same swiper-tabs section: 5 real, distinct
-  news items (`jaunums-1..5.html`) and 5 real, distinct articles (`raksts-1..5.html`), each with
-  its own title/date/text via `blocks/news-detail-page.html` / `blocks/article-detail-page.html`.
+- News (`blocks/news.html`) and articles use the same swiper-tabs section: 5 news items
+  (`jaunums-1..5.html`) and 5 articles (`raksts-1..5.html`), each with its own generated
+  title/date/text via `blocks/news-detail-page.html` / `blocks/article-detail-page.html` — also
+  placeholder/generated copy, not real content. Real texts and photos for products, news and
+  articles alike will be sourced and uploaded later, on the same hosting as the site.
 
-Consequence for design: products have no real per-item legacy content worth preserving (it's
-all identical mock filler) — new products are always brand-new DB rows. News/articles already
-have real distinct legacy content — those must be seeded into the DB so they keep their spot
-in the listing.
+Consequence for design: **nothing existing has real per-item content worth preserving** —
+products, news and articles are all symmetric. New products/news/articles are always
+brand-new DB rows, always get their own `*.php?id=` detail page, and are appended after the
+existing static mock cards/slides. The one exception is **categories**: the 17 line pages are
+real, permanent site structure (URLs, breadcrumbs, nav) even though the products shown on them
+are mock — those 21 category rows are seeded so the existing tree/links are preserved and
+extendable.
 
 ## Decisions carried from brainstorming
 
@@ -107,36 +112,35 @@ news (
   date DATE NULL,
   text TEXT NULL,
   image VARCHAR(255) NULL,
-  link_url VARCHAR(255) NULL,   -- set for the 5 seeded legacy rows
   sort_order INT DEFAULT 0,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 )
+-- no link_url: same as products, every row is brand-new, always gets news.php?id=
 
 articles (
   id INT PK AUTO_INCREMENT,
   title VARCHAR(255),
   text TEXT NULL,
   image VARCHAR(255) NULL,
-  link_url VARCHAR(255) NULL,   -- set for the 5 seeded legacy rows
   sort_order INT DEFAULT 0,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 )
+-- no link_url: same as products, every row is brand-new, always gets article.php?id=
 
 admin_users ( id INT PK, username VARCHAR(255), password_hash VARCHAR(255) )
 ```
 
 **Seed data** (one-time SQL migration, run manually via phpMyAdmin/CLI on deploy):
-- `categories`: 3 top groups (no `link_url`) → their 17 leaves (`link_url` = the real filename,
-  e.g. `gehwol-classic.html`) → under Tehnika, the `Rotējošie instrumenti` subgroup (no
-  `link_url`) → its 3 leaves (`link_url` set). 21 rows total.
-- `news`: 5 rows, `link_url` = `jaunums-1.html` … `jaunums-5.html`, titles copied verbatim.
-- `articles`: 5 rows, `link_url` = `raksts-1.html` … `raksts-5.html`, titles copied verbatim.
-- `products`: no seed rows (the 6 mock cards per line are not real data, not modeled in DB).
+- `categories` only: 3 top groups (no `link_url`) → their 17 leaves (`link_url` = the real
+  filename, e.g. `gehwol-classic.html`) → under Tehnika, the `Rotējošie instrumenti` subgroup
+  (no `link_url`) → its 3 leaves (`link_url` set). 21 rows total.
+- `products`/`news`/`articles`: no seed rows at all — the existing mock cards/slides are not
+  modeled in the DB, they simply stay in the static HTML as today.
 
-A row with `link_url` set is a "legacy" row: the listing links straight to that static file.
-A row without it is a "live" row: the listing links to the matching `*.php?id=` detail page.
-This lets old and new content sit in the same list without duplicating or rewriting anything
-that already exists.
+For categories, a row with `link_url` set is a "legacy" row: the tree links straight to that
+static file. A row without it (admin-created) is a "live" row: it links to `category.php?id=`.
+Products/news/articles don't need this distinction — every row in those three tables is,
+by definition, a new addition, always linking to its own `*.php?id=` detail page.
 
 ## Wiring the 17 line pages + homepage tree to real data
 
@@ -161,11 +165,12 @@ list), and `.products__grid` itself gets nothing special. On load, JS calls
 New leaf categories (created via admin) get no static file — `category.php?id=` renders the
 same breadcrumb/grid markup purely from DB (its own products via `category_id`).
 
-News/articles: the two existing sliders already end with the 5 legacy slides. JS appends
-extra `<div class="news__slide swiper-slide">` nodes for any `news`/`articles` row without
-`link_url`, then calls `swiper.update()` (swiper init in `index.js` must run *after* the fetch
-resolves, so slides exist before Swiper reads the DOM — `initAllSwipers()` moves behind an
-`await` on the content-injection module).
+News/articles: the two existing sliders already end with 5 static mock slides each. JS appends
+one extra `<div class="news__slide swiper-slide">` per row from `api.php?type=news` /
+`?type=articles` (all rows — no legacy filter needed, every row is new), then calls
+`swiper.update()` (swiper init in `index.js` must run *after* the fetch resolves, so slides
+exist before Swiper reads the DOM — `initAllSwipers()` moves behind an `await` on the
+content-injection module).
 
 ## Admin panel
 
@@ -176,10 +181,7 @@ resolves, so slides exist before Swiper reads the DOM — `initAllSwipers()` mov
 - **Products**: list filtered by category, add/edit (name, category dropdown — leaf categories
   only, description textarea, image upload, sort order), delete.
 - **News** / **Articles**: list, add/edit (title, [date for news], text, image, sort order),
-  delete. Legacy (seeded) rows are editable too (e.g. fix a typo) but their card in the list UI
-  shows "→ static file `jaunums-2.html`" as a hint; text/description edits on a legacy row have
-  no effect on the front end (the static file is what's actually displayed) — this is called
-  out once in the admin UI, not specially validated against.
+  delete. No legacy rows here (unlike categories) — every row is a plain new item.
 - Uploads: mime+extension whitelist (jpg/jpeg/png/webp), size cap (e.g. 5 MB), stored as
   `uniqid() + extension` under `uploads/{products,news,articles}/`.
 
@@ -207,8 +209,9 @@ resolves, so slides exist before Swiper reads the DOM — `initAllSwipers()` mov
 
 - E-commerce: pricing, cart, checkout, stock.
 - Multiple admin accounts/roles.
-- Editing the *text content* of legacy (static-file) items through the admin — only their
-  listing metadata (name, order, category) is DB-backed.
+- Editing the *text content* of the 17 static line pages / their mock product cards, or of the
+  10 static mock news/article files, through the admin — those stay untouched static HTML;
+  only the legacy category rows' listing metadata (name, order, parent) is DB-backed.
 - WYSIWYG rich text editor (plain `<textarea>` for description/text is enough for v1).
 - Automatic webp/retina generation for admin-uploaded images (they're served as plain
   `<img>`, no build-time optimization — acceptable for occasional manual uploads).
