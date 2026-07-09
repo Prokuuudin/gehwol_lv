@@ -67,14 +67,3 @@
 	color: var(--text-secondary);
 	line-height: 1.5;
 }
-
-.about__cta {
-	margin-top: 24px;
-
-	@include mobile {
-		display: block;
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
-	}
-}
