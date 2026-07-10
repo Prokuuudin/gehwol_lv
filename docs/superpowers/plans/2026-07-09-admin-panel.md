@@ -8,6 +8,8 @@
 
 **Tech Stack:** PHP 8 (sessions, no framework, no DB — JSON files under `php/data/`), PHPUnit 10 (pure-logic unit tests only — CRUD/auth/rendering pages are verified manually since they need an HTTP server), vanilla JS (bundled by the existing webpack config), gulp (one new passthrough task).
 
+> **Status: implemented 2026-07-10.** Tasks 1–6 landed before the storage revision (then refactored to JSON); Tasks 7–18 implemented against the revised JSON design. All PHPUnit suites pass (26 tests); homepage/category/news injection and click-through verified headless (Playwright) against a clean `build/`. Additions beyond the original plan: CSRF tokens on all admin mutations, `session_regenerate_id()` on login, `seeded` flag on seed categories, `php/` link prefix in API output, `../` prefix for legacy category links in `php/product.php`.
+
 ## Revision 2026-07-10 — JSON storage instead of MySQL
 
 Storage switched from MySQL/PDO to plain JSON files (no DB server available or wanted on the hosting). Everywhere a task below shows PDO/SQL code, the JSON storage API applies instead; the pages, routes, JSON API shapes, gulp wiring and JS injection are unchanged. Concretely:
