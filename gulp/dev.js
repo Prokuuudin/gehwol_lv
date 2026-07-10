@@ -205,6 +205,20 @@ gulp.task("files:dev", function() {
     .pipe(gulp.dest("./build/files/"));
 });
 
+gulp.task("phpAdmin:dev", function() {
+  return gulp
+    .src("./php/**/*", { dot: true })
+    .pipe(changed("./build/php/"))
+    .pipe(gulp.dest("./build/php/"));
+});
+
+gulp.task("uploads:dev", function() {
+  return gulp
+    .src("./uploads/**/*", { allowEmpty: true, dot: true })
+    .pipe(changed("./build/uploads/"))
+    .pipe(gulp.dest("./build/uploads/"));
+});
+
 gulp.task("js:dev", function() {
   return (
     gulp

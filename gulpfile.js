@@ -19,6 +19,8 @@ gulp.task(
       gulp.series("svgStack:dev", "svgSymbol:dev"),
       "files:dev",
       "js:dev",
+      "phpAdmin:dev",
+      "uploads:dev",
     ),
     gulp.parallel("server:dev", "watch:dev"),
   ),
