@@ -36,3 +36,28 @@ function require_login(): void
         exit;
     }
 }
+
+function csrf_token(): string
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (empty($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+    return $_SESSION['csrf_token'];
+}
+
+function csrf_field(): string
+{
+    return '<input type="hidden" name="csrf" value="' . htmlspecialchars(csrf_token()) . '">';
+}
+
+function require_csrf(): void
+{
+    $given = $_POST['csrf'] ?? $_GET['csrf'] ?? '';
+    if (!is_string($given) || !hash_equals(csrf_token(), $given)) {
+        http_response_code(403);
+        exit('Nederīgs pieprasījums (CSRF).');
+    }
+}

@@ -33,6 +33,7 @@ function category_has_products(int $id): bool
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($action, ['add', 'edit'], true)) {
+    require_csrf();
     $data = [
         'name' => trim($_POST['name'] ?? ''),
         'parent_id' => $_POST['parent_id'] !== '' ? (int)$_POST['parent_id'] : null,
@@ -69,6 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($action, ['add', 'edit'], 
 }
 
 if ($action === 'delete' && isset($_GET['id'])) {
+    require_csrf();
     $id = (int)$_GET['id'];
     if (category_has_children($categories, $id) || category_has_products($id)) {
         $errors[] = 'Nevar dzēst kategoriju, kurai ir apakškategorijas vai produkti.';
@@ -119,7 +121,7 @@ foreach ($errors as $e) {
   <td><?= (int)$c['sort_order'] ?></td>
   <td>
     <a href="categories.php?action=edit&id=<?= (int)$c['id'] ?>">Rediģēt</a>
-    <a href="categories.php?action=delete&id=<?= (int)$c['id'] ?>" onclick="return confirm('Dzēst?')">Dzēst</a>
+    <a href="categories.php?action=delete&id=<?= (int)$c['id'] ?>&csrf=<?= urlencode(csrf_token()) ?>" onclick="return confirm('Dzēst?')">Dzēst</a>
   </td>
 </tr>
 <?php endforeach; ?>
@@ -127,6 +129,7 @@ foreach ($errors as $e) {
 
 <h2><?= $editing ? 'Rediģēt kategoriju' : 'Pievienot kategoriju' ?></h2>
 <form method="post" action="categories.php?action=<?= $editing ? 'edit' : 'add' ?>">
+  <?= csrf_field() ?>
   <?php if ($editing): ?><input type="hidden" name="id" value="<?= (int)$editing['id'] ?>"><?php endif; ?>
   <label>Nosaukums: <input type="text" name="name" value="<?= htmlspecialchars($editing['name'] ?? '') ?>" required></label><br>
   <label>Vecāks:

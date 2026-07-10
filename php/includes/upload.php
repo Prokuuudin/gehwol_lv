@@ -35,7 +35,10 @@ function save_uploaded_image(array $file, string $destDir): ?string
     if (!has_allowed_extension($file['name']) || !is_under_size_limit((int)$file['size'])) {
         return null;
     }
-    $mime = mime_content_type($file['tmp_name']);
+    // fileinfo may be unavailable on shared hosting — fall back to image header sniffing
+    $mime = function_exists('mime_content_type')
+        ? mime_content_type($file['tmp_name'])
+        : (@getimagesize($file['tmp_name'])['mime'] ?? false);
     if ($mime === false || !is_allowed_mime($mime)) {
         return null;
     }

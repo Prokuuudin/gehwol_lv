@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = (string)($_POST['password'] ?? '');
     $row = find_admin_by_username($username);
     if (verify_credentials($row, $password)) {
+        session_regenerate_id(true);
         $_SESSION['admin_id'] = $row['id'];
         header('Location: index.php');
         exit;
