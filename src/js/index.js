@@ -1,5 +1,5 @@
+import loadDynamicContent from "./modules/dynamicContent.js";
 import initAllSwipers from "./modules/swipers.js";
-initAllSwipers();
 
 import headerScroll from "./modules/header-scroll.js";
 headerScroll();
@@ -15,3 +15,7 @@ placeholderLinks();
 
 import newsTabs from "./modules/newsTabs.js";
 newsTabs();
+
+loadDynamicContent().finally(() => {
+  initAllSwipers();
+});

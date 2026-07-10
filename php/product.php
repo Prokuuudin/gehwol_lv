@@ -27,7 +27,14 @@ foreach (load_collection('categories') as $c) {
     }
 }
 $categoryName = $category['name'] ?? '';
-$categoryHref = htmlspecialchars($category ? category_link($category) : '../index.html#products');
+// legacy categories point at root-level static files; this page lives in php/
+$categoryHref = '../index.html#products';
+if ($category) {
+    $categoryHref = !empty($category['link_url'])
+        ? '../' . $category['link_url']
+        : category_link($category);
+}
+$categoryHref = htmlspecialchars($categoryHref);
 ?>
 <!DOCTYPE html>
 <html lang="lv">

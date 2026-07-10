@@ -19,7 +19,7 @@ switch ($type) {
             'category_id' => (int)$r['category_id'],
             'name' => $r['name'],
             'image' => $r['image'],
-            'link' => product_link((int)$r['id']),
+            'link' => 'php/' . product_link((int)$r['id']),
         ], $rows);
         echo json_encode($out);
         break;
@@ -29,7 +29,7 @@ switch ($type) {
             'id' => (int)$r['id'],
             'title' => $r['title'],
             'image' => $r['image'],
-            'link' => news_link((int)$r['id']),
+            'link' => 'php/' . news_link((int)$r['id']),
         ], sort_rows(load_collection('news')));
         echo json_encode($out);
         break;
@@ -39,7 +39,7 @@ switch ($type) {
             'id' => (int)$r['id'],
             'title' => $r['title'],
             'image' => $r['image'],
-            'link' => article_link((int)$r['id']),
+            'link' => 'php/' . article_link((int)$r['id']),
         ], sort_rows(load_collection('articles')));
         echo json_encode($out);
         break;
@@ -55,7 +55,7 @@ switch ($type) {
             'id' => (int)$r['id'],
             'parent_id' => $r['parent_id'] !== null ? (int)$r['parent_id'] : null,
             'name' => $r['name'],
-            'link' => category_link($r),
+            'link' => 'php/' . category_link($r),
         ], $rows);
         echo json_encode($out);
         break;
