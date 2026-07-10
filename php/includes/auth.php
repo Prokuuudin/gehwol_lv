@@ -1,7 +1,7 @@
 <?php
 // php/includes/auth.php
 
-require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/storage.php';
 
 function verify_credentials(?array $userRow, string $password): bool
 {
@@ -11,13 +11,19 @@ function verify_credentials(?array $userRow, string $password): bool
     return password_verify($password, $userRow['password_hash']);
 }
 
+function find_admin_in(array $users, string $username): ?array
+{
+    foreach ($users as $user) {
+        if (($user['username'] ?? null) === $username) {
+            return $user;
+        }
+    }
+    return null;
+}
+
 function find_admin_by_username(string $username): ?array
 {
-    $pdo = get_pdo();
-    $stmt = $pdo->prepare('SELECT id, username, password_hash FROM admin_users WHERE username = ?');
-    $stmt->execute([$username]);
-    $row = $stmt->fetch();
-    return $row ?: null;
+    return find_admin_in(load_collection('admin_users'), $username);
 }
 
 function require_login(): void

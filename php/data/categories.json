@@ -1,0 +1,149 @@
+[
+    {
+        "id": 1,
+        "parent_id": null,
+        "name": "Kosmētika",
+        "link_url": null,
+        "sort_order": 1
+    },
+    {
+        "id": 2,
+        "parent_id": 1,
+        "name": "GEHWOL Classic",
+        "link_url": "gehwol-classic.html",
+        "sort_order": 1
+    },
+    {
+        "id": 3,
+        "parent_id": 1,
+        "name": "GEHWOL MED®",
+        "link_url": "gehwol-med.html",
+        "sort_order": 2
+    },
+    {
+        "id": 4,
+        "parent_id": 1,
+        "name": "GEHWOL FUSSKRAFT",
+        "link_url": "gehwol-fusskraft.html",
+        "sort_order": 3
+    },
+    {
+        "id": 5,
+        "parent_id": 1,
+        "name": "GEHWOL FUSSKRAFT Soft Feet",
+        "link_url": "gehwol-fusskraft-soft-feet.html",
+        "sort_order": 4
+    },
+    {
+        "id": 6,
+        "parent_id": 1,
+        "name": "GEHWOL PROFESSIONAL",
+        "link_url": "gehwol-professional.html",
+        "sort_order": 5
+    },
+    {
+        "id": 7,
+        "parent_id": 1,
+        "name": "GERLASAN",
+        "link_url": "gerlasan.html",
+        "sort_order": 6
+    },
+    {
+        "id": 8,
+        "parent_id": 1,
+        "name": "GERLAVIT",
+        "link_url": "gerlavit.html",
+        "sort_order": 7
+    },
+    {
+        "id": 9,
+        "parent_id": null,
+        "name": "Spiedienu uz pēdām mazinoši līdzekļi",
+        "link_url": null,
+        "sort_order": 2
+    },
+    {
+        "id": 10,
+        "parent_id": 9,
+        "name": "Polimēra gēla izstrādājumi, pārvilkti ar tekstilu",
+        "link_url": "polimera-gela-izstradajumi-parvilkti-ar-tekstilu.html",
+        "sort_order": 1
+    },
+    {
+        "id": 11,
+        "parent_id": 9,
+        "name": "Polimēra gēla izstrādājumi",
+        "link_url": "polimera-gela-izstradajumi.html",
+        "sort_order": 2
+    },
+    {
+        "id": 12,
+        "parent_id": 9,
+        "name": "Plāksteri",
+        "link_url": "plaksteri.html",
+        "sort_order": 3
+    },
+    {
+        "id": 13,
+        "parent_id": 9,
+        "name": "Filca izstrādājumi",
+        "link_url": "filca-izstradajumi.html",
+        "sort_order": 4
+    },
+    {
+        "id": 14,
+        "parent_id": null,
+        "name": "Tehnika",
+        "link_url": null,
+        "sort_order": 3
+    },
+    {
+        "id": 15,
+        "parent_id": 14,
+        "name": "Pēdu kopšanas aparāti",
+        "link_url": "pedu-kopsanas-aparati.html",
+        "sort_order": 1
+    },
+    {
+        "id": 16,
+        "parent_id": 14,
+        "name": "Pacienta krēsli",
+        "link_url": "pacienta-kresli.html",
+        "sort_order": 2
+    },
+    {
+        "id": 17,
+        "parent_id": 14,
+        "name": "Darbinieka krēsli",
+        "link_url": "darbinieka-kresli.html",
+        "sort_order": 3
+    },
+    {
+        "id": 18,
+        "parent_id": 14,
+        "name": "Rotējošie instrumenti",
+        "link_url": null,
+        "sort_order": 4
+    },
+    {
+        "id": 19,
+        "parent_id": 18,
+        "name": "Keramiskās frēzes",
+        "link_url": "keramiskas-frezes.html",
+        "sort_order": 1
+    },
+    {
+        "id": 20,
+        "parent_id": 18,
+        "name": "Pulētāji",
+        "link_url": "puletaji.html",
+        "sort_order": 2
+    },
+    {
+        "id": 21,
+        "parent_id": 18,
+        "name": "Vienreizlietojamās smilšpapīra frēzes",
+        "link_url": "vienreizlietojamas-smilspapira-frezes.html",
+        "sort_order": 3
+    }
+]

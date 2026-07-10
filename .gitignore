@@ -6,6 +6,11 @@ build
 .DS_Store
 config.php
 /vendor/
+.phpunit.result.cache
+php/data/products.json
+php/data/news.json
+php/data/articles.json
+php/data/admin_users.json
 uploads/products/*
 uploads/news/*
 uploads/articles/*

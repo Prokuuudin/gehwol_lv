@@ -22,4 +22,20 @@ final class AuthTest extends TestCase
     {
         $this->assertFalse(verify_credentials(null, 'anything'));
     }
+
+    public function test_find_admin_in_returns_matching_user(): void
+    {
+        $users = [
+            ['id' => 1, 'username' => 'admin', 'password_hash' => 'x'],
+            ['id' => 2, 'username' => 'other', 'password_hash' => 'y'],
+        ];
+        $found = find_admin_in($users, 'other');
+        $this->assertSame(2, $found['id']);
+    }
+
+    public function test_find_admin_in_returns_null_when_absent(): void
+    {
+        $this->assertNull(find_admin_in([['id' => 1, 'username' => 'admin', 'password_hash' => 'x']], 'nobody'));
+        $this->assertNull(find_admin_in([], 'admin'));
+    }
 }
