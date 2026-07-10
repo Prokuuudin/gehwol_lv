@@ -68,7 +68,7 @@ $categoryHref = htmlspecialchars($categoryHref);
         <?php endif; ?>
       </div>
       <p class="product-detail__description"><?= nl2br(htmlspecialchars($product['description'] ?? '')) ?></p>
-      <a href="../index.html#contacts" class="product-detail__cta btn-link">Sazinieties, lai pasūtītu →</a>
+      <a href="../index.html#contacts" class="product-detail__cta btn-link">Sazinieties, lai sadarbotos →</a>
     </div>
   </div>
 </section>
