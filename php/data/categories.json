@@ -166,12 +166,5 @@
         "link_url": "vienreizlietojamas-smilspapira-frezes.html",
         "sort_order": 3,
         "seeded": true
-    },
-    {
-        "id": 22,
-        "parent_id": 1,
-        "name": "Test Line",
-        "link_url": null,
-        "sort_order": 99
     }
 ]
