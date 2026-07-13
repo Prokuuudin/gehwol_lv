@@ -39,7 +39,7 @@ $products = sort_rows(array_values(array_filter(
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title><?= htmlspecialchars($category['name']) ?> — Gehwole</title>
+<title><?= htmlspecialchars($category['name']) ?> — Gehwol</title>
 <link rel="stylesheet" href="../css/main.css" />
 <link rel="icon" type="image/x-icon" href="../img/favicons/favicon.ico">
 </head>
