@@ -5,6 +5,7 @@ require("./gulp/dev.js");
 require("./gulp/docs.js");
 require("./gulp/fontsDev.js");
 require("./gulp/fontsDocs.js");
+require("./gulp/generate.js");
 
 gulp.task(
   "default",
