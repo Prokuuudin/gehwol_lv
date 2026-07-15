@@ -541,3 +541,61 @@ Open in a browser (or `curl`) and confirm:
 Stop the `python` process started in Step 2.
 
 No commit — this task is a full-site verification pass only; all functional changes were committed in Tasks 1, 2, and 4.
+
+---
+
+### Task 6: Rebuild and commit the production `docs/` deployment
+
+**Context (added after Task 4's review):** `docs/` is a second, separately tracked build output — the GitHub Pages production deployment (confirmed by prior commit history like `a090bce "fix: prevent broken Google Fonts @import in production CSS build"`), independent from the gitignored `build/` dev output. Tasks 1-5 only rebuilt `build/`. `docs/` was never touched by this plan and still contains the pre-refactor content: old fake placeholder products and a JS bundle built before the PHP bridge was removed. Note: the `docs` gulp series (`gulpfile.js`'s `"docs"` task) has no `phpAdmin:docs` or `uploads:docs` task at all — `docs/` has never included the PHP admin panel or uploads, so this task cannot and does not touch admin there either; it is already a static-only deployment target by construction.
+
+**Files:**
+- None hand-edited — this task only regenerates `docs/` (tracked in git) from the same `src/html/`, `src/scss/`, `src/js/`, etc. that Tasks 1-4 already changed.
+
+- [ ] **Step 1: Rebuild `docs/` via the individual `:docs` gulp tasks (not the `docs` series — that starts a livereload server and never exits)**
+
+```bash
+npx gulp clean:docs
+npx gulp fontsDocs
+npx gulp html:docs
+npx gulp sass:docs
+npx gulp images:docs
+npx gulp svgStack:docs
+npx gulp svgSymbol:docs
+npx gulp files:docs
+npx gulp js:docs
+```
+
+Expected: each prints `Finished '<task>'`, no errors. `clean:docs` first removes the existing `docs/` directory (mirrors how `clean:dev` works for `build/` — this is the established, already-used workflow for updating this production output, not a new risk introduced by this task).
+
+- [ ] **Step 2: Verify the stale content is gone and real content is present**
+
+Run: `grep -c "api.php" docs/js/index.bundle.js`
+Expected: `0`.
+
+Run: `grep -o "GEHWOL Balsam Normale Haut 75, 125ml" docs/gehwol-classic.html`
+Expected: one match.
+
+Run: `grep -o "Produkts 1" docs/gehwol-classic.html`
+Expected: no output (old fake placeholder text gone).
+
+- [ ] **Step 3: Confirm `git status` shows only the expected `docs/` regeneration**
+
+Run: `git status --porcelain -- docs/ | grep -v "^ M docs/\|^ D docs/\|^?? docs/\|^ A docs/"`
+Expected: no output — every change under `docs/` is a modify/delete/add inside `docs/` itself, nothing else touched.
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add docs/
+git commit -m "$(cat <<'EOF'
+chore: rebuild production docs/ with static product pages
+
+docs/ is the GitHub Pages deployment, tracked separately from the
+gitignored build/ dev output. Regenerates it from the current
+src/html/src/scss/src/js so the live site gets the real GEHWOL
+Classic catalog and drops the now-removed php/api.php dependency.
+EOF
+)"
+```
+
+No commit yet at this point in git history — this is the task's only commit.
