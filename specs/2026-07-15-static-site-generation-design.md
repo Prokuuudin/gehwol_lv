@@ -109,6 +109,9 @@ site, since generation now happens at build time:
 
 - Delete `php/product.php`, `php/category.php`, `php/api.php`,
   `php/news.php`, `php/article.php`.
+- Delete `php/includes/links.php` and `tests/LinksTest.php` — its only
+  callers are `product.php` and `api.php`, both deleted above; `php/admin/*`
+  never requires it, so it becomes dead code with no other caller.
 - Delete `src/js/modules/dynamicContent.js`.
 - `src/js/index.js`: remove the `loadDynamicContent` import and call;
   `initAllSwipers()` runs directly instead of inside `.finally()`.
