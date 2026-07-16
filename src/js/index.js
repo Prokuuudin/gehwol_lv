@@ -15,4 +15,7 @@ placeholderLinks();
 import newsTabs from "./modules/newsTabs.js";
 newsTabs();
 
+import aboutToggle from "./modules/about-toggle.js";
+aboutToggle();
+
 initAllSwipers();

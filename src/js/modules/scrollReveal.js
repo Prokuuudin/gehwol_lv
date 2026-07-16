@@ -45,16 +45,22 @@ function scrollRevealFunc() {
     distance: "18px",
   });
 
-  ScrollReveal().reveal(`.about__image`, {
+  // .about__row--reverse исключён — до клика "Lasīt tālāk" у него max-height:0,
+  // а нулевая по высоте область никогда не пересечёт viewFactor, из-за чего
+  // элементы остались бы с opacity:0 навсегда.
+  ScrollReveal().reveal(`.about__row:not(.about__row--reverse) .about__image`, {
     delay: 120,
     origin: "left",
   });
 
-  ScrollReveal().reveal(`.about__content`, {
-    delay: 150,
-    origin: "bottom",
-    distance: "18px",
-  });
+  ScrollReveal().reveal(
+    `.about__row:not(.about__row--reverse) .about__content`,
+    {
+      delay: 150,
+      origin: "bottom",
+      distance: "18px",
+    },
+  );
 
   // Внутренние элементы свайпера (.swiper-slide и т.п.) сюда не включать —
   // IntersectionObserver не учитывает clip карусели, слайды на краю
