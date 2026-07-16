@@ -34,7 +34,7 @@ function bySortOrder(a, b) {
 function productCardHtml(product) {
   const name = escapeHtml(product.name);
   const media = product.image
-    ? `<img src="uploads/products/${escapeHtml(product.image)}" alt="${name}">`
+    ? `<img src="./img/${escapeHtml(product.image)}" alt="${name}">`
     : `<span class="product-card__placeholder">GEHWOL</span>`;
   return `<a href="produkts-${product.id}.html" class="product-card"><div class="product-card__media">${media}</div><h3 class="product-card__title">${name}</h3><span class="product-card__cta btn-link">Uzzināt vairāk →</span></a>`;
 }
@@ -43,7 +43,9 @@ function categoryGridHtml(products) {
   if (products.length === 0) {
     return `<p>Šajā kategorijā vēl nav produktu.</p>`;
   }
-  return products.map(productCardHtml).join("");
+  // one card per line — gulp-webp-retina-html parses <img> tags line-by-line
+  // and mismatches sources when multiple <img> land on the same line
+  return products.map(productCardHtml).join("\n");
 }
 
 const CATEGORY_INCLUDE_RE = /@@include\('blocks\/category-page\.html',\s*(\{[\s\S]*?\})\s*\)/;
@@ -81,7 +83,7 @@ function productDescriptionHtml(description) {
 function productMediaHtml(product) {
   const name = escapeHtml(product.name);
   return product.image
-    ? `<img src="uploads/products/${escapeHtml(product.image)}" alt="${name}">`
+    ? `<img src="./img/${escapeHtml(product.image)}" alt="${name}">`
     : `<span class="product-detail__placeholder">GEHWOL</span>`;
 }
 
