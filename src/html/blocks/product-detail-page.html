@@ -13,11 +13,21 @@
 		<h1 class="category__title">@@name</h1>
 
 		<div class="product-detail">
-			<div class="product-detail__media">
-				@@media
+			<div class="product-detail__top">
+				<div class="product-detail__media">
+					@@media
+				</div>
+				<div class="product-detail__content">
+					<p class="product-detail__subtitle">@@subtitle</p>
+					<div class="product-detail__description">
+						@@description
+					</div>
+				</div>
 			</div>
-			<p class="product-detail__description">@@description</p>
-			<a href="index.html#contacts" class="product-detail__cta btn-link">Sazinieties, lai sadarbotos →</a>
+
+			@@activeIngredients
+
+			<p class="product-detail__notice">Vēlaties sadarboties? Sazinieties ar mums, izmantojot kontaktinformāciju lapas apakšpusē.</p>
 		</div>
 	</div>
 </section>

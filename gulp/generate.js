@@ -73,11 +73,32 @@ function productMetaDescription(product) {
   return escapeHtml(`${product.name} — ${firstLine}`.slice(0, 160));
 }
 
-function productDescriptionHtml(description) {
-  return String(description || "")
+function splitDescription(description) {
+  const lines = String(description || "")
     .split("\n")
-    .map(escapeHtml)
-    .join("<br>");
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  const subtitle = (lines.shift() || "").replace(/\.+$/, "");
+
+  let activeIngredients = "";
+  const activeIndex = lines.findIndex((line) => /^Aktīvās vielas:/i.test(line));
+  if (activeIndex !== -1) {
+    activeIngredients = lines.splice(activeIndex, 1)[0].replace(/^Aktīvās vielas:\s*/i, "");
+  }
+
+  return { subtitle, bodyLines: lines, activeIngredients };
+}
+
+function productDescriptionHtml(description) {
+  const { subtitle, bodyLines, activeIngredients } = splitDescription(description);
+  return {
+    subtitle: escapeHtml(subtitle),
+    description: bodyLines.map((line) => `<p>${escapeHtml(line)}</p>`).join("\n"),
+    activeIngredients: activeIngredients
+      ? `<p class="product-detail__active"><strong>Aktīvās vielas:</strong> ${escapeHtml(activeIngredients)}</p>`
+      : "",
+  };
 }
 
 function productMediaHtml(product) {
@@ -89,9 +110,12 @@ function productMediaHtml(product) {
 
 function productDetailPageSource(product, category) {
   const name = escapeHtml(product.name);
+  const { subtitle, description, activeIngredients } = productDescriptionHtml(product.description);
   const params = {
     name,
-    description: productDescriptionHtml(product.description),
+    subtitle,
+    description,
+    activeIngredients,
     media: productMediaHtml(product),
     categoryName: category ? escapeHtml(category.name) : "",
     categoryHref: category ? category.link_url : "index.html#products",
