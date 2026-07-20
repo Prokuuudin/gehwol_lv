@@ -1,0 +1,407 @@
+[
+    {
+        "id": 1,
+        "category_id": 2,
+        "name": "GEHWOL Balsam Normale Haut 75, 125ml",
+        "description": "Balzāms normālas pēdu ādas ikdienas kopšanai.\nSamazina svīšanu, dezodorē, atsvaidzina ādu, noņem dedzināšanas sajūtu, mitrina un mīkstina ādu.\nPiemērots normālas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Hohobas eļļa, mentols, lavandas eļļa, rozmarīna eļļa, alveja.",
+        "image": null,
+        "sort_order": 1,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 2,
+        "category_id": 2,
+        "name": "GEHWOL Balsam Trockene Sprőde Haut 75, 125ml",
+        "description": "Balzāms sausas, raupjas pēdu ādas kopšanai.\nMīkstina un mitrina ādu, padara ādu gludu un maigu, samazina svīšanu, dezodorē, atsvaidzina.\nPiemērots sausas, ļoti sausas, raupjas, plaisājošas, zvīņainas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Lanolīns, avokado eļļa, alveja, mentols, lavandas eļļa, rozmarīna eļļa.",
+        "image": null,
+        "sort_order": 2,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 3,
+        "category_id": 2,
+        "name": "GEHWOL Frische-Balsam 75ml",
+        "description": "Atvēsinošs un atsvaidzinošs balzāms pēdām un kājām.\nAtvēsina, ātri mazina dedzināšanas sajūtu, dezodorē, nodrošina ilgstošu svaiguma sajūtu, mitrina un mīkstina ādu.\nPiemērots normālas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Hohobas eļļa, mentols, urīnviela, piparmētru eļļa.",
+        "image": null,
+        "sort_order": 3,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 4,
+        "category_id": 2,
+        "name": "GEHWOL Wärme-Balsam 75ml",
+        "description": "Sildošs balzāms pēdām ar urīnvielu.\nVeicina asinsriti, rada patīkamu siltuma sajūtu, mīkstina, mitrina ādu, dezodorē.\nPiemērots normālas un sausas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Lanolīns, urīnviela, glicerīns, avokādo eļļa, alveja, rozmarīna eļļa, lavandas eļļa, ingvēra ekstrakts, paprika, kampars.",
+        "image": null,
+        "sort_order": 4,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 5,
+        "category_id": 2,
+        "name": "GEHWOL Bein-Balsam 125, 500ml",
+        "description": "Balzāms kāju un pēdu ādas kopšanai.\nMīkstina ādu, mazina ādas kairinājumu un apsārtumu. Viegla pēdu un kāju masāža ar balzāmu veicina venozo asinsriti, mazina noguruma sajūtu kājās, atsvaidzina.\nPiemērots normālas un sausas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Virdžinijas burvjlazdas ekstrakts, alantoīns, pantenols, mentols, bisabolols.",
+        "image": null,
+        "sort_order": 5,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 6,
+        "category_id": 2,
+        "name": "GEHWOL Softening Balsam 125ml",
+        "description": "Mīkstinošs un mitrinošs balzāms ar hiāluronskābi un urīnvielu pēdu un kāju ādas kopšanai.\nSatur 10% urīnvielas.\nVeicina ādas reģenerāciju, stiprina tās aizsargspējas, piesaista un saglabā mitrumu ādas dziļākajos slāņos, pasargā no sacietējumu veidošanās.\nPiemērots normālas, sausas un ļoti sausas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Hidrolizēti piena proteīni, medus ekstrakts, nātrija hiāluronāts, urīnviela, glicerīns, E vitamīns, avokado eļļa.",
+        "image": null,
+        "sort_order": 6,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 7,
+        "category_id": 2,
+        "name": "GEHWOL Fußkrem 75ml",
+        "description": "Aizsargkrēms pēdām.\nMazina svīšanu, dezodorē, mīkstina un stiprina ādu, veido uz ādas elastīgu plēvīti, tā mazinot noberzumu un tulznu veidošanās risku.\nPiemērots normālas, sausas, ļoti sausas un plaisājošas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Vazelīns, glicerīns, lanolīns, eikalipta eļļa, timiāna eļļa, lavandas eļļa, rozmarīna eļļa, mentols, kampars, speciālās medicīniskās ziepes.",
+        "image": null,
+        "sort_order": 7,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 8,
+        "category_id": 2,
+        "name": "GEHWOL Extra 75ml",
+        "description": "Universāls krēms ar plašu iedarbības spektru intensīvai pēdu ādas ikdienas kopšanai.\nMīkstina ādu, novērš ādas sacietējumu un tulznu veidošanos, mazina svīšanu, dezodorē, uzlabo asinsriti, silda, veicina plaisu sadzīšanu, mazina ādas iekaisumu.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Vazelīneļļa, lanolīns, rozmarīna eļļa, eikalipta eļļa, timiāna eļļa, salvijas eļļa, lavandas eļļa, mentols, kampars.",
+        "image": null,
+        "sort_order": 8,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 9,
+        "category_id": 2,
+        "name": "GEHWOL Nagelpflege 15ml",
+        "description": "Līdzeklis trauslu, lūstošu roku un kāju nagu kopšanai.\nVeicina veselīgu nagu augšanu.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Kviešu dīgstu eļļa, bisabolols.",
+        "image": null,
+        "sort_order": 9,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 10,
+        "category_id": 2,
+        "name": "GEHWOL Pflegendes Fußdeo 150ml",
+        "description": "Atsvaidzinošs, ādu mīkstinošs, ilgstošas iedarbības dezodorants ar urīnvielu pēdu ikdienas kopšanai.\nSamazina svīšanu, dezinficē, palīdz izsargāties no pēdu sēnīšu infekcijas, nodrošina ilgstošu svaiguma sajūtu, mitrina un mīkstina ādu.\nPiemērots normālas un sausas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Etilspirts, urīnviela, pantenols, bisabolols, alantoīns, rozmarīna eļļa, priedes eļļa, lavandas eļļa, mentols.",
+        "image": null,
+        "sort_order": 10,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 11,
+        "category_id": 2,
+        "name": "GEHWOL Fuβ+Schuh Deo 150ml",
+        "description": "Aerosols pēdu un apavu ikdienas kopšanai.\nIzsmidzināts apavos, dezodorē un atsvaidzina gan pēdas, gan apavus, pasargā no sēnīšu infekcijas.\nPiemērots normālai un sausai ādai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Cinka rīcinoleāts, citrusaugu mizas eļļa, lavandas eļļa, etilspirts.",
+        "image": null,
+        "sort_order": 11,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 12,
+        "category_id": 2,
+        "name": "GEHWOL Fußpuder 100g",
+        "description": "Pūderis pēdu ikdienas kopšanai.\nMazina pēdu svīšanu, uztur pēdas sausas, dezodorē.\nPiemērots normālas un sausas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Cinka oksīds, citrusaugu mizas eļļa, citronzāles eļļa, kalcija karbonāts.",
+        "image": null,
+        "sort_order": 12,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 13,
+        "category_id": 2,
+        "name": "GEHWOL Creme-Fußbad 150, 1000ml",
+        "description": "Atsvaidzinošs līdzeklis pēdu vannošanai.\nVeicina asinsriti, atsvaidzina nogurušas, sāpošas, piepūlētas kājas, attīra ādas poras, mīkstina, mitrina ādu, dezodorē. Regulāra vannošana mazina pēdu sēnīšu slimību attīstības iespēju.\nPiemērots normālas un sausas pēdu ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Sāls, mentols, lavandas eļļa, rozmarīna eļļa.",
+        "image": null,
+        "sort_order": 13,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 14,
+        "category_id": 2,
+        "name": "GEHWOL Fußbad 200 (20gx10), 250, 400, 5000, 10000g",
+        "description": "Sāls ar augu ēteriskajām eļļām pēdu vannošanai.\nDziļi attīra, mitrina, mīkstina ādu, veicina asinsriti, mazina nogurumu, mazina ādas kairinājumu, dezodorē. Efekts ilgstošs.\nPiemērota normālas un sausas ādas kopšanai.\nPiemērota diabēta slimniekiem.\nAktīvās vielas: Soda, rozmarīna eļļa, lavandas eļļa, timiāna eļļa, eikalipta eļļa, priedes eļļa, kampars.",
+        "image": null,
+        "sort_order": 14,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 15,
+        "category_id": 2,
+        "name": "GEHWOL Frische-Fußbad 330g",
+        "description": "Sāls atvēsinošai un atsvaidzinošai pēdu vannai.\nMazina nogurumu, dedzināšanas sajūtu pēdās, dezodorē, nodrošina svaiguma sajūtu. Mīkstina ādas sacietējumus, mitrina ādu.\nPiemērota normālas, sausas, plaisājošas ādas kopšanai.\nPiemērota diabēta slimniekiem.\nAktīvās vielas: Urīnviela, soda, aļģu ekstrakts, mentols.",
+        "image": null,
+        "sort_order": 15,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 16,
+        "category_id": 2,
+        "name": "GEHWOL Badesalz 250 (25gx10), 1000g",
+        "description": "Vannas sāls ar rozmarīna eļļu.\nPiemērota sildošai pēdu vai ķermeņa vannai. Nav sārmaina. Veicina asinsriti, sasilda, mazina nogurumu, attīra poras, dezodorē.\nPiemērota normālas un sausas ādas kopšanai.\nPiemērota diabēta slimniekiem.\nAktīvās vielas: Sāls, rozmarīna eļļa.",
+        "image": null,
+        "sort_order": 16,
+        "created_at": "2026-07-15 00:00:00"
+    },
+    {
+        "id": 17,
+        "category_id": 3,
+        "name": "GEHWOL MED® Fußdeo Creme 75, 125, 500ml",
+        "description": "Dezodorējošs krēms pēdām.\nSamazina svīšanu, dezodorē, dezinficē, mīkstina pēdu ādu. Apvienotas ļoti efektīvas sastāvdaļas, kas novērš spēcīgo pēdu aromātu vismaz uz 24 stundām. Manukas ekstrakts nodrošina spēcīgu antibakteriālu un pretsēnīšu iedarbību. Cinka oksīds aktivētā veidā ir pārbaudīta sastāvdaļa ar lieliskām pretmikrobu un ādu aizsargājošām īpašībām. Alvejai ir mitrinoša un reģenerāciju veicinoša iedarbība. Hohobas eļļa ir dabīgs šķidrais vasks, kas ātri iesūcas ādā un veido lipīdu plēvīti, kas saista mitrumu ādā un veicina tās dabiskās funkcijas.\nPiemērots normālas un sausas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Manukas ekstrakts, cinka oksīds, alveja, hohobas eļļa, salvijas eļļa.",
+        "image": "products/med-img/FussDeoCr.png",
+        "sort_order": 1,
+        "created_at": "2026-07-16 00:00:00"
+    },
+    {
+        "id": 18,
+        "category_id": 3,
+        "name": "GEHWOL MED® Antitranspirant Lotion 125ml",
+        "description": "Svīšanu mazinošs, dezodorējošs krēmveida losjons.\nPiemērots stipri svīstošām pēdām. Regulāri lietojot, pēdas kļūst sausākas un bez aromāta. Alumīnija hlorhidrāts sašaurina poras, tādējādi samazinot svīšanu un novēršot pēdu nepatīkamā aromāta veidošanos, āda tiek pasargāta no sviedrus noārdošajiem mikroorganismiem, „atlēta pēdas“ veidošanās un niezes starp pirkstiem. Krēmveida losjons ar pantenolu baro ādu, nodrošinot gludas un maigas ādas sajūtu. Vienlaikus tas novērš ādas dehidratāciju.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Alumīnija hlorhidrāts, cinka ricinoleāts, alveja, avokado eļļa, glicerīns, urīnviela.",
+        "image": "products/med-img/Antitransp.png",
+        "sort_order": 2,
+        "created_at": "2026-07-16 00:00:00"
+    },
+    {
+        "id": 19,
+        "category_id": 3,
+        "name": "GEHWOL MED® Lipidro Creme® 75, 125, 500ml",
+        "description": "Krēms ādas mitruma un lipīdu līdzsvara uzturēšanai.\nSatur 10% urīnvielas. Nodrošina ādu ar optimālu lipīdu un mitruma daudzumu, atjaunojot ādas dabisko aizsargājošo līdzsvaru. Urīnviela saista ūdeni dziļākajos ādas slāņos. Raupjā āda tiek mīkstināta un tiek samazinātas sacietējumu veidošanās iespējas. Smiltsērkšķu eļļa un avokado eļļa, kas satur daudz nepiesātināto taukskābju, bagātina sausu ādu ar lipīdiem un tādējādi samazina ūdens iztvaikošanu. Šo funkciju atbalsta īpašs aļģu ekstrakts. Alantoīns, parastā zirgkastaņa sastāvdaļa, veicina ādas atjaunošanos. Farnesolam piemīt antibakteriāla un dezodorējoša iedarbība.\nPiemērots sausas un jutīgas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Urīnviela, avokado eļļa, glicerīns, aļģu ekstrakts, smiltsērkšķu ekstrakts, alantoīns, farnezols.",
+        "image": "products/med-img/Lipidro.png",
+        "sort_order": 3,
+        "created_at": "2026-07-16 00:00:00"
+    },
+    {
+        "id": 20,
+        "category_id": 3,
+        "name": "GEHWOL MED® Hornhaut Creme 75, 125ml",
+        "description": "Krēms pēdu ādas sacietējumu mīkstināšanai un likvidēšanai.\nSatur 18% urīnvielas. Normalizē ādas pārragošanās procesu. Urīnviela lielā koncentrācijā kopā ar glicerīnu un alantoīnu irdina saites starp ādas raga kārtas šūnām. Intensīvās kopšanas ietekmē āda tiek nekavējoties mīkstināta, ievērojami samazinot sacietējumu veidošanos vien dažu dienu laikā. Normāls stāvoklis parasti tiek sasniegts 28 dienu laikā (pētījumi proDERM, 01/2010). Lipīdi aizsargā un stiprina ādu. Zīda ekstrakts uztur mitrumu ādā un izlīdzina tās virsmu.\nPiemērots sausai, ļoti sausai ādai, ādai ar sacietējumiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Urīnviela, avokado eļļa, glicerīns, alantoīns, zīda ekstrakts, farnezols.",
+        "image": "products/med-img/HornhautCr.png",
+        "sort_order": 4,
+        "created_at": "2026-07-16 00:00:00"
+    },
+    {
+        "id": 21,
+        "category_id": 3,
+        "name": "GEHWOL MED® Schrunden Salbe 75, 125, 500ml",
+        "description": "Ziede saplaisājušas pēdu ādas kopšanai.\nZiedes bāzi veido speciālās medicīniskās ziepes un ādai draudzīgi lipīdi. Kopjošā ziede satur efektīvu dabīgo ēterisko eļļu, barojošā B5 provitamīna pantenola un no kumelītēm iegūtā antibakteriālā un pretiekaisuma līdzekļa bisabolola kombināciju. Regulāri lietojot, aizsargā ādu, vienlaikus saglabājot tās dabisko elastību un izturību. Sadziedē ādas plaisas, efektīvi novērš jaunu plaisu veidošanos, apsārtumu un citus ar to saistītos nepatīkamos simptomus.\nPiemērota sausas, ļoti sausas, raupjas, plaisājošas, zvīņainas ādas kopšanai.\nPiemērota diabēta slimniekiem.\nAktīvās vielas: Lanolīns, vazelīns, pantenols, speciālās medicīniskās ziepes, glicerīns, eikalipta eļļa, rozmarīna eļļa, bisabolols, mentols, kampars, lavandas eļļa, timiāna eļļa.",
+        "image": "products/med-img/SchrundenSalbe.png",
+        "sort_order": 5,
+        "created_at": "2026-07-16 00:00:00"
+    },
+    {
+        "id": 22,
+        "category_id": 3,
+        "name": "GEHWOL MED® Sensitive 75, 125, 500ml",
+        "description": "Krēms jutīgas ādas kopšanai.\nAktīvo vielu komplekss mazina ādas niezi, kairinājumu, apsārtumu. Ādai identiskie keramīdi uzlabo ādas dabiskās aizsargbarjēras funkciju, kas aizsargā ādu no infekcijām un dehidratācijas. Uzlabojas ādas izturība pret ārējo faktoru ietekmi. Mandeļu eļļa nomierina, mitrina, mīkstina ādu.\nPiemērots jutīgas ādas kopšanai.\nPiemērots diabēta un neirodermīta slimniekiem, kā arī pēdu un nagu sēnītes gadījumā.\nAktīvās vielas: Keramīdi, glicerīns, hohobas eļļa, mandeļu eļļa, bisabolols, SymRelief®, SymSitive®, urīnviela.",
+        "image": "products/med-img/Sensitive.png",
+        "sort_order": 6,
+        "created_at": "2026-07-16 00:00:00"
+    },
+    {
+        "id": 23,
+        "category_id": 3,
+        "name": "GEHWOL MED® Pflege Schaum 125, 300ml",
+        "description": "Kopjošas putas tūlītējai ādas mitrināšanai.\nĀtri uzsūcas, nav taukainas un ir piemērotas ikdienas lietošanai. Četrkāršais HYDRO-komplekss ar naktssveces eļļu uztur ādas dabisko mitruma līdzsvaru, tādējādi stiprinot ādas barjeru un dabisko ādas aizsargfunkciju. Purva augu ekstrakts papildina ādas mitruma krājumus. Tas baro pēdu ādu, padarot to patīkami gludu. Urīnviela apgādā ādu ar mitrumu, mazina spiediena pēdas un palīdz novērst ādas pārragošanos. Avokado eļļa aizsargā ādu no mitruma zuduma un veicina šūnu reģenerāciju.\nPiemērotas normālas un sausas ādas kopšanai.\nPiemērotas diabēta slimniekiem.\nAktīvās vielas: Naktssveces eļļa, Islandes ķērpja u.c. dumbrāju augu ekstrakti, urīnviela, avokado eļļa.",
+        "image": "products/med-img/PflegeShaum.png",
+        "sort_order": 7,
+        "created_at": "2026-07-16 00:00:00"
+    },
+    {
+        "id": 24,
+        "category_id": 3,
+        "name": "GEHWOL MED® Fußpuder 100g",
+        "description": "Dezinficējošs un dezodorējošs pūderis pēdām.\nSatur augstas kvalitātes sastāvdaļas, tādas, kā tapiokas ciete un aktivēts cinka oksīds, kas efektīvi mazina pēdu svīšanu un pasargā no nepatīkamā pēdu aromāta. Bisabolols un klotrimazols novērš iekaisuma veidošanos un pasargā no „atlēta pēdas“ attīstības, kas saistīta ar sēnīšu infekciju.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Tapiokas ciete, cinka oksīds, klotrimazols, bisabolols, mentols.",
+        "image": "products/med-img/MedFusspuder.png",
+        "sort_order": 8,
+        "created_at": "2026-07-16 00:00:00"
+    },
+    {
+        "id": 25,
+        "category_id": 3,
+        "name": "GEHWOL MED® Nagel- und Hautschutz Öl 15, 50ml",
+        "description": "Eļļa trauslu, lūstošu nagu un ādas aizsardzībai un kopšanai.\nAugstas kvalitātes kviešu dīgstu eļļa un pantenols kopj nagus un ādu. Trausli, raupji nagi kļūst elastīgi un skaisti, tie iegūst dabisku zīdainu spīdumu. Aktīvās sastāvdaļas bisabolols un klotrimazols novērš iekaisuma veidošanos un pasargā no ādas un nagu sēnītes.\nPiemērota sausas un ļoti sausas ādas kopšanai.\nPiemērota diabēta slimniekiem.\nAktīvās vielas: Kviešu dīgstu eļļa, klotrimazols, pantenols, bisabolols, etilspirts.",
+        "image": "products/med-img/Oil.png",
+        "sort_order": 9,
+        "created_at": "2026-07-16 00:00:00"
+    },
+    {
+        "id": 26,
+        "category_id": 3,
+        "name": "GEHWOL MED® Nagel- und Hautschutz Creme 15ml",
+        "description": "Krēms trauslu, lūstošu nagu un ādas aizsardzībai un kopšanai.\nSatur augstas kvalitātes kviešu dīgstu eļļu un pantenolu, kas paredzēti nagu un ādas kopšanai. Aktīvās vielas bisabolols un klotrimazols novērš iekaisuma veidošanos un pasargā no ādas un nagu sēnītes. Trausli, raupji nagi kļūst elastīgi un skaisti, iegūst dabisku spīdumu.\nPiemērots sausas un pret sēnīšu infekciju jutīgas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Kviešu dīgstu eļļa, lanolīns, pantenols, hohobas eļļa, klotrimazols, bisabolols.",
+        "image": "products/med-img/NagelShutzCreme.png",
+        "sort_order": 10,
+        "created_at": "2026-07-16 00:00:00"
+    },
+    {
+        "id": 27,
+        "category_id": 3,
+        "name": "GEHWOL MED® Nagel- und Hautschutz Stift 3ml",
+        "description": "Zīmulis trauslu, lūstošu nagu un ādas aizsardzībai un kopšanai.\nAugstas kvalitātes ādu kopjošas vielas, kā hohobas eļļa, E vitamīns, pantenols, bisabolols un klotrimazols palīdz izsargāties no sēnīšu slimībām un iekaisuma veidošanās. Kutikulas kļūst mīkstas, bet trausli nagi elastīgi un skaisti, tie iegūst dabisku spīdumu.\nPiemērots sausas un pret sēnīšu infekciju jutīgas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Hohobas eļļa, pantenols, klotrimazols, E vitamīns, bisabolols.",
+        "image": "products/med-img/Stift.png",
+        "sort_order": 11,
+        "created_at": "2026-07-16 00:00:00"
+    },
+    {
+        "id": 28,
+        "category_id": 3,
+        "name": "GEHWOL MED® Nagelweicher Tinktur 15, 50ml",
+        "description": "Nagu stūrīšus, kutikulas, ādas sacietējumus mīkstinošs līdzeklis.\nĀtri un viegli mīkstina cietus nagus. Padara kutikulu elastīgu. Novērš sāpīgo, spiedošo sajūtu, kas rodas, nagiem ieaugot mīkstajos audos.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Izopropilspirts, speciālās medicīniskās ziepes, glicerīns, bisabolols.",
+        "image": "products/med-img/Nagelweicher.png",
+        "sort_order": 12,
+        "created_at": "2026-07-16 00:00:00"
+    },
+    {
+        "id": 29,
+        "category_id": 3,
+        "name": "GEHWOL MED® Fluid 15ml",
+        "description": "Līdzeklis kutikulu, ieaugušu nagu stūrīšu, ādas sacietējumu un varžacu mīkstināšanai un dezinficēšanai.\nIeteicams lietot pirms un pēc kutikulu, nagu stūrīšu, ādas sacietējumu apstrādāšanas ar instrumentiem, pasargā no iekaisuma veidošanās. Kopj ādu un nagus, mīkstina cietu ādu.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Bisabolols, krustnagliņu eļļa, timols.",
+        "image": "products/med-img/Fluid.png",
+        "sort_order": 13,
+        "created_at": "2026-07-16 00:00:00"
+    },
+    {
+        "id": 30,
+        "category_id": 4,
+        "name": "GEHWOL FUSSKRAFT® Repair Creme 75, 125, 500ml",
+        "description": "Atjaunojošais krēms.\nAtjaunojošais, barojošais krēms ar augu lecitīnu kopj ļoti sausu un saplaisājušu ādu, dziļi iedarbojas uz bojātu ādu. Jaunā “ūdens eļļā” formula ar īpaši bagātīgu tekstūru ātri iesūcas ādā, nepadarot to taukainu. Iedarbīgais aktīvo vielu komplekss ar dabīgo sojas lecitīnu, saflora un naktssveces eļļām veicina ādas dabiskās aizsargbarjeras atjaunošanos. E vitamīns aizsargā no brīvajiem radikāļiem. Sastāvā esošie 5% pantenola un 3% niacinamīda veicina brūču dzīšanu. Labi panesams, bez smaržvielām. Labs terapeitiskais palīglīdzeklis atopisku un iekaisīgu ādas bojājumu gadījumos.\nPiemērots ļoti sausas ādas kopšanai.\nPiemērots diabēta un neirodermīta slimniekiem.\nAktīvās vielas: Augu lecitīns, saflora eļļa, naktssveces eļļa, pantenols, glicerīns, E vitamīns, niacīnamīds.",
+        "image": "products/fusskraft-img/GW FK Repair Cr.png",
+        "sort_order": 1,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 31,
+        "category_id": 4,
+        "name": "GEHWOL FUSSKRAFT® Intensiv Creme 75, 125, 500ml",
+        "description": "Intensīvais krēms.\nIntensīvais krēms ar dabīgo lanolīnu un bagātīgo mitrinošo vielu klāstu padara pēdu ādu elastīgu un gludu. Stiprina un baro raupju, sausu ādu. Alveja un urīnviela apgādā ādu ar mitrumu. Rozmarīna, kalnu priedes un lavandas dabīgās ēteriskās eļļas piešķir Intensīvajam krēmam tam raksturīgo smaržu un uzmundrinošo iedarbību. Sastāvdaļas ar dezinficējošo iedarbību aizsargā no pēdu sēnītēm un ādas niezes, arī starp pirkstiem.\nPiemērots sausai ādai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Lanolīns, glicerīns, urīnviela, alveja, kampars, mentols, lavandas eļļa, rozmarīna eļļa, priedes eļļa, eikalipta eļļa.",
+        "image": "products/fusskraft-img/GW FK Intensiv Cr.png",
+        "sort_order": 2,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 32,
+        "category_id": 4,
+        "name": "GEHWOL FUSSKRAFT® Pflege Creme 75, 125, 500ml",
+        "description": "Kopjošais krēms.\nKopjošais krēms ar Deozinc® formulu dezodorē, aizsargā un kopj piepūlētu pēdu ādu. Viegls, ātri iesūcas ādā. Rozmarīna, kalnu priedes un lavandas dabīgās ēteriskās eļļas piešķir Kopjošajam krēmam tam raksturīgo smaržu un uzmundrinošo iedarbību. Alveja un urīnviela apgādā ādu ar mitrumu. Hohobas eļļa un šī sviests padara ādu elastīgu un patīkami gludu. Aktīvās sastāvdaļas ar dezinficējošu iedarbību uzticami aizsargā no pēdu sēnītēm un ādas niezes, arī starp pirkstiem.\nPiemērots normālas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Alveja, glicerīns, kampars, mentols, urīnviela, šī sviests, hohobas eļļa, lavandas eļļa, rozmarīna eļļa, priedes eļļa, eikalipta eļļa, cinka oksīds, cinka ricinoleāts.",
+        "image": "products/fusskraft-img/GW FK Pflege Cr.png",
+        "sort_order": 3,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 33,
+        "category_id": 4,
+        "name": "GEHWOL FUSSKRAFT® Wärme Creme 75, 125, 500ml",
+        "description": "Sildošais krēms.\nSildošais krēms ar čili pipara un ingvēra ekstraktiem tonizē aukstas pēdas, nodrošina tām patīkamu siltuma sajūtu. Krēms ar maigo tekstūru intensīvi kopj pēdu ādu, īpaši piemērots sausai ādai. Ādai draudzīgi lipīdi padara ādu elastīgu un gludu. Rozmarīna, kalnu priedes un lavandas dabīgās ēteriskās eļļas piešķir Sildošajam krēmam tam raksturīgo smaržu un uzmundrinošo iedarbību, kampars veicina asinsriti. Aktīvās sastāvdaļas ar dezinficējošu iedarbību uzticami aizsargā no pēdu sēnītēm un ādas niezes, arī starp pirkstiem.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Lanolīns, hohobas eļļa, rozmarīna eļļa, kampars, farnezols, lavandas eļļa, priedes eļļa, eikalipta eļļa, čili pipara ekstrakts, ingvēra ekstrakts.",
+        "image": "products/fusskraft-img/GW FK Warme Cr.png",
+        "sort_order": 4,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 34,
+        "category_id": 4,
+        "name": "GEHWOL FUSSKRAFT® Frische Creme 75, 125, 500ml",
+        "description": "Atsvaidzinošais krēms.\nAtsvaidzinošais krēms ar piparmētras eļļu un mentolu atsvaidzina sāpošas pēdas. Atvēsina un tonizē nogurušas pēdas. Vieglais, želejveida krēms nav taukains, viegli iesūcas ādā. Novērš nepatīkamo pēdu aromātu. Alveja un urīnviela apgādā ādu ar mitrumu. Rozmarīna, kalnu priedes un lavandas dabīgās ēteriskās eļļas piešķir Atsvaidzinošajam krēmam tam raksturīgo smaržu un uzmundrinošo iedarbību. Aktīvās sastāvdaļas ar dezinficējošu iedarbību uzticami aizsargā no pēdu sēnītēm un ādas niezes, arī starp pirkstiem.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Hohobas eļļa, alveja, urīnviela, mentols, piparmētras eļļa, eikalipta eļļa, lavandas eļļa, rozmarīna eļļa, priedes eļļa.",
+        "image": "products/fusskraft-img/GW FK Frische Cr.png",
+        "sort_order": 5,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 35,
+        "category_id": 4,
+        "name": "GEHWOL FUSSKRAFT® Hydro Lipid Lotion 125, 500ml",
+        "description": "Hidrolipīdu losjons.\nSatur 10% urīnvielas.\nHidrolipīdu losjons nodrošina intensīvu sausas ādas mitrināšanu. Viegli klājas un ātri iesūcas ādā. Glicerīns un urīnviela ilgstoši notur mitrumu pat dziļākajos ādas slāņos. Auzu ekstrakts, avokado un hohobas eļļas ievērojami samazina ādas sausumu un tam raksturīgo velkošo sajūtu. Keramīdi stiprina ādas dabisko aizsargbarjēru. Farnezols darbojas dezodorējoši un aizsargā no pēdu sēnītēm.\nPiemērots sausas ādas kopšanai.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Keramīdi, urīnviela, glicerīns, avokado eļļa, hohobas eļļa, auzu ekstrakts, farnezols.",
+        "image": "products/fusskraft-img/GW FK HydroLipid.png",
+        "sort_order": 6,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 36,
+        "category_id": 4,
+        "name": "GEHWOL FUSSKRAFT® Bein Vital Creme 125, 500ml",
+        "description": "Vitalizējošais krēms.\nVitalizējošais krēms ar avokado eļļu un aļģu ekstraktu novērš smaguma sajūtu piepūlētās kājās un mazina nogurumu pēdās. Atjauno ādas tonusu. Nav taukains, viegli iesūcas un mitrina ādu. Aktīvās sastāvdaļas, starp kurām ir arī E vitamīna acetāts, novērš priekšlaicīgu ādas novecošanos, padara to gludu un elastīgu. Virdžīnijas burvjlazdas ekstraktam un bisabololam piemīt ādu nomierinoša un nostiprinoša, kairinājumu mazinoša iedarbība. Farnezols darbojas dezodorējoši un aizsargā no pēdu sēnītēm.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Avokado eļļa, Virdžīnijas burvjlazdas ekstrakts, aļģes ekstrakts, E vitamīns, bisabolols, alantoīns, farnezols.",
+        "image": "products/fusskraft-img/GW FK Bein Vital.png",
+        "sort_order": 7,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 37,
+        "category_id": 4,
+        "name": "GEHWOL FUSSKRAFT® Kräuter Bad 200 (20g×10), 250, 400, 5000, 10000g",
+        "description": "Zāļu vannas sāls.\nZāļu vannas sāls ar urīnvielu mīkstina ādas sacietējumus, novērš pēdu svīšanu un nepatīkamo aromātu. Ādai draudzīgās virsmas aktīvās vielas intensīvi attīra ādu. Piemērots raupjai un saplaisājušai ādai. Sacietējumi un varžacis tiek jūtami mīkstinātas. Rozmarīna, kalnu priedes un lavandas dabīgās ēteriskās eļļas piešķir Zāļu vannas sālim tam raksturīgo smaržu. Iedarbojas relaksējoši un nodrošina ilgstošu labsajūtu. Piemērots arī ķermeņa vannai.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Urīnviela, soda, kampars, lavandas eļļa, rozmarīna eļļa, priedes eļļa, eikalipta eļļa.",
+        "image": "products/fusskraft-img/GW FK Krauter Bad.png",
+        "sort_order": 8,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 38,
+        "category_id": 4,
+        "name": "GEHWOL FUSSKRAFT® Kräuter Spray 150, 500ml",
+        "description": "Zāļu losjons.\nZāļu losjons ar urīnvielu uzmundrina un atsvaidzina nogurušas pēdas, padara pēdu ādu gludu un elastīgu. Bisabolols nomierina ādu. Pantenols un alantoīns veicina ādas atjaunošanos un kopj ādu, novērš pēdu dedzināšanas sajūtu. Mentols un farnezols atsvaidzina un novērš nepatīkamo pēdu aromātu. Rozmarīna, kalnu priedes un lavandas dabīgās ēteriskās eļļas piešķir Zāļu losjonam tam raksturīgo smaržu un uzmundrinošo iedarbību. Aktīvās sastāvdaļas ar dezinficējošu iedarbību uzticami aizsargā no pēdu sēnītēm un ādas niezes, arī starp pirkstiem. Izsmidzinātājs darbojas jebkurā pozīcijā. Pudele aprīkota ar pumpīti bez propelenta.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Etilspirts, urīnviela, rozmarīna eļļa, lavandas eļļa, priedes eļļa, bisabolols, alantoīns, pantenols, mentols, farnezols.",
+        "image": "products/fusskraft-img/GW FK Krauter Spray.png",
+        "sort_order": 9,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 39,
+        "category_id": 4,
+        "name": "GEHWOL FUSSKRAFT® Nagel- und Hautschutz Spray 150ml",
+        "description": "Nagus un ādu aizsargājošais aerosols.\nNagus un ādu aizsargājošais aerosols ar pantenolu un E vitamīnu stiprina nagus un kutikulas, uzlabo to elastību un izskatu. Kopjošās sastāvdaļas veicina ādas un nagu reģenerāciju. Bisabolols un klotrimazols novērš iekaisumu un aizsargā no nagu un ādas sēnītēm. Izsmidzinātājs darbojas jebkurā pozīcijā.\nPiemērots ādai, kas jutīga pret sēnītēm.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Etilspirts, rīcineļļa, pantenols, klotrimazols, E vitamīns, bisabolols.",
+        "image": "products/fusskraft-img/GW FK Nagel Sch.Spray.png",
+        "sort_order": 10,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 40,
+        "category_id": 5,
+        "name": "GEHWOL FUSSKRAFT® SOFT FEET Pflege Bad 200, 1000ml",
+        "description": "SOFT FEET Kopjošais vannošanas līdzeklis.\nPienainās, mirdzošās vannas putas ar nomierinošo mandeļu eļļu un vērtīgo vaniļas ekstraktu glāsta un mīkstina pēdu un kāju ādu. Krēmīgā mandeļu eļļa nomierina un aizsargā ādu. Vaniļas ekstrakts, antioksidants E vitamīns un izcilās kopjošās avokado eļļa un rīcineļļa nodrošina ādas mitrināšanu. Āda iegūst gludu, veselīgu izskatu. Vannošanas līdzeklim piemīt patīkams, salds aromāts.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Mandeļu eļļa, avokado eļļa, rīcineļļa, vaniļas augļu ekstrakts, E vitamīns.",
+        "image": "products/fusskraft_soft_foot-img/GW FK SF Pflege Bad.png",
+        "sort_order": 1,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 41,
+        "category_id": 5,
+        "name": "GEHWOL FUSSKRAFT® SOFT FEET Peeling 125, 500ml",
+        "description": "SOFT FEET Pīlings.\nAr SOFT FEET pīlingu, kura pamatā ir dabiskas bambusa stiebru lodītes un hohobas eļļa, pēdu un kāju āda kļūst gluda un maiga. Cukura kristāli saudzīgi atbrīvo no atmirušajām ādas daļiņām un atvieglo sauso ādas šūnu atdalīšanos. Izcilā avokado eļļa un medus ekstrakts apgādā ādu ar vērtīgām barojošām vielām. Antioksidants E vitamīns aizsargā ādu un novērš priekšlaicīgu novecošanos. Viegla masāža aktivizē asinsriti ādā un veicina šūnu atjaunošanos, optimāli sagatavo ādu tālākai kopšanai, uzlabo vērtīgo aktīvo vielu uzsūkšanos. Pīlingam ir maiga, patīkama smarža.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Cukura kristāli, glicerīns, bambusa stiebru ekstrakts, hohobas eļļa, avokado eļļa, medus ekstrakts, E vitamīns.",
+        "image": "products/fusskraft_soft_foot-img/GW FK SF Peeling.png",
+        "sort_order": 2,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 42,
+        "category_id": 5,
+        "name": "GEHWOL FUSSKRAFT® SOFT FEET Butter 100, 500ml",
+        "description": "SOFT FEET Sviests.\nĪpašais SOFT FEET Sviests, kas satur izsmalcināto granātābolu ekstraktu un eksotisko moringas eļļu, padara pēdu un kāju ādu ārkārtīgi maigu. Dziļās iedarbības hialuronskābe veicina ādas atjaunošanos, dabiskais glicerīns saista mitrumu. Produkta biezo konsistenci papildina krēmīgais šī sviests un antioksidants E vitamīns, padarot ādu mīkstu un elastīgu, stiprinot ādas aizsargbarjeru. Labsajūtu vairo patīkamais augļu aromāts.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Moringas sēklu eļļa, granātābolu ekstrakts, šī sviests, nātrija hialuronāts, avokado eļļa, E vitamīns, glicerīns.",
+        "image": "products/fusskraft_soft_foot-img/GW FK SF Butter.png",
+        "sort_order": 3,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 43,
+        "category_id": 5,
+        "name": "GEHWOL FUSSKRAFT® SOFT FEET Creme 40, 75, 125, 500ml",
+        "description": "SOFT FEET Krēms.\nSOFT FEET Krēms ar kvalitatīvajiem piena peptīdiem un vērtīgo medus ekstraktu baro ādu. Dziļās iedarbības hialuronskābe veicina ādas atjaunošanos, urīnviela saista mitrumu. Maigā un barojošā krēma bāze ar vērtīgajiem lipīdiem, kā vitamīniem bagāto avokado eļļu, padara ādu samtaini mīkstu un acīmredzami gludu. Harmoniskā smarža rada patīkamu sajūtu.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Hidrolizēti piena proteīni, medus ekstrakts, nātrija hialuronāts, urīnviela, glicerīns, E vitamīns, avokado eļļa, farnezols.",
+        "image": "products/fusskraft_soft_foot-img/GW FK SF Creme.png",
+        "sort_order": 4,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 44,
+        "category_id": 5,
+        "name": "GEHWOL FUSSKRAFT® SOFT FEET Lotion 75, 125, 500ml",
+        "description": "SOFT FEET Krēmveida losjons.\nEkskluzīvie ūdensrozes un zīda ekstrakti saglabā pēdu un kāju ādu zīdaini gludu. Dziļās iedarbības hialuronskābe kopā ar aļģu ekstraktu veicina ādas atjaunošanos un novērš mitruma zudumu. Vieglās konsistences losjons ar vērtīgajiem lipīdiem, kā augu izcelsmes skvalānu, nodrošina zīdaini gludu pēdu un kāju ādu. Patīkamais krēmveida losjons ir viegli uzklājams uz ādas un ātri iesūcas. Losjonam raksturīgs svaigs un uzmundrinošs aromāts.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Avokado eļļa, skvalāns, sarkanās aļģes ekstrakts, baltās ūdensrozes ekstrakts, E vitamīns, hidrolizēts zīds, nātrija hialuronāts.",
+        "image": "products/fusskraft_soft_foot-img/GW FK SF Lotion.png",
+        "sort_order": 5,
+        "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 45,
+        "category_id": 5,
+        "name": "GEHWOL FUSSKRAFT® SOFT FEET Schaum 125, 300ml",
+        "description": "SOFT FEET Putas.\nSOFT FEET Putas ar īpaši koncentrētu alvejas ekstraktu un olīveļļu nodrošina unikālu un tūlītēju kāju un pēdu kopšanu. Gaisīgās un krēmīgās putas ātri iesūcas, nav taukainas, sagādā koptas ādas sajūtu. Dziļās iedarbības hialuronskābe veicina ādas atjaunošanos, urīnviela saista mitrumu. Vērtīgās olīvu un avokado eļļas padara ādu elastīgu, acīmredzami gludāku, samazina ādas raupjumu. Patīkamā smarža rada īpašu baudījumu.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Urīnviela, olīveļļa, avokado eļļa, nātrija hialuronāts, alvejas ekstrakts, glicerīns.",
+        "image": "products/fusskraft_soft_foot-img/GW FK SF Schaum.png",
+        "sort_order": 6,
+        "created_at": "2026-07-20 00:00:00"
+    }
+]
