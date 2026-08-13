@@ -403,5 +403,131 @@
         "image": "products/fusskraft_soft_foot-img/GW FK SF Schaum.png",
         "sort_order": 6,
         "created_at": "2026-07-20 00:00:00"
+    },
+    {
+        "id": 46,
+        "category_id": 6,
+        "name": "GEHWOL PROFESSIONAL Massage Emulsion 500, 2000ml",
+        "description": "Masāžas emulsija.\nEmulsija pēdu un kāju masāžai ar rozmarīna un lavandas eļļām, kamparu un mentolu. Uz ādas veido slīdīgu plēvīti, kas padara masāžu patīkamu. Emulsiju uzklāj uz ādas sakot no kāju pirkstiem. Masāžu vienmēr sāk no kāju pirkstiem un iet virzienā uz augšu. Viegli iesūcas ādā, veicina asinsriti. Ilgstoša dezodorējoša iedarbība, aizsargā no sēnīšu infekcijas.\nPiemērota normālai un sausai ādai.\nPiemērota diabēta slimniekiem.\nAktīvās vielas: Kampars, mentols, rozmarīna eļļa, lavandas eļļa, sezama eļļa, tapiokas ciete.",
+        "image": "products/professional-img/Massageemulsion 500ml.png",
+        "sort_order": 1,
+        "created_at": "2026-08-13 00:00:00"
+    },
+    {
+        "id": 47,
+        "category_id": 6,
+        "name": "GEHWOL PROFESSIONAL Lotion 500, 1000ml",
+        "description": "Losjons.\nDezinficējošais losjons, kura pamatu veido spirts, papildināts ar mentolu un lavandas eļļu, saista mitrumu ādā. Piemērots izmantošanai pirms un pēc pēdu kopšanas procedūrām. Pasargā no pēdu sēnītēm un baktērijām.\nPiemērots visiem ādas tipiem.\nPiemērots diabēta slimniekiem.\nAktīvās vielas: Glicerīns, lavandas eļļa, mentols, izopropilspirts.",
+        "image": "products/professional-img/Lotion 500ml.png",
+        "sort_order": 2,
+        "created_at": "2026-08-13 00:00:00"
+    },
+    {
+        "id": 48,
+        "category_id": 6,
+        "name": "GEHWOL PROFESSIONAL MED.WASHGEL GEL SOFT 1000, 5000ml",
+        "description": "Saudzējoša želeja roku mazgāšanai.\nMitrinoša, ādu aizsargājoša, pH neitrāla želeja. Veido maigas, noturīgas putas ar patīkamu aromātu. Padara ādu maigu un gludu. Nesatur krāsvielas, parabēnus, spirtu.\nPiemērota visiem ādas tipiem.\nPiemērota diabēta slimniekiem.\nAktīvās vielas: Hidrolizēti sojas proteīni, pienskābe, kokamidopropilbetaīns.",
+        "image": "products/professional-img/MED.Washgel Soft 1000ml.png",
+        "sort_order": 3,
+        "created_at": "2026-08-13 00:00:00"
+    },
+    {
+        "id": 49,
+        "category_id": 6,
+        "name": "GEHWOL PROFESSIONAL MED.WASHGEL GEL PROTECT 500, 1000ml",
+        "description": "Aizsargājoša želeja roku mazgāšanai.\nPiemērota profesionāliem darbiniekiem, kam bieži jāmazgā rokas. Uz ādas veido aizsargājošu plēvīti ar mitrinošām aminoskābēm. Atkārtota lietošana pastiprina aizsargājošo un ādu mīkstinošo iedarbību. Nesatur smaržvielas, krāsvielas, parabēnus, spirtu un ziepes.\nPiemērota visiem ādas tipiem, arī jutīgai ādai.\nPiemērota diabēta slimniekiem.\nAktīvās vielas: Aļģu ekstrakts, alantoīns, glicerīns, pantenols.",
+        "image": "products/professional-img/MED.Washgel Protect 1000ml.png",
+        "sort_order": 4,
+        "created_at": "2026-08-13 00:00:00"
+    },
+    {
+        "id": 50,
+        "category_id": 6,
+        "name": "GEHWOL PROFESSIONAL Hornhauterweicher Schaum 500ml",
+        "description": "Ādas sacietējumus mīkstinošas putas.\nEfektīvi mīkstina ādas sacietējumus vien 5 minūšu laikā, tādējādi ievērojami saīsinot pēdu aprūpei nepieciešamo laiku. Izsmidzinošā sistēma pārvērš šķidrumu maigās putās, kas satur ievērojamu urīnvielas un pienskābes daudzumu. Noturīgās putas mīkstina ādas sacietējumus neradot tūsku apstrādātajā vietā un neietekmējot apkārtējos audus. Nesatur smaržvielas.\nPiemērotas visiem ādas tipiem.\nAktīvās vielas: 25% urīnviela, pienskābe, trietilcitrāts, kokamidopropilbetaīns.",
+        "image": "products/professional-img/Hornhauterw Schaum.png",
+        "sort_order": 5,
+        "created_at": "2026-08-13 00:00:00"
+    },
+    {
+        "id": 51,
+        "category_id": 6,
+        "name": "GEHWOL PROFESSIONAL Hornhauterweicher 500, 2000ml",
+        "description": "Ādas sacietējumus, raupju ādu, varžacis mīkstinošs līdzeklis.\nĪpaši iedarbīgs sārmains šķīdums. Paredzēts vienīgi profesionālai lietošanai. Pēdu aprūpes speciālisti izmanto pirms sacietējumu apstrādāšanas ar instrumentiem. Īsi pirms sacietējumu apstrādāšanas uz ādas vajadzīgajā vietā uzliek kokvilnas salveti, kas samitrināta ar mīkstinošo līdzekli. Ādas sacietējumi tiek samīkstināti vien piecu minūšu laikā.\nAktīvās vielas: Kālija karbonāts, kālija ricināts, glicerīns, propilēnglikols.",
+        "image": "products/professional-img/Horngauterw 500ml.png",
+        "sort_order": 6,
+        "created_at": "2026-08-13 00:00:00"
+    },
+    {
+        "id": 52,
+        "category_id": 6,
+        "name": "GEHWOL PROFESSIONAL Nagelmasse 15ml",
+        "description": "Masa nagu veidošanai.\nLietojama, lai labotu saplaisājušus nagus, uzlabotu nagu izskatu, nodrošinātu aizsardzību roku un pirkstu nagiem, nagu gultnei. Izmantojama arī, lai piestiprinātu mākslīgos nagus. Piešķir nagiem dabīgu un skaistu izskatu. Uz atjaunotajiem nagiem var uzklāt nagu laku.\nAktīvās vielas: Acetons, etilacetāts, etilceluloze, triacetīns, propilēnglikols, etilheksilglicerīns, oktenidīna hlorīds, tokoferols.",
+        "image": "products/professional-img/Nagelmasse.png",
+        "sort_order": 7,
+        "created_at": "2026-08-13 00:00:00"
+    },
+    {
+        "id": 53,
+        "category_id": 6,
+        "name": "GEHWOL PROFESSIONAL Nail Repair Cleaner 150ml",
+        "description": "Līdzeklis nagu virsmas attīrīšanai un attaukošanai.\nLieto nagu virsmas un gultnes attīrīšanai un attaukošanai pirms GEHWOL PROFESSIONAL Nail Repair Gel izmantošanas. Pēc jaunā naga izveidošanas līdzekli izmanto arī dispersijas slāņa noņemšanai. Izmanto arī nagu veidošanas procesā izmantoto instrumentu un otiņu attīrīšanai no gēla atlikumiem.\nAktīvās vielas: Izopropilspirts.",
+        "image": "products/professional-img/Nail Repair Cleaner.png",
+        "sort_order": 8,
+        "created_at": "2026-08-13 00:00:00"
+    },
+    {
+        "id": 54,
+        "category_id": 6,
+        "name": "GEHWOL PROFESSIONAL Nail Repair Gel M, klar",
+        "description": "Gēls slimību vai traumu rezultātā bojātu nagu atjaunošanai, vidēji viskozs.\nPiemērots bojātu, trauslu, saplaisājušu nagu labošanai. Polimerizācijas process gaismā nodrošina dabīgam nagam atbilstoša elastīga gēla pārklājuma veidošanos. Izmantojams arī mākslīgo nagu piestiprināšanai. Pašpielīpošs, nerada spiedienu, zem tā nav nepieciešams likt papildus materiālu. Tūbiņas šaurais gals ļauj precīzi uzklāt gēlu vajadzīgajā vietā ievērojot arī higiēnas prasības. Sacietē UV gaismā 2 minūšu laikā. Pasargā no sēnīšu infekcijas. Bezkrāsains.\nAktīvās vielas: Di-Hema trimetilheksildikarbamāts, uretana akrilāts, metakrilskābe, benzoilizopropanols, klimbazols.",
+        "image": "products/professional-img/Nail Repair Gel Klar M.png",
+        "sort_order": 9,
+        "created_at": "2026-08-13 00:00:00"
+    },
+    {
+        "id": 55,
+        "category_id": 6,
+        "name": "GEHWOL PROFESSIONAL Nail Repair Gel M, rosa",
+        "description": "Gēls slimību vai traumu rezultātā bojātu nagu atjaunošanai, vidēji viskozs.\nPiemērots bojātu, trauslu, saplaisājušu nagu labošanai. Polimerizācijas process gaismā nodrošina dabīgam nagam atbilstoša elastīga gēla pārklājuma veidošanos. Izmantojams arī mākslīgo nagu piestiprināšanai. Pašpielīpošs, nerada spiedienu, zem tā nav nepieciešams likt papildus materiālu. Tūbiņas šaurais gals ļauj precīzi uzklāt gēlu vajadzīgajā vietā ievērojot arī higiēnas prasības. Sacietē UV gaismā 2 minūšu laikā. Pasargā no sēnīšu infekcijas. Rozā krāsa.\nAktīvās vielas: Di-Hema trimetilheksildikarbamāts, uretana akrilāts, metakrilskābe, benzoilizopropanols, klimbazols.",
+        "image": "products/professional-img/Nail Repair Gel Rosa M.png",
+        "sort_order": 10,
+        "created_at": "2026-08-13 00:00:00"
+    },
+    {
+        "id": 56,
+        "category_id": 6,
+        "name": "GEHWOL PROFESSIONAL Nail Repair Gel M, opal",
+        "description": "Gēls slimību vai traumu rezultātā bojātu nagu atjaunošanai, vidēji viskozs.\nPiemērots bojātu, trauslu, saplaisājušu nagu labošanai. Polimerizācijas process gaismā nodrošina dabīgam nagam atbilstoša elastīga gēla pārklājuma veidošanos. Izmantojams arī mākslīgo nagu piestiprināšanai. Pašpielīpošs, nerada spiedienu, zem tā nav nepieciešams likt papildus materiālu. Tūbiņas šaurais gals ļauj precīzi uzklāt gēlu vajadzīgajā vietā ievērojot arī higiēnas prasības. Sacietē UV gaismā 2 minūšu laikā. Pasargā no sēnīšu infekcijas. Opāla (pienaina) krāsa.\nAktīvās vielas: Di-Hema trimetilheksildikarbamāts, uretana akrilāts, metakrilskābe, benzoilizopropanols, klimbazols.",
+        "image": "products/professional-img/Nail Repair Gel Opal M.png",
+        "sort_order": 11,
+        "created_at": "2026-08-13 00:00:00"
+    },
+    {
+        "id": 57,
+        "category_id": 6,
+        "name": "GEHWOL PROFESSIONAL Nail Repair Gel H, klar",
+        "description": "Gēls slimību vai traumu rezultātā bojātu nagu atjaunošanai, stipri viskozs.\nPiemērots bojātu, trauslu, saplaisājušu nagu labošanai. Polimerizācijas process gaismā nodrošina dabīgam nagam atbilstoša elastīga gēla pārklājuma veidošanos. Izmantojams arī mākslīgo nagu piestiprināšanai. Pašpielīpošs, nerada spiedienu, zem tā nav nepieciešams likt papildus materiālu. Tūbiņas šaurais gals ļauj precīzi uzklāt gēlu vajadzīgajā vietā ievērojot arī higiēnas prasības. Sacietē UV gaismā 2 minūšu laikā. Pasargā no sēnīšu infekcijas. Bezkrāsains.\nAktīvās vielas: Di-Hema trimetilheksildikarbamāts, uretana akrilāts, metakrilskābe, benzoilizopropanols, modificēts poliksiloksāns, klimbazols.",
+        "image": "products/professional-img/Nail Repair Gel Klar H.png",
+        "sort_order": 12,
+        "created_at": "2026-08-13 00:00:00"
+    },
+    {
+        "id": 58,
+        "category_id": 6,
+        "name": "GEHWOL PROFESSIONAL Nail Repair Gel H, rosa",
+        "description": "Gēls slimību vai traumu rezultātā bojātu nagu atjaunošanai, stipri viskozs.\nPiemērots bojātu, trauslu, saplaisājušu nagu labošanai. Polimerizācijas process gaismā nodrošina dabīgam nagam atbilstoša elastīga gēla pārklājuma veidošanos. Izmantojams arī mākslīgo nagu piestiprināšanai. Pašpielīpošs, nerada spiedienu, zem tā nav nepieciešams likt papildus materiālu. Tūbiņas šaurais gals ļauj precīzi uzklāt gēlu vajadzīgajā vietā ievērojot arī higiēnas prasības. Sacietē UV gaismā 2 minūšu laikā. Pasargā no sēnīšu infekcijas. Rozā krāsa.\nAktīvās vielas: Di-Hema trimetilheksildikarbamāts, uretana akrilāts, metakrilskābe, benzoilizopropanols, modificēts poliksiloksāns, klimbazols.",
+        "image": "products/professional-img/Nail Repair Gel Rosa H.png",
+        "sort_order": 13,
+        "created_at": "2026-08-13 00:00:00"
+    },
+    {
+        "id": 59,
+        "category_id": 6,
+        "name": "GEHWOL PROFESSIONAL Nail Repair Gel H, opal",
+        "description": "Gēls slimību vai traumu rezultātā bojātu nagu atjaunošanai, stipri viskozs.\nPiemērots bojātu, trauslu, saplaisājušu nagu labošanai. Polimerizācijas process gaismā nodrošina dabīgam nagam atbilstoša elastīga gēla pārklājuma veidošanos. Izmantojams arī mākslīgo nagu piestiprināšanai. Pašpielīpošs, nerada spiedienu, zem tā nav nepieciešams likt papildus materiālu. Tūbiņas šaurais gals ļauj precīzi uzklāt gēlu vajadzīgajā vietā ievērojot arī higiēnas prasības. Sacietē UV gaismā 2 minūšu laikā. Pasargā no sēnīšu infekcijas. Opāla (pienaina) krāsa.\nAktīvās vielas: Di-Hema trimetilheksildikarbamāts, uretana akrilāts, metakrilskābe, benzoilizopropanols, modificēts poliksiloksāns, klimbazols.",
+        "image": "products/professional-img/Nail Repair Gel Opal H.png",
+        "sort_order": 14,
+        "created_at": "2026-08-13 00:00:00"
     }
 ]
