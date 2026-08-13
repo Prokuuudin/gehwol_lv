@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ' *)",
+      "Bash(PYTHONIOENCODING=utf-8 python -c ' *)",
+      "Bash(python -c \"import docx; print\\('ok'\\)\")",
+      "Bash(mkdir -p /tmp/gw_prof_docx)",
+      "Bash(python -)",
+      "Bash(python \"C:/Users/User/AppData/Local/Temp/claude/c--Users-User-Desktop-gehwol-lv/74833951-fbb2-49b7-821b-7adfef2cb500/scratchpad/add_professional.py\")",
+      "Bash(python \"C:/Users/User/AppData/Local/Temp/claude/c--Users-User-Desktop-gehwol-lv/74833951-fbb2-49b7-821b-7adfef2cb500/scratchpad/set_professional_images.py\")",
+      "Bash(grep -o '<picture[^>]*>.\\\\{0,400\\\\}Massageemulsion' docs/gehwol-professional.html)",
+      "Bash(grep -o \"picture.\\\\{0,300\\\\}\" docs/produkts-46.html)",
+      "Bash(grep -o '<picture>[^\\)]\\\\{0,500\\\\}' docs/produkts-46.html)",
+      "Bash(cd \"c:/Users/User/Desktop/gehwol_lv\" && stat -c '%y %n' docs/gehwol-professional.html src/html/gehwol-professional.html docs/img/products/professional-img/\"Massageemulsion 500ml.webp\" 2>&1)",
+      "Read(//c/Users/User/Desktop/gehwol_lv/**)",
+      "Bash(python \"C:/Users/User/AppData/Local/Temp/claude/c--Users-User-Desktop-gehwol-lv/74833951-fbb2-49b7-821b-7adfef2cb500/scratchpad/fix_image_names.py\")",
+      "Bash(python \"C:/Users/User/AppData/Local/Temp/claude/c--Users-User-Desktop-gehwol-lv/74833951-fbb2-49b7-821b-7adfef2cb500/scratchpad/fix_products_json_paths.py\")",
+      "Bash(cd \"c:/Users/User/Desktop/gehwol_lv\" && rm -rf \"docs/img/products/professional-img\" \"docs/img/products/fusskraft-img\" \"docs/img/products/fusskraft_soft_foot-img\" && npx gulp generate:static 2>&1)"
+    ]
+  }
+}
