@@ -1,6 +1,7 @@
 node_modules
 build
 .worktrees
+.claude
 .superpowers
 .webp
 .DS_Store
