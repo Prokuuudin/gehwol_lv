@@ -103,9 +103,23 @@ function productDescriptionHtml(description) {
 
 function productMediaHtml(product) {
   const name = escapeHtml(product.name);
-  return product.image
-    ? `<img src="./img/${escapeHtml(product.image)}" alt="${name}">`
-    : `<span class="product-detail__placeholder">GEHWOL</span>`;
+  const images = Array.isArray(product.images) && product.images.length
+    ? product.images
+    : product.image
+      ? [product.image]
+      : [];
+
+  if (images.length === 0) {
+    return `<span class="product-detail__placeholder">GEHWOL</span>`;
+  }
+  if (images.length === 1) {
+    return `<img src="./img/${escapeHtml(images[0])}" alt="${name}">`;
+  }
+
+  const slides = images
+    .map((image, index) => `<div class="swiper-slide"><img src="./img/${escapeHtml(image)}" alt="${name}, attēls ${index + 1}"></div>`)
+    .join("\n");
+  return `<div class="swiper product-detail__swiper"><div class="swiper-wrapper">\n${slides}\n</div><button class="product-detail__swiper-button product-detail__swiper-button--prev" type="button" aria-label="Iepriekšējais attēls"></button><button class="product-detail__swiper-button product-detail__swiper-button--next" type="button" aria-label="Nākamais attēls"></button><div class="product-detail__swiper-pagination"></div></div>`;
 }
 
 function productDetailPageSource(product, category) {

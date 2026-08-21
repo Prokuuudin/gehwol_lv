@@ -1,6 +1,8 @@
 import Swiper from "swiper";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const newsSwiperConfig = {
   modules: [Autoplay],
@@ -35,6 +37,28 @@ export function createNewsSwiper(selector) {
   return swiper;
 }
 
+export function createProductSwipers() {
+  document.querySelectorAll(".product-detail__swiper").forEach((container) => {
+    if (instances.has(container)) return;
+    const swiper = new Swiper(container, {
+      modules: [Navigation, Pagination],
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 12,
+      navigation: {
+        prevEl: container.querySelector(".product-detail__swiper-button--prev"),
+        nextEl: container.querySelector(".product-detail__swiper-button--next"),
+      },
+      pagination: {
+        el: container.querySelector(".product-detail__swiper-pagination"),
+        clickable: true,
+      },
+    });
+    instances.set(container, swiper);
+  });
+}
+
 export default function initAllSwipers() {
   createNewsSwiper(".swiper-news");
+  createProductSwipers();
 }
