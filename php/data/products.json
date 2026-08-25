@@ -555,5 +555,44 @@
         ],
         "sort_order": 2,
         "created_at": "2026-08-21 00:00:00"
+    },
+    {
+        "id": 62, "category_id": 11, "name": "GEHWOL Ballenpolster G", "description": "Polimēra gēla aizsargpolsteris deformētam kājas lielajam pirkstam\nAtvieglo staigāšanu, jo mazina berzi un spiedienu. Pasargā no varžacs veidošanās uz kājas lielā pirksta.\nMedicīnas prece.\nIepakojumā 1 gabals.\nViens izmērs.", "image": "products/polimera_gela_izstradajumi-img/Ballenpolster.png", "images": ["products/polimera_gela_izstradajumi-img/Ballenpolster.png", "products/polimera_gela_izstradajumi-img/Ballenpolster 1.png"], "sort_order": 1, "created_at": "2026-08-25 00:00:00"
+    },
+    {
+        "id": 63, "category_id": 11, "name": "GEHWOL Kleinzehen-Ballenpolster G", "description": "Polimēra gēla aizsargpolsteris deformētam kājas mazajam pirkstam\nAtvieglo staigāšanu, jo mazina berzi un spiedienu. Pasargā no varžacs veidošanās. Medicīnas prece.\nIepakojumā 1 gabals.\nViens izmērs.", "image": "products/polimera_gela_izstradajumi-img/KleizenBallenpolster.png", "images": ["products/polimera_gela_izstradajumi-img/KleizenBallenpolster.png", "products/polimera_gela_izstradajumi-img/KleizenBallenpolster 1.png"], "sort_order": 2, "created_at": "2026-08-25 00:00:00"
+    },
+    {
+        "id": 64, "category_id": 11, "name": "GEHWOL Vorfusspolster G", "description": "Polimēra gēla polsteris pēdas priekšējai daļai\nMazina berzi, spiedienu, pasargā no sacietējumu veidošanās, mazina sāpes un dedzinošo sajūtu piepūlētām kājām. Medicīnas prece.\nIepakojumā 1 gabals.\nIzmēri: mazs un liels.", "image": "products/polimera_gela_izstradajumi-img/Vorfuspolster.png", "images": ["products/polimera_gela_izstradajumi-img/Vorfuspolster.png", "products/polimera_gela_izstradajumi-img/Vorfuspolster 1.png"], "sort_order": 3, "created_at": "2026-08-25 00:00:00"
+    },
+    {
+        "id": 65, "category_id": 11, "name": "GEHWOL Zehenspreizer G", "description": "Polimēra gēla pirkstu izpletēji\nMaigie un slīdīgie pirkstu izpletēji atvieglo stāvokli pie starppirkstu varžacīm, koriģē pirkstu nobīdes, viena pirksta uzvirzīšanos virs otra, pasargā no ādas kairinājuma un noberzumiem, noderīgi arī pie pēdas spilventiņa deformācijas. Medicīnas prece.\nIepakojumā 3 gabali.\nIzmēri: mazs, vidējs, liels.", "image": "products/polimera_gela_izstradajumi-img/ZehenspreizerG.png", "sort_order": 4, "created_at": "2026-08-25 00:00:00"
+    },
+    {
+        "id": 66, "category_id": 11, "name": "GEHWOL Zehenteiler GD", "description": "Polimēra gēla pirkstu starplikas ar anatomisku formu\nKoriģē pirkstu stāvokli, ja ir viena pirksta uzvirzīšanās virs otra, pasargā no ādas kairinājuma un noberzumiem. Medicīnas prece.\nIepakojumā 3 gabali vai 15 gabali.\nIzmēri: mazs, vidējs, liels.", "image": "products/polimera_gela_izstradajumi-img/Zehenteiler GD.png", "images": ["products/polimera_gela_izstradajumi-img/Zehenteiler GD.png", "products/polimera_gela_izstradajumi-img/Zehenteiler GD 1.png"], "sort_order": 5, "created_at": "2026-08-25 00:00:00"
+    },
+    {
+        "id": 67, "category_id": 11, "name": "GEHWOL Zehenteiler", "description": "Polimēra gēla pirkstu starplikas\nSaudzīgi koriģē pirkstu stāvokli, ja ir viena pirksta uzvirzīšanās virs otra, pasargā no ādas kairinājuma un noberzumiem. Noderīgi arī pie pēdas spilventiņa deformācijas. Medicīnas prece.\nIepakojumā 3 gabali.\nIzmēri: mazs un liels.", "image": "products/polimera_gela_izstradajumi-img/Zehenteiler.png", "images": ["products/polimera_gela_izstradajumi-img/Zehenteiler.png", "products/polimera_gela_izstradajumi-img/Zehenteiler1.png"], "sort_order": 6, "created_at": "2026-08-25 00:00:00"
+    },
+    {
+        "id": 68, "category_id": 11, "name": "GEHWOL Korrekturring G", "description": "Polimēra gēla koriģējoši riņķīši\nParedzēti diskomforta mazināšanai āmurveida pirkstu gadījumā. Riņķītis palīdz pirkstam ieņemt normālu stāvokli un pasargā no varžacs veidošanās. Novietojot sabiezēto daļu starp pirkstiem, to var izmantot kā starpliku. Medicīnas prece.\nIepakojumā 2 gabali.\nViens izmērs.", "image": "products/polimera_gela_izstradajumi-img/Korrekturing.png", "images": ["products/polimera_gela_izstradajumi-img/Korrekturing.png", "products/polimera_gela_izstradajumi-img/Korrekturing 1.png"], "sort_order": 7, "created_at": "2026-08-25 00:00:00"
+    },
+    {
+        "id": 69, "category_id": 11, "name": "GEHWOL Zehenschutzring G", "description": "Polimēra gēla aizsargriņķīši pirkstiem\nPasargā no berzes varžacis, pietūkumu, noberzumus, sāpošas vietas uz pirkstiem. Medicīnas prece.\nIepakojumā 2 gabali vai 12 gabali.\nIzmēri: mini — 18 mm diametrā, mazs — 25 mm diametrā, vidējs — 30 mm diametrā, liels — 36 mm diametrā.", "image": "products/polimera_gela_izstradajumi-img/ZehenSchutzRing G.png", "images": ["products/polimera_gela_izstradajumi-img/ZehenSchutzRing G.png", "products/polimera_gela_izstradajumi-img/ZehenSchutzRing G 1.png"], "sort_order": 8, "created_at": "2026-08-25 00:00:00"
+    },
+    {
+        "id": 70, "category_id": 11, "name": "GEHWOL Zehenkappe G", "description": "Polimēra gēla cepurītes pirkstiem\nElastīgās cepurītes noderīgas pirkstu starpās esošu varžacu, ienadžu, pirkstu galu problēmu gadījumos. Medicīnas prece.\nIepakojumā 2 gabali.\nIzmēri: mini, mazs, vidējs.", "image": "products/polimera_gela_izstradajumi-img/Zehenkappe G.png", "images": ["products/polimera_gela_izstradajumi-img/Zehenkappe G.png", "products/polimera_gela_izstradajumi-img/Zehenkappe G 1.png"], "sort_order": 9, "created_at": "2026-08-25 00:00:00"
+    },
+    {
+        "id": 71, "category_id": 11, "name": "GEHWOL Hammerzehen-Polster G", "description": "Polimēra gēla kājas pirkstus balstošs polsteris\nPirkstus balstošo polsteri ar platu, elastīgu gēla cilpu lieto, ja ir āmurveida pirksti. Tas mazina spiedienu uz pirkstu galiem un ādas kairinājumu, pasargā no varžacu veidošanās. Medicīnas prece.\nIepakojumā 1 gabals. Labajai vai kreisajai kājai.\nViens izmērs.", "image": "products/polimera_gela_izstradajumi-img/HammerZehenPolster links.png", "images": ["products/polimera_gela_izstradajumi-img/HammerZehenPolster links.png", "products/polimera_gela_izstradajumi-img/HammerZehenPolster rechts.png"], "sort_order": 10, "created_at": "2026-08-25 00:00:00"
+    },
+    {
+        "id": 72, "category_id": 11, "name": "GEHWOL Fersenkissen G mit Gelwellen", "description": "Viļņaini polimēra gēla papēžu spilventiņi\nPapēžu spilventiņi ar viļņainu zonu vidusdaļā. Atvieglo stāvokli, ja ir sāpes papēža kaulā. Medicīnas prece.\nIepakojumā 1 pāris.\nIzmēri: mazs (35–37), vidējs (38–41), liels (42–45).", "image": "products/polimera_gela_izstradajumi-img/Ferssenpolster 1.png", "sort_order": 11, "created_at": "2026-08-25 00:00:00"
+    },
+    {
+        "id": 73, "category_id": 11, "name": "GEHWOL Ballenpolster mit Zehenteiler", "description": "Polimēra gēla aizsargpolsteris kājas lielajam pirkstam ar starpliku\nAtvieglo staigāšanu deformēta kājas lielā pirksta gadījumā, jo mazina berzi un spiedienu, pasargā no varžacs veidošanās. Medicīnas prece.\nIepakojumā 1 gabals.\nViens izmērs.", "image": "products/polimera_gela_izstradajumi-img/Ballenpolst mit Zehenteiler.png", "images": ["products/polimera_gela_izstradajumi-img/Ballenpolst mit Zehenteiler.png", "products/polimera_gela_izstradajumi-img/Ballenpolst mit Zehenteiler 1.png"], "sort_order": 12, "created_at": "2026-08-25 00:00:00"
+    },
+    {
+        "id": 74, "category_id": 11, "name": "GEHWOL Hühneraugen-Schutzpolster-Ring G", "description": "Polimēra gēla varžacu aizsargpolsteris-riņķītis\nĪpaši piegulošs, mīksts, varžacis ideāli aizsargājošs polsteris-riņķītis. Medicīnas prece.\nIepakojumā 3 gabali.\nIzmēri: mazs un vidējs.", "image": "products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRing G.png", "images": ["products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRing G.png", "products/polimera_gela_izstradajumi-img/HuhneraugenSchutzPolsterRing G 1.png"], "sort_order": 13, "created_at": "2026-08-25 00:00:00"
     }
 ]
