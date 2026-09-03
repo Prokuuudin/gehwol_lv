@@ -10,14 +10,12 @@
 	<link rel="icon" type="image/x-icon" href="./img/favicons/favicon.ico">
 	<link rel="apple-touch-icon" sizes="180x180" href="./img/favicons/apple-touch-icon.png">
 </head>
-
 <body>
 	@@include('blocks/header.html')
 	<main>
-		@@include('blocks/category-page.html', {"crumbCategory":"Kosmētika","title":"GERLAVIT","categoryId":8,"productCards":"<p>Šajā kategorijā vēl nav produktu.</p>"})
+		@@include('blocks/category-page.html', {"crumbCategory":"Kosmētika","title":"GERLAVIT","categoryId":8,"productCards":"<a href=\"produkts-112.html\" class=\"product-card\"><div class=\"product-card__media\"><img src=\"./img/products/gerlavit-img/GVMoorVitCreme.png\" alt=\"GERLAVIT Moor Vitamin Creme 75ml\"></div><h3 class=\"product-card__title\">GERLAVIT Moor Vitamin Creme 75ml</h3><span class=\"product-card__cta btn-link\">Uzzināt vairāk →</span></a>"})
 	</main>
 	@@include('blocks/footer.html')
 	<script src="./js/index.bundle.js"></script>
 </body>
-
 </html>

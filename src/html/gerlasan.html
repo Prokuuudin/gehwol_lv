@@ -10,14 +10,12 @@
 	<link rel="icon" type="image/x-icon" href="./img/favicons/favicon.ico">
 	<link rel="apple-touch-icon" sizes="180x180" href="./img/favicons/apple-touch-icon.png">
 </head>
-
 <body>
 	@@include('blocks/header.html')
 	<main>
-		@@include('blocks/category-page.html', {"crumbCategory":"Kosmētika","title":"GERLASAN","categoryId":7,"productCards":"<p>Šajā kategorijā vēl nav produktu.</p>"})
+		@@include('blocks/category-page.html', {"crumbCategory":"Kosmētika","title":"GERLASAN","categoryId":7,"productCards":"<a href=\"produkts-110.html\" class=\"product-card\"><div class=\"product-card__media\"><img src=\"./img/products/gerlasan-img/GSHandcreme.png\" alt=\"GERLASAN Handcreme 40, 75, 500ml\"></div><h3 class=\"product-card__title\">GERLASAN Handcreme 40, 75, 500ml</h3><span class=\"product-card__cta btn-link\">Uzzināt vairāk →</span></a>\n<a href=\"produkts-111.html\" class=\"product-card\"><div class=\"product-card__media\"><img src=\"./img/products/gerlasan-img/GSAchselfrisch.png\" alt=\"GERLASAN Achselfrisch 150ml\"></div><h3 class=\"product-card__title\">GERLASAN Achselfrisch 150ml</h3><span class=\"product-card__cta btn-link\">Uzzināt vairāk →</span></a>"})
 	</main>
 	@@include('blocks/footer.html')
 	<script src="./js/index.bundle.js"></script>
 </body>
-
 </html>
