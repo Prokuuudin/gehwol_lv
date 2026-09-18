@@ -708,5 +708,59 @@
     },
     {
         "id": 112, "category_id": 8, "name": "GERLAVIT Moor Vitamin Creme 75ml", "description": "Krēms sausas un jutīgas ādas kopšanai\nAktīvās sastāvdaļas mitrina, mīkstina un baro ādu. Regulāri lietojot, normalizējas ādas stāvoklis, tiek kompensēts mitruma un lipīdu zudums, mazinās ādas kairinājums, apsārtums un plaisāšana. E vitamīns kavē ādas novecošanos.\nNesatur parabēnus, silikoneļļu, parafīneļļu un smaržvielas.\nPiemērots jutīgai un sausai ādai.\nDermatoloģiski pārbaudīts. Piemērots diabēta slimniekiem.\nAktīvās vielas: Kviešu dīgstu eļļa, avokado eļļa, hohobas eļļa, pantenols, glicerīns, Islandes ķērpja un sūnu ekstrakti, E vitamīna acetāts.", "image": "products/gerlavit-img/GVMoorVitCreme.png", "sort_order": 1, "created_at": "2026-09-03 00:00:00"
+    },
+    {
+        "id": 142,
+        "category_id": 17,
+        "name": "Pending Arbeitssthül",
+        "description": "Darbinieka krēsls\nSēdekļa minimālais augstums 42 cm\nSēdekļa maksimālais augstums 53 cm\n• Sēdeklis, kas brīvi šūpojas palīdz labot sliktu stāju un novērš mugurkaula bojājumus, kas rodas fiziskas aktivitātes trūkuma dēļ.\n• Ķermeņa muskuļi strādā, kā rezultatā uzlabojas asins cirkulācija.\n• Atzveltni ar pastāvīgu atbalstu mugurai iespējams fiksēt jebkurā slīpuma leņķī.\n• Ideāls darbinieka krēsls ergonomiskai sēdēšanai.\n• Krēsls ir stabils pateicoties drošības turniketam ar riteņiem, kas aprīkoti ar bremzēm.\nZīmols Pending",
+        "image": "products/darbinieka_kresli-img/pending-arbeitsstuhl.png",
+        "sort_order": 1,
+        "created_at": "2026-09-17 00:00:00"
+    },
+    {
+        "id": 143,
+        "category_id": 17,
+        "name": "Pending Arbeitssthül KOMPAKT VARIO",
+        "description": "Darbinieka krēsls\nSēdekļa minimālais augstums 43 cm\nSēdekļa maksimālais augstums 54 cm\n• Sēdeklis, kas brīvi šūpojas palīdz labot sliktu stāju un novērš mugurkaula bojājumus, kas rodas fiziskas aktivitātes trūkuma dēļ.\n• Ķermeņa muskuļi strādā, kā rezultatā uzlabojas asins cirkulācija.\n• Atzveltne un roku balsti ir stingri, polsterēti, augstumu var regulēt.\n• Sēdeklis apaļš ar Ø 37 cm.\n• Krēsls ir stabils pateicoties drošības turniketam ar riteņiem, kas aprīkoti ar bremzēm.\nZīmols Pending",
+        "image": "products/darbinieka_kresli-img/pending-kompakt-vario.png",
+        "sort_order": 2,
+        "created_at": "2026-09-17 00:00:00"
+    },
+    {
+        "id": 144,
+        "category_id": 17,
+        "name": "Pending Arbeitssthül KOMPAKT EXKLUSIV",
+        "description": "Darbinieka krēsls\nSēdekļa minimālais augstums 42 cm\nSēdekļa maksimālais augstums 53 cm\nAtzveltnes augstums 50 cm\nAtzveltnes platums 20 cm\n• Ergonomiski veidota atzveltne, stingri apvilkta.\n• Sēdeklis brīvi šūpojams, viegli pārvietoties visos virzienos, palīdz izvairīties no nepareizas stājas un aizsargā muguru.\n• Īpaša sēdekļa konstrukcija ļauj strādāt dinamiskā, atslābinātā un mugurai draudzīgā veidā.\n• Krēsls ir stabils pateicoties drošības turniketam ar riteņiem, kas aprīkoti ar bremzēm.\n• Apaļš sēdeklis ar Ø 46 cm.\nZīmols Pending",
+        "image": "products/darbinieka_kresli-img/pending-kompakt-exklusiv.png",
+        "sort_order": 3,
+        "created_at": "2026-09-17 00:00:00"
+    },
+    {
+        "id": 145,
+        "category_id": 17,
+        "name": "Pending Arbeitssthul PONSO 1",
+        "description": "Darbinieka krēsls\nSēdekļa dziļums 38 cm\nSēdekļa minimālais augstums 46 cm\nSēdekļa maksimālais augstums 58 cm\nAtzveltnes augstums virs sēdekļa 21-29 cm\nAtzveltnes platums 42 cm\n• PONSO krēsla uzbūve optimizē sēdēšanas pozu, atslogo muguru un starpskriemeļu diskus, samazinot diska trūces un mugurkaula skriemeļu nobīdes risku.\n• Īpašais pendelēšanas princips ļauj mugurai kustēties un muskuļiem aktivizēties, izvairīties no nedabiskas, saspringtas sēdēšanas.\n• Vienmērīga spiediena sadale no muguras uz augšstilbiem mazina muguras sāpes un nogurumu, padara darbu veselīgāku.\n• Šādi strādājot tiek stimulēta sirds un asinsvadu sistēma.\n• Krēsls ir stabils pateicoties drošības turniketam ar riteņiem, kas aprīkoti ar bremzēm.\nZīmols Pending",
+        "image": "products/darbinieka_kresli-img/pending-ponso-1.png",
+        "sort_order": 4,
+        "created_at": "2026-09-17 00:00:00"
+    },
+    {
+        "id": 146,
+        "category_id": 17,
+        "name": "Gerlach SATTELSITZ",
+        "description": "Darbinieka krēsls\nSēdekļa minimālais augstums 50 cm\nSēdekļa maksimālais augstums 70 cm\n• Novērš nepareizu, veselībai kaitīgu sēdēšanas pozu un samazina muguras problēmas.\n• Veicina „taisnas” stājas noturēšanu - ar taisnu muguru, horizontāli novietotiem augšstilbiem, tādējādi iegūstot optimālu stāvokli sēdēšanai.\n• Seglveida sēdeklis ļauj mugurkaulam saglabāt līdzsvarotu centrālo stāvokli, kustēties saglabājot mugurkaula dabisko izliekumu un minimāli noslogojot muskuļus.\n• Šāda sēdēšanas poza nodrošina labu asinsriti.\n• Novērš bojājumus, kas var rasties nepareizas sēdēšanas dēļ.\n• Krēsls ir stabils pateicoties drošības turniketam ar riteņiem, kas aprīkoti ar bremzēm.\nZīmols GERLACH",
+        "image": "products/darbinieka_kresli-img/gerlach-sattelsitz.png",
+        "sort_order": 5,
+        "created_at": "2026-09-17 00:00:00"
+    },
+    {
+        "id": 147,
+        "category_id": 17,
+        "name": "Arbeitssthul VIREO",
+        "description": "Darbinieka krēsls\n• Maksimālā noslodze: 150 kg\n• Sēdeklis apaļš: Ø 34 cm\n• Sēdekļa augstums: 50 cm – 68 cm\n• Atzveltne: platums 39,2 cm, augstums 27 cm\n• Atzveltnes augstums: 27 cm – 35 cm\n• Svars: 7,2 kg\n• Ergonomiski veidota sēdvieta veicina veselīgu stāju.\n• Atzveltne ar individuāli regulējamu augstumu uzlabo sēdēšanas komfortu.\n• Ērta sēdvietas augstuma regulēšana ar gāzes atsperi.\n• Gumijoti riteņi ar bremzēm.\nZīmols GEHWOL TECH",
+        "image": "products/darbinieka_kresli-img/vireo.png",
+        "sort_order": 6,
+        "created_at": "2026-09-17 00:00:00"
     }
 ]

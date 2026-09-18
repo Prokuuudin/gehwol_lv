@@ -1,4 +1,5 @@
 const gulp = require("gulp");
+const { seoTransform } = require('./seo');
 const replace = require("gulp-replace");
 
 // HTML
@@ -64,7 +65,6 @@ gulp.task("html:docs", function() {
         "!./**/blocks/**/*.*",
         "!./src/html/docs/**/*.*",
       ])
-      .pipe(changed("./docs/"))
       .pipe(plumber(plumberNotify("HTML")))
       .pipe(fileInclude(fileIncludeSetting))
       .pipe(
@@ -98,6 +98,7 @@ gulp.task("html:docs", function() {
         }),
       )
       .pipe(htmlclean())
+      .pipe(seoTransform())
       .pipe(gulp.dest("./docs/"))
   );
 });

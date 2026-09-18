@@ -6,6 +6,10 @@ require("./gulp/docs.js");
 require("./gulp/fontsDev.js");
 require("./gulp/fontsDocs.js");
 require("./gulp/generate.js");
+const { writeAssets } = require('./gulp/seo');
+gulp.task('seo:docs', function(done) { writeAssets('./docs'); done(); });
+gulp.task('seo:dev', function(done) { writeAssets('./build'); done(); });
+gulp.task('build:docs', gulp.series('html:docs', 'seo:docs', 'sass:docs'));
 
 gulp.task(
   "default",
@@ -23,6 +27,7 @@ gulp.task(
       "phpAdmin:dev",
       "uploads:dev",
     ),
+    'seo:dev',
     gulp.parallel("server:dev", "watch:dev"),
   ),
 );
@@ -40,6 +45,7 @@ gulp.task(
       "files:docs",
       "js:docs",
     ),
+    'seo:docs',
     gulp.parallel("server:docs"),
   ),
 );

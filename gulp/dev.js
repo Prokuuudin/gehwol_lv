@@ -1,4 +1,5 @@
 const gulp = require("gulp");
+const { seoTransform } = require('./seo');
 const fileInclude = require("gulp-file-include");
 const sass = require("gulp-sass")(require("sass"));
 const sassGlob = require("gulp-sass-glob");
@@ -49,7 +50,6 @@ gulp.task("html:dev", function() {
       "!./**/blocks/**/*.*",
       "!./src/html/docs/**/*.*",
     ])
-    .pipe(changed("./build/", { hasChanged: changed.compareContents }))
     .pipe(plumber(plumberNotify("HTML")))
     .pipe(fileInclude(fileIncludeSetting))
     .pipe(
@@ -91,6 +91,7 @@ gulp.task("html:dev", function() {
         bracketSpacing: false,
       }),
     )
+    .pipe(seoTransform())
     .pipe(gulp.dest("./build/"));
 });
 

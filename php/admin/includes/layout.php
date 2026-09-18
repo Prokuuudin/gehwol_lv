@@ -7,6 +7,7 @@ function admin_header(string $title): void
 <html lang="lv">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
 <title><?= htmlspecialchars($title) ?> — Admin</title>
 <style>
 body{font-family:sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;}

@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="lv">
-<head><meta charset="UTF-8"><title>Ielogoties — Admin</title></head>
+<head><meta charset="UTF-8"><meta name="robots" content="noindex, nofollow"><title>Ielogoties — Admin</title></head>
 <body>
 <h1>Ielogoties</h1>
 <?php if ($error): ?><p style="color:red;"><?= htmlspecialchars($error) ?></p><?php endif; ?>
