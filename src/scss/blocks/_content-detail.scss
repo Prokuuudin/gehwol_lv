@@ -18,8 +18,38 @@
 }
 
 .content-detail__text {
-	margin: 0;
 	font-size: 16px;
 	line-height: 1.5;
 	color: var(--text-color);
+
+	p {
+		margin: 0 0 16px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	h2,
+	.content-detail__subtitle {
+		margin: 32px 0 16px;
+		color: var(--accent-dark);
+	}
+
+	h2 {
+		font-size: 22px;
+	}
+
+	.content-detail__subtitle {
+		font-size: 18px;
+	}
+
+	.category__grid {
+		grid-template-columns: repeat(2, 1fr);
+		margin-top: 16px;
+
+		@include mobile {
+			grid-template-columns: 1fr;
+		}
+	}
 }
