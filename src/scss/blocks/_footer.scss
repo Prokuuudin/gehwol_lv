@@ -191,9 +191,34 @@
   justify-content: space-between; 
 }
 
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px 16px;
+  margin: 16px 0;
+  font-size: 14px;
+
+  a {
+    color: #000;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--accent);
+    }
+  }
+}
+
 @media (max-width: 1028px) {
   .footer__meta {
     align-items: flex-start;
+  }
+
+  .footer__legal {
+    justify-content: flex-start;
   }
 }
 
@@ -218,6 +243,10 @@
     gap: 8px;
     margin-top: 10px;
     text-align: center;
+  }
+
+  .footer__legal {
+    justify-content: center;
   }
 
   .footer__meta .footer__logo,

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Juridiska informācija par GEHWOL Latvia tīmekļvietni un tās saturu." />
+	<title>Juridiskais paziņojums — Gehwol</title>
+	<link rel="stylesheet" href="./css/main.css" />
+	<link rel="icon" type="image/x-icon" href="./img/favicons/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="./img/favicons/apple-touch-icon.png">
+</head>
+<body>
+	@@include('blocks/header.html')
+	<main>
+		@@include('blocks/legal-page.html', {
+			"title": "Juridiskais paziņojums",
+			"body": "<h2>Tīmekļvietnes raksturs</h2><p>Šī tīmekļvietne ir informatīvs GEHWOL produkcijas katalogs. Tā sniedz vispārīgu informāciju par produktiem, to īpašībām un pielietojumu.</p><h2>Pirkumi tīmekļvietnē</h2><p>Tīmekļvietnē nav iespējams ievietot preces grozā, noformēt pasūtījumu, veikt apmaksu vai noslēgt distances līgumu. Lai saņemtu informāciju par produkcijas pieejamību un sadarbības iespējām, aicinām izmantot norādīto kontaktinformāciju.</p><h2>Informācija par produktiem</h2><p>Tīmekļvietnē sniegtā informācija neaizstāj konkrētā produkta marķējumu, lietošanas instrukciju vai citu produkta oficiālo dokumentāciju. Pirms produkta lietošanas vienmēr izlasiet un ievērojiet tā marķējumu, lietošanas instrukciju, brīdinājumus un citus ražotāja norādījumus.</p><p>Ja informācija tīmekļvietnē atšķiras no informācijas uz produkta iepakojuma vai tā oficiālajā dokumentācijā, jāvadās pēc produktam pievienotās aktuālās informācijas.</p><h2>Preču zīmes un saturs</h2><p>GEHWOL nosaukumi, preču zīmes un citi atšķirības apzīmējumi tiek izmantoti, lai identificētu attiecīgo produkciju. Tīmekļvietnes tekstus, attēlus un citus materiālus drīkst izmantot tikai atbilstoši to tiesību īpašnieku piešķirtajām tiesībām un piemērojamo normatīvo aktu prasībām.</p>"
+		})
+	</main>
+	@@include('blocks/footer.html')
+	<script src="./js/index.bundle.js"></script>
+</body>
+</html>
