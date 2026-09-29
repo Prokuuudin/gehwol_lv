@@ -28,36 +28,7 @@
 			aria-labelledby="news-tab-news"
 		>
 			<div class="news__wrapper swiper-wrapper">
-				<div class="news__slide swiper-slide">
-					<a href="jaunums-1.html" class="news__slide-link">
-						<div class="news__image" aria-hidden="true"></div>
-						<h3 class="news__slide-title">GEHWOL FUSSKRAFT sērija tagad pieejama Latvijā</h3>
-					</a>
-				</div>
-				<div class="news__slide swiper-slide">
-					<a href="jaunums-2.html" class="news__slide-link">
-						<div class="news__image" aria-hidden="true"></div>
-						<h3 class="news__slide-title">Atklāts jauns GEHWOL partneru salons Rīgā</h3>
-					</a>
-				</div>
-				<div class="news__slide swiper-slide">
-					<a href="jaunums-3.html" class="news__slide-link">
-						<div class="news__image" aria-hidden="true"></div>
-						<h3 class="news__slide-title">Pavasara akcija: dāvana pie pirkuma virs 30 €</h3>
-					</a>
-				</div>
-				<div class="news__slide swiper-slide">
-					<a href="jaunums-4.html" class="news__slide-link">
-						<div class="news__image" aria-hidden="true"></div>
-						<h3 class="news__slide-title">GEHWOL piedalās starptautiskā pēdu aprūpes izstādē</h3>
-					</a>
-				</div>
-				<div class="news__slide swiper-slide">
-					<a href="jaunums-5.html" class="news__slide-link">
-						<div class="news__image" aria-hidden="true"></div>
-						<h3 class="news__slide-title">Jauns sadarbības partneris pievienojas Gehwol tīklam</h3>
-					</a>
-				</div>
+				<x-slot name="news"></x-slot>
 			</div>
 		</div>
 
@@ -69,42 +40,7 @@
 			hidden
 		>
 			<div class="news__wrapper swiper-wrapper">
-				<div class="news__slide swiper-slide">
-					<a href="raksts-1.html" class="news__slide-link">
-						<div class="news__image" aria-hidden="true"></div>
-						<h3 class="news__slide-title">Kā izvairīties no sausas ādas uz papēžiem ziemā</h3>
-					</a>
-				</div>
-				<div class="news__slide swiper-slide">
-					<a href="raksts-2.html" class="news__slide-link">
-						<div class="news__image" aria-hidden="true"></div>
-						<h3 class="news__slide-title">5 ieradumi veselīgām pēdām ikdienā</h3>
-					</a>
-				</div>
-				<div class="news__slide swiper-slide">
-					<a href="raksts-3.html" class="news__slide-link">
-						<div class="news__image" aria-hidden="true"></div>
-						<h3 class="news__slide-title">Kāpēc regulāra pēdu kopšana ir svarīga pēc 40 gadu vecuma</h3>
-					</a>
-				</div>
-				<div class="news__slide swiper-slide">
-					<a href="raksts-4.html" class="news__slide-link">
-						<div class="news__image" aria-hidden="true"></div>
-						<h3 class="news__slide-title">Kā izvēlēties pareizo pēdu kopšanas līdzekli</h3>
-					</a>
-				</div>
-				<div class="news__slide swiper-slide">
-					<a href="raksts-5.html" class="news__slide-link">
-						<div class="news__image" aria-hidden="true"></div>
-						<h3 class="news__slide-title">Biežākās pēdu problēmas un to risinājumi</h3>
-					</a>
-				</div>
-				<div class="news__slide swiper-slide">
-					<a href="raksts-6.html" class="news__slide-link">
-						<div class="news__image" aria-hidden="true"></div>
-						<h3 class="news__slide-title">Sausas pēdu ādas kopšana</h3>
-					</a>
-				</div>
+				<x-slot name="articles"></x-slot>
 			</div>
 		</div>
 	</div>

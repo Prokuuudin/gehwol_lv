@@ -89,16 +89,14 @@ function enhance(html, filename) {
 
 function seoTransform() {
   return new Transform({ objectMode: true, transform(file, encoding, callback) {
-    try { file.contents = Buffer.from(enhance(file.contents.toString(), path.basename(file.path))); callback(null, file); } catch (error) { callback(error); }
+    try { if (path.basename(file.path).startsWith('_')) return callback(null, file); file.contents = Buffer.from(enhance(file.contents.toString(), path.basename(file.path))); callback(null, file); } catch (error) { callback(error); }
   } });
 }
 
+// sitemap.xml is served by php/site.php (it lists admin content); only robots.txt is static.
 function writeAssets(directory) {
   const base = siteUrl();
-  if (!base) throw new Error('Set siteUrl in seo.config.json or SITE_URL before generating sitemap and robots.txt');
-  const files = fs.readdirSync(directory).filter(file => file.endsWith('.html')).sort();
-  const urls = files.map(file => `<url><loc>${escape(`${base}/${file === 'index.html' ? '' : file}`)}</loc></url>`);
-  fs.writeFileSync(path.join(directory, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`);
+  if (!base) throw new Error('Set siteUrl in seo.config.json or SITE_URL before generating robots.txt');
   // Admin pages use noindex; allow crawling so search engines can see it.
   fs.writeFileSync(path.join(directory, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${base}/sitemap.xml\n`);
 }

@@ -13,7 +13,7 @@
 <body>
 	@@include('blocks/header.html')
 	<main>
-		@@include('blocks/category-page.html', {"crumbCategory":"Kosmētika","title":"GERLAVIT","categoryId":8,"productCards":"<a href=\"produkts-112.html\" class=\"product-card\"><div class=\"product-card__media\"><img src=\"./img/products/gerlavit-img/GVMoorVitCreme.png\" alt=\"GERLAVIT Moor Vitamin Creme 75ml\"></div><h3 class=\"product-card__title\">GERLAVIT Moor Vitamin Creme 75ml</h3><span class=\"product-card__cta btn-link\">Uzzināt vairāk →</span></a>"})
+		@@include('blocks/category-page.html', {"crumbCategory":"Kosmētika","title":"GERLAVIT","categoryId":8,"productCards":"<x-slot name=\"products\"></x-slot>"})
 	</main>
 	@@include('blocks/footer.html')
 	<script src="./js/index.bundle.js"></script>

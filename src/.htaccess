@@ -1,0 +1,12 @@
+# Document root config (Apache). Copied to docs/.htaccess by `gulp templates:docs`.
+# Existing files (css, js, img, legal pages, admin) are served as is; every other request
+# goes to php/site.php, which renders products, categories, news, articles, the home page,
+# sitemap.xml and the 404 page from php/data/*.json.
+
+Options -Indexes
+
+RewriteEngine On
+RewriteRule ^$ php/site.php [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ php/site.php [L]

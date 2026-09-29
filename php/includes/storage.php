@@ -16,7 +16,7 @@ class StorageException extends RuntimeException
 
 function storage_dir(?string $dir = null): string
 {
-    return rtrim($dir ?? STORAGE_DEFAULT_DIR, '/\\');
+    return rtrim($dir ?? (getenv('GEHWOL_DATA_DIR') ?: STORAGE_DEFAULT_DIR), '/\\');
 }
 
 function storage_path(string $collection, ?string $dir = null): string

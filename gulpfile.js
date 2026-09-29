@@ -5,11 +5,11 @@ require("./gulp/dev.js");
 require("./gulp/docs.js");
 require("./gulp/fontsDev.js");
 require("./gulp/fontsDocs.js");
-require("./gulp/generate.js");
+require("./gulp/templates.js");
 const { writeAssets } = require('./gulp/seo');
 gulp.task('seo:docs', function(done) { writeAssets('./docs'); done(); });
 gulp.task('seo:dev', function(done) { writeAssets('./build'); done(); });
-gulp.task('build:docs', gulp.series('html:docs', 'seo:docs', 'sass:docs'));
+gulp.task("build:docs", gulp.series("html:docs", "seo:docs", "sass:docs", "templates:docs"));
 
 gulp.task(
   "default",
@@ -46,6 +46,7 @@ gulp.task(
       "js:docs",
     ),
     'seo:docs',
+    "templates:docs",
     gulp.parallel("server:docs"),
   ),
 );

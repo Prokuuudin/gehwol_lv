@@ -1,7 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert/strict');
-const directory = path.resolve(process.argv[2] || 'docs');
+// Usage: node scripts/check-seo.js <pages-dir> [assets-dir]
+// pages-dir holds the rendered pages (php php/bin/render-all.php build/check); assets-dir holds css/js/img (docs).
+const directory = path.resolve(process.argv[2] || 'build/check');
+const assets = path.resolve(process.argv[3] || 'docs');
 const config = require('../seo.config.json');
 const base = (process.env.SITE_URL || config.siteUrl).replace(/\/$/, '');
 const files = fs.readdirSync(directory).filter(f => f.endsWith('.html'));
@@ -44,7 +47,7 @@ for (const file of files) {
   for (const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
     const relative = match[1].split('#')[0].split('?')[0];
     if (!relative || /^(?:[a-z]+:|\/\/)/i.test(relative)) continue;
-    assert(fs.existsSync(path.resolve(directory, relative)), `${file}: broken reference ${relative}`);
+    assert(fs.existsSync(path.resolve(directory, relative)) || fs.existsSync(path.resolve(assets, relative)), `${file}: broken reference ${relative}`);
   }
 }
 const sitemap = fs.readFileSync(path.join(directory, 'sitemap.xml'), 'utf8');
