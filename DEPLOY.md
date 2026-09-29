@@ -45,7 +45,7 @@
 5. Загрузить **содержимое** `release/` в `httpdocs/` (включая скрытые `.htaccess` и `.user.ini` — в FileZilla: «Сервер → Показывать скрытые файлы»).
 6. Открыть `https://gehwol.lv/php/admin/health.php`: все строки «kārtībā». Проверить `/produkts-1.html` (страница товара) и `/nav-tadas-lapas.html` (страница «Lapa nav atrasta», код 404).
 7. Войти в `/php/admin/`, сменить пароль при необходимости («Parole»).
-8. HTTPS: в Plesk включить сертификат Let's Encrypt для `gehwol.lv` и `www.gehwol.lv`, в «Hosting Settings» — «Permanent SEO-safe 301 redirect from HTTP to HTTPS». Когда всё работает по HTTPS, раскомментировать строку `Strict-Transport-Security` в `src/.htaccess` и выложить обновление.
+8. HTTPS уже настроен у хостера (проверено 2026-09-29: сертификат Let's Encrypt для `gehwol.lv` и `www.gehwol.lv`, редирект http и www на `https://gehwol.lv`), `.htaccess` включает HSTS на год. Если сертификат когда-либо перестанет продлеваться, браузеры не откроют сайт — следить за автопродлением в Plesk («SSL/TLS Certificates»).
 
 ## Обновление (изменения в коде или оформлении)
 

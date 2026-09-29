@@ -38,6 +38,7 @@ RewriteRule (^|/)\.(?!well-known/) - [F]
     Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
     Header always unset X-Powered-By
     Header unset X-Powered-By
-    # Enable after HTTPS works for gehwol.lv and www.gehwol.lv (browsers remember it for a year):
-    # Header always set Strict-Transport-Security "max-age=31536000"
+    # HTTPS only, for a year. Checked 2026-09-29: Let's Encrypt covers gehwol.lv and www.gehwol.lv,
+    # http:// and www redirect to https://gehwol.lv. No includeSubDomains (mail/webmail may lack HTTPS).
+    Header always set Strict-Transport-Security "max-age=31536000"
 </IfModule>
