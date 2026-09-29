@@ -150,6 +150,21 @@ function head_html(array $page): string
         '@type' => 'WebPage', 'name' => $page['heading'], 'description' => $page['description'],
         'url' => $url, 'inLanguage' => 'lv', 'isPartOf' => ['@id' => "{$base}/#website"],
     ];
+    if (!empty($page['article'])) {
+        $graph[] = array_filter([
+            '@type' => 'Article',
+            '@id' => "{$url}#article",
+            'headline' => mb_substr($page['heading'], 0, 110),
+            'description' => $page['description'],
+            'datePublished' => $page['article']['published'],
+            'dateModified' => max($page['article']['modified'], $page['article']['published']),
+            'image' => !empty($page['image']) ? $base . '/' . ltrim(preg_replace('~^\./~', '', $page['image']), '/') : null,
+            'inLanguage' => 'lv',
+            'mainEntityOfPage' => $url,
+            'author' => ['@id' => $organization['@id']],
+            'publisher' => ['@id' => $organization['@id']],
+        ], fn($v) => $v !== null && $v !== '');
+    }
     $jsonLd = json_encode(['@context' => 'https://schema.org', '@graph' => $graph], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG);
 
     $lines = [
@@ -287,6 +302,10 @@ function render_text_page(string $collection, int $id, bool $drafts = false): ?s
         'crumbs' => [],
         'og_type' => 'article',
         'image' => $item['image'] ?: (preg_match('~<img\b[^>]*\bsrc="([^"]+)"~', $item['text'], $m) ? html_entity_decode($m[1]) : null),
+        'article' => [
+            'published' => ($isNews ? ($item['date'] ?? null) : null) ?: substr((string)($item['created_at'] ?? ''), 0, 10),
+            'modified' => substr((string)($item['updated_at'] ?? $item['created_at'] ?? ''), 0, 10),
+        ],
     ], $main);
 }
 

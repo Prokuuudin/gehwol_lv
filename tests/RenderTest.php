@@ -118,6 +118,19 @@ final class RenderTest extends TestCase
         $this->assertStringContainsString('<meta property="og:type" content="article">', $html);
     }
 
+    public function test_news_and_articles_have_article_structured_data(): void
+    {
+        [, , $html] = site_response('/jaunums-2.html');
+        preg_match('~<script type="application/ld\+json">(.*?)</script>~s', $html, $m);
+        $types = array_column(json_decode($m[1], true)['@graph'], null, '@type');
+        $this->assertSame('Jauns jaunums', $types['Article']['headline']);
+        $this->assertSame('2026-05-01', $types['Article']['datePublished']);
+        $this->assertSame('2026-05-01', $types['Article']['dateModified'], 'never before the publication date');
+
+        [, , $product] = site_response('/produkts-1.html');
+        $this->assertStringNotContainsString('"Article"', $product);
+    }
+
     public function test_sitemap_lists_published_content_only(): void
     {
         [$status, $type, $xml] = site_response('/sitemap.xml');
