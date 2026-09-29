@@ -32,21 +32,22 @@ gulp.task(
   ),
 );
 
-gulp.task(
-  "docs",
-  gulp.series(
-    "clean:docs",
-    "fontsDocs",
-    gulp.parallel(
-      "html:docs",
-      "sass:docs",
-      "images:docs",
-      gulp.series("svgStack:docs", "svgSymbol:docs"),
-      "files:docs",
-      "js:docs",
-    ),
-    'seo:docs',
-    "templates:docs",
-    gulp.parallel("server:docs"),
+// Full production build of docs/ and php/templates/; finishes by itself (no dev server).
+const buildDocs = gulp.series(
+  "clean:docs",
+  "fontsDocs",
+  gulp.parallel(
+    "html:docs",
+    "sass:docs",
+    "images:docs",
+    gulp.series("svgStack:docs", "svgSymbol:docs"),
+    "files:docs",
+    "js:docs",
   ),
+  "seo:docs",
+  "templates:docs",
 );
+gulp.task("build", buildDocs);
+
+// Full build, then a local preview server for docs/ (static files only)
+gulp.task("docs", gulp.series(buildDocs, "server:docs"));

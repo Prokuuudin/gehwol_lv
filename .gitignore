@@ -25,3 +25,4 @@ php/data/*.tmp
 .env
 config.local.php
 php/data/login_attempts.json
+release/

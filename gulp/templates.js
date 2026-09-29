@@ -10,7 +10,7 @@ const TEMPLATES = path.join(ROOT, "php", "templates");
 // Pages that PHP fills at request time (index, category pages, the page shell) contain
 // <x-slot> placeholders. They are moved from docs/ to php/templates/ so the web server
 // never serves them as plain files. Built pages whose source is gone are removed, and the
-// server config is copied next to the site.
+// server config (.htaccess, .user.ini) is copied next to the site.
 gulp.task("templates:docs", function (done) {
   fs.mkdirSync(TEMPLATES, { recursive: true });
   fs.readdirSync(TEMPLATES)
@@ -30,6 +30,8 @@ gulp.task("templates:docs", function (done) {
 
   const sitemap = path.join(DOCS, "sitemap.xml");
   if (fs.existsSync(sitemap)) fs.unlinkSync(sitemap);
-  fs.copyFileSync(path.join(ROOT, "src", ".htaccess"), path.join(DOCS, ".htaccess"));
+  for (const file of [".htaccess", ".user.ini"]) {
+    fs.copyFileSync(path.join(ROOT, "src", file), path.join(DOCS, file));
+  }
   done();
 });

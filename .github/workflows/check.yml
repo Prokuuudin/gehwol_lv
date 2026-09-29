@@ -1,0 +1,38 @@
+name: check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: gd, exif, mbstring, dom, fileinfo
+          coverage: none
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: PHP syntax
+        run: find php tests -name '*.php' -print0 | xargs -0 -n1 php -l > /dev/null
+
+      - name: PHP tests
+        run: |
+          composer install --no-interaction --no-progress
+          vendor/bin/phpunit
+
+      # docs/ and php/templates/ are committed build output, so no gulp run is needed here
+      - name: SEO, sitemap, robots, internal links, missing files
+        run: |
+          php php/bin/render-all.php build/check
+          node scripts/check-seo.js build/check docs
+
+      - name: Release contents (no data, secrets, docs or dev files)
+        run: node scripts/build-release.js

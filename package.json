@@ -1,4 +1,12 @@
 {
+	"scripts": {
+		"build": "gulp build",
+		"build:quick": "gulp build:docs",
+		"check": "php php/bin/render-all.php build/check && node scripts/check-seo.js build/check docs",
+		"release": "node scripts/build-release.js",
+		"release:first": "node scripts/build-release.js --with-data",
+		"preview": "php -S 127.0.0.1:8010 php/bin/dev-router.php"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.22.5",
 		"@babel/preset-env": "^7.22.5",
