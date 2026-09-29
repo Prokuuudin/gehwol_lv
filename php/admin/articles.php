@@ -4,6 +4,7 @@ require_once __DIR__ . '/../includes/storage.php';
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/validation.php';
 require_once __DIR__ . '/../includes/upload.php';
+require_once __DIR__ . '/../includes/content.php';
 require_once __DIR__ . '/includes/layout.php';
 
 require_login();
@@ -17,40 +18,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($action, ['add', 'edit'], 
     require_csrf();
     $data = [
         'title' => trim($_POST['title'] ?? ''),
-        'text' => trim($_POST['text'] ?? ''),
+        'text' => text_to_html($_POST['text'] ?? ''),
         'sort_order' => (int)($_POST['sort_order'] ?? 0),
+        'published' => ($_POST['published'] ?? '') === '1',
     ];
     $errors = required_field_errors($data, ['title']);
     $errors = array_merge($errors, max_length_errors($data, ['title' => 255]));
 
-    $imageName = ($_POST['existing_image'] ?? '') !== '' ? $_POST['existing_image'] : null;
+    $id = (int)($_POST['id'] ?? 0);
+    $current = null;
+    foreach ($items as $i) {
+        if ((int)$i['id'] === $id) {
+            $current = $i;
+        }
+    }
+    if ($action === 'edit' && $current === null) {
+        $errors[] = 'Raksts nav atrasts.';
+    }
+    $image = $current['image'] ?? null;
     if (!empty($_FILES['image']['name'])) {
         $saved = save_uploaded_image($_FILES['image'], __DIR__ . '/../../uploads/articles');
         if ($saved === null) {
             $errors[] = 'Neizdevās augšupielādēt attēlu (pārbaudi formātu un izmēru, maks. 5 MB).';
         } else {
-            $imageName = $saved;
+            $image = 'uploads/articles/' . $saved;
         }
     }
 
     if (!$errors) {
+        $now = date('Y-m-d H:i:s');
         if ($action === 'add') {
-            $items[] = [
-                'id' => next_id($items),
-                'title' => $data['title'],
-                'text' => $data['text'],
-                'image' => $imageName,
-                'sort_order' => $data['sort_order'],
-                'created_at' => date('Y-m-d H:i:s'),
+            $items[] = ['id' => next_id($items)] + $data + [
+                'image' => $image,
+                'created_at' => $now,
+                'updated_at' => $now,
             ];
         } else {
-            $id = (int)$_POST['id'];
             foreach ($items as &$i) {
                 if ((int)$i['id'] === $id) {
-                    $i['title'] = $data['title'];
-                    $i['text'] = $data['text'];
-                    $i['image'] = $imageName;
-                    $i['sort_order'] = $data['sort_order'];
+                    $i = array_merge($i, $data, ['image' => $image, 'updated_at' => $now]);
                     break;
                 }
             }
@@ -89,12 +95,13 @@ foreach ($errors as $e) {
 }
 ?>
 <table>
-<tr><th>ID</th><th>Nosaukums</th><th>Attēls</th><th></th></tr>
+<tr><th>ID</th><th>Nosaukums</th><th>Kārtība</th><th>Statuss</th><th></th></tr>
 <?php foreach ($items as $i): ?>
 <tr>
   <td><?= (int)$i['id'] ?></td>
   <td><?= htmlspecialchars($i['title']) ?></td>
-  <td><?= $i['image'] ? htmlspecialchars($i['image']) : '—' ?></td>
+  <td><?= (int)($i['sort_order'] ?? 0) ?></td>
+  <td><?= is_published($i) ? 'Publicēts' : 'Melnraksts' ?></td>
   <td>
     <a href="articles.php?action=edit&id=<?= (int)$i['id'] ?>">Rediģēt</a>
     <a href="articles.php?action=delete&id=<?= (int)$i['id'] ?>&csrf=<?= urlencode(csrf_token()) ?>" onclick="return confirm('Dzēst?')">Dzēst</a>
@@ -108,12 +115,13 @@ foreach ($errors as $e) {
   <?= csrf_field() ?>
   <?php if ($editing): ?>
     <input type="hidden" name="id" value="<?= (int)$editing['id'] ?>">
-    <input type="hidden" name="existing_image" value="<?= htmlspecialchars($editing['image'] ?? '') ?>">
   <?php endif; ?>
-  <label>Nosaukums: <input type="text" name="title" value="<?= htmlspecialchars($editing['title'] ?? '') ?>" required></label><br>
-  <label>Teksts: <textarea name="text" rows="4" cols="50"><?= htmlspecialchars($editing['text'] ?? '') ?></textarea></label><br>
+  <label>Nosaukums: <input type="text" name="title" size="60" value="<?= htmlspecialchars($editing['title'] ?? '') ?>" required></label><br>
+  <label>Teksts:<br><textarea name="text" rows="14" cols="80"><?= htmlspecialchars($editing['text'] ?? '') ?></textarea></label><br>
+  <small>Var rakstīt vienkāršu tekstu: tukša rinda — jauna rindkopa.</small><br>
   <label>Attēls: <input type="file" name="image" accept=".jpg,.jpeg,.png,.webp"></label><br>
-  <label>Kārtība: <input type="number" name="sort_order" value="<?= (int)($editing['sort_order'] ?? 0) ?>"></label><br>
+  <label>Kārtība (mazāks skaitlis — augstāk): <input type="number" name="sort_order" value="<?= (int)($editing['sort_order'] ?? 0) ?>"></label><br>
+  <label><input type="checkbox" name="published" value="1" <?= ($editing === null || is_published($editing)) ? 'checked' : '' ?>> Publicēts</label><br>
   <button type="submit"><?= $editing ? 'Saglabāt' : 'Pievienot' ?></button>
 </form>
 <?php admin_footer(); ?>
