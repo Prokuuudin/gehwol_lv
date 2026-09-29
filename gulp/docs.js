@@ -18,7 +18,6 @@ const csso = require("gulp-csso");
 const server = require("gulp-server-livereload");
 const clean = require("gulp-clean");
 const fs = require("fs");
-const sourceMaps = require("gulp-sourcemaps");
 const groupMedia = require("gulp-group-css-media-queries");
 const plumber = require("gulp-plumber");
 const notify = require("gulp-notify");
@@ -109,7 +108,6 @@ gulp.task("sass:docs", function() {
       .src("./src/scss/*.scss")
       .pipe(changed("./docs/css/"))
       .pipe(plumber(plumberNotify("SCSS")))
-      .pipe(sourceMaps.init())
       .pipe(sassGlob()) /* Первый */
       .pipe(sass()) /* Второй */
       .pipe(autoprefixer()) /* После SASS обработка CSS */
@@ -125,8 +123,7 @@ gulp.task("sass:docs", function() {
           "$1$2$3$4$6$1",
         ),
       )
-      .pipe(csso())
-      .pipe(sourceMaps.write())
+      .pipe(csso()) // no source map in the production CSS (it was ~80% of the file)
       .pipe(gulp.dest("./docs/css/"))
   );
 });
