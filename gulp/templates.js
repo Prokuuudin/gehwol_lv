@@ -13,20 +13,21 @@ const TEMPLATES = path.join(ROOT, "php", "templates");
 // server config (.htaccess, .user.ini) is copied next to the site.
 gulp.task("templates:docs", function (done) {
   fs.mkdirSync(TEMPLATES, { recursive: true });
-  fs.readdirSync(TEMPLATES)
-    .filter((file) => file.endsWith(".html"))
-    .forEach((file) => fs.unlinkSync(path.join(TEMPLATES, file)));
+  const built = fs.readdirSync(DOCS).filter((file) => file.endsWith(".html"));
+  built
+    .filter((file) => !fs.existsSync(path.join(SRC_HTML, file)))
+    .forEach((file) => fs.unlinkSync(path.join(DOCS, file)));
+  const fresh = built.filter((file) =>
+    fs.existsSync(path.join(DOCS, file)) && fs.readFileSync(path.join(DOCS, file), "utf8").includes("<x-slot "));
 
-  fs.readdirSync(DOCS)
-    .filter((file) => file.endsWith(".html"))
-    .forEach((file) => {
-      const built = path.join(DOCS, file);
-      if (!fs.existsSync(path.join(SRC_HTML, file))) {
-        fs.unlinkSync(built);
-      } else if (fs.readFileSync(built, "utf8").includes("<x-slot ")) {
-        fs.renameSync(built, path.join(TEMPLATES, file));
-      }
-    });
+  // Replace the templates only when html:docs has just produced new ones; run on its own,
+  // this task must not wipe php/templates/.
+  if (fresh.length) {
+    fs.readdirSync(TEMPLATES)
+      .filter((file) => file.endsWith(".html"))
+      .forEach((file) => fs.unlinkSync(path.join(TEMPLATES, file)));
+    fresh.forEach((file) => fs.renameSync(path.join(DOCS, file), path.join(TEMPLATES, file)));
+  }
 
   const sitemap = path.join(DOCS, "sitemap.xml");
   if (fs.existsSync(sitemap)) fs.unlinkSync(sitemap);
