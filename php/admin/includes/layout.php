@@ -27,6 +27,9 @@ th,td{border:1px solid #ccc;padding:0.4rem;text-align:left;}
   <a href="logout.php">Iziet</a>
 </nav>
 <h1><?= htmlspecialchars($title) ?></h1>
+<?php foreach (storage_problems() as $problem): ?>
+<p class="error"><?= htmlspecialchars($problem) ?> Saglabāšana nedarbosies — sazinieties ar izstrādātāju.</p>
+<?php endforeach; ?>
 <?php
 }
 

@@ -2,6 +2,7 @@
 // php/includes/auth.php
 
 require_once __DIR__ . '/storage.php';
+require_once __DIR__ . '/errors.php';
 
 function verify_credentials(?array $userRow, string $password): bool
 {

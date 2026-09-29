@@ -19,3 +19,6 @@ uploads/articles/*
 !uploads/news/.gitkeep
 !uploads/articles/.gitkeep
 !uploads/.htaccess
+php/data/backups/
+php/data/*.lock
+php/data/*.tmp
