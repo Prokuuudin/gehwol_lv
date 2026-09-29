@@ -70,8 +70,9 @@ button, input[type="submit"] {
     cursor: pointer;
 }
 
-input:focus, input:active,
-button:focus, button:active {
+/* mouse clicks show no outline; keyboard focus does (see _a11y.scss) */
+input:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
     outline: none;
 }
 

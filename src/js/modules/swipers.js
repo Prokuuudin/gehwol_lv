@@ -1,8 +1,11 @@
 import Swiper from "swiper";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { A11y, Autoplay, Keyboard, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
+// no automatic sliding for visitors who asked the system for reduced motion
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const newsSwiperConfig = {
   modules: [Autoplay],
@@ -16,7 +19,7 @@ const newsSwiperConfig = {
     1024: { slidesPerView: 3 },
   },
 
-  autoplay: {
+  autoplay: reducedMotion ? false : {
     delay: 2500,
     disableOnInteraction: false,
     reverseDirection: false,
@@ -41,7 +44,9 @@ export function createProductSwipers() {
   document.querySelectorAll(".product-detail__swiper").forEach((container) => {
     if (instances.has(container)) return;
     const swiper = new Swiper(container, {
-      modules: [Navigation, Pagination],
+      modules: [A11y, Keyboard, Navigation, Pagination],
+      keyboard: { enabled: true, onlyInViewport: true },
+      a11y: { prevSlideMessage: "Iepriekšējais attēls", nextSlideMessage: "Nākamais attēls", paginationBulletMessage: "Attēls {{index}}" },
       loop: true,
       slidesPerView: 1,
       spaceBetween: 12,

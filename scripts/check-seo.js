@@ -14,6 +14,9 @@ for (const file of files) {
   const html = fs.readFileSync(path.join(directory, file), 'utf8');
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${file}: H1`);
   assert(!html.includes('@@'), `${file}: unresolved include`);
+  assert(!html.includes('<x-slot'), `${file}: unfilled template slot`);
+  assert(!/href="#"/.test(html), `${file}: link without target (href="#")`);
+  assert(/<main id="main">/.test(html) && html.includes('href="#main"'), `${file}: skip link / main landmark`);
   const title = html.match(/<title>(.*?)<\/title>/s)?.[1];
   assert(title && !titles.has(title), `${file}: missing or duplicate title`);
   titles.add(title);

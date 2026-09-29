@@ -1,0 +1,39 @@
+// Keyboard and assistive technology support
+
+.skip-link {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	z-index: 1000;
+	padding: 10px 16px;
+	background: var(--accent-dark);
+	color: #fff;
+	font-weight: 700;
+	border-radius: 4px;
+	transform: translateY(-200%);
+
+	&:focus {
+		transform: none;
+	}
+}
+
+:focus-visible {
+	outline: 3px solid var(--accent-dark);
+	outline-offset: 2px;
+}
+
+// the mobile menu has an accent background
+.mobile-nav :focus-visible {
+	outline-color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

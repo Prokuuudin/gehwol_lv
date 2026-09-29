@@ -295,7 +295,7 @@ function product_card_html(array $product): string
         ? picture_html($product['images'][0], $product['name'], 'lazy')
         : '<span class="product-card__placeholder">GEHWOL</span>';
     return '<a href="produkts-' . (int)$product['id'] . '.html" class="product-card"><div class="product-card__media">' . $media . '</div>'
-        . '<h3 class="product-card__title">' . e($product['name']) . '</h3>'
+        . '<h2 class="product-card__title">' . e($product['name']) . '</h2>'
         . '<span class="product-card__cta btn-link">Uzzināt vairāk →</span></a>';
 }
 

@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400%3B600%3B700&display=swap');
-
 /* Base */
 @import './base/reset';
 @import './base/vars';
 @import './base/mixins';
 @import './base/fontsAutoGen';
+@import './base/open-sans';
 @import './base/base';
 @import './base/utils'; // Тест на ошибку
 @import './base/containers';
 @import './base/sticky-footer';
+@import './base/a11y';
 
 /* Blocks */
 @import './blocks/*.scss';
