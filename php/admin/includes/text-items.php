@@ -1,0 +1,179 @@
+<?php
+// Shared admin page for news and articles (title, text, one image, published flag).
+// News have a date and are listed newest first; articles have a manual order.
+
+require_once __DIR__ . '/../../includes/storage.php';
+require_once __DIR__ . '/../../includes/auth.php';
+require_once __DIR__ . '/../../includes/validation.php';
+require_once __DIR__ . '/../../includes/upload.php';
+require_once __DIR__ . '/../../includes/content.php';
+require_once __DIR__ . '/layout.php';
+
+/**
+ * $cfg: collection, page (news.php), prefix (jaunums), title (Jaunumi), add (Pievienot jaunumu),
+ *       edit (Rediģēt jaunumu), not_found, dated (bool)
+ */
+function text_items_page(array $cfg): void
+{
+    require_login();
+
+    $collection = $cfg['collection'];
+    $page = $cfg['page'];
+    $dated = $cfg['dated'];
+    $action = $_GET['action'] ?? 'list';
+    $errors = [];
+    $items = load_collection($collection);
+
+    $find = function (int $id) use (&$items): ?array {
+        foreach ($items as $i) {
+            if ((int)$i['id'] === $id) {
+                return $i;
+            }
+        }
+        return null;
+    };
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($action, ['add', 'edit'], true)) {
+        require_csrf();
+        $data = [
+            'title' => trim($_POST['title'] ?? ''),
+            'text' => text_to_html($_POST['text'] ?? ''),
+            'seo_description' => trim($_POST['seo_description'] ?? ''),
+            'published' => ($_POST['published'] ?? '') === '1',
+        ];
+        if ($dated) {
+            $data['date'] = normalize_date($_POST['date'] ?? '');
+        } else {
+            $data['sort_order'] = (int)($_POST['sort_order'] ?? 0);
+        }
+        $errors = required_field_errors($data, ['title']);
+        $errors = array_merge($errors, max_length_errors($data, ['title' => 255, 'seo_description' => 300]));
+        if ($dated && $data['date'] === null) {
+            $errors[] = 'Norādi datumu.';
+        }
+
+        $id = (int)($_POST['id'] ?? 0);
+        $current = $action === 'edit' ? $find($id) : null;
+        if ($action === 'edit' && $current === null) {
+            $errors[] = $cfg['not_found'];
+        }
+        $oldImage = $current['image'] ?? null;
+        $image = !empty($_POST['image_remove']) ? null : $oldImage;
+        $uploaded = null;
+        if (($_FILES['image']['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE) {
+            try {
+                $uploaded = process_uploaded_image($_FILES['image'], $collection);
+                $image = $uploaded;
+            } catch (UploadException $e) {
+                $errors[] = $e->getMessage();
+            }
+        }
+
+        if ($errors) {
+            delete_unused_uploads(array_filter([$uploaded]));
+        } else {
+            $now = date('Y-m-d H:i:s');
+            if ($action === 'add') {
+                $id = next_id($items);
+                $items[] = ['id' => $id] + $data + ['image' => $image, 'created_at' => $now, 'updated_at' => $now]
+                    + ($dated ? ['sort_order' => 0] : []);
+            } else {
+                foreach ($items as &$i) {
+                    if ((int)$i['id'] === $id) {
+                        $i = array_merge($i, $data, ['image' => $image, 'updated_at' => $now]);
+                        break;
+                    }
+                }
+                unset($i);
+            }
+            save_collection($collection, $items);
+            if ($oldImage !== null && $oldImage !== $image) {
+                delete_unused_uploads([$oldImage]);
+            }
+            admin_log("{$collection} {$action} id={$id}");
+            header("Location: {$page}?action=edit&id={$id}&saved=1");
+            exit;
+        }
+    }
+
+    if ($action === 'delete') {
+        require_csrf();
+        $id = (int)($_POST['id'] ?? 0);
+        $image = $find($id)['image'] ?? null;
+        $items = array_values(array_filter($items, fn($i) => (int)$i['id'] !== $id));
+        save_collection($collection, $items);
+        delete_unused_uploads(array_filter([$image]));
+        admin_log("{$collection} delete id={$id}");
+        header("Location: {$page}?saved=1");
+        exit;
+    }
+
+    if ($dated) {
+        usort($items, fn($a, $b) => [$b['date'] ?? '', (int)$b['id']] <=> [$a['date'] ?? '', (int)$a['id']]);
+    } else {
+        $items = sort_rows($items);
+    }
+    $editing = $action === 'edit' && isset($_GET['id']) ? $find((int)$_GET['id']) : null;
+    $form = $errors ? array_merge($editing ?? [], $data ?? [], ['text' => $_POST['text'] ?? '']) : $editing;
+    $viewUrl = fn(array $row) => '../../' . $cfg['prefix'] . '-' . (int)$row['id'] . '.html';
+
+    admin_header($editing ? $cfg['edit'] : $cfg['title']);
+    foreach ($errors as $e) {
+        echo '<p class="error">' . htmlspecialchars($e) . '</p>';
+    }
+    if (!$editing): ?>
+<p><a href="#form">+ <?= htmlspecialchars($cfg['add']) ?></a></p>
+<table class="list">
+<tr><th>ID</th><th>Nosaukums</th><th><?= $dated ? 'Datums' : 'Kārtība' ?></th><th>Statuss</th><th>Mainīts</th><th></th></tr>
+<?php foreach ($items as $i): ?>
+<tr>
+  <td><?= (int)$i['id'] ?></td>
+  <td><a href="<?= $page ?>?action=edit&id=<?= (int)$i['id'] ?>"><?= htmlspecialchars($i['title']) ?></a></td>
+  <td><?= $dated ? htmlspecialchars(format_date_lv($i['date'] ?? null) ?: '—') : (int)($i['sort_order'] ?? 0) ?></td>
+  <td><?= status_label($i) ?></td>
+  <td><?= htmlspecialchars(substr((string)($i['updated_at'] ?? ''), 0, 10)) ?></td>
+  <td>
+    <?php if (is_published($i)): ?><a href="<?= htmlspecialchars($viewUrl($i)) ?>" target="_blank" rel="noopener">Skatīt</a><?php endif; ?>
+    <?= delete_button($page, (int)$i['id']) ?>
+  </td>
+</tr>
+<?php endforeach; ?>
+</table>
+<h2 id="form"><?= htmlspecialchars($cfg['add']) ?></h2>
+<?php else: ?>
+<p><a href="<?= $page ?>">← Atpakaļ uz sarakstu</a>
+<?php if (is_published($editing)): ?> · <a href="<?= htmlspecialchars($viewUrl($editing)) ?>" target="_blank" rel="noopener">Skatīt vietnē</a><?php endif; ?></p>
+<?php endif; ?>
+
+<form method="post" action="<?= $page ?>?action=<?= $editing ? 'edit&amp;id=' . (int)$editing['id'] : 'add' ?>" enctype="multipart/form-data" id="item-form">
+  <?= csrf_field() ?>
+  <?php if ($editing): ?><input type="hidden" name="id" value="<?= (int)$editing['id'] ?>"><?php endif; ?>
+  <p><label>Nosaukums:<br><input type="text" name="title" size="70" value="<?= htmlspecialchars($form['title'] ?? '') ?>" required></label></p>
+  <?php if ($dated): ?>
+  <p><label>Datums:<br><input type="date" name="date" value="<?= htmlspecialchars($form['date'] ?? date('Y-m-d')) ?>" required></label></p>
+  <?php endif; ?>
+  <p><label>Teksts:<br><textarea name="text" rows="14" cols="80"><?= htmlspecialchars(html_to_editable_text($form['text'] ?? '')) ?></textarea></label><br>
+  <small>Var rakstīt vienkāršu tekstu: tukša rinda — jauna rindkopa.</small></p>
+  <?php if (!empty($editing['image'])): ?>
+  <p><img class="thumb" src="<?= htmlspecialchars(admin_image_url($editing['image'])) ?>" alt="">
+     <label><input type="checkbox" name="image_remove" value="1"> Dzēst attēlu</label></p>
+  <?php endif; ?>
+  <p><label><?= !empty($editing['image']) ? 'Aizstāt attēlu' : 'Attēls' ?> (JPG, PNG, WebP, līdz <?= UPLOAD_MAX_BYTES / 1024 / 1024 ?> MB):<br><input type="file" name="image" accept=".jpg,.jpeg,.png,.webp"></label></p>
+  <?php if (!$dated): ?>
+  <p><label>Kārtība (mazāks skaitlis — augstāk):<br><input type="number" name="sort_order" value="<?= (int)($form['sort_order'] ?? 0) ?>"></label></p>
+  <?php endif; ?>
+  <p><label>SEO apraksts (ja tukšs — veidojas no nosaukuma):<br><input type="text" name="seo_description" size="70" maxlength="300" value="<?= htmlspecialchars($form['seo_description'] ?? '') ?>"></label></p>
+  <p><label><input type="checkbox" name="published" value="1" <?= ($form === null || is_published($form)) ? 'checked' : '' ?>> Publicēts (redzams vietnē)</label></p>
+  <button type="submit"><?= $editing ? 'Saglabāt' : 'Pievienot' ?></button>
+</form>
+<script>
+(function () {
+  var form = document.getElementById('item-form'), dirty = false;
+  form.addEventListener('input', function () { dirty = true; });
+  form.addEventListener('submit', function () { dirty = false; });
+  window.addEventListener('beforeunload', function (e) { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+})();
+</script>
+<?php
+    admin_footer();
+}

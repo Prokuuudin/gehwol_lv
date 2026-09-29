@@ -79,6 +79,36 @@ final class ContentTest extends TestCase
         );
     }
 
+    public function test_simple_html_is_edited_as_plain_text_and_round_trips(): void
+    {
+        $html = "<p>Pirmā &amp; rindkopa<br>otrā rinda</p>\n<p>Otrā</p>";
+        $this->assertSame("Pirmā & rindkopa\notrā rinda\n\nOtrā", html_to_editable_text($html));
+        $this->assertSame($html, text_to_html(html_to_editable_text($html)));
+    }
+
+    public function test_rich_html_is_edited_as_html(): void
+    {
+        $html = '<p><strong>Platums:</strong> 52 cm</p>';
+        $this->assertSame($html, html_to_editable_text($html));
+        $this->assertSame('<p class="x">a</p>', html_to_editable_text('<p class="x">a</p>'));
+    }
+
+    public function test_all_stored_texts_survive_an_edit_without_changes(): void
+    {
+        $data = __DIR__ . '/../php/data';
+        foreach (['products' => 'description', 'news' => 'text', 'articles' => 'text'] as $file => $field) {
+            foreach (json_decode(file_get_contents("{$data}/{$file}.json"), true) as $row) {
+                $again = text_to_html(html_to_editable_text($row[$field]));
+                $norm = fn($h) => html_entity_decode(preg_replace('/>\s+</', '><', $h), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                $this->assertSame(
+                    $norm($row[$field]),
+                    $norm($again),
+                    "{$file} {$row['id']}"
+                );
+            }
+        }
+    }
+
     public function test_empty_text_is_empty(): void
     {
         $this->assertSame('', text_to_html("  \n "));

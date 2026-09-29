@@ -1,5 +1,8 @@
 {
     "require-dev": {
         "phpunit/phpunit": "^10.5"
+    },
+    "scripts": {
+        "test": "php -d extension=gd -d extension=exif vendor/bin/phpunit"
     }
 }

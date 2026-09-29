@@ -113,6 +113,21 @@ function text_to_html(string $text): string
     return $hasTags ? sanitize_html(implode("\n", $paragraphs)) : implode("\n", $paragraphs);
 }
 
+/**
+ * Stored HTML -> what the editor sees. Text made only of plain <p> paragraphs and <br> is shown
+ * as plain text (text_to_html() turns it back); anything richer is shown as HTML.
+ */
+function html_to_editable_text(string $html): string
+{
+    $html = trim($html);
+    if ($html === '' || preg_match('~<(?!/?p>|br\s*/?>)[^>]*>~i', $html)) {
+        return $html;
+    }
+    $paragraphs = preg_split('~</p>\s*~i', preg_replace('~^\s*<p>~i', '', $html), -1, PREG_SPLIT_NO_EMPTY);
+    $paragraphs = array_map(fn($p) => preg_replace('~<br\s*/?>~i', "\n", preg_replace('~^\s*<p>~i', '', $p)), $paragraphs);
+    return html_entity_decode(implode("\n\n", array_map('trim', $paragraphs)), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+}
+
 /** 'YYYY-MM-DD' or 'DD.MM.YYYY' -> 'YYYY-MM-DD', null when empty/invalid. */
 function normalize_date(?string $value): ?string
 {

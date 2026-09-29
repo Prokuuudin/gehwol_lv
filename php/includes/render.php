@@ -38,12 +38,18 @@ function fill_slot(string $html, string $slot, string $content): string
 
 // --- images -------------------------------------------------------------------
 
+/** Folder that holds a site image: admin uploads sit next to php/ (the document root in production), built images in the public folder. */
+function image_base_dir(string $src): string
+{
+    return str_starts_with($src, 'uploads/') ? dirname(__DIR__, 2) : site_public_dir();
+}
+
 /** [width, height] of a site image (path relative to the site root), null if unknown. */
 function image_size(string $src): ?array
 {
     static $cache = [];
     if (!array_key_exists($src, $cache)) {
-        $info = @getimagesize(site_public_dir() . '/' . $src);
+        $info = @getimagesize(image_base_dir($src) . '/' . $src);
         $cache[$src] = $info ? [$info[0], $info[1]] : null;
     }
     return $cache[$src];
@@ -60,7 +66,7 @@ function picture_html(string $src, string $alt, string $loading): string
 
     $ext = strtolower(pathinfo($src, PATHINFO_EXTENSION));
     $base = substr($src, 0, -strlen($ext) - 1);
-    $dir = site_public_dir();
+    $dir = image_base_dir($src);
     if ($ext === 'webp' || !is_file("{$dir}/{$base}.webp")) {
         return $img;
     }

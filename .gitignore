@@ -24,3 +24,4 @@ php/data/*.tmp
 *hosting*.docx
 .env
 config.local.php
+php/data/login_attempts.json
