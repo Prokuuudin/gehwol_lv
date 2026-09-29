@@ -36,8 +36,8 @@ function text_items_page(array $cfg): void
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($action, ['add', 'edit'], true)) {
         require_csrf();
         $data = [
-            'title' => trim($_POST['title'] ?? ''),
-            'text' => text_to_html($_POST['text'] ?? ''),
+            'title' => typography(trim($_POST['title'] ?? '')),
+            'text' => typography_html(text_to_html($_POST['text'] ?? '')),
             'seo_description' => trim($_POST['seo_description'] ?? ''),
             'published' => ($_POST['published'] ?? '') === '1',
         ];

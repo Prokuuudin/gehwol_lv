@@ -36,11 +36,11 @@ function find_product(array $products, int $id): ?array
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($action, ['add', 'edit'], true)) {
     require_csrf();
     $data = [
-        'name' => trim($_POST['name'] ?? ''),
+        'name' => typography(trim($_POST['name'] ?? '')),
         'category_id' => (int)($_POST['category_id'] ?? 0),
-        'subtitle' => trim($_POST['subtitle'] ?? ''),
-        'description' => text_to_html($_POST['description'] ?? ''),
-        'active_ingredients' => trim($_POST['active_ingredients'] ?? ''),
+        'subtitle' => typography(trim($_POST['subtitle'] ?? '')),
+        'description' => typography_html(text_to_html($_POST['description'] ?? '')),
+        'active_ingredients' => typography(trim($_POST['active_ingredients'] ?? '')),
         'seo_description' => trim($_POST['seo_description'] ?? ''),
         'sort_order' => (int)($_POST['sort_order'] ?? 0),
         'published' => ($_POST['published'] ?? '') === '1',

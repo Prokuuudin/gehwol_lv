@@ -94,6 +94,31 @@ function sanitize_children(DOMNode $node): void
     }
 }
 
+/**
+ * Latvian typography for editor text, like gulp-typograf did for the original pages:
+ * no line break after short words (ar, un, uz, no…), inside numbers and before units,
+ * spaced hyphen -> non-breaking space + em dash, 28 x 12 -> 28×12, "…" -> «…».
+ * Safe to apply repeatedly.
+ */
+function typography(string $text): string
+{
+    $nbsp = "\u{00A0}";
+    $text = preg_replace('/(\d)\s*[xX×]\s*(?=\d)/u', '$1×', $text);
+    $text = preg_replace('/(?<=\S) +[-–—] +(?=\S)/u', $nbsp . '— ', $text);
+    $text = preg_replace('/(?<=\d) (?=\d{3}(?!\d))/u', $nbsp, $text);
+    $text = preg_replace('/(?<=\d) (?=(mm|cm|m|km|g|kg|ml|l|V|W|Hz|°C|%|€|gab\.)(?![\p{L}\d]))/u', $nbsp, $text);
+    $text = preg_replace('/(?<![\p{L}\d-])(\p{L}{1,2}) (?=[\p{L}\d«"(])/u', '$1' . $nbsp, $text);
+    $text = preg_replace('/"([^"\n]+)"/u', '«$1»', $text);
+    $text = preg_replace('/&quot;(.+?)&quot;/u', '«$1»', $text); // quotes in escaped plain text
+    return $text;
+}
+
+/** typography() for the text between the tags of sanitized HTML (attributes stay untouched). */
+function typography_html(string $html): string
+{
+    return preg_replace_callback('/(?<=^|>)[^<]+/', fn($m) => typography($m[0]), $html);
+}
+
 /** Editor input -> stored HTML. Text with tags is sanitized; plain text becomes paragraphs. */
 function text_to_html(string $text): string
 {

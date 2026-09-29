@@ -109,6 +109,34 @@ final class ContentTest extends TestCase
         }
     }
 
+    public function test_typography_matches_the_original_site_rules(): void
+    {
+        $nb = "\u{00A0}";
+        $this->assertSame(
+            "Krēsls ar{$nb}gāzes atsperēm{$nb}— 52{$nb}cm, 5{$nb}000 apgr., 28×12,5×28{$nb}cm, «Trendelenburga» slīpums",
+            typography('Krēsls ar gāzes atsperēm - 52 cm, 5 000 apgr., 28 x 12,5 x 28 cm, "Trendelenburga" slīpums')
+        );
+    }
+
+    public function test_typography_is_idempotent_and_leaves_markup_alone(): void
+    {
+        $once = typography_html('<p><a href="produkts-1.html" class="x y">Uz "lapu" - 10 x 20 mm</a></p>');
+        $this->assertSame($once, typography_html($once));
+        $this->assertStringContainsString('href="produkts-1.html" class="x y"', $once);
+        $this->assertStringContainsString('«lapu»', $once);
+        $this->assertSame("<p>Vārds «citāts»</p>", typography_html(text_to_html('Vārds "citāts"')));
+    }
+
+    public function test_typography_keeps_existing_texts_unchanged_where_they_were_typeset(): void
+    {
+        $data = json_decode(file_get_contents(__DIR__ . '/../php/data/products.json'), true);
+        $unchanged = 0;
+        foreach ($data as $p) {
+            $unchanged += typography($p['subtitle']) === $p['subtitle'] ? 1 : 0;
+        }
+        $this->assertGreaterThan(count($data) * 0.8, $unchanged, 'most imported subtitles are already typeset');
+    }
+
     public function test_empty_text_is_empty(): void
     {
         $this->assertSame('', text_to_html("  \n "));
