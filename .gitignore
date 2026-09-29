@@ -19,3 +19,8 @@ uploads/articles/*
 php/data/backups/
 php/data/*.lock
 php/data/*.tmp
+# credentials must never be committed
+*Hosting*.docx
+*hosting*.docx
+.env
+config.local.php
