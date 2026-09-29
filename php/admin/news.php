@@ -10,5 +10,6 @@ text_items_page([
     'add' => 'Pievienot jaunumu',
     'edit' => 'Rediģēt jaunumu',
     'not_found' => 'Jaunums nav atrasts.',
+    'preview' => 'news',
     'dated' => true,
 ]);

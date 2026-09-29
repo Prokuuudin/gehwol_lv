@@ -71,6 +71,14 @@ final class RenderTest extends TestCase
         }
     }
 
+    public function test_admin_preview_renders_drafts(): void
+    {
+        $this->assertNull(render_product(2));
+        $this->assertStringContainsString('<h1 class="category__title">Produkts 2</h1>', render_product(2, true));
+        $this->assertStringContainsString('Melnraksta jaunums', render_text_page('news', 3, true));
+        $this->assertNull(render_product(999, true));
+    }
+
     public function test_user_content_is_escaped_and_sanitized(): void
     {
         [, , $html] = site_response('/produkts-3.html');

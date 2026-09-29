@@ -187,7 +187,7 @@ foreach ($errors as $e) {
 <p><?= count($list) ?> no <?= count($products) ?></p>
 <h2 id="form">Pievienot produktu</h2>
 <?php else: ?>
-<p><a href="products.php">← Visi produkti</a>
+<p><a href="products.php">← Visi produkti</a> · <a href="preview.php?type=product&amp;id=<?= (int)$editing['id'] ?>" target="_blank" rel="noopener">Priekšskatīt</a>
 <?php if (is_published($editing)): ?> · <a href="../../produkts-<?= (int)$editing['id'] ?>.html" target="_blank" rel="noopener">Skatīt vietnē</a><?php endif; ?></p>
 <?php endif; ?>
 

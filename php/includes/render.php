@@ -95,9 +95,10 @@ function published(string $collection): array
     return array_values(array_filter(load_collection($collection), 'is_published'));
 }
 
-function find_published(string $collection, int $id): ?array
+/** A published record; with $drafts (admin preview) also unpublished ones. */
+function find_published(string $collection, int $id, bool $drafts = false): ?array
 {
-    foreach (published($collection) as $row) {
+    foreach ($drafts ? load_collection($collection) : published($collection) as $row) {
         if ((int)$row['id'] === $id) {
             return $row;
         }
@@ -221,9 +222,9 @@ function product_description_default(array $product): string
     return mb_substr($product['name'] . ' — ' . ($product['subtitle'] !== '' ? $product['subtitle'] . '.' : ''), 0, 160);
 }
 
-function render_product(int $id): ?string
+function render_product(int $id, bool $drafts = false): ?string
 {
-    $product = find_published('products', $id);
+    $product = find_published('products', $id, $drafts);
     if ($product === null) {
         return null;
     }
@@ -259,9 +260,9 @@ function render_product(int $id): ?string
     ], $main);
 }
 
-function render_text_page(string $collection, int $id): ?string
+function render_text_page(string $collection, int $id, bool $drafts = false): ?string
 {
-    $item = find_published($collection, $id);
+    $item = find_published($collection, $id, $drafts);
     if ($item === null) {
         return null;
     }

@@ -10,5 +10,6 @@ text_items_page([
     'add' => 'Pievienot rakstu',
     'edit' => 'Rediģēt rakstu',
     'not_found' => 'Raksts nav atrasts.',
+    'preview' => 'article',
     'dated' => false,
 ]);
