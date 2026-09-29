@@ -180,6 +180,21 @@ final class StorageTest extends TestCase
         $this->assertNotEmpty(storage_problems($this->dir . '/missing'));
     }
 
+    public function test_allocate_id_never_reuses_ids_of_deleted_records(): void
+    {
+        $this->assertSame(8, allocate_id('products', [['id' => 3], ['id' => 7]], $this->dir), 'starts after existing rows');
+        // record 8 is deleted again: the next record must not get id 8
+        $this->assertSame(9, allocate_id('products', [['id' => 3], ['id' => 7]], $this->dir));
+        $this->assertSame(1, allocate_id('news', [], $this->dir), 'counters are per collection');
+        $this->assertSame(21, allocate_id('products', [['id' => 20]], $this->dir), 'existing rows win over a lower counter');
+    }
+
+    public function test_allocate_id_rejects_invalid_collection(): void
+    {
+        $this->expectException(StorageException::class);
+        allocate_id('../x', [], $this->dir);
+    }
+
     public function test_next_id_starts_at_one(): void
     {
         $this->assertSame(1, next_id([]));

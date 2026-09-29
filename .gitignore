@@ -26,3 +26,4 @@ php/data/*.tmp
 config.local.php
 php/data/login_attempts.json
 release/
+php/data/id_counters.json

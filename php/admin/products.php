@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($action, ['add', 'edit'], 
         }
         $now = date('Y-m-d H:i:s');
         if ($action === 'add') {
-            $id = next_id($products);
+            $id = allocate_id('products', $products);
             $products[] = ['id' => $id] + $data + $imageData + ['created_at' => $now, 'updated_at' => $now];
         } else {
             foreach ($products as &$p) {

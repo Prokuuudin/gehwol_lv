@@ -152,6 +152,33 @@ function next_id(array $rows): int
     return $max + 1;
 }
 
+/**
+ * New id for a record that is about to be added. Remembers the last issued id per collection in
+ * php/data/id_counters.json, so the id (and the public URL) of a deleted record is never reused.
+ */
+function allocate_id(string $collection, array $rows, ?string $dir = null): int
+{
+    storage_path($collection, $dir); // validates the name
+    $handle = @fopen(storage_dir($dir) . '/id_counters.json', 'c+');
+    if ($handle === false || !flock($handle, LOCK_EX)) {
+        throw new StorageException('Cannot open id_counters.json');
+    }
+    try {
+        $counters = json_decode((string)stream_get_contents($handle), true);
+        $counters = is_array($counters) ? $counters : [];
+        $id = max(next_id($rows), (int)($counters[$collection] ?? 0) + 1);
+        $counters[$collection] = $id;
+        ftruncate($handle, 0);
+        rewind($handle);
+        fwrite($handle, json_encode($counters, JSON_PRETTY_PRINT) . "\n");
+        fflush($handle);
+    } finally {
+        flock($handle, LOCK_UN);
+        fclose($handle);
+    }
+    return $id;
+}
+
 function sort_rows(array $rows): array
 {
     usort($rows, fn($a, $b) =>

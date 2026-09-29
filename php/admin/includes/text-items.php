@@ -74,7 +74,7 @@ function text_items_page(array $cfg): void
         } else {
             $now = date('Y-m-d H:i:s');
             if ($action === 'add') {
-                $id = next_id($items);
+                $id = allocate_id($collection, $items);
                 $items[] = ['id' => $id] + $data + ['image' => $image, 'created_at' => $now, 'updated_at' => $now]
                     + ($dated ? ['sort_order' => 0] : []);
             } else {
