@@ -15,6 +15,19 @@
 	height: 200px;
 	background-color: var(--accent-tint);
 	border-left: 4px solid var(--accent);
+	overflow: hidden;
+
+	picture {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
 }
 
 .news__slide-title {
