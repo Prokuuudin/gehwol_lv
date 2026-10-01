@@ -36,3 +36,6 @@ jobs:
 
       - name: Release contents (no data, secrets, docs or dev files)
         run: node scripts/build-release.js
+
+      - name: Safe Plesk deployment integration tests
+        run: npm run test:deploy

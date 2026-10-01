@@ -5,6 +5,8 @@
 		"check": "php php/bin/render-all.php build/check && node scripts/check-seo.js build/check docs",
 		"release": "node scripts/build-release.js",
 		"release:first": "node scripts/build-release.js --with-data",
+		"deploy:plesk": "node scripts/deploy-plesk.js",
+		"test:deploy": "node --test tests/deploy-plesk.test.js",
 		"preview": "php -S 127.0.0.1:8010 php/bin/dev-router.php"
 	},
 	"devDependencies": {

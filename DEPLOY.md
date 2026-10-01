@@ -1,100 +1,147 @@
 # Выкладка gehwol.lv
 
-Хостинг: Plesk (datateks.lv), загрузка по FTP. Корень сайта в Plesk — обычно `httpdocs/`.
+Production работает в Plesk. Git checkout ветки `main` находится в
+`/var/www/vhosts/gehwol.lv/docs`, document root — в
+`/var/www/vhosts/gehwol.lv/httpdocs`.
 
-## Что попадает на сервер
+## Что является runtime-данными
 
-`npm run release` собирает папку `release/` — ровно то, что лежит в корне сайта:
+Эти каталоги в production являются authoritative и persistent:
 
-| Путь | Что это |
-|---|---|
-| `css/ js/ img/ fonts/ files/` | оформление и изображения каталога |
-| `*.html` (4 шт.) | юридические страницы |
-| `robots.txt`, `.htaccess`, `.user.ini` | настройки сервера и индексации |
-| `php/site.php`, `php/includes/`, `php/templates/` | формирование страниц из данных |
-| `php/admin/` | админка (`/php/admin/`) |
-| `php/data/.htaccess`, `uploads/*/` | пустые, защищённые папки данных |
+- `httpdocs/php/data/**` — JSON, lock-файлы и резервные копии, которыми управляет админка;
+- `httpdocs/php/data/backups/**` — runtime-копии JSON (входит в предыдущий путь и указан отдельно для ясности);
+- `httpdocs/uploads/**` — загруженные через админку изображения.
 
-**Данные в обычный релиз не входят**: `php/data/*.json` (товары, новости, статьи, администраторы) и файлы в `uploads/`. Поэтому загрузка `release/` никогда не затирает то, что изменили в админке. В релиз также не попадают исходники, DOCX, тесты, `node_modules`, резервные копии, логи и секреты — `build-release.js` проверяет это и останавливается при нарушении.
+Обычный release и автоматический deploy никогда не создают, не заменяют и не
+удаляют ничего внутри этих путей и не меняют их permissions. Служебный каталог
+Plesk/Let's Encrypt `.well-known/**` также не управляется deploy-скриптом.
+
+## Production release
+
+`npm run release` собирает `release/` из уже подготовленных `docs/` и PHP-кода.
+В него входят PHP application code, templates, CSS, JS, изображения, шрифты,
+статические и юридические страницы, корневые `.htaccess` и `.user.ini`. В него
+не входят Git, `node_modules`, исходники, тесты, документация, credentials и
+production JSON.
+
+`npm run release:first` дополнительно включает начальные JSON. Эта команда
+предназначена **только для первой ручной установки**. При обычном обновлении её
+использовать нельзя: начальные данные не должны становиться источником истины
+для уже работающей production-админки.
 
 ## Требования к серверу
 
-- PHP 8.1 или новее; расширения `json`, `mbstring`, `dom`, `session`; для обработки фото — `gd` с WebP, желательно `fileinfo` и `exif`.
-- Apache с `.htaccess` (в Plesk по умолчанию nginx передаёт запросы Apache — подходит). Если в Plesk включён режим «только nginx», см. раздел [nginx](#если-сервер-только-nginx).
-- PHP должен иметь право записи в `php/data/` и `uploads/`.
-
-Всё это показывает страница **`/php/admin/health.php`** (до создания администратора она открыта, потом — только после входа).
+- Node.js и npm доступны для Plesk post-deployment action; установка npm-пакетов
+  для deploy не нужна, потому что release собирается из committed build output.
+- PHP 8.1 или новее с `json`, `mbstring`, `dom`, `session`, `gd`/WebP,
+  желательно `fileinfo` и `exif`.
+- Apache обрабатывает `.htaccess`; PHP может писать в `php/data/` и `uploads/`.
+- Системный пользователь подписки может писать в `docs/release`, `httpdocs` и
+  создать lock в `/var/www/vhosts/gehwol.lv`.
 
 ## Первая установка
 
-1. Проверить и собрать:
-   ```
+1. Выполнить локально проверки:
+
+   ```sh
    composer test
-   npm run build:quick        # или npm run build — если менялись изображения/шрифты
+   npm run build:quick
    npm run check
-   ```
-2. Создать администратора (файл `php/data/admin_users.json`, пароль вводится в консоли):
-   ```
-   php php/bin/set-password.php inese
-   ```
-3. Собрать релиз **с данными** (только для первой установки):
-   ```
+   npm run test:deploy
    npm run release:first
    ```
-4. На сервере **сохранить и убрать старый статический сайт**. Скачать по FTP всё содержимое `httpdocs/` в отдельную папку на компьютере (это же — откат), затем удалить на сервере старые `index.html`, `produkts-*.html`, `jaunums-*.html`, `raksts-*.html`, страницы категорий и `sitemap.xml`. Пока такие файлы лежат на сервере, сервер отдаёт их вместо актуальных страниц.
-5. Загрузить **содержимое** `release/` в `httpdocs/` (включая скрытые `.htaccess` и `.user.ini` — в FileZilla: «Сервер → Показывать скрытые файлы»).
-6. Открыть `https://gehwol.lv/php/admin/health.php`: все строки «kārtībā». Проверить `/produkts-1.html` (страница товара) и `/nav-tadas-lapas.html` (страница «Lapa nav atrasta», код 404).
-7. Войти в `/php/admin/`, сменить пароль при необходимости («Parole»).
-8. HTTPS уже настроен у хостера (проверено 2026-09-29: сертификат Let's Encrypt для `gehwol.lv` и `www.gehwol.lv`, редирект http и www на `https://gehwol.lv`), `.htaccess` включает HSTS на год. Если сертификат когда-либо перестанет продлеваться, браузеры не откроют сайт — следить за автопродлением в Plesk («SSL/TLS Certificates»).
 
-## Обновление (изменения в коде или оформлении)
+2. Создать администратора командой `php php/bin/set-password.php <логин>`.
+3. Сохранить прежний `httpdocs` отдельно для возможного отката.
+4. Один раз вручную загрузить **содержимое** `release/` в `httpdocs/`, включая
+   скрытые `.htaccess` и `.user.ini`.
+5. Проверить права записи PHP на `php/data/` и `uploads/`, затем открыть
+   `/php/admin/health.php`.
+6. После первой установки больше не применять `release:first` к этому сайту.
 
-1. `composer test`, `npm run build:quick` (или `npm run build`), `npm run check`.
-2. Закоммитить и отметить версию: `git tag deploy-ГГГГ-ММ-ДД`.
-3. **Резервная копия данных с сервера** (см. ниже).
-4. `npm run release` и загрузить содержимое `release/` в `httpdocs/` с заменой файлов. Для скорости в FileZilla можно выбрать «перезаписывать, если размер или дата отличаются» — `img/` меняется редко.
-5. Проверить `/php/admin/health.php` — в строке «Versija» указан коммит выложенной версии.
+## Обычное обновление
 
-Если файл удалён из проекта (например, картинка), на сервере он останется — удалить вручную, если мешает.
+Автоматический вариант — `npm run deploy:plesk`. Команда:
 
-## Резервное копирование
+1. атомарно захватывает общий lock рядом с `httpdocs`, не допуская второй deploy;
+2. полностью выполняет существующий `scripts/build-release.js`;
+3. при ошибке сборки завершается с non-zero code, не меняя `httpdocs`;
+4. проверяет release на runtime JSON, symlinks и development/private content;
+5. сравнивает release с production, исключая persistent paths;
+6. заменяет новые и изменённые файлы через temporary file + rename;
+7. только после успешного копирования удаляет устаревшие deployable-файлы;
+8. пишет SHA, результат build/deploy, списки изменений и подтверждение сохранения runtime paths.
 
-- **Автоматически**: каждое сохранение в админке кладёт прежнюю версию JSON в `php/data/backups/` (20 последних на каждый тип данных).
-- **Вручную** (перед каждым обновлением и раз в месяц): скачать по FTP папки `php/data/` и `uploads/` целиком и хранить с датой в имени. Больше ничего сохранять не нужно — всё остальное восстанавливается из git.
+Перед изменением production выполнить `composer test`, PHP lint, `npm run check`,
+`npm run test:deploy` и `npm run release`. Резервный ручной способ без
+post-deployment action: загрузить содержимое обычного `release/` через Plesk
+File Manager/FTP, не трогая `php/data/` и `uploads/`; устаревшие deployable-файлы
+при этом придётся удалить вручную. `release:first` для обновления запрещён.
 
-## Восстановление данных
+Проверить план без изменения destination:
 
-- **Откатить неудачную правку** (товары, новости, статьи):
-  - с SSH: `php php/bin/restore.php products` — список копий; `php php/bin/restore.php products <файл>` — восстановить;
-  - без SSH: скачать `php/data/products.json` (на всякий случай) и нужный файл из `php/data/backups/`, переименовать его в `products.json` и загрузить в `php/data/`.
-- **Полное восстановление**: загрузить сохранённые папки `php/data/` и `uploads/` обратно.
-- Файлы изображений при откате данных не удаляются; лишние не мешают работе.
-
-## Откат версии сайта
-
-Данные при этом не меняются.
+```sh
+npm run deploy:plesk -- --dry-run
 ```
-git checkout deploy-ГГГГ-ММ-ДД     # последняя рабочая отметка
-npm run release
+
+Для ручного локального/тестового запуска другой destination задаётся явно:
+
+```sh
+npm run deploy:plesk -- --destination /safe/test/httpdocs
 ```
-Загрузить `release/`, затем `git checkout main`. Если нужно вернуть совсем старый статический сайт — загрузить сохранённую в шаге 4 первой установки копию `httpdocs/`.
 
-## Перенос на другой сервер
+## Автоматический Plesk deployment
 
-1. Скачать весь `httpdocs/` со старого сервера (включая `php/data/` и `uploads/`).
-2. Загрузить на новый сервер, проверить права записи на `php/data/` и `uploads/`.
-3. Открыть `/php/admin/health.php` на новом сервере (временным адресом или через hosts-файл), исправить красные строки.
-4. Переключить DNS домена.
+В Plesk Git должны оставаться branch `main`, automatic deployment и deployment
+directory `/docs`. Включить `Enable post deployment actions` и вставить ровно:
 
-## Администраторы
-
-- Новый администратор или сброс забытого пароля: `php php/bin/set-password.php <логин>` локально, затем загрузить `php/data/admin_users.json` по FTP (перед этим скачать серверный файл, если там есть другие администраторы, и запускать скрипт на его копии). С SSH — выполнить скрипт прямо на сервере.
-- После 5 неверных паролей вход с IP блокируется на 15 минут; досрочно снять блокировку — удалить `php/data/login_attempts.json`.
-
-## Если сервер только nginx
-
-`.htaccess` в этом режиме не работает. В Plesk: «Apache & nginx Settings → Additional nginx directives»:
+```sh
+cd /var/www/vhosts/gehwol.lv/docs && npm run deploy:plesk -- --destination /var/www/vhosts/gehwol.lv/httpdocs
 ```
+
+Команда содержит абсолютный переход в checkout и поэтому не зависит от current
+working directory Plesk. Credentials в проекте или в команде не требуются.
+
+После push в `main` webhook обновит `/docs`, Plesk запустит post-deployment
+action, release полностью соберётся и проверится, затем deployable-файлы
+синхронизируются с `/httpdocs`. Runtime JSON, backups и uploads останутся
+byte-for-byte нетронутыми. При неуспешной сборке `/httpdocs` не изменится.
+
+## Rollback
+
+Откат кода выполняется новым commit в `main`, возвращающим нужное состояние
+(предпочтительно `git revert`), и обычным автоматическим deploy. Так история
+остаётся линейной, а Plesk снова получает `main`. `php/data/**` и `uploads/**`
+при rollback не откатываются.
+
+Если deploy прервался уже во время файловой синхронизации, повторно доставить
+исправленный или предыдущий commit: операции идемпотентны, а каждый отдельный
+файл на Linux заменяется атомарно. Для аварийного восстановления первой
+установки использовать сохранённую копию `httpdocs`, не заменяя более свежие
+`php/data/**` и `uploads/**` без отдельного решения о восстановлении данных.
+
+Если процесс был аварийно завершён так, что остался
+`/var/www/vhosts/gehwol.lv/.gehwol-deploy.lock`, сначала убедиться в Plesk, что
+deploy больше не выполняется, и только затем удалить stale lock через File
+Manager. Активный lock удалять нельзя.
+
+## Резервное копирование данных
+
+Админка сохраняет предыдущие версии JSON в `php/data/backups/`. Дополнительно
+перед существенными изменениями и регулярно по расписанию скачивать через Plesk
+File Manager или FTP каталоги `php/data/` и `uploads/`. Git и rollback кода не
+заменяют резервную копию этих production-данных.
+
+Восстановление отдельного JSON выполняется из `php/data/backups/`; полное
+восстановление — возвратом отдельно сохранённых `php/data/` и `uploads/`.
+Перед восстановлением сначала сохранить их текущее production-состояние.
+
+## Если сервер работает только через nginx
+
+В режиме nginx-only `.htaccess` не применяется. В Plesk → Apache & nginx
+Settings → Additional nginx directives должны быть эквивалентные ограничения:
+
+```nginx
 location ~ ^/php/(data|includes|templates|bin)/ { deny all; }
 location ~ ^/uploads/.*\.(php|phtml|phar)$ { deny all; }
 location ~ /\.(?!well-known/) { deny all; }
@@ -104,8 +151,6 @@ add_header X-Content-Type-Options "nosniff" always;
 add_header Referrer-Policy "strict-origin-when-cross-origin" always;
 add_header X-Frame-Options "SAMEORIGIN" always;
 ```
-Проверить: `/php/data/products.json` и `/php/includes/render.php` должны отвечать 403.
 
-## Проверено перед выпуском
-
-Релиз разворачивался в контейнере PHP 8.1 + Apache (как на хостинге): все маршруты, 404, sitemap, запрет доступа к `php/data`, `php/includes`, `php/templates`, `php/bin`, скрытым файлам и PHP в `uploads`, заголовки безопасности, создание администратора, публикация товара с фото, повторная выкладка без потери данных, восстановление из копии.
+После настройки `/php/data/products.json` и `/php/includes/render.php` должны
+отвечать 403.
