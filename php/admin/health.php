@@ -65,24 +65,39 @@ $failed = count(array_filter($checks, fn($c) => $c[1] === false));
 
 if ($installMode) {
     admin_security_headers();
-    echo '<!DOCTYPE html><html lang="lv"><head><meta charset="UTF-8"><meta name="robots" content="noindex, nofollow"><title>Servera pārbaude</title>'
-        . '<style>body{font-family:sans-serif;max-width:900px;margin:1rem auto;padding:0 1rem}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccc;padding:.4rem;text-align:left}</style></head><body>'
-        . '<h1>Servera pārbaude</h1><p>Administrators vēl nav izveidots — šī lapa ir redzama visiem, līdz tiek augšupielādēts php/data/admin_users.json.</p>';
+    echo '<!DOCTYPE html><html lang="lv"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><title>Servera pārbaude — GEHWOL Admin</title>'
+        . '<link rel="stylesheet" href="admin.css"></head><body class="setup-page"><main class="setup-wrap">'
+        . '<header class="page-heading"><p class="eyebrow">Administrācija</p><h1>Servera pārbaude</h1></header>'
+        . '<div class="alert alert--warning" role="alert"><strong>Administrators vēl nav izveidots.</strong><span>Šī lapa ir publiski redzama, līdz tiek augšupielādēts php/data/admin_users.json.</span></div>';
 } else {
     admin_header('Servera pārbaude');
 }
 ?>
-<p><?= $failed ? "<strong class=\"error\">Problēmas: {$failed}</strong>" : '<strong class="notice">Viss kārtībā.</strong>' ?></p>
-<table>
+<div class="status-card <?= $failed ? 'status-card--error' : 'status-card--success' ?>" role="status">
+  <span class="status-card__icon" aria-hidden="true"><?= $failed ? '!' : '✓' ?></span>
+  <div>
+    <strong><?= $failed ? "Atrastas problēmas: {$failed}" : 'Viss kārtībā' ?></strong>
+    <span><?= $failed ? 'Pārskatiet ar kļūdu atzīmētās rindas.' : 'Visas obligātās servera pārbaudes ir veiksmīgas.' ?></span>
+  </div>
+</div>
+<div class="table-panel">
+<div class="table-scroll" tabindex="0" role="region" aria-label="Servera pārbaužu rezultāti">
+<table class="health-table">
 <tr><th>Pārbaude</th><th>Rezultāts</th><th>Piezīme</th></tr>
 <?php foreach ($checks as [$label, $ok, $detail]): ?>
-<tr>
+<tr class="<?= $ok === true ? 'check--success' : ($ok === null ? 'check--optional' : 'check--error') ?>">
   <td><?= htmlspecialchars($label) ?></td>
-  <td><?= $ok === true ? '✔ kārtībā' : ($ok === null ? '— nav (nav obligāti)' : '<strong class="error">✘ kļūda</strong>') ?></td>
+  <td><?= $ok === true
+      ? '<span class="badge badge--success"><span aria-hidden="true">✓</span> Kārtībā</span>'
+      : ($ok === null
+          ? '<span class="badge badge--optional"><span aria-hidden="true">—</span> Nav obligāti</span>'
+          : '<span class="badge badge--error"><span aria-hidden="true">✕</span> Kļūda</span>') ?></td>
   <td><?= htmlspecialchars($detail) ?></td>
 </tr>
 <?php endforeach; ?>
 </table>
-<p>Pāradresācijas pārbaude: <a href="../../produkts-1.html" target="_blank" rel="noopener">produkts-1.html</a> jāatver produkta lapa,
-<a href="../../nav-tadas-lapas.html" target="_blank" rel="noopener">nav-tadas-lapas.html</a> — lapa «Lapa nav atrasta».</p>
-<?php $installMode ? print('</body></html>') : admin_footer(); ?>
+</div>
+</div>
+<p class="health-notes">Pāradresācijas pārbaude: <a href="../../produkts-1.html" target="_blank" rel="noopener">produkts-1.html</a> jāatver produkta lapa,
+<a href="../../nav-tadas-lapas.html" target="_blank" rel="noopener">nav-tadas-lapas.html</a> — lapa “Lapa nav atrasta”.</p>
+<?php $installMode ? print('</main></body></html>') : admin_footer(); ?>

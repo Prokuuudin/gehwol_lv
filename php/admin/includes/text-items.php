@@ -119,52 +119,80 @@ function text_items_page(array $cfg): void
 
     admin_header($editing ? $cfg['edit'] : $cfg['title']);
     foreach ($errors as $e) {
-        echo '<p class="error">' . htmlspecialchars($e) . '</p>';
+        echo '<p class="error" role="alert">' . htmlspecialchars($e) . '</p>';
     }
     if (!$editing): ?>
-<p><a href="#form">+ <?= htmlspecialchars($cfg['add']) ?></a></p>
+<div class="page-actions">
+  <div>
+    <h2><?= $dated ? 'Jaunumu publikācijas' : 'Rakstu publikācijas' ?></h2>
+    <p class="page-intro">Pārvaldiet saturu, publicēšanas statusu un attēlus.</p>
+  </div>
+  <a class="button button--primary" href="#form"><span aria-hidden="true">+</span> <?= htmlspecialchars($cfg['add']) ?></a>
+</div>
+<div class="table-panel">
+<div class="table-scroll" tabindex="0" role="region" aria-label="<?= htmlspecialchars($cfg['title']) ?> tabula">
 <table class="list">
 <tr><th>ID</th><th>Nosaukums</th><th><?= $dated ? 'Datums' : 'Kārtība' ?></th><th>Statuss</th><th>Mainīts</th><th></th></tr>
 <?php foreach ($items as $i): ?>
 <tr>
-  <td><?= (int)$i['id'] ?></td>
-  <td><a href="<?= $page ?>?action=edit&id=<?= (int)$i['id'] ?>"><?= htmlspecialchars($i['title']) ?></a></td>
+  <td class="table-id"><?= (int)$i['id'] ?></td>
+  <td><a class="item-title" href="<?= $page ?>?action=edit&amp;id=<?= (int)$i['id'] ?>"><?= htmlspecialchars($i['title']) ?></a></td>
   <td><?= $dated ? htmlspecialchars(format_date_lv($i['date'] ?? null) ?: '—') : (int)($i['sort_order'] ?? 0) ?></td>
   <td><?= status_label($i) ?></td>
-  <td><?= htmlspecialchars(substr((string)($i['updated_at'] ?? ''), 0, 10)) ?></td>
+  <td class="table-meta"><?= htmlspecialchars(substr((string)($i['updated_at'] ?? ''), 0, 10)) ?></td>
   <td>
-    <?php if (is_published($i)): ?><a href="<?= htmlspecialchars($viewUrl($i)) ?>" target="_blank" rel="noopener">Skatīt</a><?php endif; ?>
-    <?= delete_button($page, (int)$i['id']) ?>
+    <div class="table-actions">
+      <a class="button button--small" href="<?= $page ?>?action=edit&amp;id=<?= (int)$i['id'] ?>">Rediģēt</a>
+      <?php if (is_published($i)): ?><a class="button button--text button--small" href="<?= htmlspecialchars($viewUrl($i)) ?>" target="_blank" rel="noopener">Skatīt</a><?php endif; ?>
+      <?= delete_button($page, (int)$i['id']) ?>
+    </div>
   </td>
 </tr>
 <?php endforeach; ?>
+<?php if ($items === []): ?>
+<tr><td class="empty-state" colspan="6">Šajā sadaļā vēl nav neviena ieraksta.</td></tr>
+<?php endif; ?>
 </table>
-<h2 id="form"><?= htmlspecialchars($cfg['add']) ?></h2>
+</div>
+<p class="table-summary"><?= count($items) ?> ieraksti</p>
+</div>
+<div class="section-heading section-heading--form" id="form">
+  <div><h2><?= htmlspecialchars($cfg['add']) ?></h2><p class="section-intro">Aizpildiet publikācijas saturu un statusu.</p></div>
+</div>
 <?php else: ?>
-<p><a href="<?= $page ?>">← Atpakaļ uz sarakstu</a> · <a href="preview.php?type=<?= $cfg['preview'] ?>&amp;id=<?= (int)$editing['id'] ?>" target="_blank" rel="noopener">Priekšskatīt</a>
-<?php if (is_published($editing)): ?> · <a href="<?= htmlspecialchars($viewUrl($editing)) ?>" target="_blank" rel="noopener">Skatīt vietnē</a><?php endif; ?></p>
+<div class="editor-actions">
+  <a class="button" href="<?= $page ?>"><span aria-hidden="true">←</span> Atpakaļ uz sarakstu</a>
+  <a class="button button--text" href="preview.php?type=<?= $cfg['preview'] ?>&amp;id=<?= (int)$editing['id'] ?>" target="_blank" rel="noopener">Priekšskatīt</a>
+  <?php if (is_published($editing)): ?><a class="button button--text" href="<?= htmlspecialchars($viewUrl($editing)) ?>" target="_blank" rel="noopener">Skatīt vietnē <span aria-hidden="true">↗</span></a><?php endif; ?>
+</div>
 <?php endif; ?>
 
-<form method="post" action="<?= $page ?>?action=<?= $editing ? 'edit&amp;id=' . (int)$editing['id'] : 'add' ?>" enctype="multipart/form-data" id="item-form">
+<form class="form-card admin-form" method="post" action="<?= $page ?>?action=<?= $editing ? 'edit&amp;id=' . (int)$editing['id'] : 'add' ?>" enctype="multipart/form-data" id="item-form">
   <?= csrf_field() ?>
   <?php if ($editing): ?><input type="hidden" name="id" value="<?= (int)$editing['id'] ?>"><?php endif; ?>
-  <p><label>Nosaukums:<br><input type="text" name="title" size="70" value="<?= htmlspecialchars($form['title'] ?? '') ?>" required></label></p>
+  <div class="form-field"><label for="item-title">Nosaukums</label><input id="item-title" type="text" name="title" value="<?= htmlspecialchars($form['title'] ?? '') ?>" required></div>
   <?php if ($dated): ?>
-  <p><label>Datums:<br><input type="date" name="date" value="<?= htmlspecialchars($form['date'] ?? date('Y-m-d')) ?>" required></label></p>
+  <div class="form-field"><label for="item-date">Datums</label><input id="item-date" type="date" name="date" value="<?= htmlspecialchars($form['date'] ?? date('Y-m-d')) ?>" required></div>
   <?php endif; ?>
-  <p><label>Teksts:<br><textarea name="text" rows="14" cols="80"><?= htmlspecialchars(html_to_editable_text($form['text'] ?? '')) ?></textarea></label><br>
-  <small>Var rakstīt vienkāršu tekstu: tukša rinda — jauna rindkopa.</small></p>
+  <div class="form-field"><label for="item-text">Teksts</label><textarea id="item-text" name="text" rows="14"><?= htmlspecialchars(html_to_editable_text($form['text'] ?? '')) ?></textarea>
+  <p class="field-hint">Var rakstīt vienkāršu tekstu: tukša rinda veido jaunu rindkopu.</p></div>
   <?php if (!empty($editing['image'])): ?>
-  <p><img class="thumb" src="<?= htmlspecialchars(admin_image_url($editing['image'])) ?>" alt="">
-     <label><input type="checkbox" name="image_remove" value="1"> Dzēst attēlu</label></p>
+  <div class="form-field"><span class="field-label">Pašreizējais attēls</span>
+    <div class="current-image"><img class="thumb" src="<?= htmlspecialchars(admin_image_url($editing['image'])) ?>" alt="">
+      <label class="checkbox-field"><input type="checkbox" name="image_remove" value="1"> <span>Dzēst attēlu pēc saglabāšanas</span></label>
+    </div>
+  </div>
   <?php endif; ?>
-  <p><label><?= !empty($editing['image']) ? 'Aizstāt attēlu' : 'Attēls' ?> (JPG, PNG, WebP, līdz <?= UPLOAD_MAX_BYTES / 1024 / 1024 ?> MB):<br><input type="file" name="image" accept=".jpg,.jpeg,.png,.webp"></label></p>
+  <div class="form-field"><label for="item-image"><?= !empty($editing['image']) ? 'Aizstāt attēlu' : 'Attēls' ?></label><input id="item-image" type="file" name="image" accept=".jpg,.jpeg,.png,.webp">
+  <p class="field-hint">JPG, PNG vai WebP, līdz <?= UPLOAD_MAX_BYTES / 1024 / 1024 ?> MB.</p></div>
   <?php if (!$dated): ?>
-  <p><label>Kārtība (mazāks skaitlis — augstāk):<br><input type="number" name="sort_order" value="<?= (int)($form['sort_order'] ?? 0) ?>"></label></p>
+  <div class="form-field"><label for="item-order">Kārtība</label><input id="item-order" type="number" name="sort_order" value="<?= (int)($form['sort_order'] ?? 0) ?>">
+  <p class="field-hint">Mazāks skaitlis novieto ierakstu augstāk sarakstā.</p></div>
   <?php endif; ?>
-  <p><label>SEO apraksts (ja tukšs — veidojas no nosaukuma):<br><input type="text" name="seo_description" size="70" maxlength="300" value="<?= htmlspecialchars($form['seo_description'] ?? '') ?>"></label></p>
-  <p><label><input type="checkbox" name="published" value="1" <?= ($form === null || is_published($form)) ? 'checked' : '' ?>> Publicēts (redzams vietnē)</label></p>
-  <button type="submit"><?= $editing ? 'Saglabāt' : 'Pievienot' ?></button>
+  <div class="form-field"><label for="item-seo">SEO apraksts</label><input id="item-seo" type="text" name="seo_description" maxlength="300" value="<?= htmlspecialchars($form['seo_description'] ?? '') ?>">
+  <p class="field-hint">Ja lauks ir tukšs, apraksts veidojas no nosaukuma.</p></div>
+  <label class="checkbox-field"><input type="checkbox" name="published" value="1" <?= ($form === null || is_published($form)) ? 'checked' : '' ?>> <span>Publicēts <span class="field-hint">(redzams vietnē)</span></span></label>
+  <div class="form-actions"><button class="button button--primary" type="submit"><?= $editing ? 'Saglabāt izmaiņas' : htmlspecialchars($cfg['add']) ?></button></div>
 </form>
 <script>
 (function () {

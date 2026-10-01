@@ -1,5 +1,38 @@
 <?php
 
+/** @return array<string, array{label: string, external?: bool}> */
+function admin_navigation_items(): array
+{
+    return [
+        'index.php' => ['label' => 'Sākums'],
+        'categories.php' => ['label' => 'Kategorijas'],
+        'products.php' => ['label' => 'Produkti'],
+        'news.php' => ['label' => 'Jaunumi'],
+        'articles.php' => ['label' => 'Raksti'],
+        'password.php' => ['label' => 'Parole'],
+        'health.php' => ['label' => 'Servera pārbaude'],
+        '../../' => ['label' => 'Skatīt vietni', 'external' => true],
+    ];
+}
+
+function admin_navigation(string $class): void
+{
+    $current = basename((string)($_SERVER['SCRIPT_NAME'] ?? ''));
+    ?>
+<nav class="<?= htmlspecialchars($class) ?>" aria-label="Administrācijas sadaļas">
+  <?php foreach (admin_navigation_items() as $href => $item): ?>
+    <?php $active = $href === $current; ?>
+    <a class="admin-nav__link<?= $active ? ' is-active' : '' ?>" href="<?= htmlspecialchars($href) ?>"
+      <?= $active ? 'aria-current="page"' : '' ?>
+      <?= !empty($item['external']) ? 'target="_blank" rel="noopener"' : '' ?>>
+      <span><?= htmlspecialchars($item['label']) ?></span>
+      <?php if (!empty($item['external'])): ?><span class="admin-nav__external" aria-hidden="true">↗</span><?php endif; ?>
+    </a>
+  <?php endforeach; ?>
+</nav>
+<?php
+}
+
 function admin_header(string $title): void
 {
     ?>
@@ -9,44 +42,65 @@ function admin_header(string $title): void
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title><?= htmlspecialchars($title) ?> — Admin</title>
-<style>
-body{font-family:sans-serif;max-width:1000px;margin:1rem auto;padding:0 1rem;}
-nav{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;}
-nav form{margin-left:auto;}
-table{border-collapse:collapse;width:100%;margin-top:1rem;}
-th,td{border:1px solid #ccc;padding:0.4rem;text-align:left;vertical-align:middle;}
-td form{display:inline;}
-.error{color:#b00020;}
-.notice{color:#0a5c36;}
-.thumb{width:60px;height:60px;object-fit:contain;background:#f3f3f3;}
-.images td{text-align:center;}
-input[type=text],textarea,select{max-width:100%;}
-:focus-visible{outline:3px solid #1a73e8;outline-offset:2px;}
-.images input[type=text]{width:100%;box-sizing:border-box;}
-@media (max-width:640px){.list th:nth-child(1),.list td:nth-child(1){display:none;}.images th:nth-child(4),.images td:nth-child(4){width:3em;}}
-</style>
+<title><?= htmlspecialchars($title) ?> — GEHWOL Admin</title>
+<link rel="stylesheet" href="admin.css">
 </head>
 <body>
-<nav>
-  <a href="index.php">Sākums</a>
-  <a href="categories.php">Kategorijas</a>
-  <a href="products.php">Produkti</a>
-  <a href="news.php">Jaunumi</a>
-  <a href="articles.php">Raksti</a>
-  <a href="password.php">Parole</a>
-  <a href="../../" target="_blank" rel="noopener">Skatīt vietni</a>
-  <form method="post" action="logout.php"><?= csrf_field() ?><button type="submit">Iziet</button></form>
-</nav>
-<h1><?= htmlspecialchars($title) ?></h1>
+<a class="skip-link" href="#main-content">Pāriet uz saturu</a>
+<header class="mobile-header">
+  <a class="mobile-brand" href="index.php" aria-label="GEHWOL administrācijas sākums">
+    <span class="brand-mark" aria-hidden="true">G</span>
+    <span>GEHWOL</span>
+  </a>
+  <details class="mobile-menu">
+    <summary>Izvēlne</summary>
+    <div class="mobile-menu__panel">
+      <?php admin_navigation('admin-nav admin-nav--mobile'); ?>
+      <form class="logout-form" method="post" action="logout.php">
+        <?= csrf_field() ?>
+        <button class="admin-nav__link admin-nav__button" type="submit">Iziet</button>
+      </form>
+    </div>
+  </details>
+</header>
+<div class="admin-shell">
+  <aside class="sidebar">
+    <a class="brand" href="index.php" aria-label="GEHWOL administrācijas sākums">
+      <span class="brand-mark" aria-hidden="true">G</span>
+      <span class="brand-copy"><strong>GEHWOL</strong><small>Administrācija</small></span>
+    </a>
+    <?php admin_navigation('admin-nav'); ?>
+    <div class="sidebar__footer">
+      <span class="admin-user" title="Pierakstījies lietotājs"><?= htmlspecialchars(current_admin_username()) ?></span>
+      <form class="logout-form" method="post" action="logout.php">
+        <?= csrf_field() ?>
+        <button class="admin-nav__link admin-nav__button" type="submit">Iziet</button>
+      </form>
+    </div>
+  </aside>
+  <main class="admin-main" id="main-content">
+    <div class="admin-content">
+      <header class="page-heading">
+        <p class="eyebrow">Administrācija</p>
+        <h1><?= htmlspecialchars($title) ?></h1>
+      </header>
 <?php foreach (storage_problems() as $problem): ?>
-<p class="error"><?= htmlspecialchars($problem) ?> Saglabāšana nedarbosies — sazinieties ar izstrādātāju.</p>
+      <div class="alert alert--error" role="alert">
+        <strong>Saglabāšana nav pieejama.</strong>
+        <span><?= htmlspecialchars($problem) ?> Sazinieties ar izstrādātāju.</span>
+      </div>
 <?php endforeach; ?>
 <?php if (function_exists('image_processing_available') && !image_processing_available()): ?>
-<p class="error">Serverī nav attēlu apstrādes (PHP GD): attēli tiks saglabāti bez samazināšanas.</p>
+      <div class="alert alert--warning" role="alert">
+        <strong>Attēlu apstrāde nav pieejama.</strong>
+        <span>Serverī nav PHP GD; attēli tiks saglabāti bez samazināšanas.</span>
+      </div>
 <?php endif; ?>
 <?php if (!empty($_GET['saved'])): ?>
-<p class="notice" role="status">Saglabāts.</p>
+      <div class="alert alert--success" role="status">
+        <strong>Saglabāts.</strong>
+        <span>Izmaiņas ir veiksmīgi saglabātas.</span>
+      </div>
 <?php endif; ?>
 <?php
 }
@@ -54,6 +108,9 @@ input[type=text],textarea,select{max-width:100%;}
 function admin_footer(): void
 {
     ?>
+    </div>
+  </main>
+</div>
 </body>
 </html>
 <?php
@@ -62,8 +119,8 @@ function admin_footer(): void
 /** POST form with a confirmation for deleting a record. */
 function delete_button(string $page, int $id): string
 {
-    return '<form method="post" action="' . htmlspecialchars($page) . '?action=delete" onsubmit="return confirm(\'Dzēst neatgriezeniski?\')">'
-        . csrf_field() . '<input type="hidden" name="id" value="' . $id . '"><button type="submit">Dzēst</button></form>';
+    return '<form class="inline-form" method="post" action="' . htmlspecialchars($page) . '?action=delete" onsubmit="return confirm(\'Dzēst neatgriezeniski?\')">'
+        . csrf_field() . '<input type="hidden" name="id" value="' . $id . '"><button class="button button--danger button--small" type="submit">Dzēst</button></form>';
 }
 
 /** Admin pages live in php/admin/, site images are relative to the site root. */
@@ -74,5 +131,7 @@ function admin_image_url(string $src): string
 
 function status_label(array $row): string
 {
-    return is_published($row) ? 'Publicēts' : '<strong>Melnraksts</strong>';
+    return is_published($row)
+        ? '<span class="badge badge--success"><span aria-hidden="true">✓</span> Publicēts</span>'
+        : '<span class="badge badge--draft"><span aria-hidden="true">○</span> Melnraksts</span>';
 }

@@ -150,12 +150,21 @@ $form = $errors ? array_merge($editing ?? [], $data ?? [], ['description' => $_P
 
 admin_header($editing ? 'Rediģēt produktu' : 'Produkti');
 foreach ($errors as $e) {
-    echo '<p class="error">' . htmlspecialchars($e) . '</p>';
+    echo '<p class="error" role="alert">' . htmlspecialchars($e) . '</p>';
 }
 ?>
 <?php if (!$editing): ?>
-<form method="get" action="products.php">
-  <label>Meklēt: <input type="search" name="q" value="<?= htmlspecialchars($search) ?>"></label>
+<div class="page-actions">
+  <div>
+    <h2>Produktu katalogs</h2>
+    <p class="page-intro">Atrodiet, rediģējiet un publicējiet katalogā esošos produktus.</p>
+  </div>
+  <a class="button button--primary" href="#form"><span aria-hidden="true">+</span> Pievienot produktu</a>
+</div>
+<form class="filters" method="get" action="products.php" role="search">
+  <label>Meklēt
+    <input type="search" name="q" value="<?= htmlspecialchars($search) ?>" placeholder="Produkta nosaukums">
+  </label>
   <label>Kategorija:
     <select name="category">
       <option value="0">— visas —</option>
@@ -164,72 +173,92 @@ foreach ($errors as $e) {
       <?php endforeach; ?>
     </select>
   </label>
-  <button type="submit">Rādīt</button>
-  <a href="#form">+ Pievienot produktu</a>
+  <button class="button" type="submit">Rādīt</button>
 </form>
+<div class="table-panel">
+<div class="table-scroll" tabindex="0" role="region" aria-label="Produktu tabula">
 <table class="list">
 <tr><th>ID</th><th>Attēls</th><th>Nosaukums</th><th>Kategorija</th><th>Statuss</th><th>Mainīts</th><th></th></tr>
 <?php foreach ($list as $p): ?>
 <tr>
-  <td><?= (int)$p['id'] ?></td>
+  <td class="table-id"><?= (int)$p['id'] ?></td>
   <td><?php if (!empty($p['images'])): ?><img class="thumb" src="<?= htmlspecialchars(admin_image_url($p['images'][0])) ?>" alt="" loading="lazy"><?php endif; ?></td>
-  <td><a href="products.php?action=edit&id=<?= (int)$p['id'] ?>"><?= htmlspecialchars($p['name']) ?></a></td>
+  <td><a class="item-title" href="products.php?action=edit&id=<?= (int)$p['id'] ?>"><?= htmlspecialchars($p['name']) ?></a></td>
   <td><?= htmlspecialchars($categoryNames[$p['category_id']] ?? '?') ?></td>
   <td><?= status_label($p) ?></td>
-  <td><?= htmlspecialchars(substr((string)($p['updated_at'] ?? ''), 0, 10)) ?></td>
+  <td class="table-meta"><?= htmlspecialchars(substr((string)($p['updated_at'] ?? ''), 0, 10)) ?></td>
   <td>
-    <?php if (is_published($p)): ?><a href="../../produkts-<?= (int)$p['id'] ?>.html" target="_blank" rel="noopener">Skatīt</a><?php endif; ?>
-    <?= delete_button('products.php', (int)$p['id']) ?>
+    <div class="table-actions">
+      <a class="button button--small" href="products.php?action=edit&amp;id=<?= (int)$p['id'] ?>">Rediģēt</a>
+      <?php if (is_published($p)): ?><a class="button button--text button--small" href="../../produkts-<?= (int)$p['id'] ?>.html" target="_blank" rel="noopener">Skatīt</a><?php endif; ?>
+      <?= delete_button('products.php', (int)$p['id']) ?>
+    </div>
   </td>
 </tr>
 <?php endforeach; ?>
+<?php if ($list === []): ?>
+<tr><td class="empty-state" colspan="7">Pēc izvēlētajiem kritērijiem produkti nav atrasti.</td></tr>
+<?php endif; ?>
 </table>
-<p><?= count($list) ?> no <?= count($products) ?></p>
-<h2 id="form">Pievienot produktu</h2>
+</div>
+<p class="table-summary">Parādīti <?= count($list) ?> no <?= count($products) ?> produktiem</p>
+</div>
+<div class="section-heading section-heading--form" id="form">
+  <div><h2>Pievienot produktu</h2><p class="section-intro">Aizpildiet pamatinformāciju un, ja nepieciešams, pievienojiet attēlus.</p></div>
+</div>
 <?php else: ?>
-<p><a href="products.php">← Visi produkti</a> · <a href="preview.php?type=product&amp;id=<?= (int)$editing['id'] ?>" target="_blank" rel="noopener">Priekšskatīt</a>
-<?php if (is_published($editing)): ?> · <a href="../../produkts-<?= (int)$editing['id'] ?>.html" target="_blank" rel="noopener">Skatīt vietnē</a><?php endif; ?></p>
+<div class="editor-actions">
+  <a class="button" href="products.php"><span aria-hidden="true">←</span> Visi produkti</a>
+  <a class="button button--text" href="preview.php?type=product&amp;id=<?= (int)$editing['id'] ?>" target="_blank" rel="noopener">Priekšskatīt</a>
+  <?php if (is_published($editing)): ?><a class="button button--text" href="../../produkts-<?= (int)$editing['id'] ?>.html" target="_blank" rel="noopener">Skatīt vietnē <span aria-hidden="true">↗</span></a><?php endif; ?>
+</div>
 <?php endif; ?>
 
-<form method="post" action="products.php?action=<?= $editing ? 'edit&amp;id=' . (int)$editing['id'] : 'add' ?>" enctype="multipart/form-data" id="product-form">
+<form class="form-card admin-form" method="post" action="products.php?action=<?= $editing ? 'edit&amp;id=' . (int)$editing['id'] : 'add' ?>" enctype="multipart/form-data" id="product-form">
   <?= csrf_field() ?>
   <?php if ($editing): ?>
     <input type="hidden" name="id" value="<?= (int)$editing['id'] ?>">
   <?php endif; ?>
-  <p><label>Nosaukums:<br><input type="text" name="name" size="70" value="<?= htmlspecialchars($form['name'] ?? '') ?>" required></label></p>
-  <p><label>Kategorija:<br>
-    <select name="category_id" required>
+  <div class="form-field"><label for="product-name">Nosaukums</label><input id="product-name" type="text" name="name" value="<?= htmlspecialchars($form['name'] ?? '') ?>" required></div>
+  <div class="form-field"><label for="product-category">Kategorija</label>
+    <select id="product-category" name="category_id" required>
       <option value="">— izvēlies —</option>
       <?php foreach ($leafCategories as $c): ?>
       <option value="<?= (int)$c['id'] ?>" <?= (int)($form['category_id'] ?? 0) === (int)$c['id'] ? 'selected' : '' ?>><?= htmlspecialchars($c['name']) ?></option>
       <?php endforeach; ?>
     </select>
-  </label></p>
-  <p><label>Īss apraksts:<br><input type="text" name="subtitle" size="70" value="<?= htmlspecialchars($form['subtitle'] ?? '') ?>"></label></p>
-  <p><label>Apraksts:<br><textarea name="description" rows="10" cols="80"><?= htmlspecialchars(html_to_editable_text($form['description'] ?? '')) ?></textarea></label><br>
-  <small>Var rakstīt vienkāršu tekstu: tukša rinda — jauna rindkopa.</small></p>
-  <p><label>Aktīvās vielas:<br><input type="text" name="active_ingredients" size="70" value="<?= htmlspecialchars($form['active_ingredients'] ?? '') ?>"></label></p>
+  </div>
+  <div class="form-field"><label for="product-subtitle">Īss apraksts</label><input id="product-subtitle" type="text" name="subtitle" value="<?= htmlspecialchars($form['subtitle'] ?? '') ?>"></div>
+  <div class="form-field"><label for="product-description">Apraksts</label><textarea id="product-description" name="description" rows="10"><?= htmlspecialchars(html_to_editable_text($form['description'] ?? '')) ?></textarea>
+  <p class="field-hint">Var rakstīt vienkāršu tekstu: tukša rinda veido jaunu rindkopu.</p></div>
+  <div class="form-field"><label for="product-ingredients">Aktīvās vielas</label><input id="product-ingredients" type="text" name="active_ingredients" value="<?= htmlspecialchars($form['active_ingredients'] ?? '') ?>"></div>
 
   <?php if (!empty($editing['images'])): ?>
+  <div class="form-field"><span class="field-label">Esošie attēli</span>
+  <div class="image-manager table-scroll" tabindex="0" role="region" aria-label="Produkta attēli">
   <table class="images">
     <caption>Attēli (pirmais — galvenais)</caption>
     <tr><th>Attēls</th><th>Kārtība</th><th>Alt teksts (ja tukšs — nosaukums)</th><th>Dzēst</th></tr>
     <?php foreach (array_values($editing['images']) as $i => $src): ?>
     <tr>
       <td><img class="thumb" src="<?= htmlspecialchars(admin_image_url($src)) ?>" alt=""></td>
-      <td><input type="number" name="image_order[<?= $i ?>]" value="<?= $i + 1 ?>" style="width:4em" aria-label="Attēla <?= $i + 1 ?> kārtība"></td>
+      <td><input type="number" name="image_order[<?= $i ?>]" value="<?= $i + 1 ?>" aria-label="Attēla <?= $i + 1 ?> kārtība"></td>
       <td><input type="text" name="image_alt[<?= $i ?>]" value="<?= htmlspecialchars($editing['image_alts'][$i] ?? '') ?>" aria-label="Attēla <?= $i + 1 ?> alt teksts"></td>
       <td><input type="checkbox" name="image_remove[<?= $i ?>]" value="1" aria-label="Dzēst attēlu <?= $i + 1 ?>"></td>
     </tr>
     <?php endforeach; ?>
   </table>
+  </div>
+  </div>
   <?php endif; ?>
-  <p><label>Pievienot attēlus (JPG, PNG, WebP, līdz <?= UPLOAD_MAX_BYTES / 1024 / 1024 ?> MB):<br><input type="file" name="images[]" accept=".jpg,.jpeg,.png,.webp" multiple></label></p>
+  <div class="form-field"><label for="product-images">Pievienot attēlus</label><input id="product-images" type="file" name="images[]" accept=".jpg,.jpeg,.png,.webp" multiple>
+  <p class="field-hint">JPG, PNG vai WebP, līdz <?= UPLOAD_MAX_BYTES / 1024 / 1024 ?> MB katram failam.</p></div>
 
-  <p><label>Kārtība sarakstā:<br><input type="number" name="sort_order" value="<?= (int)($form['sort_order'] ?? 0) ?>"></label></p>
-  <p><label>SEO apraksts (ja tukšs — nosaukums un īss apraksts):<br><input type="text" name="seo_description" size="70" maxlength="300" value="<?= htmlspecialchars($form['seo_description'] ?? '') ?>"></label></p>
-  <p><label><input type="checkbox" name="published" value="1" <?= ($form === null || is_published($form)) ? 'checked' : '' ?>> Publicēts (redzams vietnē)</label></p>
-  <button type="submit"><?= $editing ? 'Saglabāt' : 'Pievienot' ?></button>
+  <div class="form-field"><label for="product-order">Kārtība sarakstā</label><input id="product-order" type="number" name="sort_order" value="<?= (int)($form['sort_order'] ?? 0) ?>"></div>
+  <div class="form-field"><label for="product-seo">SEO apraksts</label><input id="product-seo" type="text" name="seo_description" maxlength="300" value="<?= htmlspecialchars($form['seo_description'] ?? '') ?>">
+  <p class="field-hint">Ja lauks ir tukšs, apraksts veidojas no nosaukuma un īsā apraksta.</p></div>
+  <label class="checkbox-field"><input type="checkbox" name="published" value="1" <?= ($form === null || is_published($form)) ? 'checked' : '' ?>> <span>Publicēts <span class="field-hint">(redzams vietnē)</span></span></label>
+  <div class="form-actions"><button class="button button--primary" type="submit"><?= $editing ? 'Saglabāt izmaiņas' : 'Pievienot produktu' ?></button></div>
 </form>
 <script>
 // warn before leaving with unsaved changes

@@ -29,17 +29,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 admin_header('Mainīt paroli');
 foreach ($errors as $e) {
-    echo '<p class="error">' . htmlspecialchars($e) . '</p>';
+    echo '<p class="error" role="alert">' . htmlspecialchars($e) . '</p>';
 }
 if ($done) {
     echo '<p class="notice" role="status">Parole nomainīta.</p>';
 }
 ?>
-<form method="post">
+<div class="page-actions">
+  <div>
+    <h2>Kontu drošība</h2>
+    <p class="page-intro">Izvēlieties unikālu paroli ar vismaz <?= PASSWORD_MIN_LENGTH ?> rakstzīmēm, burtiem un cipariem.</p>
+  </div>
+</div>
+<form class="form-card admin-form" method="post">
   <?= csrf_field() ?>
-  <p><label>Pašreizējā parole:<br><input type="password" name="current" autocomplete="current-password" required></label></p>
-  <p><label>Jaunā parole (vismaz <?= PASSWORD_MIN_LENGTH ?> rakstzīmes, burti un cipari):<br><input type="password" name="new" autocomplete="new-password" minlength="<?= PASSWORD_MIN_LENGTH ?>" required></label></p>
-  <p><label>Atkārtot jauno paroli:<br><input type="password" name="repeat" autocomplete="new-password" required></label></p>
-  <button type="submit">Mainīt paroli</button>
+  <div class="form-field"><label for="current-password">Pašreizējā parole</label><input id="current-password" type="password" name="current" autocomplete="current-password" required></div>
+  <div class="form-field"><label for="new-password">Jaunā parole</label><input id="new-password" type="password" name="new" autocomplete="new-password" minlength="<?= PASSWORD_MIN_LENGTH ?>" required></div>
+  <div class="form-field"><label for="repeat-password">Atkārtot jauno paroli</label><input id="repeat-password" type="password" name="repeat" autocomplete="new-password" required></div>
+  <div class="form-actions"><button class="button button--primary" type="submit">Mainīt paroli</button></div>
 </form>
 <?php admin_footer(); ?>

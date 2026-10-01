@@ -30,14 +30,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="lv">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><title>Ielogoties — Admin</title></head>
-<body style="font-family:sans-serif;max-width:400px;margin:3rem auto;padding:0 1rem;">
-<h1>Ielogoties</h1>
-<?php if ($error): ?><p style="color:#b00020;"><?= htmlspecialchars($error) ?></p><?php endif; ?>
-<form method="post">
-  <p><label>Lietotājvārds:<br><input type="text" name="username" autocomplete="username" required></label></p>
-  <p><label>Parole:<br><input type="password" name="password" autocomplete="current-password" required></label></p>
-  <button type="submit">Ielogoties</button>
-</form>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Ielogoties — GEHWOL Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="login-page">
+<main class="login-wrap">
+  <div class="login-brand"><span class="brand-mark" aria-hidden="true">G</span><span>GEHWOL</span></div>
+  <section class="login-card" aria-labelledby="login-title">
+    <h1 id="login-title">Ielogoties</h1>
+    <p class="login-card__intro">Pieslēdzieties vietnes administrācijas panelim.</p>
+    <?php if ($error): ?><p class="error" role="alert"><?= htmlspecialchars($error) ?></p><?php endif; ?>
+    <form class="admin-form" method="post">
+      <div class="form-field"><label for="username">Lietotājvārds</label><input id="username" type="text" name="username" autocomplete="username" required autofocus></div>
+      <div class="form-field"><label for="password">Parole</label><input id="password" type="password" name="password" autocomplete="current-password" required></div>
+      <button class="button button--primary" type="submit">Ielogoties</button>
+    </form>
+  </section>
+</main>
 </body>
 </html>
