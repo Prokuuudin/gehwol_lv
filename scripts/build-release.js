@@ -82,7 +82,10 @@ return ['commit' => '${commit.replace(/[^\w+-]/g, '')}', 'built' => '${built}'];
 `);
 
 // 5. safety check: nothing private or development-only may be in the release
-const files = listFiles(OUT);
+// Directory enumeration order differs between filesystems (notably Windows and
+// Linux). JavaScript's default string sort is locale-independent and keeps the
+// tracked manifest byte-for-byte reproducible across build environments.
+const files = listFiles(OUT).sort();
 const forbidden = files.filter((f) =>
   /(^|\/)(node_modules|\.git|tests|backups|src|plans|specs)(\/|$)/.test(f)
   || /\.(docx?|md|log|lock|tmp|env|sql|zip|bak)$/i.test(f)

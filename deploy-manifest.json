@@ -38,14 +38,6 @@
       "source": "docs/fonts/ArialCE.woff2"
     },
     {
-      "path": "fonts/arialceb.woff",
-      "source": "docs/fonts/arialceb.woff"
-    },
-    {
-      "path": "fonts/arialceb.woff2",
-      "source": "docs/fonts/arialceb.woff2"
-    },
-    {
       "path": "fonts/ArialCEBoldItalic.woff",
       "source": "docs/fonts/ArialCEBoldItalic.woff"
     },
@@ -84,6 +76,14 @@
     {
       "path": "fonts/ArialMdmItl.woff2",
       "source": "docs/fonts/ArialMdmItl.woff2"
+    },
+    {
+      "path": "fonts/arialceb.woff",
+      "source": "docs/fonts/arialceb.woff"
+    },
+    {
+      "path": "fonts/arialceb.woff2",
+      "source": "docs/fonts/arialceb.woff2"
     },
     {
       "path": "img/cookie-fill.png",
@@ -2126,14 +2126,6 @@
       "source": "docs/img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterrechts@2x.webp"
     },
     {
-      "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG.png",
-      "source": "docs/img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG.png"
-    },
-    {
-      "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG.webp",
-      "source": "docs/img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG.webp"
-    },
-    {
       "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzPolsterRingG1.png",
       "source": "docs/img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzPolsterRingG1.png"
     },
@@ -2148,6 +2140,14 @@
     {
       "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzPolsterRingG1@2x.webp",
       "source": "docs/img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzPolsterRingG1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG.webp"
     },
     {
       "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG@2x.png",
@@ -2254,38 +2254,6 @@
       "source": "docs/img/products/polimera_gela_izstradajumi-img/Vorfuspolster@2x.webp"
     },
     {
-      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG.png",
-      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG.png"
-    },
-    {
-      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG.webp",
-      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG.webp"
-    },
-    {
-      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG1.png",
-      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG1.png"
-    },
-    {
-      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG1.webp",
-      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG1.webp"
-    },
-    {
-      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG1@2x.png",
-      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG1@2x.png"
-    },
-    {
-      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG1@2x.webp",
-      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG1@2x.webp"
-    },
-    {
-      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG@2x.png",
-      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG@2x.png"
-    },
-    {
-      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG@2x.webp",
-      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG@2x.webp"
-    },
-    {
       "path": "img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG.png",
       "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG.png"
     },
@@ -2316,6 +2284,38 @@
     {
       "path": "img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG@2x.webp",
       "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG@2x.webp"
     },
     {
       "path": "img/products/polimera_gela_izstradajumi-img/ZehenspreizerG.png",
@@ -2702,22 +2702,6 @@
       "source": "docs/img/products/professional-img/Lotion500ml@2x.webp"
     },
     {
-      "path": "img/products/professional-img/Massageemulsion500ml.png",
-      "source": "docs/img/products/professional-img/Massageemulsion500ml.png"
-    },
-    {
-      "path": "img/products/professional-img/Massageemulsion500ml.webp",
-      "source": "docs/img/products/professional-img/Massageemulsion500ml.webp"
-    },
-    {
-      "path": "img/products/professional-img/Massageemulsion500ml@2x.png",
-      "source": "docs/img/products/professional-img/Massageemulsion500ml@2x.png"
-    },
-    {
-      "path": "img/products/professional-img/Massageemulsion500ml@2x.webp",
-      "source": "docs/img/products/professional-img/Massageemulsion500ml@2x.webp"
-    },
-    {
       "path": "img/products/professional-img/MED.WashgelProtect1000ml.png",
       "source": "docs/img/products/professional-img/MED.WashgelProtect1000ml.png"
     },
@@ -2748,6 +2732,22 @@
     {
       "path": "img/products/professional-img/MED.WashgelSoft1000ml@2x.webp",
       "source": "docs/img/products/professional-img/MED.WashgelSoft1000ml@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/Massageemulsion500ml.png",
+      "source": "docs/img/products/professional-img/Massageemulsion500ml.png"
+    },
+    {
+      "path": "img/products/professional-img/Massageemulsion500ml.webp",
+      "source": "docs/img/products/professional-img/Massageemulsion500ml.webp"
+    },
+    {
+      "path": "img/products/professional-img/Massageemulsion500ml@2x.png",
+      "source": "docs/img/products/professional-img/Massageemulsion500ml@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/Massageemulsion500ml@2x.webp",
+      "source": "docs/img/products/professional-img/Massageemulsion500ml@2x.webp"
     },
     {
       "path": "img/products/professional-img/Nagelmasse.png",
@@ -3586,6 +3586,10 @@
       "source": "php/templates/.htaccess"
     },
     {
+      "path": "php/templates/_shell.html",
+      "source": "php/templates/_shell.html"
+    },
+    {
       "path": "php/templates/darbinieka-kresli.html",
       "source": "php/templates/darbinieka-kresli.html"
     },
@@ -3656,10 +3660,6 @@
     {
       "path": "php/templates/vienreizlietojamas-smilspapira-frezes.html",
       "source": "php/templates/vienreizlietojamas-smilspapira-frezes.html"
-    },
-    {
-      "path": "php/templates/_shell.html",
-      "source": "php/templates/_shell.html"
     },
     {
       "path": "privatuma-politika.html",
