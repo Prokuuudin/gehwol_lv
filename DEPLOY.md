@@ -93,6 +93,7 @@ cd /var/www/vhosts/gehwol.lv/docs && php scripts/deploy-plesk.php --dry-run --de
 
 Фактически работающая production-конфигурация:
 
+- Repository: `https://github.com/Prokuuuudin/gehwol_lv.git`;
 - Repository branch: `main`;
 - Deployment mode: `Automatic`;
 - Deployment directory: `/docs`;
@@ -109,12 +110,56 @@ cd /var/www/vhosts/gehwol.lv/docs && php scripts/deploy-plesk.php --destination=
 Команда подтверждена реальным production deployment, не зависит от initial
 working directory и не использует SSH, Node.js/npm или credentials.
 
-После push Plesk обновит deployment directory, PHP проверит committed allow-list
-в `/var/www/vhosts/gehwol.lv/docs` и только затем синхронизирует код с
-`/var/www/vhosts/gehwol.lv/httpdocs`. Ошибка manifest/source validation
-оставляет production полностью неизменным. Ошибка отдельной файловой операции
-не оставляет частично записанный файл; stale-файлы удаляются только после
-установки additions/updates.
+После получения push через GitHub webhook Plesk обновляет deployment directory,
+PHP проверяет committed allow-list в `/var/www/vhosts/gehwol.lv/docs` и только
+затем синхронизирует код с `/var/www/vhosts/gehwol.lv/httpdocs`. Ошибка
+manifest/source validation оставляет production полностью неизменным. Ошибка
+отдельной файловой операции не оставляет частично записанный файл; stale-файлы
+удаляются только после установки additions/updates.
+
+## GitHub webhook
+
+`Deployment mode: Automatic` определяет, что Plesk сделает после получения
+нового commit, но сам по себе не уведомляет Plesk о push в GitHub. Для полностью
+автоматической выкладки GitHub должен отправлять push event на Webhook URL,
+показанный Plesk в настройках Git repository.
+
+В GitHub открыть **Repository → Settings → Webhooks → Add webhook** и указать:
+
+- **Payload URL:** скопировать Webhook URL, показанный Plesk (**Copy the Webhook URL shown by Plesk**);
+- **Content type:** `application/x-www-form-urlencoded`;
+- **Secret:** оставить пустым;
+- **SSL verification:** `Enable SSL verification`;
+- **Which events would you like to trigger this webhook?:** `Just the push event`;
+- **Active:** включено.
+
+Конкретный Plesk Webhook URL содержит уникальный UUID/token: его нельзя
+записывать в Git, документацию, issue или логи. После сохранения webhook именно
+он уведомляет Plesk о push, после чего режим `Automatic` запускает deployment и
+post-deployment action.
+
+## Проверенная автоматическая цепочка
+
+Нормальный production workflow не требует действий в Plesk:
+
+```text
+Developer/Codex
+→ commit
+→ push to origin/main
+→ GitHub webhook
+→ Plesk receives new commit
+→ Plesk deploys repository to /docs
+→ post-deployment action runs deploy-plesk.php
+→ controlled deployment from /docs to /httpdocs
+→ production updated
+```
+
+Цепочка проверена end-to-end реальным commit
+`862b3b460643232f49ad1fd46e6989661e6814d1`
+(`feat(admin): add quick usage guide`). После push без **Pull now** и
+**Deploy now** новый блок «Īsa pamācība» автоматически появился в production
+admin. Это подтверждает работу связки webhook → automatic deployment →
+post-deployment action для указанной конфигурации.
 
 ## Первая установка
 
@@ -139,6 +184,20 @@ working directory и не использует SSH, Node.js/npm или credentia
 `/var/www/vhosts/gehwol.lv/.gehwol-deploy.lock`, сначала в Plesk убедиться, что
 deploy больше не выполняется, и только затем удалить stale lock через File
 Manager. Активный lock удалять нельзя.
+
+## Аварийный manual fallback
+
+Если после push автоматическая выкладка не началась:
+
+1. проверить delivery соответствующего push в GitHub → **Settings → Webhooks**;
+2. проверить **Latest commits** репозитория в Plesk;
+3. только после диагностики при необходимости использовать **Pull now** и
+   **Deploy now** вручную;
+4. проверить результат и журнал post-deployment action.
+
+Ручные **Pull now** и **Deploy now** — аварийный fallback, а не обычный workflow.
+При исправном webhook нормальная цепочка: `commit → push → automatic production
+deployment`.
 
 ## Резервное копирование runtime data
 
