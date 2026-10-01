@@ -92,6 +92,17 @@ h2 { margin: 0; font-size: 21px; line-height: 1.3; letter-spacing: -0.01em; }
 .dashboard-card__label { color: var(--muted); font-size: 14px; font-weight: 700; }
 .dashboard-card__count { margin: 8px 0 18px; color: var(--accent-dark); font-size: 36px; font-weight: 700; line-height: 1; letter-spacing: -0.04em; }
 .dashboard-card__link { margin-top: auto; color: var(--accent-dark); font-size: 13px; font-weight: 700; }
+.dashboard-guide { margin-top: 22px; padding: clamp(20px, 3vw, 26px); }
+.dashboard-guide__heading { display: flex; align-items: center; gap: 13px; }
+.dashboard-guide__heading p { margin: 3px 0 0; color: var(--muted); font-size: 14px; }
+.dashboard-guide__icon { display: grid; width: 38px; height: 38px; flex: 0 0 auto; place-items: center; border-radius: 50%; color: #fff; background: var(--accent); font-size: 19px; font-weight: 800; }
+.dashboard-guide__steps { display: grid; margin: 20px 0 0; padding: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 28px; list-style: none; counter-reset: guide-step; }
+.dashboard-guide__steps li { position: relative; min-height: 38px; padding-left: 46px; counter-increment: guide-step; }
+.dashboard-guide__steps li::before { position: absolute; top: 0; left: 0; display: grid; width: 32px; height: 32px; place-items: center; border-radius: 8px; color: var(--accent-dark); background: var(--accent-soft); font-size: 14px; font-weight: 800; content: counter(guide-step); }
+.dashboard-guide__steps strong { display: block; margin-bottom: 2px; font-size: 14px; }
+.dashboard-guide__steps span { display: block; color: var(--muted); font-size: 13px; }
+.dashboard-guide__tip { margin: 20px 0 0; padding-top: 15px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+.dashboard-guide__tip strong { color: var(--ink); }
 .dashboard-note { display: flex; margin-top: 22px; padding: 18px 20px; align-items: center; justify-content: space-between; gap: 18px; }
 .dashboard-note p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
 
@@ -182,6 +193,7 @@ tbody tr:hover td { background: #fafcfb; }
   .admin-content { padding: 24px 16px 48px; }
   .page-heading { margin-bottom: 22px; }
   .page-actions, .section-heading, .dashboard-note { align-items: stretch; flex-direction: column; }
+  .dashboard-guide__steps { grid-template-columns: 1fr; }
   .page-actions .button, .dashboard-note .button { width: 100%; }
   .filters { align-items: stretch; flex-direction: column; }
   .filters label, .filters label:first-child { min-width: 0; flex: none; }

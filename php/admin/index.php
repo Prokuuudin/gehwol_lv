@@ -28,6 +28,22 @@ admin_header('Vadības panelis');
   </a>
   <?php endforeach; ?>
 </div>
+<section class="panel dashboard-guide" aria-labelledby="admin-guide-title">
+  <div class="dashboard-guide__heading">
+    <span class="dashboard-guide__icon" aria-hidden="true">?</span>
+    <div>
+      <h2 id="admin-guide-title">Īsa pamācība</h2>
+      <p>Četri vienkārši soļi vietnes satura atjaunošanai.</p>
+    </div>
+  </div>
+  <ol class="dashboard-guide__steps">
+    <li><strong>Izvēlieties sadaļu.</strong><span>Produktus, jaunumus un rakstus pārvaldiet attiecīgajā sadaļā.</span></li>
+    <li><strong>Atveriet vai pievienojiet ierakstu.</strong><span>Aizpildiet laukus un, ja vajag, pievienojiet attēlus.</span></li>
+    <li><strong>Pārbaudiet pirms publicēšanas.</strong><span>Izmantojiet “Priekšskatīt”; atzīme “Publicēts” padara ierakstu redzamu vietnē.</span></li>
+    <li><strong>Saglabājiet un apskatiet rezultātu.</strong><span>Pēc saglabāšanas atveriet “Skatīt vietni”.</span></li>
+  </ol>
+  <p class="dashboard-guide__tip"><strong>Noderīgi:</strong> kategoriju struktūru maina izstrādātājs. Ja rodas tehniska problēma, atveriet “Servera pārbaude”.</p>
+</section>
 <section class="panel dashboard-note">
   <div>
     <h2>Servera statuss</h2>
