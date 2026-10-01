@@ -1,0 +1,3681 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "path": ".htaccess",
+      "source": "docs/.htaccess"
+    },
+    {
+      "path": ".user.ini",
+      "source": "docs/.user.ini"
+    },
+    {
+      "path": "css/main.css",
+      "source": "docs/css/main.css"
+    },
+    {
+      "path": "files/agreement-miksplus_lv_ru_en.pdf",
+      "source": "docs/files/agreement-miksplus_lv_ru_en.pdf"
+    },
+    {
+      "path": "files/fonts/OFL.txt",
+      "source": "docs/files/fonts/OFL.txt"
+    },
+    {
+      "path": "files/fonts/open-sans-latin-ext.woff2",
+      "source": "docs/files/fonts/open-sans-latin-ext.woff2"
+    },
+    {
+      "path": "files/fonts/open-sans-latin.woff2",
+      "source": "docs/files/fonts/open-sans-latin.woff2"
+    },
+    {
+      "path": "fonts/ArialCE.woff",
+      "source": "docs/fonts/ArialCE.woff"
+    },
+    {
+      "path": "fonts/ArialCE.woff2",
+      "source": "docs/fonts/ArialCE.woff2"
+    },
+    {
+      "path": "fonts/arialceb.woff",
+      "source": "docs/fonts/arialceb.woff"
+    },
+    {
+      "path": "fonts/arialceb.woff2",
+      "source": "docs/fonts/arialceb.woff2"
+    },
+    {
+      "path": "fonts/ArialCEBoldItalic.woff",
+      "source": "docs/fonts/ArialCEBoldItalic.woff"
+    },
+    {
+      "path": "fonts/ArialCEBoldItalic.woff2",
+      "source": "docs/fonts/ArialCEBoldItalic.woff2"
+    },
+    {
+      "path": "fonts/ArialCEItalic.woff",
+      "source": "docs/fonts/ArialCEItalic.woff"
+    },
+    {
+      "path": "fonts/ArialCEItalic.woff2",
+      "source": "docs/fonts/ArialCEItalic.woff2"
+    },
+    {
+      "path": "fonts/ArialCEMTBlack.woff",
+      "source": "docs/fonts/ArialCEMTBlack.woff"
+    },
+    {
+      "path": "fonts/ArialCEMTBlack.woff2",
+      "source": "docs/fonts/ArialCEMTBlack.woff2"
+    },
+    {
+      "path": "fonts/ArialMdm.woff",
+      "source": "docs/fonts/ArialMdm.woff"
+    },
+    {
+      "path": "fonts/ArialMdm.woff2",
+      "source": "docs/fonts/ArialMdm.woff2"
+    },
+    {
+      "path": "fonts/ArialMdmItl.woff",
+      "source": "docs/fonts/ArialMdmItl.woff"
+    },
+    {
+      "path": "fonts/ArialMdmItl.woff2",
+      "source": "docs/fonts/ArialMdmItl.woff2"
+    },
+    {
+      "path": "img/cookie-fill.png",
+      "source": "docs/img/cookie-fill.png"
+    },
+    {
+      "path": "img/cookie-fill.webp",
+      "source": "docs/img/cookie-fill.webp"
+    },
+    {
+      "path": "img/cookie-fill@2x.png",
+      "source": "docs/img/cookie-fill@2x.png"
+    },
+    {
+      "path": "img/cookie-fill@2x.webp",
+      "source": "docs/img/cookie-fill@2x.webp"
+    },
+    {
+      "path": "img/favicons/android-icon-144x144.png",
+      "source": "docs/img/favicons/android-icon-144x144.png"
+    },
+    {
+      "path": "img/favicons/android-icon-144x144.webp",
+      "source": "docs/img/favicons/android-icon-144x144.webp"
+    },
+    {
+      "path": "img/favicons/android-icon-192x192.png",
+      "source": "docs/img/favicons/android-icon-192x192.png"
+    },
+    {
+      "path": "img/favicons/android-icon-192x192.webp",
+      "source": "docs/img/favicons/android-icon-192x192.webp"
+    },
+    {
+      "path": "img/favicons/android-icon-36x36.png",
+      "source": "docs/img/favicons/android-icon-36x36.png"
+    },
+    {
+      "path": "img/favicons/android-icon-36x36.webp",
+      "source": "docs/img/favicons/android-icon-36x36.webp"
+    },
+    {
+      "path": "img/favicons/android-icon-48x48.png",
+      "source": "docs/img/favicons/android-icon-48x48.png"
+    },
+    {
+      "path": "img/favicons/android-icon-48x48.webp",
+      "source": "docs/img/favicons/android-icon-48x48.webp"
+    },
+    {
+      "path": "img/favicons/android-icon-72x72.png",
+      "source": "docs/img/favicons/android-icon-72x72.png"
+    },
+    {
+      "path": "img/favicons/android-icon-72x72.webp",
+      "source": "docs/img/favicons/android-icon-72x72.webp"
+    },
+    {
+      "path": "img/favicons/android-icon-96x96.png",
+      "source": "docs/img/favicons/android-icon-96x96.png"
+    },
+    {
+      "path": "img/favicons/android-icon-96x96.webp",
+      "source": "docs/img/favicons/android-icon-96x96.webp"
+    },
+    {
+      "path": "img/favicons/apple-icon-114x114.png",
+      "source": "docs/img/favicons/apple-icon-114x114.png"
+    },
+    {
+      "path": "img/favicons/apple-icon-114x114.webp",
+      "source": "docs/img/favicons/apple-icon-114x114.webp"
+    },
+    {
+      "path": "img/favicons/apple-icon-120x120.png",
+      "source": "docs/img/favicons/apple-icon-120x120.png"
+    },
+    {
+      "path": "img/favicons/apple-icon-120x120.webp",
+      "source": "docs/img/favicons/apple-icon-120x120.webp"
+    },
+    {
+      "path": "img/favicons/apple-icon-144x144.png",
+      "source": "docs/img/favicons/apple-icon-144x144.png"
+    },
+    {
+      "path": "img/favicons/apple-icon-144x144.webp",
+      "source": "docs/img/favicons/apple-icon-144x144.webp"
+    },
+    {
+      "path": "img/favicons/apple-icon-152x152.png",
+      "source": "docs/img/favicons/apple-icon-152x152.png"
+    },
+    {
+      "path": "img/favicons/apple-icon-152x152.webp",
+      "source": "docs/img/favicons/apple-icon-152x152.webp"
+    },
+    {
+      "path": "img/favicons/apple-icon-180x180.png",
+      "source": "docs/img/favicons/apple-icon-180x180.png"
+    },
+    {
+      "path": "img/favicons/apple-icon-180x180.webp",
+      "source": "docs/img/favicons/apple-icon-180x180.webp"
+    },
+    {
+      "path": "img/favicons/apple-icon-57x57.png",
+      "source": "docs/img/favicons/apple-icon-57x57.png"
+    },
+    {
+      "path": "img/favicons/apple-icon-57x57.webp",
+      "source": "docs/img/favicons/apple-icon-57x57.webp"
+    },
+    {
+      "path": "img/favicons/apple-icon-60x60.png",
+      "source": "docs/img/favicons/apple-icon-60x60.png"
+    },
+    {
+      "path": "img/favicons/apple-icon-60x60.webp",
+      "source": "docs/img/favicons/apple-icon-60x60.webp"
+    },
+    {
+      "path": "img/favicons/apple-icon-72x72.png",
+      "source": "docs/img/favicons/apple-icon-72x72.png"
+    },
+    {
+      "path": "img/favicons/apple-icon-72x72.webp",
+      "source": "docs/img/favicons/apple-icon-72x72.webp"
+    },
+    {
+      "path": "img/favicons/apple-icon-76x76.png",
+      "source": "docs/img/favicons/apple-icon-76x76.png"
+    },
+    {
+      "path": "img/favicons/apple-icon-76x76.webp",
+      "source": "docs/img/favicons/apple-icon-76x76.webp"
+    },
+    {
+      "path": "img/favicons/apple-icon-precomposed.png",
+      "source": "docs/img/favicons/apple-icon-precomposed.png"
+    },
+    {
+      "path": "img/favicons/apple-icon-precomposed.webp",
+      "source": "docs/img/favicons/apple-icon-precomposed.webp"
+    },
+    {
+      "path": "img/favicons/apple-icon.png",
+      "source": "docs/img/favicons/apple-icon.png"
+    },
+    {
+      "path": "img/favicons/apple-icon.webp",
+      "source": "docs/img/favicons/apple-icon.webp"
+    },
+    {
+      "path": "img/favicons/apple-touch-icon.png",
+      "source": "docs/img/favicons/apple-touch-icon.png"
+    },
+    {
+      "path": "img/favicons/apple-touch-icon.webp",
+      "source": "docs/img/favicons/apple-touch-icon.webp"
+    },
+    {
+      "path": "img/favicons/browserconfig.webp",
+      "source": "docs/img/favicons/browserconfig.webp"
+    },
+    {
+      "path": "img/favicons/browserconfig.xml",
+      "source": "docs/img/favicons/browserconfig.xml"
+    },
+    {
+      "path": "img/favicons/favicon-16x16.png",
+      "source": "docs/img/favicons/favicon-16x16.png"
+    },
+    {
+      "path": "img/favicons/favicon-16x16.webp",
+      "source": "docs/img/favicons/favicon-16x16.webp"
+    },
+    {
+      "path": "img/favicons/favicon-32x32.png",
+      "source": "docs/img/favicons/favicon-32x32.png"
+    },
+    {
+      "path": "img/favicons/favicon-32x32.webp",
+      "source": "docs/img/favicons/favicon-32x32.webp"
+    },
+    {
+      "path": "img/favicons/favicon-96x96.png",
+      "source": "docs/img/favicons/favicon-96x96.png"
+    },
+    {
+      "path": "img/favicons/favicon-96x96.webp",
+      "source": "docs/img/favicons/favicon-96x96.webp"
+    },
+    {
+      "path": "img/favicons/favicon.ico",
+      "source": "docs/img/favicons/favicon.ico"
+    },
+    {
+      "path": "img/favicons/favicon.webp",
+      "source": "docs/img/favicons/favicon.webp"
+    },
+    {
+      "path": "img/favicons/manifest.json",
+      "source": "docs/img/favicons/manifest.json"
+    },
+    {
+      "path": "img/favicons/manifest.webp",
+      "source": "docs/img/favicons/manifest.webp"
+    },
+    {
+      "path": "img/favicons/ms-icon-144x144.png",
+      "source": "docs/img/favicons/ms-icon-144x144.png"
+    },
+    {
+      "path": "img/favicons/ms-icon-144x144.webp",
+      "source": "docs/img/favicons/ms-icon-144x144.webp"
+    },
+    {
+      "path": "img/favicons/ms-icon-150x150.png",
+      "source": "docs/img/favicons/ms-icon-150x150.png"
+    },
+    {
+      "path": "img/favicons/ms-icon-150x150.webp",
+      "source": "docs/img/favicons/ms-icon-150x150.webp"
+    },
+    {
+      "path": "img/favicons/ms-icon-310x310.png",
+      "source": "docs/img/favicons/ms-icon-310x310.png"
+    },
+    {
+      "path": "img/favicons/ms-icon-310x310.webp",
+      "source": "docs/img/favicons/ms-icon-310x310.webp"
+    },
+    {
+      "path": "img/favicons/ms-icon-70x70.png",
+      "source": "docs/img/favicons/ms-icon-70x70.png"
+    },
+    {
+      "path": "img/favicons/ms-icon-70x70.webp",
+      "source": "docs/img/favicons/ms-icon-70x70.webp"
+    },
+    {
+      "path": "img/gehwol-foot-icon.png",
+      "source": "docs/img/gehwol-foot-icon.png"
+    },
+    {
+      "path": "img/gehwol-foot-icon.webp",
+      "source": "docs/img/gehwol-foot-icon.webp"
+    },
+    {
+      "path": "img/gehwole1.jpg",
+      "source": "docs/img/gehwole1.jpg"
+    },
+    {
+      "path": "img/gehwole1.webp",
+      "source": "docs/img/gehwole1.webp"
+    },
+    {
+      "path": "img/gehwole1@2x.jpg",
+      "source": "docs/img/gehwole1@2x.jpg"
+    },
+    {
+      "path": "img/gehwole1@2x.webp",
+      "source": "docs/img/gehwole1@2x.webp"
+    },
+    {
+      "path": "img/gehwole2.jpg",
+      "source": "docs/img/gehwole2.jpg"
+    },
+    {
+      "path": "img/gehwole2.webp",
+      "source": "docs/img/gehwole2.webp"
+    },
+    {
+      "path": "img/gehwole2@2x.jpg",
+      "source": "docs/img/gehwole2@2x.jpg"
+    },
+    {
+      "path": "img/gehwole2@2x.webp",
+      "source": "docs/img/gehwole2@2x.webp"
+    },
+    {
+      "path": "img/hero.jpg",
+      "source": "docs/img/hero.jpg"
+    },
+    {
+      "path": "img/hero.webp",
+      "source": "docs/img/hero.webp"
+    },
+    {
+      "path": "img/hero@2x.jpg",
+      "source": "docs/img/hero@2x.jpg"
+    },
+    {
+      "path": "img/hero@2x.webp",
+      "source": "docs/img/hero@2x.webp"
+    },
+    {
+      "path": "img/news-articles/aukstas_plazmas_ierīce-im/aukstas_plazmas_ierīce.png",
+      "source": "docs/img/news-articles/aukstas_plazmas_ierīce-im/aukstas_plazmas_ierīce.png"
+    },
+    {
+      "path": "img/news-articles/aukstas_plazmas_ierīce-im/aukstas_plazmas_ierīce.webp",
+      "source": "docs/img/news-articles/aukstas_plazmas_ierīce-im/aukstas_plazmas_ierīce.webp"
+    },
+    {
+      "path": "img/news-articles/aukstas_plazmas_ierīce-im/aukstas_plazmas_ierīce@2x.png",
+      "source": "docs/img/news-articles/aukstas_plazmas_ierīce-im/aukstas_plazmas_ierīce@2x.png"
+    },
+    {
+      "path": "img/news-articles/aukstas_plazmas_ierīce-im/aukstas_plazmas_ierīce@2x.webp",
+      "source": "docs/img/news-articles/aukstas_plazmas_ierīce-im/aukstas_plazmas_ierīce@2x.webp"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/HornhautCr.png",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/HornhautCr.png"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/HornhautCr.webp",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/HornhautCr.webp"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/HornhautCr@2x.png",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/HornhautCr@2x.png"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/HornhautCr@2x.webp",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/HornhautCr@2x.webp"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/Lipidro.png",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/Lipidro.png"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/Lipidro.webp",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/Lipidro.webp"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/Lipidro@2x.png",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/Lipidro@2x.png"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/Lipidro@2x.webp",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/Lipidro@2x.webp"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/PflegeShaum.png",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/PflegeShaum.png"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/PflegeShaum.webp",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/PflegeShaum.webp"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/PflegeShaum@2x.png",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/PflegeShaum@2x.png"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/PflegeShaum@2x.webp",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/PflegeShaum@2x.webp"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/Schrundensalbe.png",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/Schrundensalbe.png"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/Schrundensalbe.webp",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/Schrundensalbe.webp"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/Schrundensalbe@2x.png",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/Schrundensalbe@2x.png"
+    },
+    {
+      "path": "img/news-articles/sausas_pedu_adas_kopsana-img/Schrundensalbe@2x.webp",
+      "source": "docs/img/news-articles/sausas_pedu_adas_kopsana-img/Schrundensalbe@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/Badesalz.png",
+      "source": "docs/img/products/classic-img/Badesalz.png"
+    },
+    {
+      "path": "img/products/classic-img/Badesalz.webp",
+      "source": "docs/img/products/classic-img/Badesalz.webp"
+    },
+    {
+      "path": "img/products/classic-img/Badesalz@2x.png",
+      "source": "docs/img/products/classic-img/Badesalz@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/Badesalz@2x.webp",
+      "source": "docs/img/products/classic-img/Badesalz@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/BalsamNormaleHaut.png",
+      "source": "docs/img/products/classic-img/BalsamNormaleHaut.png"
+    },
+    {
+      "path": "img/products/classic-img/BalsamNormaleHaut.webp",
+      "source": "docs/img/products/classic-img/BalsamNormaleHaut.webp"
+    },
+    {
+      "path": "img/products/classic-img/BalsamNormaleHaut@2x.png",
+      "source": "docs/img/products/classic-img/BalsamNormaleHaut@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/BalsamNormaleHaut@2x.webp",
+      "source": "docs/img/products/classic-img/BalsamNormaleHaut@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/BalsamTrockenehaut.png",
+      "source": "docs/img/products/classic-img/BalsamTrockenehaut.png"
+    },
+    {
+      "path": "img/products/classic-img/BalsamTrockenehaut.webp",
+      "source": "docs/img/products/classic-img/BalsamTrockenehaut.webp"
+    },
+    {
+      "path": "img/products/classic-img/BalsamTrockenehaut@2x.png",
+      "source": "docs/img/products/classic-img/BalsamTrockenehaut@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/BalsamTrockenehaut@2x.webp",
+      "source": "docs/img/products/classic-img/BalsamTrockenehaut@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/BeinBalsam.png",
+      "source": "docs/img/products/classic-img/BeinBalsam.png"
+    },
+    {
+      "path": "img/products/classic-img/BeinBalsam.webp",
+      "source": "docs/img/products/classic-img/BeinBalsam.webp"
+    },
+    {
+      "path": "img/products/classic-img/BeinBalsam@2x.png",
+      "source": "docs/img/products/classic-img/BeinBalsam@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/BeinBalsam@2x.webp",
+      "source": "docs/img/products/classic-img/BeinBalsam@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/CremeFussbad.png",
+      "source": "docs/img/products/classic-img/CremeFussbad.png"
+    },
+    {
+      "path": "img/products/classic-img/CremeFussbad.webp",
+      "source": "docs/img/products/classic-img/CremeFussbad.webp"
+    },
+    {
+      "path": "img/products/classic-img/CremeFussbad@2x.png",
+      "source": "docs/img/products/classic-img/CremeFussbad@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/CremeFussbad@2x.webp",
+      "source": "docs/img/products/classic-img/CremeFussbad@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/Extra.png",
+      "source": "docs/img/products/classic-img/Extra.png"
+    },
+    {
+      "path": "img/products/classic-img/Extra.webp",
+      "source": "docs/img/products/classic-img/Extra.webp"
+    },
+    {
+      "path": "img/products/classic-img/Extra@2x.png",
+      "source": "docs/img/products/classic-img/Extra@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/Extra@2x.webp",
+      "source": "docs/img/products/classic-img/Extra@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/FrischeBalsam.png",
+      "source": "docs/img/products/classic-img/FrischeBalsam.png"
+    },
+    {
+      "path": "img/products/classic-img/FrischeBalsam.webp",
+      "source": "docs/img/products/classic-img/FrischeBalsam.webp"
+    },
+    {
+      "path": "img/products/classic-img/FrischeBalsam@2x.png",
+      "source": "docs/img/products/classic-img/FrischeBalsam@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/FrischeBalsam@2x.webp",
+      "source": "docs/img/products/classic-img/FrischeBalsam@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/FrischeFussbad.png",
+      "source": "docs/img/products/classic-img/FrischeFussbad.png"
+    },
+    {
+      "path": "img/products/classic-img/FrischeFussbad.webp",
+      "source": "docs/img/products/classic-img/FrischeFussbad.webp"
+    },
+    {
+      "path": "img/products/classic-img/FrischeFussbad@2x.png",
+      "source": "docs/img/products/classic-img/FrischeFussbad@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/FrischeFussbad@2x.webp",
+      "source": "docs/img/products/classic-img/FrischeFussbad@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/Fuss+Schuh.png",
+      "source": "docs/img/products/classic-img/Fuss+Schuh.png"
+    },
+    {
+      "path": "img/products/classic-img/Fuss+Schuh.webp",
+      "source": "docs/img/products/classic-img/Fuss+Schuh.webp"
+    },
+    {
+      "path": "img/products/classic-img/Fuss+Schuh@2x.png",
+      "source": "docs/img/products/classic-img/Fuss+Schuh@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/Fuss+Schuh@2x.webp",
+      "source": "docs/img/products/classic-img/Fuss+Schuh@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/Fussbad.png",
+      "source": "docs/img/products/classic-img/Fussbad.png"
+    },
+    {
+      "path": "img/products/classic-img/Fussbad.webp",
+      "source": "docs/img/products/classic-img/Fussbad.webp"
+    },
+    {
+      "path": "img/products/classic-img/Fussbad@2x.png",
+      "source": "docs/img/products/classic-img/Fussbad@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/Fussbad@2x.webp",
+      "source": "docs/img/products/classic-img/Fussbad@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/Fusskrem.png",
+      "source": "docs/img/products/classic-img/Fusskrem.png"
+    },
+    {
+      "path": "img/products/classic-img/Fusskrem.webp",
+      "source": "docs/img/products/classic-img/Fusskrem.webp"
+    },
+    {
+      "path": "img/products/classic-img/Fusskrem@2x.png",
+      "source": "docs/img/products/classic-img/Fusskrem@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/Fusskrem@2x.webp",
+      "source": "docs/img/products/classic-img/Fusskrem@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/Fusspuder.png",
+      "source": "docs/img/products/classic-img/Fusspuder.png"
+    },
+    {
+      "path": "img/products/classic-img/Fusspuder.webp",
+      "source": "docs/img/products/classic-img/Fusspuder.webp"
+    },
+    {
+      "path": "img/products/classic-img/Fusspuder@2x.png",
+      "source": "docs/img/products/classic-img/Fusspuder@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/Fusspuder@2x.webp",
+      "source": "docs/img/products/classic-img/Fusspuder@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/Nagelpflege15ml.png",
+      "source": "docs/img/products/classic-img/Nagelpflege15ml.png"
+    },
+    {
+      "path": "img/products/classic-img/Nagelpflege15ml.webp",
+      "source": "docs/img/products/classic-img/Nagelpflege15ml.webp"
+    },
+    {
+      "path": "img/products/classic-img/Nagelpflege15ml@2x.png",
+      "source": "docs/img/products/classic-img/Nagelpflege15ml@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/Nagelpflege15ml@2x.webp",
+      "source": "docs/img/products/classic-img/Nagelpflege15ml@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/PflegendesFussdeo.png",
+      "source": "docs/img/products/classic-img/PflegendesFussdeo.png"
+    },
+    {
+      "path": "img/products/classic-img/PflegendesFussdeo.webp",
+      "source": "docs/img/products/classic-img/PflegendesFussdeo.webp"
+    },
+    {
+      "path": "img/products/classic-img/PflegendesFussdeo@2x.png",
+      "source": "docs/img/products/classic-img/PflegendesFussdeo@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/PflegendesFussdeo@2x.webp",
+      "source": "docs/img/products/classic-img/PflegendesFussdeo@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/SofteningBalsam.png",
+      "source": "docs/img/products/classic-img/SofteningBalsam.png"
+    },
+    {
+      "path": "img/products/classic-img/SofteningBalsam.webp",
+      "source": "docs/img/products/classic-img/SofteningBalsam.webp"
+    },
+    {
+      "path": "img/products/classic-img/SofteningBalsam@2x.png",
+      "source": "docs/img/products/classic-img/SofteningBalsam@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/SofteningBalsam@2x.webp",
+      "source": "docs/img/products/classic-img/SofteningBalsam@2x.webp"
+    },
+    {
+      "path": "img/products/classic-img/WarmeBalsam.png",
+      "source": "docs/img/products/classic-img/WarmeBalsam.png"
+    },
+    {
+      "path": "img/products/classic-img/WarmeBalsam.webp",
+      "source": "docs/img/products/classic-img/WarmeBalsam.webp"
+    },
+    {
+      "path": "img/products/classic-img/WarmeBalsam@2x.png",
+      "source": "docs/img/products/classic-img/WarmeBalsam@2x.png"
+    },
+    {
+      "path": "img/products/classic-img/WarmeBalsam@2x.webp",
+      "source": "docs/img/products/classic-img/WarmeBalsam@2x.webp"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/gerlach-sattelsitz.png",
+      "source": "docs/img/products/darbinieka_kresli-img/gerlach-sattelsitz.png"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/gerlach-sattelsitz.webp",
+      "source": "docs/img/products/darbinieka_kresli-img/gerlach-sattelsitz.webp"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/gerlach-sattelsitz@2x.png",
+      "source": "docs/img/products/darbinieka_kresli-img/gerlach-sattelsitz@2x.png"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/gerlach-sattelsitz@2x.webp",
+      "source": "docs/img/products/darbinieka_kresli-img/gerlach-sattelsitz@2x.webp"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-arbeitsstuhl.png",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-arbeitsstuhl.png"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-arbeitsstuhl.webp",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-arbeitsstuhl.webp"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-arbeitsstuhl@2x.png",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-arbeitsstuhl@2x.png"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-arbeitsstuhl@2x.webp",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-arbeitsstuhl@2x.webp"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-kompakt-exklusiv.png",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-kompakt-exklusiv.png"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-kompakt-exklusiv.webp",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-kompakt-exklusiv.webp"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-kompakt-exklusiv@2x.png",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-kompakt-exklusiv@2x.png"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-kompakt-exklusiv@2x.webp",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-kompakt-exklusiv@2x.webp"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-kompakt-vario.png",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-kompakt-vario.png"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-kompakt-vario.webp",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-kompakt-vario.webp"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-kompakt-vario@2x.png",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-kompakt-vario@2x.png"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-kompakt-vario@2x.webp",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-kompakt-vario@2x.webp"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-ponso-1.png",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-ponso-1.png"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-ponso-1.webp",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-ponso-1.webp"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-ponso-1@2x.png",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-ponso-1@2x.png"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/pending-ponso-1@2x.webp",
+      "source": "docs/img/products/darbinieka_kresli-img/pending-ponso-1@2x.webp"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/vireo.png",
+      "source": "docs/img/products/darbinieka_kresli-img/vireo.png"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/vireo.webp",
+      "source": "docs/img/products/darbinieka_kresli-img/vireo.webp"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/vireo@2x.png",
+      "source": "docs/img/products/darbinieka_kresli-img/vireo@2x.png"
+    },
+    {
+      "path": "img/products/darbinieka_kresli-img/vireo@2x.webp",
+      "source": "docs/img/products/darbinieka_kresli-img/vireo@2x.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringeoval.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringeoval.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringeoval.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringeoval.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringeoval1.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringeoval1.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringeoval1.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringeoval1.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringeoval1@2x.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringeoval1@2x.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringeoval1@2x.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringeoval1@2x.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringeoval@2x.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringeoval@2x.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringeoval@2x.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringeoval@2x.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringerund.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringerund.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringerund.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringerund.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringerund1.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringerund1.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringerund1.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringerund1.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringerund1@2x.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringerund1@2x.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringerund1@2x.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringerund1@2x.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringerund@2x.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringerund@2x.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Ballenringerund@2x.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Ballenringerund@2x.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster1.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster1.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster1.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster1.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster1@2x.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster1@2x.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster1@2x.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster1@2x.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster@2x.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster@2x.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster@2x.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Huhneraugenschutzpflaster@2x.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasterdick.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasterdick.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasterdick.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasterdick.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasterdick1.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasterdick1.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasterdick1.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasterdick1.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasterdick1@2x.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasterdick1@2x.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasterdick1@2x.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasterdick1@2x.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasterdick@2x.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasterdick@2x.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasterdick@2x.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasterdick@2x.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasteroval.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasteroval.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasteroval.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasteroval.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasteroval1.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasteroval1.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasteroval1.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasteroval1.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasteroval1@2x.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasteroval1@2x.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasteroval1@2x.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasteroval1@2x.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasteroval@2x.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasteroval@2x.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Schutzpflasteroval@2x.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Schutzpflasteroval@2x.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringeoval.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringeoval.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringeoval.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringeoval.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringeoval1.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringeoval1.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringeoval1.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringeoval1.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringeoval1@2x.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringeoval1@2x.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringeoval1@2x.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringeoval1@2x.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringeoval@2x.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringeoval@2x.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringeoval@2x.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringeoval@2x.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringerund.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringerund.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringerund.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringerund.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringerund1.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringerund1.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringerund1.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringerund1.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringerund1@2x.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringerund1@2x.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringerund1@2x.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringerund1@2x.webp"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringerund@2x.png",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringerund@2x.png"
+    },
+    {
+      "path": "img/products/filca_izstradajumi-img/Zehenringerund@2x.webp",
+      "source": "docs/img/products/filca_izstradajumi-img/Zehenringerund@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKBeinVital.png",
+      "source": "docs/img/products/fusskraft-img/GWFKBeinVital.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKBeinVital.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKBeinVital.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKBeinVital@2x.png",
+      "source": "docs/img/products/fusskraft-img/GWFKBeinVital@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKBeinVital@2x.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKBeinVital@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKFrischeCr.png",
+      "source": "docs/img/products/fusskraft-img/GWFKFrischeCr.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKFrischeCr.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKFrischeCr.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKFrischeCr@2x.png",
+      "source": "docs/img/products/fusskraft-img/GWFKFrischeCr@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKFrischeCr@2x.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKFrischeCr@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKHydroLipid.png",
+      "source": "docs/img/products/fusskraft-img/GWFKHydroLipid.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKHydroLipid.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKHydroLipid.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKHydroLipid@2x.png",
+      "source": "docs/img/products/fusskraft-img/GWFKHydroLipid@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKHydroLipid@2x.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKHydroLipid@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKIntensivCr.png",
+      "source": "docs/img/products/fusskraft-img/GWFKIntensivCr.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKIntensivCr.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKIntensivCr.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKIntensivCr@2x.png",
+      "source": "docs/img/products/fusskraft-img/GWFKIntensivCr@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKIntensivCr@2x.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKIntensivCr@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKKrauterBad.png",
+      "source": "docs/img/products/fusskraft-img/GWFKKrauterBad.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKKrauterBad.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKKrauterBad.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKKrauterBad@2x.png",
+      "source": "docs/img/products/fusskraft-img/GWFKKrauterBad@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKKrauterBad@2x.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKKrauterBad@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKKrauterSpray.png",
+      "source": "docs/img/products/fusskraft-img/GWFKKrauterSpray.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKKrauterSpray.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKKrauterSpray.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKKrauterSpray@2x.png",
+      "source": "docs/img/products/fusskraft-img/GWFKKrauterSpray@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKKrauterSpray@2x.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKKrauterSpray@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKNagelSch.Spray.png",
+      "source": "docs/img/products/fusskraft-img/GWFKNagelSch.Spray.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKNagelSch.Spray.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKNagelSch.Spray.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKNagelSch.Spray@2x.png",
+      "source": "docs/img/products/fusskraft-img/GWFKNagelSch.Spray@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKNagelSch.Spray@2x.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKNagelSch.Spray@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKPflegeCr.png",
+      "source": "docs/img/products/fusskraft-img/GWFKPflegeCr.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKPflegeCr.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKPflegeCr.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKPflegeCr@2x.png",
+      "source": "docs/img/products/fusskraft-img/GWFKPflegeCr@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKPflegeCr@2x.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKPflegeCr@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKRepairCr.png",
+      "source": "docs/img/products/fusskraft-img/GWFKRepairCr.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKRepairCr.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKRepairCr.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKRepairCr@2x.png",
+      "source": "docs/img/products/fusskraft-img/GWFKRepairCr@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKRepairCr@2x.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKRepairCr@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKWarmeCr.png",
+      "source": "docs/img/products/fusskraft-img/GWFKWarmeCr.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKWarmeCr.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKWarmeCr.webp"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKWarmeCr@2x.png",
+      "source": "docs/img/products/fusskraft-img/GWFKWarmeCr@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft-img/GWFKWarmeCr@2x.webp",
+      "source": "docs/img/products/fusskraft-img/GWFKWarmeCr@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFButter.png",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFButter.png"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFButter.webp",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFButter.webp"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFButter@2x.png",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFButter@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFButter@2x.webp",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFButter@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFCreme.png",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFCreme.png"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFCreme.webp",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFCreme.webp"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFCreme@2x.png",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFCreme@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFCreme@2x.webp",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFCreme@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFLotion.png",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFLotion.png"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFLotion.webp",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFLotion.webp"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFLotion@2x.png",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFLotion@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFLotion@2x.webp",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFLotion@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFPeeling.png",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFPeeling.png"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFPeeling.webp",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFPeeling.webp"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFPeeling@2x.png",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFPeeling@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFPeeling@2x.webp",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFPeeling@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFPflegeBad.png",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFPflegeBad.png"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFPflegeBad.webp",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFPflegeBad.webp"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFPflegeBad@2x.png",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFPflegeBad@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFPflegeBad@2x.webp",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFPflegeBad@2x.webp"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFSchaum.png",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFSchaum.png"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFSchaum.webp",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFSchaum.webp"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFSchaum@2x.png",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFSchaum@2x.png"
+    },
+    {
+      "path": "img/products/fusskraft_soft_foot-img/GWFKSFSchaum@2x.webp",
+      "source": "docs/img/products/fusskraft_soft_foot-img/GWFKSFSchaum@2x.webp"
+    },
+    {
+      "path": "img/products/gerlasan-img/GSAchselfrisch.png",
+      "source": "docs/img/products/gerlasan-img/GSAchselfrisch.png"
+    },
+    {
+      "path": "img/products/gerlasan-img/GSAchselfrisch.webp",
+      "source": "docs/img/products/gerlasan-img/GSAchselfrisch.webp"
+    },
+    {
+      "path": "img/products/gerlasan-img/GSAchselfrisch@2x.png",
+      "source": "docs/img/products/gerlasan-img/GSAchselfrisch@2x.png"
+    },
+    {
+      "path": "img/products/gerlasan-img/GSAchselfrisch@2x.webp",
+      "source": "docs/img/products/gerlasan-img/GSAchselfrisch@2x.webp"
+    },
+    {
+      "path": "img/products/gerlasan-img/GSHandcreme.png",
+      "source": "docs/img/products/gerlasan-img/GSHandcreme.png"
+    },
+    {
+      "path": "img/products/gerlasan-img/GSHandcreme.webp",
+      "source": "docs/img/products/gerlasan-img/GSHandcreme.webp"
+    },
+    {
+      "path": "img/products/gerlasan-img/GSHandcreme@2x.png",
+      "source": "docs/img/products/gerlasan-img/GSHandcreme@2x.png"
+    },
+    {
+      "path": "img/products/gerlasan-img/GSHandcreme@2x.webp",
+      "source": "docs/img/products/gerlasan-img/GSHandcreme@2x.webp"
+    },
+    {
+      "path": "img/products/gerlavit-img/GVMoorVitCreme.png",
+      "source": "docs/img/products/gerlavit-img/GVMoorVitCreme.png"
+    },
+    {
+      "path": "img/products/gerlavit-img/GVMoorVitCreme.webp",
+      "source": "docs/img/products/gerlavit-img/GVMoorVitCreme.webp"
+    },
+    {
+      "path": "img/products/gerlavit-img/GVMoorVitCreme@2x.png",
+      "source": "docs/img/products/gerlavit-img/GVMoorVitCreme@2x.png"
+    },
+    {
+      "path": "img/products/gerlavit-img/GVMoorVitCreme@2x.webp",
+      "source": "docs/img/products/gerlavit-img/GVMoorVitCreme@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/638-025.png",
+      "source": "docs/img/products/keramiskas_frezes/638-025.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/638-025.webp",
+      "source": "docs/img/products/keramiskas_frezes/638-025.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/638-025@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/638-025@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/638-025@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/638-025@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/639-035.png",
+      "source": "docs/img/products/keramiskas_frezes/639-035.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/639-035.webp",
+      "source": "docs/img/products/keramiskas_frezes/639-035.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/639-035@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/639-035@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/639-035@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/639-035@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/640-050.png",
+      "source": "docs/img/products/keramiskas_frezes/640-050.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/640-050.webp",
+      "source": "docs/img/products/keramiskas_frezes/640-050.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/640-050@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/640-050@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/640-050@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/640-050@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/648-020.png",
+      "source": "docs/img/products/keramiskas_frezes/648-020.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/648-020.webp",
+      "source": "docs/img/products/keramiskas_frezes/648-020.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/648-020@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/648-020@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/648-020@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/648-020@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/649-025.png",
+      "source": "docs/img/products/keramiskas_frezes/649-025.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/649-025.webp",
+      "source": "docs/img/products/keramiskas_frezes/649-025.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/649-025@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/649-025@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/649-025@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/649-025@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/650-028.png",
+      "source": "docs/img/products/keramiskas_frezes/650-028.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/650-028.webp",
+      "source": "docs/img/products/keramiskas_frezes/650-028.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/650-028@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/650-028@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/650-028@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/650-028@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/661-025.png",
+      "source": "docs/img/products/keramiskas_frezes/661-025.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/661-025.webp",
+      "source": "docs/img/products/keramiskas_frezes/661-025.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/661-025@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/661-025@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/661-025@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/661-025@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/662-035.png",
+      "source": "docs/img/products/keramiskas_frezes/662-035.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/662-035.webp",
+      "source": "docs/img/products/keramiskas_frezes/662-035.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/662-035@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/662-035@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/662-035@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/662-035@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/663-060.png",
+      "source": "docs/img/products/keramiskas_frezes/663-060.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/663-060.webp",
+      "source": "docs/img/products/keramiskas_frezes/663-060.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/663-060@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/663-060@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/663-060@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/663-060@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/666-025.png",
+      "source": "docs/img/products/keramiskas_frezes/666-025.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/666-025.webp",
+      "source": "docs/img/products/keramiskas_frezes/666-025.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/666-025@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/666-025@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/666-025@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/666-025@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/667-035.png",
+      "source": "docs/img/products/keramiskas_frezes/667-035.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/667-035.webp",
+      "source": "docs/img/products/keramiskas_frezes/667-035.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/667-035@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/667-035@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/667-035@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/667-035@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/671-060.png",
+      "source": "docs/img/products/keramiskas_frezes/671-060.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/671-060.webp",
+      "source": "docs/img/products/keramiskas_frezes/671-060.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/671-060@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/671-060@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/671-060@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/671-060@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/731-065.png",
+      "source": "docs/img/products/keramiskas_frezes/731-065.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/731-065.webp",
+      "source": "docs/img/products/keramiskas_frezes/731-065.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/731-065@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/731-065@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/731-065@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/731-065@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/732-050.png",
+      "source": "docs/img/products/keramiskas_frezes/732-050.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/732-050.webp",
+      "source": "docs/img/products/keramiskas_frezes/732-050.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/732-050@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/732-050@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/732-050@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/732-050@2x.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/733-035.png",
+      "source": "docs/img/products/keramiskas_frezes/733-035.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/733-035.webp",
+      "source": "docs/img/products/keramiskas_frezes/733-035.webp"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/733-035@2x.png",
+      "source": "docs/img/products/keramiskas_frezes/733-035@2x.png"
+    },
+    {
+      "path": "img/products/keramiskas_frezes/733-035@2x.webp",
+      "source": "docs/img/products/keramiskas_frezes/733-035@2x.webp"
+    },
+    {
+      "path": "img/products/med-img/Antitransp.png",
+      "source": "docs/img/products/med-img/Antitransp.png"
+    },
+    {
+      "path": "img/products/med-img/Antitransp.webp",
+      "source": "docs/img/products/med-img/Antitransp.webp"
+    },
+    {
+      "path": "img/products/med-img/Antitransp@2x.png",
+      "source": "docs/img/products/med-img/Antitransp@2x.png"
+    },
+    {
+      "path": "img/products/med-img/Antitransp@2x.webp",
+      "source": "docs/img/products/med-img/Antitransp@2x.webp"
+    },
+    {
+      "path": "img/products/med-img/Fluid.png",
+      "source": "docs/img/products/med-img/Fluid.png"
+    },
+    {
+      "path": "img/products/med-img/Fluid.webp",
+      "source": "docs/img/products/med-img/Fluid.webp"
+    },
+    {
+      "path": "img/products/med-img/Fluid@2x.png",
+      "source": "docs/img/products/med-img/Fluid@2x.png"
+    },
+    {
+      "path": "img/products/med-img/Fluid@2x.webp",
+      "source": "docs/img/products/med-img/Fluid@2x.webp"
+    },
+    {
+      "path": "img/products/med-img/FussDeoCr.png",
+      "source": "docs/img/products/med-img/FussDeoCr.png"
+    },
+    {
+      "path": "img/products/med-img/FussDeoCr.webp",
+      "source": "docs/img/products/med-img/FussDeoCr.webp"
+    },
+    {
+      "path": "img/products/med-img/FussDeoCr@2x.png",
+      "source": "docs/img/products/med-img/FussDeoCr@2x.png"
+    },
+    {
+      "path": "img/products/med-img/FussDeoCr@2x.webp",
+      "source": "docs/img/products/med-img/FussDeoCr@2x.webp"
+    },
+    {
+      "path": "img/products/med-img/HornhautCr.png",
+      "source": "docs/img/products/med-img/HornhautCr.png"
+    },
+    {
+      "path": "img/products/med-img/HornhautCr.webp",
+      "source": "docs/img/products/med-img/HornhautCr.webp"
+    },
+    {
+      "path": "img/products/med-img/HornhautCr@2x.png",
+      "source": "docs/img/products/med-img/HornhautCr@2x.png"
+    },
+    {
+      "path": "img/products/med-img/HornhautCr@2x.webp",
+      "source": "docs/img/products/med-img/HornhautCr@2x.webp"
+    },
+    {
+      "path": "img/products/med-img/Lipidro.png",
+      "source": "docs/img/products/med-img/Lipidro.png"
+    },
+    {
+      "path": "img/products/med-img/Lipidro.webp",
+      "source": "docs/img/products/med-img/Lipidro.webp"
+    },
+    {
+      "path": "img/products/med-img/Lipidro@2x.png",
+      "source": "docs/img/products/med-img/Lipidro@2x.png"
+    },
+    {
+      "path": "img/products/med-img/Lipidro@2x.webp",
+      "source": "docs/img/products/med-img/Lipidro@2x.webp"
+    },
+    {
+      "path": "img/products/med-img/MedFusspuder.png",
+      "source": "docs/img/products/med-img/MedFusspuder.png"
+    },
+    {
+      "path": "img/products/med-img/MedFusspuder.webp",
+      "source": "docs/img/products/med-img/MedFusspuder.webp"
+    },
+    {
+      "path": "img/products/med-img/MedFusspuder@2x.png",
+      "source": "docs/img/products/med-img/MedFusspuder@2x.png"
+    },
+    {
+      "path": "img/products/med-img/MedFusspuder@2x.webp",
+      "source": "docs/img/products/med-img/MedFusspuder@2x.webp"
+    },
+    {
+      "path": "img/products/med-img/NagelShutzCreme.png",
+      "source": "docs/img/products/med-img/NagelShutzCreme.png"
+    },
+    {
+      "path": "img/products/med-img/NagelShutzCreme.webp",
+      "source": "docs/img/products/med-img/NagelShutzCreme.webp"
+    },
+    {
+      "path": "img/products/med-img/NagelShutzCreme@2x.png",
+      "source": "docs/img/products/med-img/NagelShutzCreme@2x.png"
+    },
+    {
+      "path": "img/products/med-img/NagelShutzCreme@2x.webp",
+      "source": "docs/img/products/med-img/NagelShutzCreme@2x.webp"
+    },
+    {
+      "path": "img/products/med-img/Nagelweicher.png",
+      "source": "docs/img/products/med-img/Nagelweicher.png"
+    },
+    {
+      "path": "img/products/med-img/Nagelweicher.webp",
+      "source": "docs/img/products/med-img/Nagelweicher.webp"
+    },
+    {
+      "path": "img/products/med-img/Nagelweicher@2x.png",
+      "source": "docs/img/products/med-img/Nagelweicher@2x.png"
+    },
+    {
+      "path": "img/products/med-img/Nagelweicher@2x.webp",
+      "source": "docs/img/products/med-img/Nagelweicher@2x.webp"
+    },
+    {
+      "path": "img/products/med-img/Oil.png",
+      "source": "docs/img/products/med-img/Oil.png"
+    },
+    {
+      "path": "img/products/med-img/Oil.webp",
+      "source": "docs/img/products/med-img/Oil.webp"
+    },
+    {
+      "path": "img/products/med-img/Oil@2x.png",
+      "source": "docs/img/products/med-img/Oil@2x.png"
+    },
+    {
+      "path": "img/products/med-img/Oil@2x.webp",
+      "source": "docs/img/products/med-img/Oil@2x.webp"
+    },
+    {
+      "path": "img/products/med-img/PflegeShaum.png",
+      "source": "docs/img/products/med-img/PflegeShaum.png"
+    },
+    {
+      "path": "img/products/med-img/PflegeShaum.webp",
+      "source": "docs/img/products/med-img/PflegeShaum.webp"
+    },
+    {
+      "path": "img/products/med-img/PflegeShaum@2x.png",
+      "source": "docs/img/products/med-img/PflegeShaum@2x.png"
+    },
+    {
+      "path": "img/products/med-img/PflegeShaum@2x.webp",
+      "source": "docs/img/products/med-img/PflegeShaum@2x.webp"
+    },
+    {
+      "path": "img/products/med-img/SchrundenSalbe.png",
+      "source": "docs/img/products/med-img/SchrundenSalbe.png"
+    },
+    {
+      "path": "img/products/med-img/SchrundenSalbe.webp",
+      "source": "docs/img/products/med-img/SchrundenSalbe.webp"
+    },
+    {
+      "path": "img/products/med-img/SchrundenSalbe@2x.png",
+      "source": "docs/img/products/med-img/SchrundenSalbe@2x.png"
+    },
+    {
+      "path": "img/products/med-img/SchrundenSalbe@2x.webp",
+      "source": "docs/img/products/med-img/SchrundenSalbe@2x.webp"
+    },
+    {
+      "path": "img/products/med-img/Sensitive.png",
+      "source": "docs/img/products/med-img/Sensitive.png"
+    },
+    {
+      "path": "img/products/med-img/Sensitive.webp",
+      "source": "docs/img/products/med-img/Sensitive.webp"
+    },
+    {
+      "path": "img/products/med-img/Sensitive@2x.png",
+      "source": "docs/img/products/med-img/Sensitive@2x.png"
+    },
+    {
+      "path": "img/products/med-img/Sensitive@2x.webp",
+      "source": "docs/img/products/med-img/Sensitive@2x.webp"
+    },
+    {
+      "path": "img/products/med-img/Stift.png",
+      "source": "docs/img/products/med-img/Stift.png"
+    },
+    {
+      "path": "img/products/med-img/Stift.webp",
+      "source": "docs/img/products/med-img/Stift.webp"
+    },
+    {
+      "path": "img/products/med-img/Stift@2x.png",
+      "source": "docs/img/products/med-img/Stift@2x.png"
+    },
+    {
+      "path": "img/products/med-img/Stift@2x.webp",
+      "source": "docs/img/products/med-img/Stift@2x.webp"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/ConceptF2.png",
+      "source": "docs/img/products/pacienta_kresli-img/ConceptF2.png"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/ConceptF2.webp",
+      "source": "docs/img/products/pacienta_kresli-img/ConceptF2.webp"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/ConceptF2@2x.png",
+      "source": "docs/img/products/pacienta_kresli-img/ConceptF2@2x.png"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/ConceptF2@2x.webp",
+      "source": "docs/img/products/pacienta_kresli-img/ConceptF2@2x.webp"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/ConceptF3.png",
+      "source": "docs/img/products/pacienta_kresli-img/ConceptF3.png"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/ConceptF3.webp",
+      "source": "docs/img/products/pacienta_kresli-img/ConceptF3.webp"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/ConceptF3@2x.png",
+      "source": "docs/img/products/pacienta_kresli-img/ConceptF3@2x.png"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/ConceptF3@2x.webp",
+      "source": "docs/img/products/pacienta_kresli-img/ConceptF3@2x.webp"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/ConceptF5.png",
+      "source": "docs/img/products/pacienta_kresli-img/ConceptF5.png"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/ConceptF5.webp",
+      "source": "docs/img/products/pacienta_kresli-img/ConceptF5.webp"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/ConceptF5@2x.png",
+      "source": "docs/img/products/pacienta_kresli-img/ConceptF5@2x.png"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/ConceptF5@2x.webp",
+      "source": "docs/img/products/pacienta_kresli-img/ConceptF5@2x.webp"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/Lyra.png",
+      "source": "docs/img/products/pacienta_kresli-img/Lyra.png"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/Lyra.webp",
+      "source": "docs/img/products/pacienta_kresli-img/Lyra.webp"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/Lyra@2x.png",
+      "source": "docs/img/products/pacienta_kresli-img/Lyra@2x.png"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/Lyra@2x.webp",
+      "source": "docs/img/products/pacienta_kresli-img/Lyra@2x.webp"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/Vega.png",
+      "source": "docs/img/products/pacienta_kresli-img/Vega.png"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/Vega.webp",
+      "source": "docs/img/products/pacienta_kresli-img/Vega.webp"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/Vega@2x.png",
+      "source": "docs/img/products/pacienta_kresli-img/Vega@2x.png"
+    },
+    {
+      "path": "img/products/pacienta_kresli-img/Vega@2x.webp",
+      "source": "docs/img/products/pacienta_kresli-img/Vega@2x.webp"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/NEPTUN-NT-MICRO.png",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/NEPTUN-NT-MICRO.png"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/NEPTUN-NT-MICRO.webp",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/NEPTUN-NT-MICRO.webp"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/NEPTUN-NT-MICRO@2x.png",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/NEPTUN-NT-MICRO@2x.png"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/NEPTUN-NT-MICRO@2x.webp",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/NEPTUN-NT-MICRO@2x.webp"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/SATURN-AT-MICRO.png",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/SATURN-AT-MICRO.png"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/SATURN-AT-MICRO.webp",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/SATURN-AT-MICRO.webp"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/SATURN-AT-MICRO@2x.png",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/SATURN-AT-MICRO@2x.png"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/SATURN-AT-MICRO@2x.webp",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/SATURN-AT-MICRO@2x.webp"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/SIRIUS-NT-MICRO.png",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/SIRIUS-NT-MICRO.png"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/SIRIUS-NT-MICRO.webp",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/SIRIUS-NT-MICRO.webp"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/SIRIUS-NT-MICRO@2x.png",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/SIRIUS-NT-MICRO@2x.png"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/SIRIUS-NT-MICRO@2x.webp",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/SIRIUS-NT-MICRO@2x.webp"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/TRITON-AT-MICRO.png",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/TRITON-AT-MICRO.png"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/TRITON-AT-MICRO.webp",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/TRITON-AT-MICRO.webp"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/TRITON-AT-MICRO@2x.png",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/TRITON-AT-MICRO@2x.png"
+    },
+    {
+      "path": "img/products/pedu_kopsanas_aparati-img/TRITON-AT-MICRO@2x.webp",
+      "source": "docs/img/products/pedu_kopsanas_aparati-img/TRITON-AT-MICRO@2x.webp"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenpflasterdivers.png",
+      "source": "docs/img/products/plaksteri-img/Blasenpflasterdivers.png"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenpflasterdivers.webp",
+      "source": "docs/img/products/plaksteri-img/Blasenpflasterdivers.webp"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenpflasterdivers1.png",
+      "source": "docs/img/products/plaksteri-img/Blasenpflasterdivers1.png"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenpflasterdivers1.webp",
+      "source": "docs/img/products/plaksteri-img/Blasenpflasterdivers1.webp"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenpflasterdivers1@2x.png",
+      "source": "docs/img/products/plaksteri-img/Blasenpflasterdivers1@2x.png"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenpflasterdivers1@2x.webp",
+      "source": "docs/img/products/plaksteri-img/Blasenpflasterdivers1@2x.webp"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenpflasterdivers@2x.png",
+      "source": "docs/img/products/plaksteri-img/Blasenpflasterdivers@2x.png"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenpflasterdivers@2x.webp",
+      "source": "docs/img/products/plaksteri-img/Blasenpflasterdivers@2x.webp"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenpflastergross.png",
+      "source": "docs/img/products/plaksteri-img/Blasenpflastergross.png"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenpflastergross.webp",
+      "source": "docs/img/products/plaksteri-img/Blasenpflastergross.webp"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenpflastergross@2x.png",
+      "source": "docs/img/products/plaksteri-img/Blasenpflastergross@2x.png"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenpflastergross@2x.webp",
+      "source": "docs/img/products/plaksteri-img/Blasenpflastergross@2x.webp"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenplflastergross1.png",
+      "source": "docs/img/products/plaksteri-img/Blasenplflastergross1.png"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenplflastergross1.webp",
+      "source": "docs/img/products/plaksteri-img/Blasenplflastergross1.webp"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenplflastergross1@2x.png",
+      "source": "docs/img/products/plaksteri-img/Blasenplflastergross1@2x.png"
+    },
+    {
+      "path": "img/products/plaksteri-img/Blasenplflastergross1@2x.webp",
+      "source": "docs/img/products/plaksteri-img/Blasenplflastergross1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Ballenpolster.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Ballenpolster.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Ballenpolster.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Ballenpolster.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Ballenpolster1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Ballenpolster1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Ballenpolster1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Ballenpolster1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Ballenpolster1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Ballenpolster1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Ballenpolster1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Ballenpolster1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Ballenpolster@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Ballenpolster@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Ballenpolster@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Ballenpolster@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/BallenpolstmitZehenteiler@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/FersenpolsterG.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/FersenpolsterG.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/FersenpolsterG.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/FersenpolsterG.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/FersenpolsterG@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/FersenpolsterG@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/FersenpolsterG@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/FersenpolsterG@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Ferssenpolster1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Ferssenpolster1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Ferssenpolster1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Ferssenpolster1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Ferssenpolster1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Ferssenpolster1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Ferssenpolster1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Ferssenpolster1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterlinks.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterlinks.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterlinks.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterlinks.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterlinks@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterlinks@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterlinks@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterlinks@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterrechts.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterrechts.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterrechts.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterrechts.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterrechts@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterrechts@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterrechts@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HammerZehenPolsterrechts@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzPolsterRingG1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzPolsterRingG1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzPolsterRingG1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzPolsterRingG1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzPolsterRingG1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzPolsterRingG1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzPolsterRingG1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzPolsterRingG1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/HuhneraugenSchutzpolsterRingG@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/KleizenBallenpolster@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Korrekturing.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Korrekturing.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Korrekturing.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Korrekturing.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Korrekturing1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Korrekturing1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Korrekturing1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Korrekturing1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Korrekturing1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Korrekturing1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Korrekturing1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Korrekturing1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Korrekturing@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Korrekturing@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Korrekturing@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Korrekturing@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Vorfuspolster.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Vorfuspolster.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Vorfuspolster.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Vorfuspolster.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Vorfuspolster1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Vorfuspolster1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Vorfuspolster1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Vorfuspolster1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Vorfuspolster1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Vorfuspolster1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Vorfuspolster1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Vorfuspolster1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Vorfuspolster@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Vorfuspolster@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Vorfuspolster@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Vorfuspolster@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenkappeG@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenkappeG@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenSchutzRingG@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenspreizerG.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenspreizerG.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenspreizerG.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenspreizerG.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenspreizerG@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenspreizerG@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenspreizerG@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenspreizerG@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Zehenteiler.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Zehenteiler.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Zehenteiler.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Zehenteiler.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Zehenteiler1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Zehenteiler1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Zehenteiler1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Zehenteiler1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Zehenteiler1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Zehenteiler1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Zehenteiler1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Zehenteiler1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Zehenteiler@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Zehenteiler@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/Zehenteiler@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/Zehenteiler@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenteilerGD.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenteilerGD.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenteilerGD.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenteilerGD.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenteilerGD1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenteilerGD1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenteilerGD1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenteilerGD1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenteilerGD1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenteilerGD1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenteilerGD1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenteilerGD1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenteilerGD@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenteilerGD@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi-img/ZehenteilerGD@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi-img/ZehenteilerGD@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/BallenpolstermitElastikbinde@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuspolster@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagelinks@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitBandagerechts@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/VorfuspolstermitElastikbinde@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Vorfuss-undBallenpolstermitElastikbinde@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenkappe@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz1.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz1.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz1.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz1.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz1@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz1@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz1@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz1@2x.webp"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz@2x.png",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz@2x.png"
+    },
+    {
+      "path": "img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz@2x.webp",
+      "source": "docs/img/products/polimera_gela_izstradajumi_ar_audumu-img/Zehenschutz@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/Horngauterw500ml.png",
+      "source": "docs/img/products/professional-img/Horngauterw500ml.png"
+    },
+    {
+      "path": "img/products/professional-img/Horngauterw500ml.webp",
+      "source": "docs/img/products/professional-img/Horngauterw500ml.webp"
+    },
+    {
+      "path": "img/products/professional-img/Horngauterw500ml@2x.png",
+      "source": "docs/img/products/professional-img/Horngauterw500ml@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/Horngauterw500ml@2x.webp",
+      "source": "docs/img/products/professional-img/Horngauterw500ml@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/HornhauterwSchaum.png",
+      "source": "docs/img/products/professional-img/HornhauterwSchaum.png"
+    },
+    {
+      "path": "img/products/professional-img/HornhauterwSchaum.webp",
+      "source": "docs/img/products/professional-img/HornhauterwSchaum.webp"
+    },
+    {
+      "path": "img/products/professional-img/HornhauterwSchaum@2x.png",
+      "source": "docs/img/products/professional-img/HornhauterwSchaum@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/HornhauterwSchaum@2x.webp",
+      "source": "docs/img/products/professional-img/HornhauterwSchaum@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/Lotion500ml.png",
+      "source": "docs/img/products/professional-img/Lotion500ml.png"
+    },
+    {
+      "path": "img/products/professional-img/Lotion500ml.webp",
+      "source": "docs/img/products/professional-img/Lotion500ml.webp"
+    },
+    {
+      "path": "img/products/professional-img/Lotion500ml@2x.png",
+      "source": "docs/img/products/professional-img/Lotion500ml@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/Lotion500ml@2x.webp",
+      "source": "docs/img/products/professional-img/Lotion500ml@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/Massageemulsion500ml.png",
+      "source": "docs/img/products/professional-img/Massageemulsion500ml.png"
+    },
+    {
+      "path": "img/products/professional-img/Massageemulsion500ml.webp",
+      "source": "docs/img/products/professional-img/Massageemulsion500ml.webp"
+    },
+    {
+      "path": "img/products/professional-img/Massageemulsion500ml@2x.png",
+      "source": "docs/img/products/professional-img/Massageemulsion500ml@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/Massageemulsion500ml@2x.webp",
+      "source": "docs/img/products/professional-img/Massageemulsion500ml@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/MED.WashgelProtect1000ml.png",
+      "source": "docs/img/products/professional-img/MED.WashgelProtect1000ml.png"
+    },
+    {
+      "path": "img/products/professional-img/MED.WashgelProtect1000ml.webp",
+      "source": "docs/img/products/professional-img/MED.WashgelProtect1000ml.webp"
+    },
+    {
+      "path": "img/products/professional-img/MED.WashgelProtect1000ml@2x.png",
+      "source": "docs/img/products/professional-img/MED.WashgelProtect1000ml@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/MED.WashgelProtect1000ml@2x.webp",
+      "source": "docs/img/products/professional-img/MED.WashgelProtect1000ml@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/MED.WashgelSoft1000ml.png",
+      "source": "docs/img/products/professional-img/MED.WashgelSoft1000ml.png"
+    },
+    {
+      "path": "img/products/professional-img/MED.WashgelSoft1000ml.webp",
+      "source": "docs/img/products/professional-img/MED.WashgelSoft1000ml.webp"
+    },
+    {
+      "path": "img/products/professional-img/MED.WashgelSoft1000ml@2x.png",
+      "source": "docs/img/products/professional-img/MED.WashgelSoft1000ml@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/MED.WashgelSoft1000ml@2x.webp",
+      "source": "docs/img/products/professional-img/MED.WashgelSoft1000ml@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/Nagelmasse.png",
+      "source": "docs/img/products/professional-img/Nagelmasse.png"
+    },
+    {
+      "path": "img/products/professional-img/Nagelmasse.webp",
+      "source": "docs/img/products/professional-img/Nagelmasse.webp"
+    },
+    {
+      "path": "img/products/professional-img/Nagelmasse@2x.png",
+      "source": "docs/img/products/professional-img/Nagelmasse@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/Nagelmasse@2x.webp",
+      "source": "docs/img/products/professional-img/Nagelmasse@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairCleaner.png",
+      "source": "docs/img/products/professional-img/NailRepairCleaner.png"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairCleaner.webp",
+      "source": "docs/img/products/professional-img/NailRepairCleaner.webp"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairCleaner@2x.png",
+      "source": "docs/img/products/professional-img/NailRepairCleaner@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairCleaner@2x.webp",
+      "source": "docs/img/products/professional-img/NailRepairCleaner@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelKlarH.png",
+      "source": "docs/img/products/professional-img/NailRepairGelKlarH.png"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelKlarH.webp",
+      "source": "docs/img/products/professional-img/NailRepairGelKlarH.webp"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelKlarH@2x.png",
+      "source": "docs/img/products/professional-img/NailRepairGelKlarH@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelKlarH@2x.webp",
+      "source": "docs/img/products/professional-img/NailRepairGelKlarH@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelKlarM.png",
+      "source": "docs/img/products/professional-img/NailRepairGelKlarM.png"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelKlarM.webp",
+      "source": "docs/img/products/professional-img/NailRepairGelKlarM.webp"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelKlarM@2x.png",
+      "source": "docs/img/products/professional-img/NailRepairGelKlarM@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelKlarM@2x.webp",
+      "source": "docs/img/products/professional-img/NailRepairGelKlarM@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelOpalH.png",
+      "source": "docs/img/products/professional-img/NailRepairGelOpalH.png"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelOpalH.webp",
+      "source": "docs/img/products/professional-img/NailRepairGelOpalH.webp"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelOpalH@2x.png",
+      "source": "docs/img/products/professional-img/NailRepairGelOpalH@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelOpalH@2x.webp",
+      "source": "docs/img/products/professional-img/NailRepairGelOpalH@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelOpalM.png",
+      "source": "docs/img/products/professional-img/NailRepairGelOpalM.png"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelOpalM.webp",
+      "source": "docs/img/products/professional-img/NailRepairGelOpalM.webp"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelOpalM@2x.png",
+      "source": "docs/img/products/professional-img/NailRepairGelOpalM@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelOpalM@2x.webp",
+      "source": "docs/img/products/professional-img/NailRepairGelOpalM@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelRosaH.png",
+      "source": "docs/img/products/professional-img/NailRepairGelRosaH.png"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelRosaH.webp",
+      "source": "docs/img/products/professional-img/NailRepairGelRosaH.webp"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelRosaH@2x.png",
+      "source": "docs/img/products/professional-img/NailRepairGelRosaH@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelRosaH@2x.webp",
+      "source": "docs/img/products/professional-img/NailRepairGelRosaH@2x.webp"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelRosaM.png",
+      "source": "docs/img/products/professional-img/NailRepairGelRosaM.png"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelRosaM.webp",
+      "source": "docs/img/products/professional-img/NailRepairGelRosaM.webp"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelRosaM@2x.png",
+      "source": "docs/img/products/professional-img/NailRepairGelRosaM@2x.png"
+    },
+    {
+      "path": "img/products/professional-img/NailRepairGelRosaM@2x.webp",
+      "source": "docs/img/products/professional-img/NailRepairGelRosaM@2x.webp"
+    },
+    {
+      "path": "img/products/puletaji-img/9569.png",
+      "source": "docs/img/products/puletaji-img/9569.png"
+    },
+    {
+      "path": "img/products/puletaji-img/9569.webp",
+      "source": "docs/img/products/puletaji-img/9569.webp"
+    },
+    {
+      "path": "img/products/puletaji-img/9569@2x.png",
+      "source": "docs/img/products/puletaji-img/9569@2x.png"
+    },
+    {
+      "path": "img/products/puletaji-img/9569@2x.webp",
+      "source": "docs/img/products/puletaji-img/9569@2x.webp"
+    },
+    {
+      "path": "img/products/puletaji-img/9577.png",
+      "source": "docs/img/products/puletaji-img/9577.png"
+    },
+    {
+      "path": "img/products/puletaji-img/9577.webp",
+      "source": "docs/img/products/puletaji-img/9577.webp"
+    },
+    {
+      "path": "img/products/puletaji-img/9577@2x.png",
+      "source": "docs/img/products/puletaji-img/9577@2x.png"
+    },
+    {
+      "path": "img/products/puletaji-img/9577@2x.webp",
+      "source": "docs/img/products/puletaji-img/9577@2x.webp"
+    },
+    {
+      "path": "img/products/puletaji-img/9579.png",
+      "source": "docs/img/products/puletaji-img/9579.png"
+    },
+    {
+      "path": "img/products/puletaji-img/9579.webp",
+      "source": "docs/img/products/puletaji-img/9579.webp"
+    },
+    {
+      "path": "img/products/puletaji-img/9579@2x.png",
+      "source": "docs/img/products/puletaji-img/9579@2x.png"
+    },
+    {
+      "path": "img/products/puletaji-img/9579@2x.webp",
+      "source": "docs/img/products/puletaji-img/9579@2x.webp"
+    },
+    {
+      "path": "img/products/puletaji-img/9669.png",
+      "source": "docs/img/products/puletaji-img/9669.png"
+    },
+    {
+      "path": "img/products/puletaji-img/9669.webp",
+      "source": "docs/img/products/puletaji-img/9669.webp"
+    },
+    {
+      "path": "img/products/puletaji-img/9669@2x.png",
+      "source": "docs/img/products/puletaji-img/9669@2x.png"
+    },
+    {
+      "path": "img/products/puletaji-img/9669@2x.webp",
+      "source": "docs/img/products/puletaji-img/9669@2x.webp"
+    },
+    {
+      "path": "img/products/puletaji-img/9679.png",
+      "source": "docs/img/products/puletaji-img/9679.png"
+    },
+    {
+      "path": "img/products/puletaji-img/9679.webp",
+      "source": "docs/img/products/puletaji-img/9679.webp"
+    },
+    {
+      "path": "img/products/puletaji-img/9679@2x.png",
+      "source": "docs/img/products/puletaji-img/9679@2x.png"
+    },
+    {
+      "path": "img/products/puletaji-img/9679@2x.webp",
+      "source": "docs/img/products/puletaji-img/9679@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr1.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr1.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr1.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr1.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr1@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr1@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr1@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr1@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rbr@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz1.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz1.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz1.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz1.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz1@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz1@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz1@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz1@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/10Rz@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr1.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr1.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr1.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr1.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr1@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr1@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr1@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr1@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rbr@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz1.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz1.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz1.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz1.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz1@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz1@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz1@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz1@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Rz@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Sbr.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Sbr.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Sbr.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Sbr.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Sbr@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Sbr@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Sbr@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Sbr@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz1.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz1.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz1.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz1.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz1@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz1@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz1@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz1@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/13Sz@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr1.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr1.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr1.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr1.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr1@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr1@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr1@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr1@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rbr@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz1.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz1.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz1.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz1.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz1@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz1@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz1@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz1@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Rz@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr1.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr1.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr1.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr1.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr1@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr1@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr1@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr1@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sbr@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz1.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz1.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz1.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz1.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz1@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz1@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz1@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz1@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/16Sz@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr1.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr1.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr1.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr1.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr1@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr1@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr1@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr1@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rbr@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz1.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz1.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz1.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz1.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz1@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz1@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz1@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz1@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/5Rz@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr1.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr1.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr1.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr1.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr1@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr1@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr1@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr1@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rbr@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz1.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz1.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz1.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz1.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz1@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz1@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz1@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz1@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/7Rz@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/GT13S.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/GT13S.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/GT13S.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/GT13S.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/GT13S@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/GT13S@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/GT13S@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/GT13S@2x.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/GT5R.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/GT5R.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/GT5R.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/GT5R.webp"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/GT5R@2x.png",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/GT5R@2x.png"
+    },
+    {
+      "path": "img/products/vienreizlietojamas_smilspapira_frezes-img/GT5R@2x.webp",
+      "source": "docs/img/products/vienreizlietojamas_smilspapira_frezes-img/GT5R@2x.webp"
+    },
+    {
+      "path": "img/svgicons/arrow-left.svg",
+      "source": "docs/img/svgicons/arrow-left.svg"
+    },
+    {
+      "path": "img/svgicons/arrow-right.svg",
+      "source": "docs/img/svgicons/arrow-right.svg"
+    },
+    {
+      "path": "img/svgicons/email.svg",
+      "source": "docs/img/svgicons/email.svg"
+    },
+    {
+      "path": "img/svgicons/logo-bg.svg",
+      "source": "docs/img/svgicons/logo-bg.svg"
+    },
+    {
+      "path": "img/svgicons/logo.svg",
+      "source": "docs/img/svgicons/logo.svg"
+    },
+    {
+      "path": "img/svgicons/mail.svg",
+      "source": "docs/img/svgicons/mail.svg"
+    },
+    {
+      "path": "img/svgicons/phone.svg",
+      "source": "docs/img/svgicons/phone.svg"
+    },
+    {
+      "path": "img/svgicons/whatsapp.svg",
+      "source": "docs/img/svgicons/whatsapp.svg"
+    },
+    {
+      "path": "img/svgsprite/sprite.symbol.svg",
+      "source": "docs/img/svgsprite/sprite.symbol.svg"
+    },
+    {
+      "path": "img/svgsprite/stack/sprite.stack.html",
+      "source": "docs/img/svgsprite/stack/sprite.stack.html"
+    },
+    {
+      "path": "img/svgsprite/stack/svg/sprite.stack.svg",
+      "source": "docs/img/svgsprite/stack/svg/sprite.stack.svg"
+    },
+    {
+      "path": "js/index.bundle.js",
+      "source": "docs/js/index.bundle.js"
+    },
+    {
+      "path": "js/index.bundle.js.LICENSE.txt",
+      "source": "docs/js/index.bundle.js.LICENSE.txt"
+    },
+    {
+      "path": "juridiskais-pazinojums.html",
+      "source": "docs/juridiskais-pazinojums.html"
+    },
+    {
+      "path": "php/admin/admin.css",
+      "source": "php/admin/admin.css"
+    },
+    {
+      "path": "php/admin/articles.php",
+      "source": "php/admin/articles.php"
+    },
+    {
+      "path": "php/admin/categories.php",
+      "source": "php/admin/categories.php"
+    },
+    {
+      "path": "php/admin/health.php",
+      "source": "php/admin/health.php"
+    },
+    {
+      "path": "php/admin/includes/layout.php",
+      "source": "php/admin/includes/layout.php"
+    },
+    {
+      "path": "php/admin/includes/text-items.php",
+      "source": "php/admin/includes/text-items.php"
+    },
+    {
+      "path": "php/admin/index.php",
+      "source": "php/admin/index.php"
+    },
+    {
+      "path": "php/admin/login.php",
+      "source": "php/admin/login.php"
+    },
+    {
+      "path": "php/admin/logout.php",
+      "source": "php/admin/logout.php"
+    },
+    {
+      "path": "php/admin/news.php",
+      "source": "php/admin/news.php"
+    },
+    {
+      "path": "php/admin/password.php",
+      "source": "php/admin/password.php"
+    },
+    {
+      "path": "php/admin/preview.php",
+      "source": "php/admin/preview.php"
+    },
+    {
+      "path": "php/admin/products.php",
+      "source": "php/admin/products.php"
+    },
+    {
+      "path": "php/bin/.htaccess",
+      "source": "php/bin/.htaccess"
+    },
+    {
+      "path": "php/bin/restore.php",
+      "source": "php/bin/restore.php"
+    },
+    {
+      "path": "php/bin/set-password.php",
+      "source": "php/bin/set-password.php"
+    },
+    {
+      "path": "php/includes/.htaccess",
+      "source": "php/includes/.htaccess"
+    },
+    {
+      "path": "php/includes/auth.php",
+      "source": "php/includes/auth.php"
+    },
+    {
+      "path": "php/includes/content.php",
+      "source": "php/includes/content.php"
+    },
+    {
+      "path": "php/includes/errors.php",
+      "source": "php/includes/errors.php"
+    },
+    {
+      "path": "php/includes/render.php",
+      "source": "php/includes/render.php"
+    },
+    {
+      "path": "php/includes/site-config.php",
+      "source": "php/includes/site-config.php"
+    },
+    {
+      "path": "php/includes/storage.php",
+      "source": "php/includes/storage.php"
+    },
+    {
+      "path": "php/includes/upload.php",
+      "source": "php/includes/upload.php"
+    },
+    {
+      "path": "php/includes/validation.php",
+      "source": "php/includes/validation.php"
+    },
+    {
+      "path": "php/site.php",
+      "source": "php/site.php"
+    },
+    {
+      "path": "php/templates/.htaccess",
+      "source": "php/templates/.htaccess"
+    },
+    {
+      "path": "php/templates/darbinieka-kresli.html",
+      "source": "php/templates/darbinieka-kresli.html"
+    },
+    {
+      "path": "php/templates/filca-izstradajumi.html",
+      "source": "php/templates/filca-izstradajumi.html"
+    },
+    {
+      "path": "php/templates/gehwol-classic.html",
+      "source": "php/templates/gehwol-classic.html"
+    },
+    {
+      "path": "php/templates/gehwol-fusskraft-soft-feet.html",
+      "source": "php/templates/gehwol-fusskraft-soft-feet.html"
+    },
+    {
+      "path": "php/templates/gehwol-fusskraft.html",
+      "source": "php/templates/gehwol-fusskraft.html"
+    },
+    {
+      "path": "php/templates/gehwol-med.html",
+      "source": "php/templates/gehwol-med.html"
+    },
+    {
+      "path": "php/templates/gehwol-professional.html",
+      "source": "php/templates/gehwol-professional.html"
+    },
+    {
+      "path": "php/templates/gerlasan.html",
+      "source": "php/templates/gerlasan.html"
+    },
+    {
+      "path": "php/templates/gerlavit.html",
+      "source": "php/templates/gerlavit.html"
+    },
+    {
+      "path": "php/templates/index.html",
+      "source": "php/templates/index.html"
+    },
+    {
+      "path": "php/templates/keramiskas-frezes.html",
+      "source": "php/templates/keramiskas-frezes.html"
+    },
+    {
+      "path": "php/templates/pacienta-kresli.html",
+      "source": "php/templates/pacienta-kresli.html"
+    },
+    {
+      "path": "php/templates/pedu-kopsanas-aparati.html",
+      "source": "php/templates/pedu-kopsanas-aparati.html"
+    },
+    {
+      "path": "php/templates/plaksteri.html",
+      "source": "php/templates/plaksteri.html"
+    },
+    {
+      "path": "php/templates/polimera-gela-izstradajumi-parvilkti-ar-tekstilu.html",
+      "source": "php/templates/polimera-gela-izstradajumi-parvilkti-ar-tekstilu.html"
+    },
+    {
+      "path": "php/templates/polimera-gela-izstradajumi.html",
+      "source": "php/templates/polimera-gela-izstradajumi.html"
+    },
+    {
+      "path": "php/templates/puletaji.html",
+      "source": "php/templates/puletaji.html"
+    },
+    {
+      "path": "php/templates/vienreizlietojamas-smilspapira-frezes.html",
+      "source": "php/templates/vienreizlietojamas-smilspapira-frezes.html"
+    },
+    {
+      "path": "php/templates/_shell.html",
+      "source": "php/templates/_shell.html"
+    },
+    {
+      "path": "privatuma-politika.html",
+      "source": "docs/privatuma-politika.html"
+    },
+    {
+      "path": "rekviziti.html",
+      "source": "docs/rekviziti.html"
+    },
+    {
+      "path": "robots.txt",
+      "source": "docs/robots.txt"
+    },
+    {
+      "path": "sikdatnu-politika.html",
+      "source": "docs/sikdatnu-politika.html"
+    }
+  ]
+}

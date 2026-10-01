@@ -1,145 +1,144 @@
 # Выкладка gehwol.lv
 
-Production работает в Plesk. Git checkout ветки `main` находится в
-`/var/www/vhosts/gehwol.lv/docs`, document root — в
-`/var/www/vhosts/gehwol.lv/httpdocs`.
+Plesk получает ветку `main` в каталог `/docs`. В chroot это корень checkout
+`/docs`, а production document root доступен как `/httpdocs`.
 
-## Что является runtime-данными
+Production-серверу не нужны Node.js и npm. Они используются только локально и
+в CI для подготовки committed build output. Post-deployment action запускает
+только PHP 8.4.
 
-Эти каталоги в production являются authoritative и persistent:
+## Что подготовлено до Plesk
 
-- `httpdocs/php/data/**` — JSON, lock-файлы и резервные копии, которыми управляет админка;
-- `httpdocs/php/data/backups/**` — runtime-копии JSON (входит в предыдущий путь и указан отдельно для ясности);
-- `httpdocs/uploads/**` — загруженные через админку изображения.
+Папка репозитория `docs/` уже является готовой публичной production-сборкой:
+CSS, JS, изображения, шрифты, legal/static pages, `.htaccess` и `.user.ini`.
+Она совпадает с публичной частью результата `npm run release`, но полного сайта
+недостаточно без PHP application code из `php/`.
 
-Обычный release и автоматический deploy никогда не создают, не заменяют и не
-удаляют ничего внутри этих путей и не меняют их permissions. Служебный каталог
-Plesk/Let's Encrypt `.well-known/**` также не управляется deploy-скриптом.
+Существующий `scripts/build-release.js` продолжает собирать обычный `release/`
+и одновременно создаёт tracked-файл `deploy-manifest.json`. Manifest — точный
+allow-list прежнего release pipeline:
 
-## Production release
+- публичные файлы берутся из committed `docs/`;
+- application code и templates — из разрешённой части committed `php/`;
+- `php/data/**`, `uploads/**`, dev PHP tools, исходники, тесты и credentials в
+  manifest не попадают.
 
-`npm run release` собирает `release/` из уже подготовленных `docs/` и PHP-кода.
-В него входят PHP application code, templates, CSS, JS, изображения, шрифты,
-статические и юридические страницы, корневые `.htaccess` и `.user.ini`. В него
-не входят Git, `node_modules`, исходники, тесты, документация, credentials и
-production JSON.
+PHP-скрипт на Plesk ничего не компилирует. Он читает manifest, проверяет все
+source mappings и синхронизирует уже подготовленные файлы.
 
-`npm run release:first` дополнительно включает начальные JSON. Эта команда
-предназначена **только для первой ручной установки**. При обычном обновлении её
-использовать нельзя: начальные данные не должны становиться источником истины
-для уже работающей production-админки.
+## Persistent production data
 
-## Требования к серверу
+Эти пути являются authoritative runtime-данными и никогда не обходятся, не
+удаляются, не перезаписываются и не получают новые permissions при deploy:
 
-- Node.js и npm доступны для Plesk post-deployment action; установка npm-пакетов
-  для deploy не нужна, потому что release собирается из committed build output.
-- PHP 8.1 или новее с `json`, `mbstring`, `dom`, `session`, `gd`/WebP,
-  желательно `fileinfo` и `exif`.
-- Apache обрабатывает `.htaccess`; PHP может писать в `php/data/` и `uploads/`.
-- Системный пользователь подписки может писать в `docs/release`, `httpdocs` и
-  создать lock в `/var/www/vhosts/gehwol.lv`.
+- `/httpdocs/php/data/**`;
+- `/httpdocs/php/data/backups/**`;
+- `/httpdocs/uploads/**`;
+- `/httpdocs/.well-known/**`.
+
+Production JSON из репозитория не включается в `deploy-manifest.json` и не может
+заменить данные, изменённые через production-админку.
+
+## Подготовка обычного обновления
+
+Выполнить локально или в доверенном CI до push:
+
+```sh
+composer test
+npm run build:quick
+npm run check
+npm run release
+```
+
+Закоммитить изменённые production-файлы в `docs/`, PHP-код и обновлённый
+`deploy-manifest.json`. CI повторно строит release, проверяет, что manifest не
+изменился, выполняет PHP lint, PHPUnit и отдельные PHP deployment tests.
+
+`npm run release:first` при обычном обновлении запрещён. Он предназначен только
+для первой установки с начальными JSON.
+
+## Автоматический PHP deployment
+
+`scripts/deploy-plesk.php`:
+
+1. атомарно создаёт `/.gehwol-deploy.lock` и блокирует concurrent deploy;
+2. полностью валидирует manifest и все source-файлы до изменения production;
+3. отклоняет symlinks, unsafe paths, runtime paths и private/dev content;
+4. сравнивает SHA-256 готовых файлов с `/httpdocs`;
+5. заменяет новый и изменённый файл через temporary file + rename;
+6. удаляет устаревшие deployable-файлы только после успешного копирования;
+7. не входит в persistent paths даже для сравнения;
+8. логирует content version, additions, updates, removals и результат;
+9. возвращает non-zero exit code при ошибке.
+
+Замена near-atomic на уровне каждого файла. Полный swap всего `httpdocs` не
+используется, поскольку runtime JSON и uploads могут изменяться админкой во
+время deploy и должны оставаться на месте.
+
+Проверить план в chroot без изменения `/httpdocs`:
+
+```sh
+cd /docs && php scripts/deploy-plesk.php --dry-run --destination=/httpdocs
+```
+
+## Настройка Plesk
+
+Сохранить текущие параметры Git:
+
+- branch: `main`;
+- deployment mode: Automatic;
+- deployment directory: `/docs`.
+
+В `Enable post deployment actions` указать:
+
+```sh
+cd /docs && php scripts/deploy-plesk.php --destination=/httpdocs
+```
+
+Абсолютные пути здесь относятся к chroot подписки, где home системного
+пользователя является `/`. Команда не зависит от initial working directory, не
+использует SSH, Node.js/npm или credentials.
+
+После push Plesk обновит `/docs`, PHP проверит committed allow-list и только
+затем синхронизирует код с `/httpdocs`. Ошибка manifest/source validation
+оставляет production полностью неизменным. Ошибка отдельной файловой операции
+не оставляет частично записанный файл; stale-файлы удаляются только после
+установки additions/updates.
 
 ## Первая установка
 
-1. Выполнить локально проверки:
-
-   ```sh
-   composer test
-   npm run build:quick
-   npm run check
-   npm run test:deploy
-   npm run release:first
-   ```
-
-2. Создать администратора командой `php php/bin/set-password.php <логин>`.
-3. Сохранить прежний `httpdocs` отдельно для возможного отката.
-4. Один раз вручную загрузить **содержимое** `release/` в `httpdocs/`, включая
-   скрытые `.htaccess` и `.user.ini`.
-5. Проверить права записи PHP на `php/data/` и `uploads/`, затем открыть
+1. Локально выполнить полный test suite и `npm run build:quick`.
+2. Создать администратора: `php php/bin/set-password.php <логин>`.
+3. Выполнить `npm run release:first`.
+4. Сохранить прежний `httpdocs` отдельно.
+5. Один раз вручную загрузить содержимое `release/` в `httpdocs`, включая
+   `.htaccess`, `.user.ini`, начальные JSON и protection files.
+6. Проверить права записи PHP на `php/data/` и `uploads/`, затем открыть
    `/php/admin/health.php`.
-6. После первой установки больше не применять `release:first` к этому сайту.
-
-## Обычное обновление
-
-Автоматический вариант — `npm run deploy:plesk`. Команда:
-
-1. атомарно захватывает общий lock рядом с `httpdocs`, не допуская второй deploy;
-2. полностью выполняет существующий `scripts/build-release.js`;
-3. при ошибке сборки завершается с non-zero code, не меняя `httpdocs`;
-4. проверяет release на runtime JSON, symlinks и development/private content;
-5. сравнивает release с production, исключая persistent paths;
-6. заменяет новые и изменённые файлы через temporary file + rename;
-7. только после успешного копирования удаляет устаревшие deployable-файлы;
-8. пишет SHA, результат build/deploy, списки изменений и подтверждение сохранения runtime paths.
-
-Перед изменением production выполнить `composer test`, PHP lint, `npm run check`,
-`npm run test:deploy` и `npm run release`. Резервный ручной способ без
-post-deployment action: загрузить содержимое обычного `release/` через Plesk
-File Manager/FTP, не трогая `php/data/` и `uploads/`; устаревшие deployable-файлы
-при этом придётся удалить вручную. `release:first` для обновления запрещён.
-
-Проверить план без изменения destination:
-
-```sh
-npm run deploy:plesk -- --dry-run
-```
-
-Для ручного локального/тестового запуска другой destination задаётся явно:
-
-```sh
-npm run deploy:plesk -- --destination /safe/test/httpdocs
-```
-
-## Автоматический Plesk deployment
-
-В Plesk Git должны оставаться branch `main`, automatic deployment и deployment
-directory `/docs`. Включить `Enable post deployment actions` и вставить ровно:
-
-```sh
-cd /var/www/vhosts/gehwol.lv/docs && npm run deploy:plesk -- --destination /var/www/vhosts/gehwol.lv/httpdocs
-```
-
-Команда содержит абсолютный переход в checkout и поэтому не зависит от current
-working directory Plesk. Credentials в проекте или в команде не требуются.
-
-После push в `main` webhook обновит `/docs`, Plesk запустит post-deployment
-action, release полностью соберётся и проверится, затем deployable-файлы
-синхронизируются с `/httpdocs`. Runtime JSON, backups и uploads останутся
-byte-for-byte нетронутыми. При неуспешной сборке `/httpdocs` не изменится.
+7. После инициализации использовать только обычный automatic PHP deployment.
 
 ## Rollback
 
-Откат кода выполняется новым commit в `main`, возвращающим нужное состояние
-(предпочтительно `git revert`), и обычным автоматическим deploy. Так история
-остаётся линейной, а Plesk снова получает `main`. `php/data/**` и `uploads/**`
-при rollback не откатываются.
+Создать новый commit, возвращающий нужную версию кода и готового
+`deploy-manifest.json` (обычно `git revert`), и отправить его в `main`. Plesk
+выполнит тот же PHP deployment. Runtime JSON, backups, uploads и `.well-known`
+при rollback не меняются.
 
-Если deploy прервался уже во время файловой синхронизации, повторно доставить
-исправленный или предыдущий commit: операции идемпотентны, а каждый отдельный
-файл на Linux заменяется атомарно. Для аварийного восстановления первой
-установки использовать сохранённую копию `httpdocs`, не заменяя более свежие
-`php/data/**` и `uploads/**` без отдельного решения о восстановлении данных.
+Если процесс был аварийно завершён и оставил `/.gehwol-deploy.lock`, сначала в
+Plesk убедиться, что deploy больше не выполняется, и только затем удалить stale
+lock через File Manager. Активный lock удалять нельзя.
 
-Если процесс был аварийно завершён так, что остался
-`/var/www/vhosts/gehwol.lv/.gehwol-deploy.lock`, сначала убедиться в Plesk, что
-deploy больше не выполняется, и только затем удалить stale lock через File
-Manager. Активный lock удалять нельзя.
+## Резервное копирование runtime data
 
-## Резервное копирование данных
-
-Админка сохраняет предыдущие версии JSON в `php/data/backups/`. Дополнительно
-перед существенными изменениями и регулярно по расписанию скачивать через Plesk
-File Manager или FTP каталоги `php/data/` и `uploads/`. Git и rollback кода не
-заменяют резервную копию этих production-данных.
-
-Восстановление отдельного JSON выполняется из `php/data/backups/`; полное
-восстановление — возвратом отдельно сохранённых `php/data/` и `uploads/`.
-Перед восстановлением сначала сохранить их текущее production-состояние.
+Админка хранит предыдущие JSON в `php/data/backups/`. Дополнительно перед
+существенными изменениями и регулярно по расписанию скачивать через Plesk File
+Manager или FTP каталоги `php/data/` и `uploads/`. Git rollback не заменяет их
+резервную копию.
 
 ## Если сервер работает только через nginx
 
-В режиме nginx-only `.htaccess` не применяется. В Plesk → Apache & nginx
-Settings → Additional nginx directives должны быть эквивалентные ограничения:
+В nginx-only режиме `.htaccess` не применяется. В Plesk → Apache & nginx
+Settings → Additional nginx directives нужны эквивалентные ограничения:
 
 ```nginx
 location ~ ^/php/(data|includes|templates|bin)/ { deny all; }

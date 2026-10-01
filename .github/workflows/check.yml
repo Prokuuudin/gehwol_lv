@@ -20,6 +20,14 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install frontend build tools
+        run: npm ci
+
+      - name: Rebuild and verify committed production output
+        run: |
+          npm run build:quick
+          git diff --exit-code -- docs php/templates
+
       - name: PHP syntax
         run: find php tests -name '*.php' -print0 | xargs -0 -n1 php -l > /dev/null
 
@@ -35,7 +43,9 @@ jobs:
           node scripts/check-seo.js build/check docs
 
       - name: Release contents (no data, secrets, docs or dev files)
-        run: node scripts/build-release.js
+        run: |
+          node scripts/build-release.js
+          git diff --exit-code -- deploy-manifest.json
 
-      - name: Safe Plesk deployment integration tests
-        run: npm run test:deploy
+      - name: Safe Plesk deployment integration tests (PHP only)
+        run: vendor/bin/phpunit tests/DeployPleskTest.php

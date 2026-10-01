@@ -10,6 +10,7 @@ const { execFileSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..');
 const OUT = path.join(ROOT, 'release');
+const DEPLOY_MANIFEST = path.join(ROOT, 'deploy-manifest.json');
 const withData = process.argv.includes('--with-data');
 
 const DATA_FILES = ['categories.json', 'products.json', 'news.json', 'articles.json', 'admin_users.json'];
@@ -97,5 +98,23 @@ if (forbidden.length || secretLike.length) {
   process.exit(1);
 }
 
+// The Plesk server has PHP but no Node.js. Commit this small manifest together
+// with the already-built docs/ and PHP sources. The PHP deployer uses it as the
+// exact allow-list and never has to build or infer release contents on-server.
+const deployFiles = files
+  .filter((file) => file !== 'php/includes/release.php')
+  .filter((file) => !file.startsWith('php/data/') && !file.startsWith('uploads/'))
+  .map((file) => {
+    const source = file.startsWith('php/') ? file : `docs/${file}`;
+    const sourcePath = path.join(ROOT, ...source.split('/'));
+    if (!fs.existsSync(sourcePath)
+        || !fs.readFileSync(sourcePath).equals(fs.readFileSync(path.join(OUT, file)))) {
+      console.error(`Cannot map release file back to its committed source: ${file}`);
+      process.exit(1);
+    }
+    return { path: file, source };
+  });
+fs.writeFileSync(DEPLOY_MANIFEST, `${JSON.stringify({ version: 1, files: deployFiles }, null, 2)}\n`);
+
 const size = files.reduce((sum, f) => sum + fs.statSync(path.join(OUT, f)).size, 0);
-console.log(`release/ ready: ${files.length} files, ${(size / 1024 / 1024).toFixed(1)} MB, commit ${commit}${withData ? ', WITH content data (first installation only)' : ''}.`);
+console.log(`release/ ready: ${files.length} files, ${(size / 1024 / 1024).toFixed(1)} MB, commit ${commit}${withData ? ', WITH content data (first installation only)' : ''}; deploy manifest: ${deployFiles.length} files.`);
