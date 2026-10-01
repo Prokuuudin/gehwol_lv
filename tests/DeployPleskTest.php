@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 use function Gehwol\PleskDeploy\acquireLock;
 use function Gehwol\PleskDeploy\deploy;
+use function Gehwol\PleskDeploy\parseArguments;
 
 require_once __DIR__ . '/../scripts/deploy-plesk.php';
 
@@ -108,6 +109,17 @@ final class DeployPleskTest extends TestCase
             putenv($oldPath === false ? 'PATH' : 'PATH=' . $oldPath);
         }
         self::assertSame('new js', $this->read('httpdocs/js/new.js'));
+    }
+
+    public function test_cli_accepts_confirmed_absolute_plesk_paths(): void
+    {
+        $options = parseArguments([
+            '--source=/var/www/vhosts/gehwol.lv/docs',
+            '--destination=/var/www/vhosts/gehwol.lv/httpdocs',
+        ]);
+
+        self::assertSame('/var/www/vhosts/gehwol.lv/docs', $options['source']);
+        self::assertSame('/var/www/vhosts/gehwol.lv/httpdocs', $options['destination']);
     }
 
     private function runDeploy(array $overrides = []): array

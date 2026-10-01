@@ -418,7 +418,9 @@ function logPaths(string $label, array $paths, callable $logger): void
 function deploy(array $options = []): array
 {
     $source = normalizedAbsolute((string) ($options['source'] ?? dirname(__DIR__)));
-    $destination = normalizedAbsolute((string) ($options['destination'] ?? '/httpdocs'));
+    $destination = normalizedAbsolute((string) (
+        $options['destination'] ?? '/var/www/vhosts/gehwol.lv/httpdocs'
+    ));
     $dryRun = (bool) ($options['dryRun'] ?? false);
     $logger = $options['logger'] ?? static fn (string $message) => print($message . PHP_EOL);
     if (basename($destination) !== 'httpdocs' || $destination === DIRECTORY_SEPARATOR) {
