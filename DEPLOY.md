@@ -93,7 +93,7 @@ cd /var/www/vhosts/gehwol.lv/docs && php scripts/deploy-plesk.php --dry-run --de
 
 Фактически работающая production-конфигурация:
 
-- Repository: `https://github.com/Prokuuuudin/gehwol_lv.git`;
+- Repository: `https://github.com/Prokuuudin/gehwol_lv.git`;
 - Repository branch: `main`;
 - Deployment mode: `Automatic`;
 - Deployment directory: `/docs`;
