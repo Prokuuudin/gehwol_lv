@@ -71,6 +71,13 @@ function scrollRevealFunc() {
     distance: "16px",
   });
 
+  ScrollReveal().reveal(`.partners__card`, {
+    delay: 120,
+    interval: 100,
+    origin: "bottom",
+    distance: "18px",
+  });
+
   ScrollReveal().reveal(`.footer__info, .footer__contacts, .footer__meta`, {
     delay: 140,
     interval: 100,
