@@ -38,7 +38,7 @@ admin_header('Vadības panelis');
     <span class="dashboard-guide__toggle" aria-hidden="true">
       <span class="dashboard-guide__toggle-open">Izvērst</span>
       <span class="dashboard-guide__toggle-close">Sakļaut</span>
-      <span class="dashboard-guide__chevron">⌄</span>
+      <span class="dashboard-guide__chevron"></span>
     </span>
   </summary>
   <div class="dashboard-guide__body" aria-labelledby="admin-guide-title">
