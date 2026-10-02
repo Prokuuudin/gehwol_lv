@@ -55,6 +55,43 @@ admin_header('Vadības panelis');
     <p class="dashboard-guide__tip"><strong>Drošākais darba veids:</strong> vispirms saglabājiet ierakstu kā melnrakstu, pārbaudiet to priekšskatījumā un tikai pēc tam publicējiet.</p>
   </div>
 </details>
+<section class="panel dashboard-image-guide" aria-labelledby="image-guide-title">
+  <header class="dashboard-image-guide__header">
+    <span class="dashboard-guide__icon" aria-hidden="true">i</span>
+    <div>
+      <h2 id="image-guide-title">Attēlu sagatavošana</h2>
+      <p>Prasības attēliem pirms to pievienošanas katalogam, jaunumiem vai rakstiem.</p>
+    </div>
+  </header>
+  <div class="dashboard-image-guide__types">
+    <section>
+      <h3>Produktu attēli</h3>
+      <ul>
+        <li>Ieteicams PNG ar caurspīdīgu fonu.</li>
+        <li>Izmērs — 1600 × 1600 px, kvadrātveida formāts.</li>
+        <li>Produkts jānovieto centrā, atstājot vienādas nelielas malas.</li>
+      </ul>
+    </section>
+    <section>
+      <h3>Jaunumu un rakstu fotoattēli</h3>
+      <ul>
+        <li>Ieteicams kvalitatīvs JPG sRGB krāsu profilā.</li>
+        <li>Garākajai malai jābūt vismaz 1600 px.</li>
+        <li>Izmantojiet oriģinālo fotoattēla failu bez papildu saspiešanas.</li>
+      </ul>
+    </section>
+  </div>
+  <div class="dashboard-image-guide__rules">
+    <h3>Faili un tehniskie ierobežojumi</h3>
+    <ul>
+      <li>Atļauti JPG, PNG un WebP faili līdz 10 MB un 40 megapikseļiem.</li>
+      <li>WebP kopija tiek izveidota automātiski; atsevišķs WebP vai <code>@2x</code> fails nav jāgatavo.</li>
+      <li>Attēli virs 1600 px tiek samazināti; mazāki attēli netiek palielināti.</li>
+      <li>Failus pievienojiet atsevišķi — neievietojiet tos Word vai PDF dokumentā un nesaspiediet ziņapmaiņas lietotnē.</li>
+      <li>Vairākiem failiem izmantojiet saprotamus nosaukumus ar latīņu burtiem vai pievienojiet sarakstu, kuram saturam katrs fails paredzēts.</li>
+    </ul>
+  </div>
+</section>
 <section class="panel dashboard-note">
   <div>
     <h2>Servera statuss</h2>
