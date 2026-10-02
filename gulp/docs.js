@@ -35,7 +35,10 @@ const svgsprite = require("gulp-svg-sprite");
 
 gulp.task("clean:docs", function(done) {
   if (fs.existsSync("./docs/")) {
-    return gulp.src("./docs/", { read: false }).pipe(clean({ force: true }));
+    // docs/img/ is kept so images:docs (gulp-changed) only re-encodes new or changed images
+    return gulp
+      .src(["./docs/*", "!./docs/img"], { read: false, dot: true })
+      .pipe(clean({ force: true }));
   }
   done();
 });
@@ -131,7 +134,7 @@ gulp.task("sass:docs", function() {
 gulp.task("images:docs", function() {
   return gulp
     .src(["./src/img/**/*", "!./src/img/svgicons/**/*"])
-    .pipe(changed("./docs/img/"))
+    .pipe(changed("./docs/img/", { extension: ".webp" }))
     .pipe(
       imagemin([
         imageminWebp({
