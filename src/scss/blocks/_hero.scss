@@ -2,76 +2,204 @@
 	margin: 0;
 }
 
+// Inside .container (same width as the header content).
+// Desktop: photo with lettering takes 2/3 on the left, title and button 1/3 on the right.
+// From tablet-small down the photo goes full width on top, the text block below it.
+// Font sizes are capped at the 1200px container width: the panels stop growing there.
 .hero__inner {
-	position: relative;
 	margin-top: 100px;
-	background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-	min-height: 70vh;
-	display: flex;
-	align-items: center;
-	padding: 60px 20px;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	height: clamp(440px, 40vw, 500px);
 	overflow: hidden;
 
-	@include mobile {
+	@include tablet-small {
 		margin-top: 86px;
-		min-height: 50vh;
-		padding: 40px 12px;
+		grid-template-columns: 1fr;
+		height: auto;
 	}
-}
-
-.hero__container {
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 40px;
 
 	@include mobile {
-		flex-direction: column;
+		margin-top: 78px;
 	}
-}
-
-.hero__content {
-	max-width: 640px;
-	margin-left: auto;
-	text-align: right;
 }
 
 .hero__media {
-	flex-shrink: 0;
-	width: 480px;
-	max-width: 100%;
-	aspect-ratio: 827 / 709;
-	border-radius: 12px;
+	position: relative;
+	min-width: 0;
+	background-color: #eee6cf;
 	overflow: hidden;
+
+	@include tablet-small {
+		height: clamp(440px, 58vw, 560px);
+	}
+
+	@include mobile-large {
+		height: 500px;
+	}
+
+	@include mobile {
+		height: 450px;
+	}
 }
 
 .hero__img {
+	position: absolute;
+	inset: 0;
 	display: block;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	transform: scale(1.2);
+	object-position: 50% 62%;
 }
 
-.hero__content .hero__title {
-	color: #fff;
-	margin: 0 0 20px;
+.hero__brand {
+	position: absolute;
+	top: clamp(28px, 3.5vw, 42px);
+	left: clamp(24px, 3vw, 36px);
+	width: max-content;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	color: #000;
+	line-height: 0.82;
+	text-transform: uppercase;
 }
 
-.hero__cta {
-	margin-top: 10px;
+.hero__brand-name {
+	font-size: clamp(56px, 5.8vw, 70px);
+	font-weight: 800;
+	letter-spacing: -0.075em;
+}
+
+.hero__brand-line {
+	margin-top: 12px;
+	font-size: clamp(22px, 2.25vw, 27px);
+	font-weight: 800;
+	letter-spacing: -0.035em;
 }
 
 .hero__slogan {
+	position: absolute;
+	top: clamp(48px, 5vw, 60px);
+	right: clamp(20px, 3vw, 36px);
+	max-width: 260px;
 	margin: 0;
-	font-size: 20px;
-	line-height: 1.4;
-	color: #fff;
-	font-weight: 600;
-	letter-spacing: 0.02em;
+	font-size: clamp(18px, 1.6vw, 20px);
+	line-height: 1.1;
+	color: #000;
+	font-style: italic;
+	font-weight: 700;
+	text-align: center;
+	letter-spacing: -0.025em;
+
+	@include tablet-small {
+		top: 54px;
+		right: 24px;
+		font-size: 22px;
+	}
+
+	@include mobile-large {
+		top: auto;
+		right: var(--container-padding);
+		bottom: 24px;
+		padding: 12px 15px;
+		font-size: 20px;
+		background: rgba(244, 238, 218, 0.84);
+		border-radius: 8px;
+		backdrop-filter: blur(3px);
+	}
 
 	@include mobile {
-		font-size: 16px;
+		right: 12px;
+		bottom: 18px;
+		font-size: 18px;
+	}
+}
+
+.hero__content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding: clamp(28px, 3vw, 40px);
+	background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+
+	@include tablet-small {
+		align-items: center;
+		padding: 40px var(--container-padding) 44px;
+		text-align: center;
+	}
+}
+
+.hero__content .hero__title {
+	margin: 0 0 clamp(20px, 2vw, 32px);
+	font-size: clamp(1.625rem, 0.9rem + 1.2vw, 2.125rem);
+	line-height: 1.15;
+	color: #fff;
+
+	@include tablet-small {
+		max-width: 560px;
+		font-size: clamp(1.625rem, 1.2rem + 2vw, 2.25rem);
+	}
+}
+
+// White button: the default accent button would merge with the accent gradient
+.hero a.hero__cta {
+	background: #fff;
+	color: var(--accent-dark);
+
+	&:hover,
+	&:focus {
+		background: var(--accent-tint);
+		color: var(--accent-dark);
+	}
+}
+
+@include tablet-small {
+	.hero__brand {
+		top: 38px;
+	}
+
+	.hero__brand-name {
+		font-size: clamp(62px, 10vw, 96px);
+	}
+
+	.hero__brand-line {
+		margin-top: 18px;
+		font-size: clamp(25px, 4vw, 39px);
+	}
+}
+
+@include mobile-large {
+	.hero__img {
+		object-position: 50% 60%;
+	}
+
+	.hero__brand {
+		top: 28px;
+		left: 50%;
+		align-items: center;
+		transform: translateX(-50%);
+		white-space: nowrap;
+	}
+
+	.hero__brand-name {
+		font-size: clamp(54px, 15vw, 88px);
+	}
+
+	.hero__brand-line {
+		margin-top: 14px;
+		font-size: clamp(23px, 6vw, 35px);
+	}
+}
+
+@include mobile {
+	.hero__brand-name {
+		font-size: clamp(48px, 15.5vw, 66px);
+	}
+
+	.hero__brand-line {
+		font-size: clamp(21px, 6.2vw, 27px);
 	}
 }

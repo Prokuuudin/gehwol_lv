@@ -31,14 +31,6 @@ function scrollRevealFunc() {
     );
   });
 
-  ScrollReveal().reveal(`.hero__title, .hero__slogan`, {
-    delay: 220,
-    distance: "0px",
-    duration: 650,
-    scale: 0.98,
-    opacity: 0,
-  });
-
   ScrollReveal().reveal(`.title-2`, {
     delay: 100,
     origin: "top",
