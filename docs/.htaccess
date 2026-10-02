@@ -6,6 +6,8 @@
 Options -Indexes
 
 RewriteEngine On
+# Short admin address: /admin and /admin/ -> /php/admin/ (302, so browsers do not cache it forever)
+RewriteRule ^admin/?$ /php/admin/ [R=302,L]
 RewriteRule ^$ php/site.php [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
