@@ -267,6 +267,7 @@ foreach ($errors as $e) {
   <?php endif; ?>
   <div class="form-field"><label for="product-images">Pievienot attēlus</label><input id="product-images" type="file" name="images[]" accept=".jpg,.jpeg,.png,.webp" multiple>
   <p class="field-hint">JPG, PNG vai WebP, līdz <?= UPLOAD_MAX_BYTES / 1024 / 1024 ?> MB katram failam.</p></div>
+  <?php admin_image_requirements('product'); ?>
 
   <div class="form-field"><label for="product-order">Kārtība sarakstā</label><input id="product-order" type="number" name="sort_order" value="<?= (int)($form['sort_order'] ?? 0) ?>"></div>
   <div class="form-field"><label for="product-seo">SEO apraksts</label><input id="product-seo" type="text" name="seo_description" maxlength="300" value="<?= htmlspecialchars($form['seo_description'] ?? '') ?>">

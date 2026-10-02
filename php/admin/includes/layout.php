@@ -145,6 +145,35 @@ function admin_footer(): void
 <?php
 }
 
+/** Guidance shown next to image upload fields. */
+function admin_image_requirements(string $type): void
+{
+    $isProduct = $type === 'product';
+    ?>
+<aside class="image-requirements" aria-labelledby="image-requirements-<?= htmlspecialchars($type) ?>">
+  <strong id="image-requirements-<?= htmlspecialchars($type) ?>">Ieteikumi attēliem</strong>
+  <p class="image-requirements__label"><?= $isProduct ? 'Ieteicamais sagatavošanas veids' : 'Fotoattēla sagatavošana' ?></p>
+  <ul>
+    <?php if ($isProduct): ?>
+    <li>Produkta attēlam ieteicams caurspīdīgs PNG, kvadrātā 1600 × 1600 px.</li>
+    <li>Novietojiet produktu centrā un atstājiet vienādas nelielas malas.</li>
+    <?php else: ?>
+    <li>Fotoattēlam ieteicams kvalitatīvs JPG sRGB krāsu profilā.</li>
+    <li>Garākajai malai ieteicami vismaz 1600 px.</li>
+    <?php endif; ?>
+  </ul>
+  <p class="image-requirements__label">Faili un ierobežojumi</p>
+  <ul>
+    <li>Var augšupielādēt JPG, PNG vai WebP līdz <?= UPLOAD_MAX_BYTES / 1024 / 1024 ?> MB un 40 megapikseļiem.</li>
+    <li>WebP kopija tiek izveidota automātiski; atsevišķs WebP vai @2x fails nav jāgatavo.</li>
+    <li>Attēli virs 1600 px tiek samazināti; mazāki attēli netiek palielināti.</li>
+    <li>Izmantojiet oriģinālos failus bez papildu saspiešanas un neievietojiet tos Word vai PDF dokumentā.</li>
+    <li>Vairākiem failiem izmantojiet saprotamus nosaukumus ar latīņu burtiem, lai tos varētu viegli sasaistīt ar saturu.</li>
+  </ul>
+</aside>
+<?php
+}
+
 /** POST form with a confirmation for deleting a record. */
 function delete_button(string $page, int $id): string
 {

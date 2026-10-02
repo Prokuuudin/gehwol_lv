@@ -199,6 +199,7 @@ function text_items_page(array $cfg): void
   <?php endif; ?>
   <div class="form-field"><label for="item-image"><?= !empty($editing['image']) ? 'Aizstāt attēlu' : 'Attēls' ?></label><input id="item-image" type="file" name="image" accept=".jpg,.jpeg,.png,.webp">
   <p class="field-hint">JPG, PNG vai WebP, līdz <?= UPLOAD_MAX_BYTES / 1024 / 1024 ?> MB.</p></div>
+  <?php admin_image_requirements('photo'); ?>
   <?php if (!$dated): ?>
   <div class="form-field"><label for="item-order">Kārtība</label><input id="item-order" type="number" name="sort_order" value="<?= (int)($form['sort_order'] ?? 0) ?>">
   <p class="field-hint">Mazāks skaitlis novieto ierakstu augstāk sarakstā.</p></div>

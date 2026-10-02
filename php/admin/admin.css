@@ -137,6 +137,12 @@ input[type="checkbox"] { width: 18px; height: 18px; margin: 0; accent-color: var
 .form-field { display: grid; gap: 7px; }
 .form-field > label, .field-label { color: #283a35; font-size: 15px; font-weight: 700; }
 .field-hint { margin: 0; color: var(--muted); font-size: 14px; }
+.image-requirements { padding: 16px 18px; border: 1px solid #c6ddd7; border-left: 4px solid var(--accent); border-radius: 8px; background: var(--accent-soft); }
+.image-requirements strong { display: block; margin-bottom: 8px; color: var(--accent-dark); font-size: 15px; }
+.image-requirements__label { margin: 12px 0 5px; color: var(--ink); font-size: 13px; font-weight: 700; }
+.image-requirements strong + .image-requirements__label { margin-top: 0; }
+.image-requirements ul { margin: 0; padding-left: 20px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.image-requirements li + li { margin-top: 4px; }
 .checkbox-field { display: flex; align-items: flex-start; gap: 9px; font-size: 15px; font-weight: 600; cursor: pointer; }
 .checkbox-field input { margin-top: 2px; }
 .form-actions { display: flex; padding-top: 4px; align-items: center; flex-wrap: wrap; gap: 10px; }
