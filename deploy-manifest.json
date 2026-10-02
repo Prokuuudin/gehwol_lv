@@ -3494,6 +3494,10 @@
       "source": "php/admin/health.php"
     },
     {
+      "path": "php/admin/includes/deletion.php",
+      "source": "php/admin/includes/deletion.php"
+    },
+    {
       "path": "php/admin/includes/layout.php",
       "source": "php/admin/includes/layout.php"
     },

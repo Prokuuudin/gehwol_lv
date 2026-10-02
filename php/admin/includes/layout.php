@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/deletion.php';
+
 /** @return array<string, array{label: string, external?: bool}> */
 function admin_navigation_items(): array
 {
@@ -35,6 +37,10 @@ function admin_navigation(string $class): void
 
 function admin_header(string $title): void
 {
+    $recentDeletion = recent_deletion();
+    $showUndo = $recentDeletion !== null;
+    $deletedRow = is_array($recentDeletion['row'] ?? null) ? $recentDeletion['row'] : [];
+    $deletedLabel = (string)($deletedRow['name'] ?? $deletedRow['title'] ?? 'Ieraksts');
     ?>
 <!DOCTYPE html>
 <html lang="lv">
@@ -102,6 +108,29 @@ function admin_header(string $title): void
         <span>Izmaiņas ir veiksmīgi saglabātas.</span>
       </div>
 <?php endif; ?>
+<?php if (!empty($_GET['restored'])): ?>
+      <div class="alert alert--success" role="status">
+        <strong>Dzēšana atcelta.</strong>
+        <span>Ieraksts un tā attēli ir atjaunoti.</span>
+      </div>
+<?php endif; ?>
+<?php if (!empty($_GET['undo_failed'])): ?>
+      <div class="alert alert--error" role="alert">
+        <strong>Dzēšanu vairs nevar atcelt.</strong>
+        <span>Atcelšanas laiks ir beidzies vai ieraksts jau ir atjaunots.</span>
+      </div>
+<?php endif; ?>
+<?php if ($showUndo): ?>
+      <div class="alert alert--warning alert--undo" role="status">
+        <strong>“<?= htmlspecialchars($deletedLabel) ?>” ir dzēsts.</strong>
+        <span>Dzēšanu var atcelt 5 minūšu laikā.</span>
+        <form class="alert__action" method="post" action="<?= htmlspecialchars(basename((string)$recentDeletion['page'])) ?>?action=undo">
+          <?= csrf_field() ?>
+          <input type="hidden" name="undo_token" value="<?= htmlspecialchars((string)$recentDeletion['token']) ?>">
+          <button class="button button--small" type="submit">Atcelt dzēšanu</button>
+        </form>
+      </div>
+<?php endif; ?>
 <?php
 }
 
@@ -119,7 +148,9 @@ function admin_footer(): void
 /** POST form with a confirmation for deleting a record. */
 function delete_button(string $page, int $id): string
 {
-    return '<form class="inline-form" method="post" action="' . htmlspecialchars($page) . '?action=delete" onsubmit="return confirm(\'Dzēst neatgriezeniski?\')">'
+    $warning = 'Vai tiešām dzēst šo ierakstu? Tas uzreiz pazudīs no vietnes. Dzēšanu varēs atcelt 5 minūšu laikā.';
+    $confirm = 'return confirm(' . json_encode($warning, JSON_UNESCAPED_UNICODE) . ')';
+    return '<form class="inline-form" method="post" action="' . htmlspecialchars($page) . '?action=delete" onsubmit="' . htmlspecialchars($confirm, ENT_QUOTES) . '">'
         . csrf_field() . '<input type="hidden" name="id" value="' . $id . '"><button class="button button--danger button--small" type="submit">Dzēst</button></form>';
 }
 

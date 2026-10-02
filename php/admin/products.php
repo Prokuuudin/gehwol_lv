@@ -122,15 +122,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($action, ['add', 'edit'], 
     }
 }
 
+if ($action === 'undo') {
+    require_csrf();
+    $restored = restore_recent_deletion('products', (string)($_POST['undo_token'] ?? ''));
+    if ($restored !== null) {
+        admin_log('product delete undo id=' . (int)$restored['id']);
+    }
+    header('Location: products.php?' . ($restored !== null ? 'restored=1' : 'undo_failed=1'));
+    exit;
+}
+
 if ($action === 'delete') {
     require_csrf();
     $id = (int)($_POST['id'] ?? 0);
-    $removed = find_product($products, $id)['images'] ?? [];
+    $deleted = find_product($products, $id);
+    if ($deleted === null) {
+        header('Location: products.php?undo_failed=1');
+        exit;
+    }
     $products = array_values(array_filter($products, fn($p) => (int)$p['id'] !== $id));
     save_collection('products', $products);
-    delete_unused_uploads($removed);
+    remember_recent_deletion('products', 'products.php', $deleted, $deleted['images'] ?? []);
     admin_log("product delete id={$id}");
-    header('Location: products.php?saved=1');
+    header('Location: products.php?deleted=1');
     exit;
 }
 

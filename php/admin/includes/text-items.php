@@ -96,15 +96,29 @@ function text_items_page(array $cfg): void
         }
     }
 
+    if ($action === 'undo') {
+        require_csrf();
+        $restored = restore_recent_deletion($collection, (string)($_POST['undo_token'] ?? ''));
+        if ($restored !== null) {
+            admin_log("{$collection} delete undo id=" . (int)$restored['id']);
+        }
+        header("Location: {$page}?" . ($restored !== null ? 'restored=1' : 'undo_failed=1'));
+        exit;
+    }
+
     if ($action === 'delete') {
         require_csrf();
         $id = (int)($_POST['id'] ?? 0);
-        $image = $find($id)['image'] ?? null;
+        $deleted = $find($id);
+        if ($deleted === null) {
+            header("Location: {$page}?undo_failed=1");
+            exit;
+        }
         $items = array_values(array_filter($items, fn($i) => (int)$i['id'] !== $id));
         save_collection($collection, $items);
-        delete_unused_uploads(array_filter([$image]));
+        remember_recent_deletion($collection, $page, $deleted, array_filter([$deleted['image'] ?? null]));
         admin_log("{$collection} delete id={$id}");
-        header("Location: {$page}?saved=1");
+        header("Location: {$page}?deleted=1");
         exit;
     }
 
