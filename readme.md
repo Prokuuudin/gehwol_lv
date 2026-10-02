@@ -29,8 +29,8 @@ php/data/*.json  (товары, новости, статьи, категории
 ```
 npm install && composer install     # один раз
 
-npm run build:quick   # HTML-шаблоны, SEO, CSS (секунды) — после правок в src/html или src/scss
-npm run build         # полная сборка docs/ с изображениями и шрифтами (минуты); завершается сама
+npm run build:quick   # быстрая сборка без обработки изображений: HTML-шаблоны, SEO, CSS — после правок в src/html или src/scss
+npm run build         # полная сборка docs/, включая шрифты и обработку новых и изменённых изображений; завершается сама
 npm run preview       # локальный сайт + админка: http://127.0.0.1:8010/ и /php/admin/
 composer test         # PHP-тесты
 npm run check         # SEO, sitemap, robots, внутренние ссылки и отсутствующие файлы по всем страницам
