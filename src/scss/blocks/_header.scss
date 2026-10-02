@@ -7,7 +7,10 @@
 	color: var(--text-color);
 	padding: 18px 0;
 	border-bottom: 1px solid transparent;
-	transition: padding 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+	transition:
+		padding var(--motion-base) var(--ease-out),
+		box-shadow var(--motion-base) var(--ease-out),
+		border-color var(--motion-base) var(--ease-out);
 	z-index: 1000;
 
 	@include mobile {
@@ -50,6 +53,7 @@
 	font-size: 14px;
 	font-weight: 600;
 	color: var(--text-color);
+	transition: color var(--motion-fast) var(--ease-out);
 }
 
 .nav__link::after {
@@ -62,7 +66,7 @@
 	background-color: var(--accent);
 	transform: scaleX(0);
 	transform-origin: left;
-	transition: transform 0.25s ease;
+	transition: transform var(--motion-base) var(--ease-out);
 }
 
 .nav__link:hover {
@@ -89,6 +93,12 @@
 	border-right: 2px solid currentColor;
 	border-bottom: 2px solid currentColor;
 	transform: rotate(45deg) translate(-1px, -1px);
+	transition: transform var(--motion-base) var(--ease-out);
+}
+
+.nav__item--mega:hover .nav__arrow,
+.nav__item--mega:focus-within .nav__arrow {
+	transform: rotate(225deg) translate(-1px, -1px);
 }
 
 .mega-menu {
@@ -112,7 +122,10 @@
 	opacity: 0;
 	visibility: hidden;
 	transform: translateY(8px);
-	transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.25s;
+	transition:
+		opacity var(--motion-base) var(--ease-out),
+		transform var(--motion-base) var(--ease-out),
+		visibility 0s linear var(--motion-base);
 
 	/* невидимый мост между пунктом меню и панелью, чтобы hover не рвался */
 	&::before {
@@ -150,6 +163,7 @@
 	text-transform: uppercase;
 	letter-spacing: 0.04em;
 	color: var(--accent-dark);
+	transition: color var(--motion-fast) var(--ease-out);
 
 	&:hover {
 		color: var(--accent);
@@ -165,6 +179,7 @@
 	font-size: 14px;
 	line-height: 1.35;
 	color: var(--text-color);
+	transition: color var(--motion-fast) var(--ease-out);
 
 	&:hover {
 		color: var(--accent);
@@ -180,6 +195,7 @@
 	text-transform: uppercase;
 	letter-spacing: 0.04em;
 	color: var(--accent-dark);
+	transition: color var(--motion-fast) var(--ease-out);
 
 	&:hover {
 		color: var(--accent);

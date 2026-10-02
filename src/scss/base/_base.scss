@@ -1,6 +1,19 @@
 html {
 	scroll-behavior: smooth;
+	scroll-padding-top: 96px;
 	background-color: #fff;
+
+	@include tablet {
+		scroll-padding-top: 88px;
+	}
+
+	@include mobile-large {
+		scroll-padding-top: 76px;
+	}
+
+	@include mobile {
+		scroll-padding-top: 68px;
+	}
 }
 
 :target {
@@ -39,6 +52,7 @@ img {
 
 a {
 	color: var(--link-color);
+	transition: color var(--motion-fast) var(--ease-out);
 
 	&:hover {
 		color: var(--accent);

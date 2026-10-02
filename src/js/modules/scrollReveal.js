@@ -37,6 +37,18 @@ function scrollRevealFunc() {
     distance: "18px",
   });
 
+  ScrollReveal().reveal(`.hero__media`, {
+    delay: 100,
+    origin: "left",
+    distance: "18px",
+  });
+
+  ScrollReveal().reveal(`.hero__content`, {
+    delay: 170,
+    origin: "right",
+    distance: "18px",
+  });
+
   // .about__row--reverse исключён — до клика "Lasīt tālāk" у него max-height:0,
   // а нулевая по высоте область никогда не пересечёт viewFactor, из-за чего
   // элементы остались бы с opacity:0 навсегда.
@@ -57,7 +69,7 @@ function scrollRevealFunc() {
   // Внутренние элементы свайпера (.swiper-slide и т.п.) сюда не включать —
   // IntersectionObserver не учитывает clip карусели, слайды на краю
   // никогда не пересекают viewFactor и остаются с opacity:0 навсегда.
-  ScrollReveal().reveal(`.products__card, .btn-link`, {
+  ScrollReveal().reveal(`.products__card, .product-card, .btn-link`, {
     delay: 120,
     interval: 80,
     origin: "bottom",
@@ -77,6 +89,16 @@ function scrollRevealFunc() {
     origin: "bottom",
     distance: "18px",
   });
+
+  ScrollReveal().reveal(
+    `.category__breadcrumbs, .category__title, .category__intro, .product-detail, .legal-page__content`,
+    {
+      delay: 100,
+      interval: 70,
+      origin: "bottom",
+      distance: "16px",
+    },
+  );
 
   ScrollReveal().reveal(`.footer__info, .footer__contacts, .footer__meta`, {
     delay: 140,

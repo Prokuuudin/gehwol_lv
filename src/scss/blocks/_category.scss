@@ -23,6 +23,7 @@
 
 .category__crumb {
 	color: var(--text-color);
+	transition: color var(--motion-fast) var(--ease-out);
 
 	&:hover {
 		color: var(--accent);

@@ -8,6 +8,11 @@
 	display: block;
 	color: inherit;
 	text-decoration: none;
+	transition: transform var(--motion-base) var(--ease-out);
+
+	&:hover {
+		transform: translateY(-4px);
+	}
 }
 
 .news__image {
@@ -16,6 +21,7 @@
 	background-color: var(--accent-tint);
 	border-left: 4px solid var(--accent);
 	overflow: hidden;
+	transition: box-shadow var(--motion-base) var(--ease-out);
 
 	picture {
 		display: block;
@@ -27,7 +33,16 @@
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
+		transition: transform var(--motion-slow) var(--ease-out);
 	}
+}
+
+.news__slide-link:hover .news__image {
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.news__slide-link:hover .news__image img {
+	transform: scale(1.025);
 }
 
 .news__slide-title {
@@ -57,11 +72,15 @@
 	text-transform: uppercase;
 	letter-spacing: 0.04em;
 	cursor: pointer;
-	transition: background-color 0.2s ease-in, color 0.2s ease-in;
+	transition:
+		background-color var(--motion-fast) var(--ease-out),
+		color var(--motion-fast) var(--ease-out),
+		transform var(--motion-fast) var(--ease-out);
 
 	&:hover,
 	&:focus-visible {
 		background: #d9e6e6;
+		transform: translateY(-1px);
 	}
 
 	@include mobile {
@@ -78,6 +97,33 @@
 	&:hover,
 	&:focus-visible {
 		background: var(--accent);
+		transform: none;
+	}
+}
+
+.news__slider:not([hidden]) {
+	view-transition-name: news-slider;
+}
+
+::view-transition-old(news-slider) {
+	animation: news-panel-out var(--motion-fast) var(--ease-in-out) both;
+}
+
+::view-transition-new(news-slider) {
+	animation: news-panel-in var(--motion-base) var(--ease-out) both;
+}
+
+@keyframes news-panel-out {
+	to {
+		opacity: 0;
+		transform: translateY(-8px);
+	}
+}
+
+@keyframes news-panel-in {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
 	}
 }
 

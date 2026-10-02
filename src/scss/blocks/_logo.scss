@@ -1,7 +1,7 @@
 .logo {
 	display: flex;
 	align-items: center;
-	transition: opacity 0.2s ease;
+	transition: opacity var(--motion-fast) var(--ease-out);
 
 	&:hover {
 		opacity: 0.85;

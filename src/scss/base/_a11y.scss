@@ -11,6 +11,7 @@
 	font-weight: 700;
 	border-radius: 4px;
 	transform: translateY(-200%);
+	transition: transform var(--motion-base) var(--ease-out);
 
 	&:focus {
 		transform: none;

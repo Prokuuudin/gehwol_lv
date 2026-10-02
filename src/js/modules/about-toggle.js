@@ -9,6 +9,7 @@ export default function aboutToggle() {
   const textLess = button.dataset.textLess || button.textContent;
 
   let isExpanded = false;
+  panel.inert = true;
 
   panel.addEventListener("transitionend", (event) => {
     if (event.propertyName === "max-height" && isExpanded) {
@@ -31,6 +32,7 @@ export default function aboutToggle() {
 
     panel.classList.toggle("is-expanded", isExpanded);
     panel.setAttribute("aria-hidden", String(!isExpanded));
+    panel.inert = !isExpanded;
     button.setAttribute("aria-expanded", String(isExpanded));
     button.textContent = isExpanded ? textLess : textMore;
   });

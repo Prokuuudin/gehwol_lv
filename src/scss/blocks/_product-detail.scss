@@ -77,6 +77,17 @@
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
 	cursor: pointer;
 	transform: translateY(-50%);
+	transition:
+		background-color var(--motion-fast) var(--ease-out),
+		box-shadow var(--motion-fast) var(--ease-out),
+		transform var(--motion-fast) var(--ease-out);
+
+	&:hover,
+	&:focus-visible {
+		background: #fff;
+		box-shadow: 0 5px 14px rgba(0, 0, 0, 0.22);
+		transform: translateY(-50%) scale(1.06);
+	}
 
 	&::after {
 		content: "";

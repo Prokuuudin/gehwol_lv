@@ -20,6 +20,12 @@
 	border-top: 4px solid var(--accent);
 	background-color: #fff;
 	box-shadow: 0 12px 30px rgba(52, 92, 94, 0.08);
+	transition:
+		box-shadow var(--motion-base) var(--ease-out);
+
+	&:hover {
+		box-shadow: 0 16px 34px rgba(52, 92, 94, 0.13);
+	}
 }
 
 .partners__title {
@@ -61,7 +67,11 @@
 	font-size: 16px;
 	font-weight: 700;
 	line-height: 1.35;
-	transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+	transition:
+		border-color var(--motion-fast) var(--ease-out),
+		background-color var(--motion-fast) var(--ease-out),
+		color var(--motion-fast) var(--ease-out),
+		transform var(--motion-fast) var(--ease-out);
 }
 
 .partners__link::after {
@@ -72,7 +82,7 @@
 	font-size: 20px;
 	font-weight: 400;
 	transform: translateY(-50%);
-	transition: transform 0.2s ease;
+	transition: transform var(--motion-fast) var(--ease-out);
 }
 
 .partners__link small {
@@ -129,6 +139,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+	.partners__card,
 	.partners__link {
 		transition: none;
 	}

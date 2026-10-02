@@ -15,6 +15,13 @@
 	--accent-dark: #345c5e;
 	--accent-tint: #eaf1f1;
 
+	// Shared motion tokens keep every interaction feeling like part of one UI.
+	--motion-fast: 180ms;
+	--motion-base: 300ms;
+	--motion-slow: 480ms;
+	--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+	--ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
 	--section-space-y: 48px;
 	--section-space-y-tablet: 40px;
 	--section-space-y-mobile: 28px;

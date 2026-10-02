@@ -20,7 +20,8 @@
 	padding: 24px 24px 28px;
 	background-color: var(--accent-tint);
 	border-left: 4px solid var(--accent);
-	transition: box-shadow 0.2s ease;
+	transition:
+		box-shadow var(--motion-base) var(--ease-out);
 
 	&:hover {
 		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
@@ -36,6 +37,7 @@
 	text-transform: uppercase;
 	letter-spacing: 0.04em;
 	color: var(--accent-dark);
+	transition: color var(--motion-fast) var(--ease-out);
 
 	&::after {
 		content: "";
@@ -60,6 +62,7 @@
 	font-size: 16px;
 	line-height: 1.35;
 	color: var(--text-color);
+	transition: color var(--motion-fast) var(--ease-out);
 
 	&:hover {
 		color: var(--accent);
@@ -77,6 +80,7 @@
 	text-transform: uppercase;
 	letter-spacing: 0.04em;
 	color: var(--accent-dark);
+	transition: color var(--motion-fast) var(--ease-out);
 
 	&:hover {
 		color: var(--accent);

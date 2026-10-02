@@ -14,13 +14,21 @@ a.btn-link {
 	outline: none;
 	border: none;
 	cursor: pointer;
-	transition: background-color 0.2s ease-in;
+	transition:
+		background-color var(--motion-fast) var(--ease-out),
+		color var(--motion-fast) var(--ease-out),
+		box-shadow var(--motion-fast) var(--ease-out);
 
 	&:hover,
 	&:focus {
 		background: var(--accent-dark);
 		color: #fff;
 		text-decoration: none;
+		box-shadow: 0 7px 16px rgba(52, 92, 94, 0.2);
+	}
+
+	&:active {
+		box-shadow: none;
 	}
 
 	@include mobile {
