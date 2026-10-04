@@ -10,8 +10,8 @@
 }
 
 .content-detail__media {
-	width: 100%;
-	margin-bottom: 24px;
+	width: min(100%, 480px);
+	margin: 0 auto 24px;
 	background-color: var(--accent-tint);
 	border-left: 4px solid var(--accent);
 	overflow: hidden;
