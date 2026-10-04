@@ -141,7 +141,7 @@ function text_items_page(array $cfg): void
     <h2><?= $dated ? 'Jaunumu publikācijas' : 'Rakstu publikācijas' ?></h2>
     <p class="page-intro">Pārvaldiet saturu, publicēšanas statusu un attēlus.</p>
   </div>
-  <a class="button button--primary" href="#form"><span aria-hidden="true">+</span> <?= htmlspecialchars($cfg['add']) ?></a>
+  <button class="button button--primary" type="button" data-create-form-toggle aria-controls="item-create-panel" aria-expanded="<?= $errors ? 'true' : 'false' ?>"><span aria-hidden="true">+</span> <?= htmlspecialchars($cfg['add']) ?></button>
 </div>
 <div class="table-panel">
 <div class="table-scroll" tabindex="0" role="region" aria-label="<?= htmlspecialchars($cfg['title']) ?> tabula">
@@ -170,7 +170,8 @@ function text_items_page(array $cfg): void
 </div>
 <p class="table-summary"><?= count($items) ?> ieraksti</p>
 </div>
-<div class="section-heading section-heading--form" id="form">
+<div class="create-form-panel" id="item-create-panel"<?= $errors ? '' : ' hidden' ?>>
+<div class="section-heading section-heading--form">
   <div><h2><?= htmlspecialchars($cfg['add']) ?></h2><p class="section-intro">Aizpildiet publikācijas saturu un statusu.</p></div>
 </div>
 <?php else: ?>
@@ -208,9 +209,23 @@ function text_items_page(array $cfg): void
   <label class="checkbox-field"><input type="checkbox" name="published" value="1" <?= ($form === null || is_published($form)) ? 'checked' : '' ?>> <span>Publicēts <span class="field-hint">(redzams vietnē)</span></span></label>
   <div class="form-actions"><button class="button button--primary" type="submit"><?= $editing ? 'Saglabāt izmaiņas' : htmlspecialchars($cfg['add']) ?></button></div>
 </form>
+<?php if (!$editing): ?></div><?php endif; ?>
 <script>
 (function () {
   var form = document.getElementById('item-form'), dirty = false;
+  var toggle = document.querySelector('[data-create-form-toggle]');
+  var panel = document.getElementById('item-create-panel');
+  if (toggle && panel) {
+    toggle.closest('.page-actions').insertAdjacentElement('afterend', panel);
+    toggle.addEventListener('click', function () {
+      var opening = panel.hidden;
+      panel.hidden = !opening;
+      toggle.setAttribute('aria-expanded', String(opening));
+      if (opening) {
+        panel.querySelector('input:not([type="hidden"]), select, textarea').focus();
+      }
+    });
+  }
   form.addEventListener('input', function () { dirty = true; });
   form.addEventListener('submit', function () { dirty = false; });
   window.addEventListener('beforeunload', function (e) { if (dirty) { e.preventDefault(); e.returnValue = ''; } });

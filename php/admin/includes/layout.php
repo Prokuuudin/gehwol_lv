@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/deletion.php';
 
-/** @return array<string, array{label: string, external?: bool}> */
+/** @return array<string, array{label: string}> */
 function admin_navigation_items(): array
 {
     return [
@@ -13,7 +13,6 @@ function admin_navigation_items(): array
         'articles.php' => ['label' => 'Raksti'],
         'password.php' => ['label' => 'Parole'],
         'health.php' => ['label' => 'Servera pārbaude'],
-        '../../' => ['label' => 'Skatīt vietni', 'external' => true],
     ];
 }
 
@@ -25,13 +24,21 @@ function admin_navigation(string $class): void
   <?php foreach (admin_navigation_items() as $href => $item): ?>
     <?php $active = $href === $current; ?>
     <a class="admin-nav__link<?= $active ? ' is-active' : '' ?>" href="<?= htmlspecialchars($href) ?>"
-      <?= $active ? 'aria-current="page"' : '' ?>
-      <?= !empty($item['external']) ? 'target="_blank" rel="noopener"' : '' ?>>
+      <?= $active ? 'aria-current="page"' : '' ?>>
       <span><?= htmlspecialchars($item['label']) ?></span>
-      <?php if (!empty($item['external'])): ?><span class="admin-nav__external" aria-hidden="true">↗</span><?php endif; ?>
     </a>
   <?php endforeach; ?>
 </nav>
+<?php
+}
+
+function admin_site_link(): void
+{
+    ?>
+<a class="admin-site-link" href="../../" target="_blank" rel="noopener">
+  <span>Uz vietni</span>
+  <span class="admin-site-link__icon" aria-hidden="true">↗</span>
+</a>
 <?php
 }
 
@@ -58,16 +65,19 @@ function admin_header(string $title): void
     <span class="brand-mark" aria-hidden="true">G</span>
     <span>GEHWOL</span>
   </a>
-  <details class="mobile-menu">
-    <summary>Izvēlne</summary>
-    <div class="mobile-menu__panel">
-      <?php admin_navigation('admin-nav admin-nav--mobile'); ?>
-      <form class="logout-form" method="post" action="logout.php">
-        <?= csrf_field() ?>
-        <button class="admin-nav__link admin-nav__button" type="submit">Iziet</button>
-      </form>
-    </div>
-  </details>
+  <div class="mobile-header__actions">
+    <?php admin_site_link(); ?>
+    <details class="mobile-menu">
+      <summary>Izvēlne</summary>
+      <div class="mobile-menu__panel">
+        <?php admin_navigation('admin-nav admin-nav--mobile'); ?>
+        <form class="logout-form" method="post" action="logout.php">
+          <?= csrf_field() ?>
+          <button class="admin-nav__link admin-nav__button" type="submit">Iziet</button>
+        </form>
+      </div>
+    </details>
+  </div>
 </header>
 <div class="admin-shell">
   <aside class="sidebar">
@@ -77,6 +87,7 @@ function admin_header(string $title): void
     </a>
     <?php admin_navigation('admin-nav'); ?>
     <div class="sidebar__footer">
+      <?php admin_site_link(); ?>
       <span class="admin-user" title="Pierakstījies lietotājs"><?= htmlspecialchars(current_admin_username()) ?></span>
       <form class="logout-form" method="post" action="logout.php">
         <?= csrf_field() ?>

@@ -50,8 +50,10 @@ a:hover { color: var(--accent); }
 .admin-nav__link { display: flex; min-height: 44px; padding: 10px 12px; align-items: center; justify-content: space-between; gap: 10px; border: 0; border-radius: 7px; color: #394945; background: transparent; font-size: 15px; font-weight: 600; line-height: 1.25; text-align: left; text-decoration: none; cursor: pointer; transition: color var(--motion-fast) var(--ease-out), background-color var(--motion-fast) var(--ease-out), box-shadow var(--motion-fast) var(--ease-out), transform var(--motion-base) var(--ease-out); }
 .admin-nav__link:hover { color: var(--accent-dark); background: #f0f7f5; }
 .admin-nav__link.is-active { color: var(--accent-dark); background: var(--accent-soft); box-shadow: inset 3px 0 0 var(--accent); }
-.admin-nav__external { color: var(--muted); font-size: 14px; }
 .sidebar__footer { display: grid; gap: 7px; margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); }
+.admin-site-link { display: flex; min-height: 44px; padding: 10px 12px; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid var(--accent); border-radius: 7px; color: #fff; background: var(--accent); box-shadow: var(--shadow); font-size: 15px; font-weight: 700; line-height: 1.25; text-decoration: none; transition: border-color var(--motion-fast) var(--ease-out), background-color var(--motion-fast) var(--ease-out), box-shadow var(--motion-base) var(--ease-out), transform var(--motion-base) var(--ease-out); }
+.admin-site-link:hover { border-color: var(--accent-dark); color: #fff; background: var(--accent-dark); }
+.admin-site-link__icon { font-size: 17px; line-height: 1; }
 .admin-user { overflow: hidden; padding: 0 12px 4px; color: var(--muted); font-size: 13px; text-overflow: ellipsis; white-space: nowrap; }
 .logout-form, .inline-form { margin: 0; }
 .admin-nav__button { width: 100%; }
@@ -156,6 +158,9 @@ input[type="file"]::file-selector-button { height: 43px; margin: 0 12px 0 0; pad
 input[type="file"]::file-selector-button:hover { color: #fff; background: var(--accent); }
 input[type="checkbox"] { width: 18px; height: 18px; margin: 0; accent-color: var(--accent); }
 .form-card { max-width: 920px; padding: clamp(20px, 3vw, 30px); }
+.create-form-panel { margin-bottom: 18px; }
+.create-form-panel[hidden] { display: none; }
+.create-form-panel .section-heading--form { margin-top: 0; }
 .admin-form { display: grid; gap: 20px; }
 .form-field { display: grid; gap: 7px; }
 .form-field > label, .field-label { color: #283a35; font-size: 15px; font-weight: 700; }
@@ -235,6 +240,7 @@ tbody tr:hover td { background: #fafcfb; }
 @media (hover: hover) {
   .brand:hover .brand-mark, .mobile-brand:hover .brand-mark { box-shadow: 0 7px 16px rgba(8, 122, 106, 0.22); transform: rotate(-4deg) scale(1.04); }
   .admin-nav__link:hover { transform: translateX(2px); }
+  .admin-site-link:hover { box-shadow: 0 5px 14px rgba(20, 75, 62, 0.16); transform: translateY(-1px); }
   .button:hover { box-shadow: 0 5px 14px rgba(20, 75, 62, 0.1); transform: translateY(-1px); }
   .button:active { box-shadow: var(--shadow); transform: translateY(0); transition-duration: 70ms; }
   .thumb:hover { border-color: #90bcb2; transform: scale(1.04); }
@@ -249,6 +255,9 @@ tbody tr:hover td { background: #fafcfb; }
   .mobile-header { position: sticky; top: 0; z-index: 30; display: flex; min-height: 62px; padding: 10px 16px; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); background: rgba(255, 255, 255, 0.97); }
   .mobile-brand { font-size: 15px; font-weight: 700; }
   .mobile-brand .brand-mark { width: 32px; height: 32px; font-size: 15px; }
+  .mobile-header__actions { display: flex; align-items: center; gap: 8px; }
+  .mobile-header .admin-site-link { min-height: 38px; padding: 8px 10px; font-size: 14px; }
+  .mobile-header .admin-site-link__icon { font-size: 15px; }
   .mobile-menu { position: relative; }
   .mobile-menu summary { padding: 8px 11px; border: 1px solid var(--line-strong); border-radius: 7px; color: var(--ink); background: #fff; font-size: 14px; font-weight: 700; cursor: pointer; transition: color var(--motion-fast) var(--ease-out), border-color var(--motion-fast) var(--ease-out), background-color var(--motion-fast) var(--ease-out); }
   .mobile-menu__panel { position: absolute; top: calc(100% + 9px); right: 0; width: min(290px, calc(100vw - 24px)); max-height: calc(100vh - 82px); padding: 9px; overflow-y: auto; border: 1px solid var(--line); border-radius: 9px; background: #fff; box-shadow: 0 12px 30px rgba(18, 46, 39, 0.16); }

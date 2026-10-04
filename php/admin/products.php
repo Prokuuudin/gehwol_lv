@@ -173,7 +173,7 @@ foreach ($errors as $e) {
     <h2>Produktu katalogs</h2>
     <p class="page-intro">Atrodiet, rediģējiet un publicējiet katalogā esošos produktus.</p>
   </div>
-  <a class="button button--primary" href="#form"><span aria-hidden="true">+</span> Pievienot produktu</a>
+  <button class="button button--primary" type="button" data-create-form-toggle aria-controls="product-create-panel" aria-expanded="<?= $errors ? 'true' : 'false' ?>"><span aria-hidden="true">+</span> Pievienot produktu</button>
 </div>
 <form class="filters" method="get" action="products.php" role="search">
   <label>Meklēt
@@ -217,7 +217,8 @@ foreach ($errors as $e) {
 </div>
 <p class="table-summary">Parādīti <?= count($list) ?> no <?= count($products) ?> produktiem</p>
 </div>
-<div class="section-heading section-heading--form" id="form">
+<div class="create-form-panel" id="product-create-panel"<?= $errors ? '' : ' hidden' ?>>
+<div class="section-heading section-heading--form">
   <div><h2>Pievienot produktu</h2><p class="section-intro">Aizpildiet pamatinformāciju un, ja nepieciešams, pievienojiet attēlus.</p></div>
 </div>
 <?php else: ?>
@@ -274,10 +275,24 @@ foreach ($errors as $e) {
   <label class="checkbox-field"><input type="checkbox" name="published" value="1" <?= ($form === null || is_published($form)) ? 'checked' : '' ?>> <span>Publicēts <span class="field-hint">(redzams vietnē)</span></span></label>
   <div class="form-actions"><button class="button button--primary" type="submit"><?= $editing ? 'Saglabāt izmaiņas' : 'Pievienot produktu' ?></button></div>
 </form>
+<?php if (!$editing): ?></div><?php endif; ?>
 <script>
 // warn before leaving with unsaved changes
 (function () {
   var form = document.getElementById('product-form'), dirty = false;
+  var toggle = document.querySelector('[data-create-form-toggle]');
+  var panel = document.getElementById('product-create-panel');
+  if (toggle && panel) {
+    toggle.closest('.page-actions').insertAdjacentElement('afterend', panel);
+    toggle.addEventListener('click', function () {
+      var opening = panel.hidden;
+      panel.hidden = !opening;
+      toggle.setAttribute('aria-expanded', String(opening));
+      if (opening) {
+        panel.querySelector('input:not([type="hidden"]), select, textarea').focus();
+      }
+    });
+  }
   form.addEventListener('input', function () { dirty = true; });
   form.addEventListener('submit', function () { dirty = false; });
   window.addEventListener('beforeunload', function (e) { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
