@@ -29,12 +29,10 @@ function load_template(string $name): string
     $html = (string)file_get_contents($path);
 
     // Keep long-lived browser caches from showing stale layouts after a deploy.
-    // The content hash changes only when the built stylesheet changes.
+    // The deploy rewrites the stylesheet only when it changed, so its time stamp is the version.
     static $cssVersion;
     if ($cssVersion === null) {
-        $cssPath = site_public_dir() . '/css/main.css';
-        $hash = is_file($cssPath) ? hash_file('sha256', $cssPath) : false;
-        $cssVersion = $hash ? substr($hash, 0, 12) : '1';
+        $cssVersion = (string)(@filemtime(site_public_dir() . '/css/main.css') ?: 1);
     }
 
     $html = str_replace('./css/main.css"', './css/main.css?v=' . $cssVersion . '"', $html);
