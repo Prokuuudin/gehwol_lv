@@ -14,9 +14,29 @@ const PASSWORD_MIN_LENGTH = 10;
 function verify_credentials(?array $userRow, string $password): bool
 {
     if ($userRow === null) {
+        // check against a real hash anyway (result ignored): the response time must not reveal
+        // which usernames exist
+        $any = load_collection('admin_users')[0]['password_hash'] ?? null;
+        if (is_string($any)) {
+            password_verify($password, $any);
+        }
         return false;
     }
     return password_verify($password, $userRow['password_hash']);
+}
+
+/** Short fingerprint of the stored password hash: a password change ends the user's other sessions. */
+function password_fingerprint(array $user): string
+{
+    return substr(hash('sha256', (string)($user['password_hash'] ?? '')), 0, 16);
+}
+
+/** The session still belongs to an existing admin whose password has not changed since login. */
+function session_matches_user(array $session, ?array $user): bool
+{
+    return $user !== null
+        && (int)$user['id'] === (int)($session['admin_id'] ?? 0)
+        && hash_equals(password_fingerprint($user), (string)($session['pw'] ?? ''));
 }
 
 function find_admin_in(array $users, string $username): ?array
@@ -113,7 +133,12 @@ function log_in(array $user): void
 {
     start_admin_session();
     session_regenerate_id(true);
-    $_SESSION = ['admin_id' => $user['id'], 'admin_username' => $user['username'], 'last_activity' => time()];
+    $_SESSION = [
+        'admin_id' => $user['id'],
+        'admin_username' => $user['username'],
+        'pw' => password_fingerprint($user),
+        'last_activity' => time(),
+    ];
 }
 
 function log_out(): void
@@ -132,7 +157,8 @@ function require_login(): void
         header('Location: login.php');
         exit;
     }
-    if (time() - (int)($_SESSION['last_activity'] ?? 0) > SESSION_IDLE_SECONDS) {
+    if (time() - (int)($_SESSION['last_activity'] ?? 0) > SESSION_IDLE_SECONDS
+        || !session_matches_user($_SESSION, find_admin_by_username(current_admin_username()))) {
         log_out();
         header('Location: login.php?expired=1');
         exit;

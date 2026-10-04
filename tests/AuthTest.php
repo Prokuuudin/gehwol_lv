@@ -36,6 +36,18 @@ final class AuthTest extends TestCase
         $this->assertFalse(verify_credentials(null, 'anything'));
     }
 
+    public function test_session_ends_when_password_changes_or_user_is_gone(): void
+    {
+        $user = ['id' => 1, 'username' => 'admin', 'password_hash' => password_hash('secret123', PASSWORD_DEFAULT)];
+        $session = ['admin_id' => 1, 'admin_username' => 'admin', 'pw' => password_fingerprint($user)];
+        $this->assertTrue(session_matches_user($session, $user));
+
+        $changed = ['password_hash' => password_hash('other12345', PASSWORD_DEFAULT)] + $user;
+        $this->assertFalse(session_matches_user($session, $changed), 'password changed on another device');
+        $this->assertFalse(session_matches_user($session, null), 'user removed');
+        $this->assertFalse(session_matches_user(['pw' => ''] + $session, $user), 'session from before this check');
+    }
+
     public function test_find_admin_in(): void
     {
         $users = [['id' => 1, 'username' => 'admin', 'password_hash' => 'x'], ['id' => 2, 'username' => 'other', 'password_hash' => 'y']];

@@ -24,3 +24,13 @@ function max_length_errors(array $data, array $fieldLimits): array
     }
     return $errors;
 }
+
+/** A text field of the posted form; '' when missing or not a string (e.g. name[]=… sent instead). */
+function post_string(string $key, bool $trim = true): string
+{
+    $value = $_POST[$key] ?? '';
+    if (!is_string($value)) {
+        return '';
+    }
+    return $trim ? trim($value) : $value;
+}

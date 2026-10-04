@@ -1,16 +1,21 @@
 <?php
 
 require_once __DIR__ . '/../includes/auth.php';
+require_once __DIR__ . '/../includes/validation.php';
 
 start_admin_session();
 $ip = $_SERVER['REMOTE_ADDR'] ?? '';
 $error = isset($_GET['expired']) ? 'Sesija beigusies. Lūdzu, ielogojieties vēlreiz.' : null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim((string)($_POST['username'] ?? ''));
-    $password = (string)($_POST['password'] ?? '');
+    $username = post_string('username');
+    $password = post_string('password', false);
+    $token = post_string('csrf', false);
     $lockedFor = login_locked_for($ip);
-    if ($lockedFor > 0) {
+    if (!hash_equals(csrf_token(), $token)) {
+        // a form from another site, or one left open past the session lifetime
+        $error = 'Lapa bija atvērta pārāk ilgi. Lūdzu, ievadiet datus vēlreiz.';
+    } elseif ($lockedFor > 0) {
         $error = 'Pārāk daudz neveiksmīgu mēģinājumu. Mēģiniet vēlreiz pēc ' . (int)ceil($lockedFor / 60) . ' min.';
     } else {
         $row = find_admin_by_username($username);
@@ -45,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <p class="login-card__intro">Pieslēdzieties vietnes administrācijas panelim.</p>
     <?php if ($error): ?><p class="error" role="alert"><?= htmlspecialchars($error) ?></p><?php endif; ?>
     <form class="admin-form" method="post">
+      <?= csrf_field() ?>
       <div class="form-field"><label for="username">Lietotājvārds</label><input id="username" type="text" name="username" autocomplete="username" required autofocus></div>
       <div class="form-field"><label for="password">Parole</label><input id="password" type="password" name="password" autocomplete="current-password" required></div>
       <button class="button button--primary" type="submit">Ielogoties</button>

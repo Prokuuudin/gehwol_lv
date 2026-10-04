@@ -36,12 +36,12 @@ function find_product(array $products, int $id): ?array
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($action, ['add', 'edit'], true)) {
     require_csrf();
     $data = [
-        'name' => typography(trim($_POST['name'] ?? '')),
+        'name' => typography(post_string('name')),
         'category_id' => (int)($_POST['category_id'] ?? 0),
-        'subtitle' => typography(trim($_POST['subtitle'] ?? '')),
-        'description' => typography_html(text_to_html($_POST['description'] ?? '')),
-        'active_ingredients' => typography(trim($_POST['active_ingredients'] ?? '')),
-        'seo_description' => trim($_POST['seo_description'] ?? ''),
+        'subtitle' => typography(post_string('subtitle')),
+        'description' => typography_html(text_to_html(post_string('description', false))),
+        'active_ingredients' => typography(post_string('active_ingredients')),
+        'seo_description' => post_string('seo_description'),
         'sort_order' => (int)($_POST['sort_order'] ?? 0),
         'published' => ($_POST['published'] ?? '') === '1',
     ];
@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($action, ['add', 'edit'], 
 
 if ($action === 'undo') {
     require_csrf();
-    $restored = restore_recent_deletion('products', (string)($_POST['undo_token'] ?? ''));
+    $restored = restore_recent_deletion('products', post_string('undo_token', false));
     if ($restored !== null) {
         admin_log('product delete undo id=' . (int)$restored['id']);
     }
@@ -169,7 +169,7 @@ if ($action === 'edit' && isset($_GET['id'])) {
     $editing = find_product($products, (int)$_GET['id']);
 }
 // after a failed save keep what the editor typed
-$form = $errors ? array_merge($editing ?? [], $data ?? [], ['description' => $_POST['description'] ?? '']) : $editing;
+$form = $errors ? array_merge($editing ?? [], $data ?? [], ['description' => post_string('description', false)]) : $editing;
 
 admin_header($editing ? 'Rediģēt produktu' : 'Produkti');
 foreach ($errors as $e) {

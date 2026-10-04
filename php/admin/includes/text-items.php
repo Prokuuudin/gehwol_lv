@@ -60,17 +60,17 @@ function text_items_page(array $cfg): void
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($action, ['add', 'edit'], true)) {
         require_csrf();
         $data = [
-            'title' => typography(trim($_POST['title'] ?? '')),
-            'text' => typography_html(text_to_html($_POST['text'] ?? '')),
-            'seo_description' => trim($_POST['seo_description'] ?? ''),
+            'title' => typography(post_string('title')),
+            'text' => typography_html(text_to_html(post_string('text', false))),
+            'seo_description' => post_string('seo_description'),
             'published' => ($_POST['published'] ?? '') === '1',
         ];
         if ($dated) {
-            $data['date'] = normalize_date($_POST['date'] ?? '');
+            $data['date'] = normalize_date(post_string('date', false));
         } else {
             $data['sort_order'] = (int)($_POST['sort_order'] ?? 0);
             $data['products'] = array_values(array_intersect(normalize_id_list($_POST['products'] ?? []), array_keys($allProducts)));
-            $data['products_title'] = typography(trim($_POST['products_title'] ?? ''));
+            $data['products_title'] = typography(post_string('products_title'));
         }
         $errors = required_field_errors($data, ['title']);
         $errors = array_merge($errors, max_length_errors($data, ['title' => 255, 'seo_description' => 300, 'products_title' => 255]));
@@ -131,7 +131,7 @@ function text_items_page(array $cfg): void
 
     if ($action === 'undo') {
         require_csrf();
-        $restored = restore_recent_deletion($collection, (string)($_POST['undo_token'] ?? ''));
+        $restored = restore_recent_deletion($collection, post_string('undo_token', false));
         if ($restored !== null) {
             admin_log("{$collection} delete undo id=" . (int)$restored['id']);
         }
@@ -167,7 +167,7 @@ function text_items_page(array $cfg): void
         $items = sort_rows($items);
     }
     $editing = $action === 'edit' && isset($_GET['id']) ? $find((int)$_GET['id']) : null;
-    $form = $errors ? array_merge($editing ?? [], $data ?? [], ['text' => $_POST['text'] ?? '']) : $editing;
+    $form = $errors ? array_merge($editing ?? [], $data ?? [], ['text' => post_string('text', false)]) : $editing;
     $viewUrl = fn(array $row) => '../../' . $cfg['prefix'] . '-' . (int)$row['id'] . '.html';
 
     admin_header($editing ? $cfg['edit'] : $cfg['title']);

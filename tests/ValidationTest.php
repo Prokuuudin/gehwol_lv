@@ -29,4 +29,17 @@ final class ValidationTest extends TestCase
         $errors = max_length_errors(['name' => str_repeat('a', 255)], ['name' => 255]);
         $this->assertSame([], $errors);
     }
+
+    public function test_post_string_ignores_arrays_and_missing_fields(): void
+    {
+        $_POST = ['name' => '  Krēms ', 'tags' => ['a'], 'text' => " x\n"];
+        try {
+            $this->assertSame('Krēms', post_string('name'));
+            $this->assertSame(" x\n", post_string('text', false));
+            $this->assertSame('', post_string('tags'));
+            $this->assertSame('', post_string('missing'));
+        } finally {
+            $_POST = [];
+        }
+    }
 }

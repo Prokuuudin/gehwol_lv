@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../includes/storage.php';
 require_once __DIR__ . '/../includes/auth.php';
+require_once __DIR__ . '/../includes/validation.php';
 require_once __DIR__ . '/../includes/content.php';
 require_once __DIR__ . '/includes/layout.php';
 
@@ -12,17 +13,19 @@ $done = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_csrf();
-    $current = (string)($_POST['current'] ?? '');
-    $new = (string)($_POST['new'] ?? '');
+    $current = post_string('current', false);
+    $new = post_string('new', false);
     if (!verify_credentials(find_admin_by_username(current_admin_username()), $current)) {
         $errors[] = 'Pašreizējā parole nav pareiza.';
-    } elseif ($new !== (string)($_POST['repeat'] ?? '')) {
+    } elseif ($new !== post_string('repeat', false)) {
         $errors[] = 'Jaunās paroles nesakrīt.';
     } elseif ($problem = set_admin_password(current_admin_username(), $new)) {
         $errors[] = $problem;
     } else {
         admin_log('password changed');
         session_regenerate_id(true);
+        // this session stays logged in; the user's other sessions end at their next request
+        $_SESSION['pw'] = password_fingerprint(find_admin_by_username(current_admin_username()));
         $done = true;
     }
 }
