@@ -3,11 +3,18 @@
 // The web server sends here every request that does not match an existing file (see src/.htaccess).
 
 require_once __DIR__ . '/includes/render.php';
+require_once __DIR__ . '/includes/runtime-migrations.php';
 
 ini_set('display_errors', '0');
 ini_set('log_errors', '1');
 
 $path = rawurldecode((string)parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH));
+
+try {
+    migrate_text_content_ids_v2();
+} catch (Throwable $e) {
+    error_log(sprintf('[gehwol-migration] %s: %s', get_class($e), $e->getMessage()));
+}
 
 try {
     $response = site_response($path);

@@ -579,10 +579,7 @@ function deploy(array $options = []): array
             return $plan;
         }
         applyPlan($plan, $destination);
-        $migratedTextContent = migrateTextContentIdsV1($destination, $logger);
-        $logger($migratedTextContent
-            ? 'Runtime preservation: other persistent data and all uploads were preserved'
-            : 'Runtime preservation: persistent paths were not read or modified');
+        $logger('Runtime preservation: persistent paths were not read or modified');
         $logger(sprintf(
             'Deployment result: success (%d added, %d updated, %d removed)',
             count($plan['added']),
