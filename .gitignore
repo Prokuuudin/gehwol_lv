@@ -19,6 +19,7 @@ uploads/articles/*
 php/data/backups/
 php/data/*.lock
 php/data/*.tmp
+php/data/.*.done
 # credentials must never be committed
 *Hosting*.docx
 *hosting*.docx
