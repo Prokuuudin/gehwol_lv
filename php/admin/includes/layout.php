@@ -48,6 +48,7 @@ function admin_header(string $title): void
     $showUndo = $recentDeletion !== null;
     $deletedRow = is_array($recentDeletion['row'] ?? null) ? $recentDeletion['row'] : [];
     $deletedLabel = (string)($deletedRow['name'] ?? $deletedRow['title'] ?? 'Ieraksts');
+    $adminCssVersion = @filemtime(__DIR__ . '/../admin.css') ?: 1;
     ?>
 <!DOCTYPE html>
 <html lang="lv">
@@ -56,7 +57,7 @@ function admin_header(string $title): void
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title><?= htmlspecialchars($title) ?> — GEHWOL Admin</title>
-<link rel="stylesheet" href="admin.css">
+<link rel="stylesheet" href="admin.css?v=<?= (int)$adminCssVersion ?>">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Pāriet uz saturu</a>

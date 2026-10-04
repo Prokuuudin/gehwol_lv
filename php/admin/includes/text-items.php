@@ -142,9 +142,8 @@ function text_items_page(array $cfg): void
     <p class="page-intro">Pārvaldiet saturu, publicēšanas statusu un attēlus.</p>
   </div>
   <button class="button button--primary" type="button" data-create-form-toggle aria-controls="item-create-panel" aria-expanded="<?= $errors ? 'true' : 'false' ?>">
+    <span><?= htmlspecialchars($cfg['add']) ?></span>
     <span class="create-form-toggle__icon" aria-hidden="true"></span>
-    <span class="create-form-toggle__label-open"><?= htmlspecialchars($cfg['add']) ?></span>
-    <span class="create-form-toggle__label-close">Sakļaut formu</span>
   </button>
 </div>
 <div class="table-panel">
@@ -174,7 +173,8 @@ function text_items_page(array $cfg): void
 </div>
 <p class="table-summary"><?= count($items) ?> ieraksti</p>
 </div>
-<div class="create-form-panel<?= $errors ? ' is-expanded' : '' ?>" id="item-create-panel"<?= $errors ? '' : ' hidden' ?>>
+<div class="create-form-panel<?= $errors ? ' is-expanded' : '' ?>" id="item-create-panel" aria-hidden="<?= $errors ? 'false' : 'true' ?>"<?= $errors ? '' : ' inert' ?>>
+<div class="create-form-panel__inner">
 <div class="section-heading section-heading--form">
   <div><h2><?= htmlspecialchars($cfg['add']) ?></h2><p class="section-intro">Aizpildiet publikācijas saturu un statusu.</p></div>
 </div>
@@ -213,37 +213,20 @@ function text_items_page(array $cfg): void
   <label class="checkbox-field"><input type="checkbox" name="published" value="1" <?= ($form === null || is_published($form)) ? 'checked' : '' ?>> <span>Publicēts <span class="field-hint">(redzams vietnē)</span></span></label>
   <div class="form-actions"><button class="button button--primary" type="submit"><?= $editing ? 'Saglabāt izmaiņas' : htmlspecialchars($cfg['add']) ?></button></div>
 </form>
-<?php if (!$editing): ?></div><?php endif; ?>
+<?php if (!$editing): ?></div></div><?php endif; ?>
 <script>
 (function () {
   var form = document.getElementById('item-form'), dirty = false;
   var toggle = document.querySelector('[data-create-form-toggle]');
   var panel = document.getElementById('item-create-panel');
   if (toggle && panel) {
-    var panelAnimationTimer;
-    var panelAnimationDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 440;
     toggle.closest('.page-actions').insertAdjacentElement('afterend', panel);
     toggle.addEventListener('click', function () {
       var opening = toggle.getAttribute('aria-expanded') !== 'true';
-      var currentHeight = panel.hidden ? 0 : panel.getBoundingClientRect().height;
-      window.clearTimeout(panelAnimationTimer);
-      panel.hidden = false;
-      panel.style.height = currentHeight + 'px';
-      panel.offsetHeight;
       toggle.setAttribute('aria-expanded', String(opening));
-      if (opening) {
-        panel.classList.add('is-expanded');
-        panel.style.height = panel.scrollHeight + 'px';
-        panel.querySelector('input:not([type="hidden"]), select, textarea').focus();
-      } else {
-        panel.classList.remove('is-expanded');
-        panel.style.height = '0px';
-        if (panel.contains(document.activeElement)) toggle.focus();
-      }
-      panelAnimationTimer = window.setTimeout(function () {
-        panel.style.height = '';
-        if (!opening) panel.hidden = true;
-      }, panelAnimationDuration);
+      panel.classList.toggle('is-expanded', opening);
+      panel.setAttribute('aria-hidden', String(!opening));
+      panel.inert = !opening;
     });
   }
   form.addEventListener('input', function () { dirty = true; });

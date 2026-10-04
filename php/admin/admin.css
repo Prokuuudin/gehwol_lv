@@ -158,17 +158,11 @@ input[type="file"]::file-selector-button { height: 43px; margin: 0 12px 0 0; pad
 input[type="file"]::file-selector-button:hover { color: #fff; background: var(--accent); }
 input[type="checkbox"] { width: 18px; height: 18px; margin: 0; accent-color: var(--accent); }
 .form-card { max-width: 920px; padding: clamp(20px, 3vw, 30px); }
-.create-form-toggle__icon { display: inline-grid; width: 18px; height: 18px; place-items: center; font-size: 20px; line-height: 1; transition: transform 420ms var(--ease-in-out); }
-.create-form-toggle__icon::before { content: "+"; }
-.create-form-toggle__label-close { display: none; }
-[data-create-form-toggle][aria-expanded="true"] .create-form-toggle__icon { transform: rotate(180deg); }
-[data-create-form-toggle][aria-expanded="true"] .create-form-toggle__icon::before { content: "−"; }
-[data-create-form-toggle][aria-expanded="true"] .create-form-toggle__label-open { display: none; }
-[data-create-form-toggle][aria-expanded="true"] .create-form-toggle__label-close { display: inline; }
-.create-form-panel { height: 0; overflow: hidden; opacity: 0; transition: height 420ms var(--ease-in-out), opacity var(--motion-base) var(--ease-out); }
-.create-form-panel[hidden] { display: none; }
-.create-form-panel.is-expanded { height: auto; opacity: 1; }
-.create-form-panel::after { display: block; height: 36px; content: ""; }
+.create-form-toggle__icon { width: 9px; height: 9px; margin: 0 2px 4px 5px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); transition: transform var(--motion-base) var(--ease-in-out), margin var(--motion-base) var(--ease-in-out); }
+[data-create-form-toggle][aria-expanded="true"] .create-form-toggle__icon { margin-top: 5px; margin-bottom: 0; transform: rotate(225deg); }
+.create-form-panel { display: grid; grid-template-rows: 0fr; margin-bottom: 0; opacity: 0; visibility: hidden; transition: grid-template-rows 420ms var(--ease-in-out), margin-bottom 420ms var(--ease-in-out), opacity var(--motion-base) var(--ease-out), visibility 0s linear 420ms; }
+.create-form-panel.is-expanded { grid-template-rows: 1fr; margin-bottom: 36px; opacity: 1; visibility: visible; transition-delay: 0s; }
+.create-form-panel__inner { min-height: 0; overflow: hidden; }
 .create-form-panel .section-heading--form { margin-top: 0; }
 .admin-form { display: grid; gap: 20px; }
 .form-field { display: grid; gap: 7px; }
