@@ -423,7 +423,7 @@ function logPaths(string $label, array $paths, callable $logger): void
 function migrateTextContentIdsV1(string $destination, callable $logger): bool
 {
     $dataDir = $destination . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'data';
-    $marker = $dataDir . DIRECTORY_SEPARATOR . '.text-content-ids-v1.done';
+    $marker = $dataDir . DIRECTORY_SEPARATOR . '.text-content-ids-v2.done';
     $articlesPath = $dataDir . DIRECTORY_SEPARATOR . 'articles.json';
     if (is_file($marker) || !is_file($articlesPath)) {
         return false;
@@ -455,17 +455,23 @@ function migrateTextContentIdsV1(string $destination, callable $logger): bool
         }
 
         $expected = [
-            1 => 'Sausas pēdu ādas kopšana',
-            2 => 'Terapeitiskā enerģijā pārvērstais gaiss',
+            1 => ['oldId' => 6, 'title' => 'Sausas pēdu ādas kopšana'],
+            2 => ['oldId' => 7, 'title' => 'Terapeitiskā enerģijā pārvērstais gaiss'],
         ];
         $normalized = [];
-        foreach ($expected as $id => $title) {
+        foreach ($expected as $id => $identity) {
             $matches = array_values(array_filter(
                 $articles,
-                static fn (array $row): bool => (string) ($row['title'] ?? '') === $title
+                static fn (array $row): bool => (int) ($row['id'] ?? 0) === $identity['oldId']
             ));
             if (count($matches) !== 1) {
-                throw new RuntimeException("Text id migration expected exactly one article: {$title}");
+                $matches = array_values(array_filter(
+                    $articles,
+                    static fn (array $row): bool => (string) ($row['title'] ?? '') === $identity['title']
+                ));
+            }
+            if (count($matches) !== 1) {
+                throw new RuntimeException("Text id migration expected exactly one article with old id {$identity['oldId']}");
             }
             $row = $matches[0];
             $row['id'] = $id;
@@ -477,7 +483,7 @@ function migrateTextContentIdsV1(string $destination, callable $logger): bool
         if (is_file($files['counters'])) {
             $counterJson = @file_get_contents($files['counters']);
             $counters = $counterJson === false ? null : json_decode($counterJson, true);
-            if (!is_array($counters) || array_is_list($counters)) {
+            if (!is_array($counters) || (array_is_list($counters) && $counters !== [])) {
                 throw new RuntimeException('Cannot migrate corrupt id_counters.json');
             }
         }
@@ -505,7 +511,7 @@ function migrateTextContentIdsV1(string $destination, callable $logger): bool
         if (!is_dir($backupDir) && !@mkdir($backupDir, 0775, true)) {
             throw new RuntimeException("Cannot create runtime backup directory: {$backupDir}");
         }
-        $stamp = (new \DateTimeImmutable())->format('Ymd-His-u') . '-text-id-v1-' . bin2hex(random_bytes(2));
+        $stamp = (new \DateTimeImmutable())->format('Ymd-His-u') . '-text-id-v2-' . bin2hex(random_bytes(2));
         foreach ($files as $name => $path) {
             if (is_file($path) && !@copy($path, $backupDir . DIRECTORY_SEPARATOR . "{$name}-{$stamp}.json")) {
                 throw new RuntimeException("Cannot back up runtime data before text id migration: {$path}");

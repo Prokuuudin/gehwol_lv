@@ -134,6 +134,27 @@ final class RenderTest extends TestCase
 
     public function test_old_article_urls_redirect_to_normalized_ids(): void
     {
+        $articles = load_collection('articles');
+        foreach ($articles as &$article) {
+            if ((int) $article['id'] === 2) {
+                $article['published'] = true;
+            }
+        }
+        unset($article);
+        foreach ([6, 7] as $legacyId) {
+            $articles[] = [
+                'id' => $legacyId,
+                'title' => 'Vecā adrese migrācijas laikā',
+                'text' => '<p>Saturs</p>',
+                'image' => null,
+                'sort_order' => $legacyId,
+                'published' => true,
+                'created_at' => '2026-01-01 00:00:00',
+                'updated_at' => '2026-01-01 00:00:00',
+            ];
+        }
+        save_collection('articles', $articles, $this->dir);
+
         [$firstStatus, , , $firstHeaders] = site_response('/raksts-6.html');
         [$secondStatus, , , $secondHeaders] = site_response('/raksts-7.html');
 

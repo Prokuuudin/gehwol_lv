@@ -421,11 +421,11 @@ function site_response(string $path): array
 {
     $html = 'text/html; charset=UTF-8';
     $legacyArticleRedirects = [
-        '/raksts-6.html' => '/raksts-1.html',
-        '/raksts-7.html' => '/raksts-2.html',
+        '/raksts-6.html' => 1,
+        '/raksts-7.html' => 2,
     ];
-    if (isset($legacyArticleRedirects[$path])) {
-        return [301, $html, '', ['Location' => $legacyArticleRedirects[$path]]];
+    if (isset($legacyArticleRedirects[$path]) && find_published('articles', $legacyArticleRedirects[$path]) !== null) {
+        return [301, $html, '', ['Location' => '/raksts-' . $legacyArticleRedirects[$path] . '.html']];
     }
     if ($path === '/' || $path === '/index.html') {
         return [200, $html, render_home()];
