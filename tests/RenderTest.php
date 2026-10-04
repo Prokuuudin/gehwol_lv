@@ -56,6 +56,7 @@ final class RenderTest extends TestCase
     {
         [$status, , $html] = site_response('/produkts-1.html');
         $this->assertSame(200, $status);
+        $this->assertMatchesRegularExpression('~href="\./css/main\.css\?v=[a-f0-9]{12}"~', $html);
         $this->assertStringContainsString('<h1 class="category__title">Produkts 1</h1>', $html);
         $this->assertStringContainsString('<link rel="canonical" href="https://gehwol.lv/produkts-1.html">', $html);
         $this->assertStringContainsString('href="gehwol-classic.html" class="category__crumb"', $html);

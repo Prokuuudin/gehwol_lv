@@ -24,7 +24,18 @@ function load_template(string $name): string
     if (!preg_match('/^[\w.-]+\.html$/', $name) || !is_file($path)) {
         throw new RuntimeException("Template not found: {$name}");
     }
-    return (string)file_get_contents($path);
+    $html = (string)file_get_contents($path);
+
+    // Keep long-lived browser caches from showing stale layouts after a deploy.
+    // The content hash changes only when the built stylesheet changes.
+    static $cssVersion;
+    if ($cssVersion === null) {
+        $cssPath = site_public_dir() . '/css/main.css';
+        $hash = is_file($cssPath) ? hash_file('sha256', $cssPath) : false;
+        $cssVersion = $hash ? substr($hash, 0, 12) : '1';
+    }
+
+    return str_replace('./css/main.css"', './css/main.css?v=' . $cssVersion . '"', $html);
 }
 
 function fill_slot(string $html, string $slot, string $content): string
