@@ -10,17 +10,23 @@ ini_set('log_errors', '1');
 $path = rawurldecode((string)parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH));
 
 try {
-    [$status, $type, $body] = site_response($path);
+    $response = site_response($path);
+    [$status, $type, $body] = $response;
+    $headers = $response[3] ?? [];
 } catch (Throwable $e) {
     error_log(sprintf('[gehwol-site] %s: %s at %s:%d', get_class($e), $e->getMessage(), $e->getFile(), $e->getLine()));
     [$status, $type, $body] = [500, 'text/html; charset=UTF-8',
         '<!DOCTYPE html><html lang="lv"><head><meta charset="UTF-8"><meta name="robots" content="noindex"><title>Kļūda</title></head>'
         . '<body><p>Lapa īslaicīgi nav pieejama. Lūdzu, mēģiniet vēlāk.</p></body></html>'];
+    $headers = [];
 }
 
 http_response_code($status);
 header('Content-Type: ' . $type);
 header('X-Content-Type-Options: nosniff');
+foreach ($headers as $name => $value) {
+    header($name . ': ' . $value);
+}
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'HEAD') {
     echo $body;
 }

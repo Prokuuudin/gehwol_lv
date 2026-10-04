@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 use function Gehwol\PleskDeploy\acquireLock;
 use function Gehwol\PleskDeploy\deploy;
+use function Gehwol\PleskDeploy\migrateTextContentIdsV1;
 use function Gehwol\PleskDeploy\parseArguments;
 
 require_once __DIR__ . '/../scripts/deploy-plesk.php';
@@ -120,6 +121,36 @@ final class DeployPleskTest extends TestCase
 
         self::assertSame('/var/www/vhosts/gehwol.lv/docs', $options['source']);
         self::assertSame('/var/www/vhosts/gehwol.lv/httpdocs', $options['destination']);
+    }
+
+    public function test_text_content_ids_are_normalized_once_with_backups(): void
+    {
+        $articles = [
+            ['id' => 3, 'title' => 'Testa raksts'],
+            ['id' => 6, 'title' => 'Sausas pēdu ādas kopšana', 'text' => 'first', 'image' => 'uploads/articles/first.jpg'],
+            ['id' => 7, 'title' => 'Terapeitiskā enerģijā pārvērstais gaiss', 'text' => 'second'],
+        ];
+        $this->write('httpdocs/php/data/articles.json', json_encode($articles, JSON_UNESCAPED_UNICODE));
+        $this->write('httpdocs/php/data/news.json', json_encode([['id' => 4, 'title' => 'Testa jaunums']]));
+        $this->write('httpdocs/php/data/id_counters.json', json_encode(['products' => 99, 'articles' => 7, 'news' => 4]));
+
+        self::assertTrue(migrateTextContentIdsV1($this->production, static function (string $_message): void {}));
+
+        $normalized = json_decode($this->read('httpdocs/php/data/articles.json'), true, 512, JSON_THROW_ON_ERROR);
+        self::assertSame([1, 2], array_column($normalized, 'id'));
+        self::assertSame(['first', 'second'], array_column($normalized, 'text'));
+        self::assertSame('uploads/articles/first.jpg', $normalized[0]['image']);
+        self::assertSame([], json_decode($this->read('httpdocs/php/data/news.json'), true, 512, JSON_THROW_ON_ERROR));
+        self::assertSame(
+            ['products' => 99, 'articles' => 2, 'news' => 0],
+            json_decode($this->read('httpdocs/php/data/id_counters.json'), true, 512, JSON_THROW_ON_ERROR)
+        );
+        self::assertNotEmpty(glob($this->path('httpdocs/php/data/backups/articles-*.json')) ?: []);
+        self::assertNotEmpty(glob($this->path('httpdocs/php/data/backups/news-*.json')) ?: []);
+
+        $this->write('httpdocs/php/data/news.json', json_encode([['id' => 1, 'title' => 'Jauns materiāls']], JSON_UNESCAPED_UNICODE));
+        self::assertFalse(migrateTextContentIdsV1($this->production, static function (string $_message): void {}));
+        self::assertStringContainsString('Jauns materiāls', $this->read('httpdocs/php/data/news.json'));
     }
 
     private function runDeploy(array $overrides = []): array

@@ -132,6 +132,17 @@ final class RenderTest extends TestCase
         $this->assertStringNotContainsString('"Article"', $product);
     }
 
+    public function test_old_article_urls_redirect_to_normalized_ids(): void
+    {
+        [$firstStatus, , , $firstHeaders] = site_response('/raksts-6.html');
+        [$secondStatus, , , $secondHeaders] = site_response('/raksts-7.html');
+
+        $this->assertSame(301, $firstStatus);
+        $this->assertSame('/raksts-1.html', $firstHeaders['Location']);
+        $this->assertSame(301, $secondStatus);
+        $this->assertSame('/raksts-2.html', $secondHeaders['Location']);
+    }
+
     public function test_sitemap_lists_published_content_only(): void
     {
         [$status, $type, $xml] = site_response('/sitemap.xml');

@@ -416,10 +416,17 @@ function render_sitemap(): string
 
 // --- routing ------------------------------------------------------------------------
 
-/** @return array{0:int,1:string,2:string} status, content type, body */
+/** @return array{0:int,1:string,2:string,3?:array<string,string>} status, content type, body, optional headers */
 function site_response(string $path): array
 {
     $html = 'text/html; charset=UTF-8';
+    $legacyArticleRedirects = [
+        '/raksts-6.html' => '/raksts-1.html',
+        '/raksts-7.html' => '/raksts-2.html',
+    ];
+    if (isset($legacyArticleRedirects[$path])) {
+        return [301, $html, '', ['Location' => $legacyArticleRedirects[$path]]];
+    }
     if ($path === '/' || $path === '/index.html') {
         return [200, $html, render_home()];
     }

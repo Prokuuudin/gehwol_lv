@@ -415,6 +415,128 @@ function logPaths(string $label, array $paths, callable $logger): void
     }
 }
 
+/**
+ * One-time cleanup requested for the live editorial data. The two real articles keep all
+ * production fields (including uploaded images and edited copy), receive ids 1 and 2, news are
+ * cleared, and counters are reset. A marker prevents later deploys from touching new content.
+ */
+function migrateTextContentIdsV1(string $destination, callable $logger): bool
+{
+    $dataDir = $destination . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'data';
+    $marker = $dataDir . DIRECTORY_SEPARATOR . '.text-content-ids-v1.done';
+    $articlesPath = $dataDir . DIRECTORY_SEPARATOR . 'articles.json';
+    if (is_file($marker) || !is_file($articlesPath)) {
+        return false;
+    }
+
+    $files = [
+        'articles' => $articlesPath,
+        'news' => $dataDir . DIRECTORY_SEPARATOR . 'news.json',
+        'counters' => $dataDir . DIRECTORY_SEPARATOR . 'id_counters.json',
+    ];
+    $locks = [];
+    $temps = [];
+    try {
+        foreach ($files as $path) {
+            $lock = @fopen($path . '.lock', 'c');
+            if ($lock === false || !flock($lock, LOCK_EX)) {
+                throw new RuntimeException("Cannot lock runtime data for text id migration: {$path}");
+            }
+            $locks[] = $lock;
+        }
+        if (is_file($marker)) {
+            return false;
+        }
+
+        $articlesJson = @file_get_contents($files['articles']);
+        $articles = $articlesJson === false ? null : json_decode($articlesJson, true);
+        if (!is_array($articles) || !array_is_list($articles)) {
+            throw new RuntimeException('Cannot migrate corrupt articles.json');
+        }
+
+        $expected = [
+            1 => 'Sausas pēdu ādas kopšana',
+            2 => 'Terapeitiskā enerģijā pārvērstais gaiss',
+        ];
+        $normalized = [];
+        foreach ($expected as $id => $title) {
+            $matches = array_values(array_filter(
+                $articles,
+                static fn (array $row): bool => (string) ($row['title'] ?? '') === $title
+            ));
+            if (count($matches) !== 1) {
+                throw new RuntimeException("Text id migration expected exactly one article: {$title}");
+            }
+            $row = $matches[0];
+            $row['id'] = $id;
+            $row['sort_order'] = $id;
+            $normalized[] = $row;
+        }
+
+        $counters = [];
+        if (is_file($files['counters'])) {
+            $counterJson = @file_get_contents($files['counters']);
+            $counters = $counterJson === false ? null : json_decode($counterJson, true);
+            if (!is_array($counters) || array_is_list($counters)) {
+                throw new RuntimeException('Cannot migrate corrupt id_counters.json');
+            }
+        }
+        $counters['articles'] = 2;
+        $counters['news'] = 0;
+
+        $payloads = [
+            'articles' => json_encode($normalized, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+            'news' => json_encode([], JSON_PRETTY_PRINT),
+            'counters' => json_encode($counters, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+        ];
+        foreach ($payloads as $name => $json) {
+            if ($json === false) {
+                throw new RuntimeException("Cannot encode {$name} during text id migration");
+            }
+            $payloads[$name] = $json . PHP_EOL;
+            $temp = $files[$name] . '.migration-' . bin2hex(random_bytes(6)) . '.tmp';
+            if (@file_put_contents($temp, $payloads[$name]) !== strlen($payloads[$name])) {
+                throw new RuntimeException("Cannot stage text id migration file: {$temp}");
+            }
+            $temps[$name] = $temp;
+        }
+
+        $backupDir = $dataDir . DIRECTORY_SEPARATOR . 'backups';
+        if (!is_dir($backupDir) && !@mkdir($backupDir, 0775, true)) {
+            throw new RuntimeException("Cannot create runtime backup directory: {$backupDir}");
+        }
+        $stamp = (new \DateTimeImmutable())->format('Ymd-His-u') . '-text-id-v1-' . bin2hex(random_bytes(2));
+        foreach ($files as $name => $path) {
+            if (is_file($path) && !@copy($path, $backupDir . DIRECTORY_SEPARATOR . "{$name}-{$stamp}.json")) {
+                throw new RuntimeException("Cannot back up runtime data before text id migration: {$path}");
+            }
+        }
+
+        foreach ($files as $name => $path) {
+            if (!@rename($temps[$name], $path)) {
+                @unlink($path);
+                if (!@rename($temps[$name], $path)) {
+                    throw new RuntimeException("Cannot install text id migration file: {$path}");
+                }
+            }
+            unset($temps[$name]);
+        }
+        if (@file_put_contents($marker, gmdate(DATE_ATOM) . PHP_EOL) === false) {
+            throw new RuntimeException("Cannot write text id migration marker: {$marker}");
+        }
+        $logger('Runtime migration: articles normalized to ids 1-2; news cleared; counters reset (backups created)');
+        return true;
+    } finally {
+        foreach ($temps as $temp) {
+            @unlink($temp);
+        }
+        foreach (array_reverse($locks) as $lock) {
+            flock($lock, LOCK_UN);
+            fclose($lock);
+        }
+    }
+}
+
 function deploy(array $options = []): array
 {
     $source = normalizedAbsolute((string) ($options['source'] ?? dirname(__DIR__)));
@@ -451,7 +573,10 @@ function deploy(array $options = []): array
             return $plan;
         }
         applyPlan($plan, $destination);
-        $logger('Runtime preservation: persistent paths were not read or modified');
+        $migratedTextContent = migrateTextContentIdsV1($destination, $logger);
+        $logger($migratedTextContent
+            ? 'Runtime preservation: other persistent data and all uploads were preserved'
+            : 'Runtime preservation: persistent paths were not read or modified');
         $logger(sprintf(
             'Deployment result: success (%d added, %d updated, %d removed)',
             count($plan['added']),
