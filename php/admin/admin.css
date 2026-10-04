@@ -207,7 +207,12 @@ tbody tr:hover td { background: #fafcfb; }
 .images td:first-child { width: 80px; }
 .images input[type="number"] { width: 76px; }
 .images td:last-child, .images th:last-child { text-align: center; }
-.partners-table { min-width: 900px; }
+.partners-table { min-width: 600px; table-layout: fixed; }
+.partners-table th, .partners-table td { padding: 10px 6px; }
+.partners-table th:first-child, .partners-table td:first-child { width: 72px; padding-left: 12px; }
+.partners-table th:nth-child(2) { width: 132px; }
+.partners-table th:last-child { width: 64px; padding-right: 12px; }
+.partners-table input[type="number"] { width: 100%; }
 .current-image { display: flex; padding: 12px; align-items: center; gap: 14px; border: 1px solid var(--line); border-radius: 8px; background: #fbfdfc; }
 .current-image .thumb { width: 76px; height: 76px; }
 
