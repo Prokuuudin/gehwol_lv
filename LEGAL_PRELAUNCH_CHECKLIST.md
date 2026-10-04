@@ -18,7 +18,7 @@ Pārbaudes datums: 2026-09-28
 - Norādīt faktiskā e-pasta pakalpojuma sniedzēja juridisko nosaukumu, datu glabāšanas kārtību un apstrādes valstis.
 - Pārbaudīt CDN, WAF, DDoS aizsardzības un citu starpniekpakalpojumu esamību production vidē, kā arī to sīkdatnes un žurnālus.
 - Apstiprināt, vai kāds pakalpojuma sniedzējs nosūta personas datus ārpus EEZ; ja jā, dokumentēt nodošanas valsti, pamatu un aizsardzības pasākumus.
-- Pārbaudīt PHP sesijas sīkdatnes faktisko nosaukumu, `Secure`, `HttpOnly`, `SameSite` parametrus un darbības laiku production konfigurācijā.
+- ~~Pārbaudīt PHP sesijas sīkdatnes faktisko nosaukumu, `Secure`, `HttpOnly`, `SameSite` parametrus un darbības laiku production konfigurācijā.~~ Pārbaudīts 2026-10-04: `gehwol_admin`, `path=/php/admin/`, `Secure`, `HttpOnly`, `SameSite=Strict`, sesijas sīkdatne, 30 min neaktivitātes limits; publiskajās lapās sīkdatņu nav. Aprakstīts sīkdatņu politikā.
 - Noteikt un dokumentēt saprātīgus faktiskos glabāšanas termiņus e-pasta sarakstei, administratoru datiem un drošības informācijai.
 - Noslēgt un pārbaudīt nepieciešamos datu apstrādes līgumus ar apstrādātājiem.
 
