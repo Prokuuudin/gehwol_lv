@@ -7,7 +7,22 @@ require_once __DIR__ . '/../../includes/auth.php';
 require_once __DIR__ . '/../../includes/validation.php';
 require_once __DIR__ . '/../../includes/upload.php';
 require_once __DIR__ . '/../../includes/content.php';
+require_once __DIR__ . '/../../includes/runtime-migrations.php';
 require_once __DIR__ . '/layout.php';
+
+/** One row of the article's product list; with id 0 it is the empty row the editor script copies. */
+function picked_product_html(int $id, string $name, string $thumb, bool $draft): string
+{
+    $button = fn(string $action, string $label, string $icon) =>
+        '<button class="button button--small" type="button" data-' . $action . ' aria-label="' . $label . '" title="' . $label . '">' . $icon . '</button>';
+    return '<li class="picked-product"><input type="hidden" name="products[]" value="' . ($id ?: '') . '">'
+        . '<img class="thumb" src="' . htmlspecialchars($thumb) . '" alt=""' . ($thumb === '' ? ' hidden' : '') . '>'
+        . '<span class="picked-product__name">' . htmlspecialchars($name) . '</span>'
+        . '<span class="badge badge--draft"' . ($draft ? '' : ' hidden') . '>Nepublicēts</span>'
+        . '<span class="picked-product__actions">'
+        . $button('move-up', 'Pārvietot augstāk', '↑') . $button('move-down', 'Pārvietot zemāk', '↓') . $button('remove', 'Noņemt', '✕')
+        . '</span></li>';
+}
 
 /**
  * $cfg: collection, page (news.php), prefix (jaunums), title (Jaunumi), add (Pievienot jaunumu),
@@ -22,7 +37,16 @@ function text_items_page(array $cfg): void
     $dated = $cfg['dated'];
     $action = $_GET['action'] ?? 'list';
     $errors = [];
+    if (!$dated) {
+        try {
+            migrate_article_products_v1(); // the editor must see the product list, not the old grid HTML
+        } catch (Throwable $e) {
+            error_log(sprintf('[gehwol-migration] %s: %s', get_class($e), $e->getMessage()));
+        }
+    }
     $items = load_collection($collection);
+    // products an article can show, by id (articles only)
+    $allProducts = $dated ? [] : array_column(sort_rows(load_collection('products')), null, 'id');
 
     $find = function (int $id) use (&$items): ?array {
         foreach ($items as $i) {
@@ -45,9 +69,11 @@ function text_items_page(array $cfg): void
             $data['date'] = normalize_date($_POST['date'] ?? '');
         } else {
             $data['sort_order'] = (int)($_POST['sort_order'] ?? 0);
+            $data['products'] = array_values(array_intersect(normalize_id_list($_POST['products'] ?? []), array_keys($allProducts)));
+            $data['products_title'] = typography(trim($_POST['products_title'] ?? ''));
         }
         $errors = required_field_errors($data, ['title']);
-        $errors = array_merge($errors, max_length_errors($data, ['title' => 255, 'seo_description' => 300]));
+        $errors = array_merge($errors, max_length_errors($data, ['title' => 255, 'seo_description' => 300, 'products_title' => 255]));
         if ($dated && $data['date'] === null) {
             $errors[] = 'Norādi datumu.';
         }
@@ -195,6 +221,24 @@ function text_items_page(array $cfg): void
   <?php endif; ?>
   <div class="form-field"><label for="item-text">Teksts</label><textarea id="item-text" name="text" rows="14"><?= htmlspecialchars(html_to_editable_text($form['text'] ?? '')) ?></textarea>
   <p class="field-hint">Var rakstīt vienkāršu tekstu: tukša rinda veido jaunu rindkopu.</p></div>
+  <?php if (!$dated): ?>
+  <fieldset class="form-field product-picker" data-product-picker>
+    <legend class="field-label">Produkti raksta beigās</legend>
+    <div class="form-field"><label for="item-products-title">Bloka virsraksts</label><input id="item-products-title" type="text" name="products_title" maxlength="255" value="<?= htmlspecialchars($form['products_title'] ?? '') ?>"></div>
+    <ol class="picked-products" data-picked-products><?php foreach ($form['products'] ?? [] as $pid): if (isset($allProducts[$pid])): $p = $allProducts[$pid]; ?>
+      <?= picked_product_html((int)$p['id'], $p['name'], !empty($p['images']) ? admin_image_url($p['images'][0]) : '', !is_published($p)) ?>
+    <?php endif; endforeach; ?></ol>
+    <div class="product-picker__add">
+      <input type="text" list="product-options" aria-label="Meklēt produktu" placeholder="Sāciet rakstīt produkta nosaukumu…" data-product-search>
+      <button class="button" type="button" data-product-add>Pievienot</button>
+    </div>
+    <datalist id="product-options"><?php foreach ($allProducts as $p): ?>
+      <option value="<?= htmlspecialchars($p['name'] . ' (#' . (int)$p['id'] . ')') ?>" data-id="<?= (int)$p['id'] ?>" data-name="<?= htmlspecialchars($p['name']) ?>" data-thumb="<?= htmlspecialchars(!empty($p['images']) ? admin_image_url($p['images'][0]) : '') ?>" data-draft="<?= is_published($p) ? '' : '1' ?>"></option>
+    <?php endforeach; ?></datalist>
+    <template data-picked-template><?= picked_product_html(0, '', '', false) ?></template>
+    <p class="field-hint">Produktu kartītes ar attēlu un saiti tiek rādītas pēc teksta šādā secībā. Nepublicēti produkti vietnē netiek rādīti.</p>
+  </fieldset>
+  <?php endif; ?>
   <?php if (!empty($editing['image'])): ?>
   <div class="form-field"><span class="field-label">Pašreizējais attēls</span>
     <div class="current-image"><img class="thumb" src="<?= htmlspecialchars(admin_image_url($editing['image'])) ?>" alt="">
@@ -227,6 +271,40 @@ function text_items_page(array $cfg): void
       panel.classList.toggle('is-expanded', opening);
       panel.setAttribute('aria-hidden', String(!opening));
       panel.inert = !opening;
+    });
+  }
+  var picker = form.querySelector('[data-product-picker]');
+  if (picker) {
+    var list = picker.querySelector('[data-picked-products]');
+    var search = picker.querySelector('[data-product-search]');
+    var template = picker.querySelector('[data-picked-template]');
+    var add = function () {
+      var option = Array.prototype.find.call(document.querySelectorAll('#product-options option'), function (o) { return o.value === search.value; });
+      if (!option) { search.focus(); return; }
+      if (!list.querySelector('input[value="' + option.dataset.id + '"]')) {
+        var row = template.content.firstElementChild.cloneNode(true);
+        row.querySelector('input').value = option.dataset.id;
+        row.querySelector('.picked-product__name').textContent = option.dataset.name;
+        var thumb = row.querySelector('img');
+        thumb.src = option.dataset.thumb;
+        thumb.hidden = !option.dataset.thumb;
+        row.querySelector('.badge').hidden = !option.dataset.draft;
+        list.appendChild(row);
+        dirty = true;
+      }
+      search.value = '';
+      search.focus();
+    };
+    picker.querySelector('[data-product-add]').addEventListener('click', add);
+    search.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); add(); } });
+    list.addEventListener('click', function (e) {
+      var button = e.target.closest('button');
+      if (!button) { return; }
+      var row = button.closest('li');
+      if (button.hasAttribute('data-remove')) { row.remove(); }
+      if (button.hasAttribute('data-move-up') && row.previousElementSibling) { list.insertBefore(row, row.previousElementSibling); }
+      if (button.hasAttribute('data-move-down') && row.nextElementSibling) { list.insertBefore(row.nextElementSibling, row); }
+      dirty = true;
     });
   }
   form.addEventListener('input', function () { dirty = true; });

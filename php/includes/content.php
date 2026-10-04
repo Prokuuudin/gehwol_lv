@@ -153,6 +153,16 @@ function html_to_editable_text(string $html): string
     return html_entity_decode(implode("\n\n", array_map('trim', $paragraphs)), ENT_QUOTES | ENT_HTML5, 'UTF-8');
 }
 
+/** Posted list of ids (e.g. products[]) -> unique positive ints in the given order. */
+function normalize_id_list(mixed $value): array
+{
+    if (!is_array($value)) {
+        return [];
+    }
+    $ids = array_filter(array_map('intval', array_filter($value, 'is_numeric')), fn($id) => $id > 0);
+    return array_values(array_unique($ids));
+}
+
 /** 'YYYY-MM-DD' or 'DD.MM.YYYY' -> 'YYYY-MM-DD', null when empty/invalid. */
 function normalize_date(?string $value): ?string
 {

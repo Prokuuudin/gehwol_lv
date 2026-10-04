@@ -132,6 +132,27 @@ final class RenderTest extends TestCase
         $this->assertStringNotContainsString('"Article"', $product);
     }
 
+    public function test_article_shows_selected_published_products_in_order(): void
+    {
+        $articles = load_collection('articles');
+        $articles[0]['products'] = [3, 2, 1, 99];
+        $articles[0]['products_title'] = 'Ieteicamie produkti';
+        save_collection('articles', $articles);
+
+        [, , $html] = site_response('/raksts-1.html');
+        $this->assertStringContainsString('<h2>Ieteicamie produkti</h2><div class="category__grid">', $html);
+        $this->assertStringContainsString('<h3 class="product-card__title">Produkts 1</h3>', $html);
+        $this->assertLessThan(strpos($html, 'href="produkts-1.html"'), strpos($html, 'href="produkts-3.html"'));
+        $this->assertStringNotContainsString('produkts-2.html', $html, 'drafts are skipped');
+        $this->assertStringNotContainsString('produkts-99.html', $html, 'missing products are skipped');
+    }
+
+    public function test_article_without_products_has_no_product_grid(): void
+    {
+        [, , $html] = site_response('/raksts-1.html');
+        $this->assertStringNotContainsString('category__grid', $html);
+    }
+
     public function test_old_article_urls_redirect_to_normalized_ids(): void
     {
         $articles = load_collection('articles');

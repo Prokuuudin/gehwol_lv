@@ -170,6 +170,15 @@ input[type="checkbox"] { width: 18px; height: 18px; margin: 0; accent-color: var
 .field-hint { margin: 0; color: var(--muted); font-size: 14px; }
 .checkbox-field { display: flex; align-items: flex-start; gap: 9px; font-size: 15px; font-weight: 600; cursor: pointer; }
 .checkbox-field input { margin-top: 2px; }
+.product-picker { min-width: 0; margin: 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: #fbfdfc; }
+.product-picker legend { padding: 0 6px; }
+.picked-products { display: grid; margin: 0; padding: 0; gap: 8px; list-style: none; }
+.picked-products:empty { display: none; }
+.picked-product { display: flex; padding: 8px; align-items: center; gap: 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.picked-product__name { flex: 1; min-width: 0; font-weight: 600; overflow-wrap: anywhere; }
+.picked-product__actions { display: flex; flex-shrink: 0; gap: 4px; }
+.product-picker__add { display: flex; flex-wrap: wrap; gap: 8px; }
+.product-picker__add input { flex: 1 1 260px; min-width: 0; }
 .form-actions { display: flex; padding-top: 4px; align-items: center; flex-wrap: wrap; gap: 10px; }
 
 .table-panel { overflow: hidden; }

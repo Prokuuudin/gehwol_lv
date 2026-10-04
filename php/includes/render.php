@@ -302,7 +302,7 @@ function render_text_page(string $collection, int $id, bool $drafts = false): ?s
         . '<div class="content-detail">'
         . ($isNews ? '<p class="content-detail__meta">' . e(format_date_lv($item['date'] ?? null)) . '</p>' : '')
         . $media
-        . '<div class="content-detail__text">' . content_images_html(sanitize_html($item['text'])) . '</div>'
+        . '<div class="content-detail__text">' . content_images_html(sanitize_html($item['text'])) . article_products_html($item) . '</div>'
         . '</div></div></section>';
 
     return shell_page([
@@ -320,13 +320,26 @@ function render_text_page(string $collection, int $id, bool $drafts = false): ?s
     ], $main);
 }
 
-function product_card_html(array $product): string
+/** Products chosen for an article (published ones, in the chosen order) as a card grid under an optional heading. */
+function article_products_html(array $item): string
+{
+    $published = array_column(published('products'), null, 'id');
+    $products = array_filter(array_map(fn($id) => $published[(int)$id] ?? null, $item['products'] ?? []));
+    if ($products === []) {
+        return '';
+    }
+    $title = trim((string)($item['products_title'] ?? ''));
+    return ($title !== '' ? '<h2>' . e($title) . '</h2>' : '')
+        . '<div class="category__grid">' . implode('', array_map(fn($p) => product_card_html($p, 'h3'), $products)) . '</div>';
+}
+
+function product_card_html(array $product, string $headingTag = 'h2'): string
 {
     $media = !empty($product['images'])
         ? picture_html($product['images'][0], $product['name'], 'lazy')
         : '<span class="product-card__placeholder">GEHWOL</span>';
     return '<a href="produkts-' . (int)$product['id'] . '.html" class="product-card"><div class="product-card__media">' . $media . '</div>'
-        . '<h2 class="product-card__title">' . e($product['name']) . '</h2>'
+        . "<{$headingTag} class=\"product-card__title\">" . e($product['name']) . "</{$headingTag}>"
         . '<span class="product-card__cta btn-link">Uzzināt vairāk →</span></a>';
 }
 

@@ -6,6 +6,12 @@ require_once __DIR__ . '/../php/includes/content.php';
 
 final class ContentTest extends TestCase
 {
+    public function test_id_list_keeps_unique_positive_ids_in_order(): void
+    {
+        $this->assertSame([3, 5, 1], normalize_id_list(['3', 'x', '3', '-1', 5, '0', '1']));
+        $this->assertSame([], normalize_id_list('7'));
+    }
+
     public function test_allowed_markup_is_kept(): void
     {
         $html = '<p><strong>Platums:</strong> 52 cm<br>Ā ē ī</p><h3 class="content-detail__subtitle">Virsraksts</h3>'
