@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/validation.php';
+require_once __DIR__ . '/../includes/upload.php';
 
 start_admin_session();
 $ip = $_SERVER['REMOTE_ADDR'] ?? '';
@@ -23,6 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             login_clear_failures($ip);
             log_in($row);
             admin_log('login ok');
+            if ($swept = sweep_orphan_uploads()) {
+                admin_log("removed {$swept} unused uploaded files");
+            }
             header('Location: index.php');
             exit;
         }

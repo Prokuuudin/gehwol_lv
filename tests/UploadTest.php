@@ -193,4 +193,30 @@ final class UploadTest extends TestCase
         $this->assertFileDoesNotExist($this->dir . '/' . $unused);
         $this->assertFileDoesNotExist($this->dir . '/uploads/products/' . str_repeat('b', 32) . '.webp');
     }
+
+    public function test_sweep_removes_only_old_uploads_no_data_or_backup_mentions(): void
+    {
+        $uploads = $this->dir . '/uploads/products';
+        mkdir($uploads, 0777, true);
+        $old = time() - 2 * 86400;
+        $names = ['used' => str_repeat('a', 32), 'backup' => str_repeat('b', 32), 'orphan' => str_repeat('c', 32), 'fresh' => str_repeat('d', 32)];
+        foreach ($names as $kind => $name) {
+            foreach (['png', 'webp'] as $ext) {
+                file_put_contents("{$uploads}/{$name}.{$ext}", 'x');
+                touch("{$uploads}/{$name}.{$ext}", $kind === 'fresh' ? time() : $old);
+            }
+        }
+        file_put_contents("{$uploads}/notes.txt", 'x');
+        touch("{$uploads}/notes.txt", $old);
+        save_collection('products', [['id' => 1, 'images' => ["uploads/products/{$names['backup']}.png"]]]);
+        save_collection('products', [['id' => 1, 'images' => ["uploads/products/{$names['used']}.png"]]]); // first version is now a backup
+
+        $this->assertSame(2, sweep_orphan_uploads($this->dir . '/uploads'));
+        $this->assertEqualsCanonicalizing([
+            "{$names['used']}.png", "{$names['used']}.webp",
+            "{$names['backup']}.png", "{$names['backup']}.webp",
+            "{$names['fresh']}.png", "{$names['fresh']}.webp",
+            'notes.txt',
+        ], array_map('basename', glob($uploads . '/*') ?: []));
+    }
 }

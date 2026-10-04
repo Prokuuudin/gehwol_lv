@@ -13,6 +13,7 @@ const UPLOAD_MAX_BYTES = 10 * 1024 * 1024;
 const UPLOAD_MAX_PIXELS = 40_000_000;
 const IMAGE_MAX_SIDE = 1600;
 const UPLOAD_ROOT = __DIR__ . '/../../uploads';
+const ORPHAN_UPLOAD_MIN_AGE = 24 * 3600;
 
 class UploadException extends RuntimeException
 {
@@ -206,4 +207,28 @@ function delete_unused_uploads(array $paths, string $uploadRoot = UPLOAD_ROOT): 
             }
         }
     }
+}
+
+/**
+ * Deletes uploaded images that no data file and no backup mentions — left over when an admin's
+ * undo buffer was never cleaned up (the session simply expired). Backups count as references,
+ * so restoring a backup never loses its images. Files younger than a day are kept: they may
+ * belong to a form being saved right now. Returns the number of deleted files.
+ */
+function sweep_orphan_uploads(string $uploadRoot = UPLOAD_ROOT, ?string $dataDir = null): int
+{
+    $references = '';
+    foreach (array_merge(glob(storage_dir($dataDir) . '/*.json') ?: [], glob(backup_dir($dataDir) . '/*.json') ?: []) as $file) {
+        $references .= (string)@file_get_contents($file);
+    }
+    $deleted = 0;
+    foreach (glob(rtrim($uploadRoot, '/\\') . '/*/*.*') ?: [] as $file) {
+        if (preg_match('~^([a-f0-9]{32})\.(jpg|png|webp)$~', basename($file), $m)
+            && !str_contains($references, $m[1])
+            && (int)@filemtime($file) < time() - ORPHAN_UPLOAD_MIN_AGE
+            && @unlink($file)) {
+            $deleted++;
+        }
+    }
+    return $deleted;
 }
