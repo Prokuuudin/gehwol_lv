@@ -173,7 +173,11 @@ foreach ($errors as $e) {
     <h2>Produktu katalogs</h2>
     <p class="page-intro">Atrodiet, rediģējiet un publicējiet katalogā esošos produktus.</p>
   </div>
-  <button class="button button--primary" type="button" data-create-form-toggle aria-controls="product-create-panel" aria-expanded="<?= $errors ? 'true' : 'false' ?>"><span aria-hidden="true">+</span> Pievienot produktu</button>
+  <button class="button button--primary" type="button" data-create-form-toggle aria-controls="product-create-panel" aria-expanded="<?= $errors ? 'true' : 'false' ?>">
+    <span class="create-form-toggle__icon" aria-hidden="true"></span>
+    <span class="create-form-toggle__label-open">Pievienot produktu</span>
+    <span class="create-form-toggle__label-close">Sakļaut formu</span>
+  </button>
 </div>
 <form class="filters" method="get" action="products.php" role="search">
   <label>Meklēt
@@ -217,7 +221,7 @@ foreach ($errors as $e) {
 </div>
 <p class="table-summary">Parādīti <?= count($list) ?> no <?= count($products) ?> produktiem</p>
 </div>
-<div class="create-form-panel" id="product-create-panel"<?= $errors ? '' : ' hidden' ?>>
+<div class="create-form-panel<?= $errors ? ' is-expanded' : '' ?>" id="product-create-panel"<?= $errors ? '' : ' hidden' ?>>
 <div class="section-heading section-heading--form">
   <div><h2>Pievienot produktu</h2><p class="section-intro">Aizpildiet pamatinformāciju un, ja nepieciešams, pievienojiet attēlus.</p></div>
 </div>
@@ -283,14 +287,30 @@ foreach ($errors as $e) {
   var toggle = document.querySelector('[data-create-form-toggle]');
   var panel = document.getElementById('product-create-panel');
   if (toggle && panel) {
+    var panelAnimationTimer;
+    var panelAnimationDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 440;
     toggle.closest('.page-actions').insertAdjacentElement('afterend', panel);
     toggle.addEventListener('click', function () {
-      var opening = panel.hidden;
-      panel.hidden = !opening;
+      var opening = toggle.getAttribute('aria-expanded') !== 'true';
+      var currentHeight = panel.hidden ? 0 : panel.getBoundingClientRect().height;
+      window.clearTimeout(panelAnimationTimer);
+      panel.hidden = false;
+      panel.style.height = currentHeight + 'px';
+      panel.offsetHeight;
       toggle.setAttribute('aria-expanded', String(opening));
       if (opening) {
+        panel.classList.add('is-expanded');
+        panel.style.height = panel.scrollHeight + 'px';
         panel.querySelector('input:not([type="hidden"]), select, textarea').focus();
+      } else {
+        panel.classList.remove('is-expanded');
+        panel.style.height = '0px';
+        if (panel.contains(document.activeElement)) toggle.focus();
       }
+      panelAnimationTimer = window.setTimeout(function () {
+        panel.style.height = '';
+        if (!opening) panel.hidden = true;
+      }, panelAnimationDuration);
     });
   }
   form.addEventListener('input', function () { dirty = true; });

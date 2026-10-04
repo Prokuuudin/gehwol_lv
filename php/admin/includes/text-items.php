@@ -141,7 +141,11 @@ function text_items_page(array $cfg): void
     <h2><?= $dated ? 'Jaunumu publikācijas' : 'Rakstu publikācijas' ?></h2>
     <p class="page-intro">Pārvaldiet saturu, publicēšanas statusu un attēlus.</p>
   </div>
-  <button class="button button--primary" type="button" data-create-form-toggle aria-controls="item-create-panel" aria-expanded="<?= $errors ? 'true' : 'false' ?>"><span aria-hidden="true">+</span> <?= htmlspecialchars($cfg['add']) ?></button>
+  <button class="button button--primary" type="button" data-create-form-toggle aria-controls="item-create-panel" aria-expanded="<?= $errors ? 'true' : 'false' ?>">
+    <span class="create-form-toggle__icon" aria-hidden="true"></span>
+    <span class="create-form-toggle__label-open"><?= htmlspecialchars($cfg['add']) ?></span>
+    <span class="create-form-toggle__label-close">Sakļaut formu</span>
+  </button>
 </div>
 <div class="table-panel">
 <div class="table-scroll" tabindex="0" role="region" aria-label="<?= htmlspecialchars($cfg['title']) ?> tabula">
@@ -170,7 +174,7 @@ function text_items_page(array $cfg): void
 </div>
 <p class="table-summary"><?= count($items) ?> ieraksti</p>
 </div>
-<div class="create-form-panel" id="item-create-panel"<?= $errors ? '' : ' hidden' ?>>
+<div class="create-form-panel<?= $errors ? ' is-expanded' : '' ?>" id="item-create-panel"<?= $errors ? '' : ' hidden' ?>>
 <div class="section-heading section-heading--form">
   <div><h2><?= htmlspecialchars($cfg['add']) ?></h2><p class="section-intro">Aizpildiet publikācijas saturu un statusu.</p></div>
 </div>
@@ -216,14 +220,30 @@ function text_items_page(array $cfg): void
   var toggle = document.querySelector('[data-create-form-toggle]');
   var panel = document.getElementById('item-create-panel');
   if (toggle && panel) {
+    var panelAnimationTimer;
+    var panelAnimationDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 440;
     toggle.closest('.page-actions').insertAdjacentElement('afterend', panel);
     toggle.addEventListener('click', function () {
-      var opening = panel.hidden;
-      panel.hidden = !opening;
+      var opening = toggle.getAttribute('aria-expanded') !== 'true';
+      var currentHeight = panel.hidden ? 0 : panel.getBoundingClientRect().height;
+      window.clearTimeout(panelAnimationTimer);
+      panel.hidden = false;
+      panel.style.height = currentHeight + 'px';
+      panel.offsetHeight;
       toggle.setAttribute('aria-expanded', String(opening));
       if (opening) {
+        panel.classList.add('is-expanded');
+        panel.style.height = panel.scrollHeight + 'px';
         panel.querySelector('input:not([type="hidden"]), select, textarea').focus();
+      } else {
+        panel.classList.remove('is-expanded');
+        panel.style.height = '0px';
+        if (panel.contains(document.activeElement)) toggle.focus();
       }
+      panelAnimationTimer = window.setTimeout(function () {
+        panel.style.height = '';
+        if (!opening) panel.hidden = true;
+      }, panelAnimationDuration);
     });
   }
   form.addEventListener('input', function () { dirty = true; });
