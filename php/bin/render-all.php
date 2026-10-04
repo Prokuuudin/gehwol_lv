@@ -34,6 +34,9 @@ foreach (['products' => 'produkts', 'news' => 'jaunums', 'articles' => 'raksts']
         $pages["{$prefix}-{$row['id']}.html"] = "/{$prefix}-{$row['id']}.html";
     }
 }
+foreach (static_pages() as $file) {
+    $pages[$file] = '/' . $file;
+}
 $pages['sitemap.xml'] = '/sitemap.xml';
 
 $failed = 0;
@@ -46,8 +49,6 @@ foreach ($pages as $file => $path) {
     }
     file_put_contents("{$out}/{$file}", $body);
 }
-foreach (array_merge(static_pages(), ['robots.txt']) as $file) {
-    copy(site_public_dir() . '/' . $file, "{$out}/{$file}");
-}
-echo count($pages) + count(static_pages()) . " files written to {$out}\n";
+copy(site_public_dir() . '/robots.txt', "{$out}/robots.txt");
+echo count($pages) + 1 . " files written to {$out}\n";
 exit($failed ? 1 : 0);

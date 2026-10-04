@@ -11,6 +11,7 @@ function admin_navigation_items(): array
         'products.php' => ['label' => 'Produkti'],
         'news.php' => ['label' => 'Jaunumi'],
         'articles.php' => ['label' => 'Raksti'],
+        'partners.php' => ['label' => 'Partneri'],
         'password.php' => ['label' => 'Parole'],
         'health.php' => ['label' => 'Servera pārbaude'],
     ];

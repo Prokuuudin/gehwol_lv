@@ -3474,10 +3474,6 @@
       "source": "docs/js/index.bundle.js.LICENSE.txt"
     },
     {
-      "path": "juridiskais-pazinojums.html",
-      "source": "docs/juridiskais-pazinojums.html"
-    },
-    {
       "path": "php/admin/admin.css",
       "source": "php/admin/admin.css"
     },
@@ -3522,6 +3518,10 @@
       "source": "php/admin/news.php"
     },
     {
+      "path": "php/admin/partners.php",
+      "source": "php/admin/partners.php"
+    },
+    {
       "path": "php/admin/password.php",
       "source": "php/admin/password.php"
     },
@@ -3560,6 +3560,10 @@
     {
       "path": "php/includes/errors.php",
       "source": "php/includes/errors.php"
+    },
+    {
+      "path": "php/includes/partners.php",
+      "source": "php/includes/partners.php"
     },
     {
       "path": "php/includes/render.php",
@@ -3638,6 +3642,10 @@
       "source": "php/templates/index.html"
     },
     {
+      "path": "php/templates/juridiskais-pazinojums.html",
+      "source": "php/templates/juridiskais-pazinojums.html"
+    },
+    {
       "path": "php/templates/keramiskas-frezes.html",
       "source": "php/templates/keramiskas-frezes.html"
     },
@@ -3662,28 +3670,28 @@
       "source": "php/templates/polimera-gela-izstradajumi.html"
     },
     {
+      "path": "php/templates/privatuma-politika.html",
+      "source": "php/templates/privatuma-politika.html"
+    },
+    {
       "path": "php/templates/puletaji.html",
       "source": "php/templates/puletaji.html"
+    },
+    {
+      "path": "php/templates/rekviziti.html",
+      "source": "php/templates/rekviziti.html"
+    },
+    {
+      "path": "php/templates/sikdatnu-politika.html",
+      "source": "php/templates/sikdatnu-politika.html"
     },
     {
       "path": "php/templates/vienreizlietojamas-smilspapira-frezes.html",
       "source": "php/templates/vienreizlietojamas-smilspapira-frezes.html"
     },
     {
-      "path": "privatuma-politika.html",
-      "source": "docs/privatuma-politika.html"
-    },
-    {
-      "path": "rekviziti.html",
-      "source": "docs/rekviziti.html"
-    },
-    {
       "path": "robots.txt",
       "source": "docs/robots.txt"
-    },
-    {
-      "path": "sikdatnu-politika.html",
-      "source": "docs/sikdatnu-politika.html"
     }
   ]
 }

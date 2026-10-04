@@ -4,11 +4,13 @@
 // Templates contain <x-slot name="..."></x-slot> placeholders; everything else in them is the normal
 // built page (header, footer, typography, SEO tags for fixed pages).
 //
-// URLs are unchanged: produkts-N.html, jaunums-N.html, raksts-N.html, <category>.html, index.html.
+// URLs are unchanged: produkts-N.html, jaunums-N.html, raksts-N.html, <category>.html, index.html,
+// and the fixed legal pages (rekviziti.html etc.), which are templates too because of the partner links.
 
 require_once __DIR__ . '/storage.php';
 require_once __DIR__ . '/content.php';
 require_once __DIR__ . '/site-config.php';
+require_once __DIR__ . '/partners.php';
 
 const TEMPLATE_DIR = __DIR__ . '/../templates';
 const HOME_ITEMS_LIMIT = 10;
@@ -35,7 +37,32 @@ function load_template(string $name): string
         $cssVersion = $hash ? substr($hash, 0, 12) : '1';
     }
 
-    return str_replace('./css/main.css"', './css/main.css?v=' . $cssVersion . '"', $html);
+    $html = str_replace('./css/main.css"', './css/main.css?v=' . $cssVersion . '"', $html);
+
+    // every page has the partner links above the footer
+    return str_contains($html, '<x-slot name="partners"></x-slot>') ? fill_slot($html, 'partners', partners_html()) : $html;
+}
+
+/** Manufacturer and retailer link cards; a group without links is left out, nothing at all without links. */
+function partners_html(): string
+{
+    $links = array_fill_keys(array_keys(PARTNER_GROUPS), '');
+    foreach (load_partners() as $p) {
+        $links[$p['group']] .= '<li> <a class="partners__link" href="' . e($p['url']) . '" target="_blank" rel="noopener noreferrer">'
+            . '<span>' . e($p['name']) . '</span>' . ($p['subtitle'] !== '' ? ' <small>' . e($p['subtitle']) . '</small>' : '') . '</a></li>';
+    }
+    $cards = '';
+    if ($links['manufacturer'] !== '') {
+        $cards .= '<article class="partners__card"><h2 class="partners__title">GEHWOL ražotājs</h2>'
+            . '<ul class="partners__links">' . $links['manufacturer'] . '</ul></article>';
+    }
+    if ($links['retailer'] !== '') {
+        $cards .= '<article class="partners__card"><h2 class="partners__title">GEHWOL produkcija var būt pieejama pie šiem tirgotājiem:</h2>'
+            . '<ul class="partners__links partners__links--retail">' . $links['retailer'] . '</ul>'
+            . '<p class="partners__note">Preču sortiments, cenas un' . "\u{00A0}" . 'pieejamība var atšķirties. Aktuālo informāciju pārbaudiet pie attiecīgā tirgotāja.</p></article>';
+    }
+    return $cards === '' ? '' : '<section class="partners" aria-label="GEHWOL ražotājs un tirdzniecības vietas"><div class="container"><div class="partners__grid">'
+        . $cards . '</div></div></section>';
 }
 
 function fill_slot(string $html, string $slot, string $content): string
@@ -399,11 +426,12 @@ function render_not_found(): string
     ], $main);
 }
 
-/** Static pages published as plain .html files (legal pages etc.). */
+/** Fixed pages (legal pages etc.): templates that are not the home page, the shell or a category page. */
 function static_pages(): array
 {
-    $files = array_map('basename', glob(site_public_dir() . '/*.html') ?: []);
-    return array_values(array_filter($files, fn($f) => $f[0] !== '_' && $f !== 'index.html'));
+    $categories = array_column(category_pages(), 'link_url');
+    $files = array_map('basename', glob(TEMPLATE_DIR . '/*.html') ?: []);
+    return array_values(array_filter($files, fn($f) => $f[0] !== '_' && $f !== 'index.html' && !in_array($f, $categories, true)));
 }
 
 function render_sitemap(): string
@@ -456,6 +484,9 @@ function site_response(string $path): array
             if ($path === '/' . $c['link_url']) {
                 $body = render_category($c);
             }
+        }
+        if ($body === null && in_array(substr($path, 1), static_pages(), true)) {
+            $body = load_template(substr($path, 1));
         }
     }
     return $body === null ? [404, $html, render_not_found()] : [200, $html, $body];

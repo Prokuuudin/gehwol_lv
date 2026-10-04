@@ -18,7 +18,8 @@ Production-серверу не нужны Node.js и npm. Они использ�
 ## Что подготовлено до Plesk
 
 Папка репозитория `docs/` уже является готовой публичной production-сборкой:
-CSS, JS, изображения, шрифты, legal/static pages, `.htaccess` и `.user.ini`.
+CSS, JS, изображения, шрифты, `.htaccess` и `.user.ini`. Все HTML-страницы,
+включая legal pages, рендерит PHP из `php/templates/` (блок партнёров редактируется в админке).
 Она совпадает с публичной частью результата `npm run release`, но полного сайта
 недостаточно без PHP application code из `php/`.
 

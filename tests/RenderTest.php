@@ -192,10 +192,66 @@ final class RenderTest extends TestCase
         $this->assertStringStartsWith('application/xml', $type);
         $this->assertStringContainsString('<loc>https://gehwol.lv/produkts-1.html</loc><lastmod>2026-02-03</lastmod>', $xml);
         $this->assertStringContainsString('<loc>https://gehwol.lv/rekviziti.html</loc>', $xml);
-        $this->assertStringContainsString('<loc>https://gehwol.lv/gehwol-classic.html</loc>', $xml);
+        $this->assertSame(1, substr_count($xml, '<loc>https://gehwol.lv/gehwol-classic.html</loc>'));
+        $this->assertStringNotContainsString('_shell.html', $xml);
         $this->assertStringNotContainsString('produkts-2.html', $xml);
         $this->assertStringNotContainsString('jaunums-3.html', $xml);
         $this->assertNotFalse(simplexml_load_string($xml));
+    }
+
+    public function test_pages_show_built_in_partners_until_the_admin_saves_a_list(): void
+    {
+        foreach (['/', '/produkts-1.html', '/gehwol-classic.html', '/rekviziti.html', '/nav-tadas.html'] as $path) {
+            [, , $html] = site_response($path);
+            $this->assertStringContainsString('href="https://www.benu.lv/zimoli/gehwol"', $html, $path);
+            $this->assertStringContainsString('<small>GEHWOL ražotājs</small>', $html, $path);
+            $this->assertStringNotContainsString('<x-slot', $html, $path);
+        }
+    }
+
+    public function test_legal_pages_are_rendered_from_templates(): void
+    {
+        [$status, , $html] = site_response('/rekviziti.html');
+        $this->assertSame(200, $status);
+        $this->assertStringContainsString('<link rel="canonical" href="https://gehwol.lv/rekviziti.html">', $html);
+        [$status] = site_response('/_shell.html');
+        $this->assertSame(404, $status);
+    }
+
+    public function test_saved_partners_replace_the_built_in_list(): void
+    {
+        save_collection('partners', [
+            ['group' => 'retailer', 'name' => 'Aptieka <b>', 'subtitle' => '', 'url' => 'https://aptieka.example.lv/?a=1&b=2'],
+        ]);
+        [, , $html] = site_response('/');
+        $this->assertStringContainsString('href="https://aptieka.example.lv/?a=1&amp;b=2"', $html);
+        $this->assertStringContainsString('<span>Aptieka &lt;b&gt;</span>', $html);
+        $this->assertStringNotContainsString('benu.lv', $html);
+        $this->assertStringNotContainsString('GEHWOL ražotājs</h2>', $html, 'empty group is hidden');
+
+        save_collection('partners', []);
+        [, , $html] = site_response('/');
+        $this->assertStringNotContainsString('class="partners"', $html);
+    }
+
+    public function test_partner_form_rows(): void
+    {
+        [$rows, $errors] = partners_from_form([
+            ['sort_order' => '2', 'group' => 'retailer', 'name' => ' B ', 'subtitle' => '', 'url' => 'https://b.lv/'],
+            ['sort_order' => '1', 'group' => 'manufacturer', 'name' => 'A', 'subtitle' => 'Ražotājs', 'url' => 'https://a.de/'],
+            ['sort_order' => '3', 'group' => 'retailer', 'name' => 'C', 'subtitle' => '', 'url' => 'https://c.lv/', 'remove' => '1'],
+            ['sort_order' => '4', 'group' => 'hacker', 'name' => '', 'subtitle' => '', 'url' => ''],
+        ]);
+        $this->assertSame([], $errors);
+        $this->assertSame(['A', 'B'], array_column($rows, 'name'));
+        $this->assertSame(['manufacturer', 'retailer'], array_column($rows, 'group'));
+
+        [, $errors] = partners_from_form([
+            ['group' => 'retailer', 'name' => '', 'url' => 'https://x.lv/'],
+            ['group' => 'retailer', 'name' => 'X', 'url' => 'javascript:alert(1)'],
+            ['group' => 'retailer', 'name' => 'Y', 'url' => 'www.y.lv'],
+        ]);
+        $this->assertCount(3, $errors);
     }
 
     public function test_missing_slot_is_an_error(): void
