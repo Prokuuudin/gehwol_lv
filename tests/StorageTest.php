@@ -185,8 +185,17 @@ final class StorageTest extends TestCase
         $this->assertSame(8, allocate_id('products', [['id' => 3], ['id' => 7]], $this->dir), 'starts after existing rows');
         // record 8 is deleted again: the next record must not get id 8
         $this->assertSame(9, allocate_id('products', [['id' => 3], ['id' => 7]], $this->dir));
-        $this->assertSame(1, allocate_id('news', [], $this->dir), 'counters are per collection');
+        $this->assertSame(1, allocate_id('categories', [], $this->dir), 'counters are per collection');
         $this->assertSame(21, allocate_id('products', [['id' => 20]], $this->dir), 'existing rows win over a lower counter');
+    }
+
+    public function test_new_news_and_articles_never_get_ids_of_old_static_pages(): void
+    {
+        // the text id migration left these counters on the live server
+        file_put_contents($this->dir . '/id_counters.json', json_encode(['articles' => 2, 'news' => 0]));
+        $this->assertSame(8, allocate_id('articles', [['id' => 1], ['id' => 2]], $this->dir));
+        $this->assertSame(6, allocate_id('news', [], $this->dir));
+        $this->assertSame(7, allocate_id('news', [], $this->dir));
     }
 
     public function test_allocate_id_rejects_invalid_collection(): void

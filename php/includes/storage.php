@@ -153,6 +153,13 @@ function next_id(array $rows): int
 }
 
 /**
+ * Highest ids used by the old static site (jaunums-1..5, raksts-1..7). New records start above them,
+ * so an old URL known to search engines never shows unrelated content and the raksts-6/7 redirects
+ * in render.php never hide a new article.
+ */
+const ID_FLOORS = ['news' => 5, 'articles' => 7];
+
+/**
  * New id for a record that is about to be added. Remembers the last issued id per collection in
  * php/data/id_counters.json, so the id (and the public URL) of a deleted record is never reused.
  */
@@ -166,7 +173,7 @@ function allocate_id(string $collection, array $rows, ?string $dir = null): int
     try {
         $counters = json_decode((string)stream_get_contents($handle), true);
         $counters = is_array($counters) ? $counters : [];
-        $id = max(next_id($rows), (int)($counters[$collection] ?? 0) + 1);
+        $id = max(next_id($rows), (int)($counters[$collection] ?? 0) + 1, (ID_FLOORS[$collection] ?? 0) + 1);
         $counters[$collection] = $id;
         ftruncate($handle, 0);
         rewind($handle);
