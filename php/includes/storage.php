@@ -56,6 +56,43 @@ function load_collection(string $collection, ?string $dir = null): array
 
 function save_collection(string $collection, array $rows, ?string $dir = null): void
 {
+    with_collection_lock($collection, $dir, fn() => write_collection($collection, $rows, $dir));
+}
+
+/**
+ * Loads, changes and saves a collection under one lock, so two editors saving at the same time
+ * cannot undo each other's changes. $change gets the current rows and returns the new rows,
+ * or null to leave the file untouched. Returns what $change returned.
+ */
+function update_collection(string $collection, callable $change, ?string $dir = null): ?array
+{
+    return with_collection_lock($collection, $dir, function () use ($collection, $change, $dir) {
+        $rows = $change(load_collection($collection, $dir));
+        if ($rows !== null) {
+            write_collection($collection, $rows, $dir);
+        }
+        return $rows;
+    });
+}
+
+function with_collection_lock(string $collection, ?string $dir, callable $work): mixed
+{
+    $path = storage_path($collection, $dir);
+    $lock = @fopen($path . '.lock', 'c');
+    if ($lock === false || !flock($lock, LOCK_EX)) {
+        throw new StorageException("Cannot lock {$path}");
+    }
+    try {
+        return $work();
+    } finally {
+        flock($lock, LOCK_UN);
+        fclose($lock);
+    }
+}
+
+/** Atomic write; the caller holds the collection lock. */
+function write_collection(string $collection, array $rows, ?string $dir): void
+{
     $path = storage_path($collection, $dir);
     $json = json_encode(
         array_values($rows),
@@ -66,10 +103,6 @@ function save_collection(string $collection, array $rows, ?string $dir = null): 
     }
     $json .= "\n";
 
-    $lock = @fopen($path . '.lock', 'c');
-    if ($lock === false || !flock($lock, LOCK_EX)) {
-        throw new StorageException("Cannot lock {$path}");
-    }
     $tmp = $path . '.' . bin2hex(random_bytes(4)) . '.tmp';
     try {
         if (@file_put_contents($tmp, $json) !== strlen($json)) {
@@ -87,8 +120,6 @@ function save_collection(string $collection, array $rows, ?string $dir = null): 
         if (file_exists($tmp)) {
             @unlink($tmp);
         }
-        flock($lock, LOCK_UN);
-        fclose($lock);
     }
 }
 

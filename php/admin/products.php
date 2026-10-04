@@ -91,9 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($action, ['add', 'edit'], 
         }
     }
 
-    if ($errors) {
-        delete_unused_uploads($uploaded); // the record is not saved, so fresh uploads are orphans
-    } else {
+    if (!$errors) {
         $images = array_merge(array_column($kept, 'src'), $uploaded);
         $alts = array_merge(array_column($kept, 'alt'), array_fill(0, count($uploaded), ''));
         $imageData = ['images' => $images];
@@ -101,24 +99,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($action, ['add', 'edit'], 
             $imageData['image_alts'] = $alts;
         }
         $now = date('Y-m-d H:i:s');
-        if ($action === 'add') {
-            $id = allocate_id('products', $products);
-            $products[] = ['id' => $id] + $data + $imageData + ['created_at' => $now, 'updated_at' => $now];
-        } else {
-            foreach ($products as &$p) {
+        // changes go into the current file, so a colleague's save in the meantime is kept
+        $saved = update_collection('products', function (array $rows) use ($action, &$id, $data, $imageData, $now) {
+            if ($action === 'add') {
+                $id = allocate_id('products', $rows);
+                $rows[] = ['id' => $id] + $data + $imageData + ['created_at' => $now, 'updated_at' => $now];
+                return $rows;
+            }
+            foreach ($rows as &$p) {
                 if ((int)$p['id'] === $id) {
                     unset($p['image_alts']);
                     $p = array_merge($p, $data, $imageData, ['updated_at' => $now]);
-                    break;
+                    return $rows;
                 }
             }
-            unset($p);
+            return null; // deleted by someone else meanwhile
+        });
+        if ($saved === null) {
+            $errors[] = 'Produkts nav atrasts.';
+        } else {
+            delete_unused_uploads($removed);
+            admin_log("product {$action} id={$id}");
+            header('Location: products.php?action=edit&id=' . $id . '&saved=1');
+            exit;
         }
-        save_collection('products', $products);
-        delete_unused_uploads($removed);
-        admin_log("product {$action} id={$id}");
-        header('Location: products.php?action=edit&id=' . $id . '&saved=1');
-        exit;
+    }
+    if ($errors) {
+        delete_unused_uploads($uploaded); // the record is not saved, so fresh uploads are orphans
     }
 }
 
@@ -135,13 +142,15 @@ if ($action === 'undo') {
 if ($action === 'delete') {
     require_csrf();
     $id = (int)($_POST['id'] ?? 0);
-    $deleted = find_product($products, $id);
+    $deleted = null;
+    update_collection('products', function (array $rows) use ($id, &$deleted) {
+        $deleted = find_product($rows, $id);
+        return $deleted === null ? null : array_values(array_filter($rows, fn($p) => (int)$p['id'] !== $id));
+    });
     if ($deleted === null) {
         header('Location: products.php?undo_failed=1');
         exit;
     }
-    $products = array_values(array_filter($products, fn($p) => (int)$p['id'] !== $id));
-    save_collection('products', $products);
     remember_recent_deletion('products', 'products.php', $deleted, $deleted['images'] ?? []);
     admin_log("product delete id={$id}");
     header('Location: products.php?deleted=1');

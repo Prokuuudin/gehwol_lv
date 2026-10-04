@@ -189,6 +189,31 @@ final class StorageTest extends TestCase
         $this->assertSame(21, allocate_id('products', [['id' => 20]], $this->dir), 'existing rows win over a lower counter');
     }
 
+    public function test_update_collection_changes_the_current_file_not_a_stale_copy(): void
+    {
+        save_collection('products', [['id' => 1, 'name' => 'A'], ['id' => 2, 'name' => 'B']], $this->dir);
+        $stale = load_collection('products', $this->dir); // editor 1 opens the form
+        save_collection('products', [['id' => 1, 'name' => 'A2'], ['id' => 2, 'name' => 'B']], $this->dir); // editor 2 saves
+
+        update_collection('products', function (array $rows) {
+            $rows[1]['name'] = 'B2';
+            return $rows;
+        }, $this->dir);
+
+        $this->assertNotSame($stale, load_collection('products', $this->dir));
+        $this->assertSame(['A2', 'B2'], array_column(load_collection('products', $this->dir), 'name'));
+    }
+
+    public function test_update_collection_returning_null_leaves_the_file_untouched(): void
+    {
+        save_collection('products', [['id' => 1]], $this->dir);
+        $before = list_backups('products', $this->dir);
+
+        $this->assertNull(update_collection('products', fn() => null, $this->dir));
+        $this->assertSame([['id' => 1]], load_collection('products', $this->dir));
+        $this->assertSame($before, list_backups('products', $this->dir));
+    }
+
     public function test_new_news_and_articles_never_get_ids_of_old_static_pages(): void
     {
         // the text id migration left these counters on the live server

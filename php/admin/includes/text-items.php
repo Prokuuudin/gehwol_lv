@@ -95,30 +95,37 @@ function text_items_page(array $cfg): void
             }
         }
 
-        if ($errors) {
-            delete_unused_uploads(array_filter([$uploaded]));
-        } else {
+        if (!$errors) {
             $now = date('Y-m-d H:i:s');
-            if ($action === 'add') {
-                $id = allocate_id($collection, $items);
-                $items[] = ['id' => $id] + $data + ['image' => $image, 'created_at' => $now, 'updated_at' => $now]
-                    + ($dated ? ['sort_order' => 0] : []);
-            } else {
-                foreach ($items as &$i) {
+            // changes go into the current file, so a colleague's save in the meantime is kept
+            $saved = update_collection($collection, function (array $rows) use ($collection, $action, &$id, $data, $image, $now, $dated) {
+                if ($action === 'add') {
+                    $id = allocate_id($collection, $rows);
+                    $rows[] = ['id' => $id] + $data + ['image' => $image, 'created_at' => $now, 'updated_at' => $now]
+                        + ($dated ? ['sort_order' => 0] : []);
+                    return $rows;
+                }
+                foreach ($rows as &$i) {
                     if ((int)$i['id'] === $id) {
                         $i = array_merge($i, $data, ['image' => $image, 'updated_at' => $now]);
-                        break;
+                        return $rows;
                     }
                 }
-                unset($i);
+                return null; // deleted by someone else meanwhile
+            });
+            if ($saved === null) {
+                $errors[] = $cfg['not_found'];
+            } else {
+                if ($oldImage !== null && $oldImage !== $image) {
+                    delete_unused_uploads([$oldImage]);
+                }
+                admin_log("{$collection} {$action} id={$id}");
+                header("Location: {$page}?action=edit&id={$id}&saved=1");
+                exit;
             }
-            save_collection($collection, $items);
-            if ($oldImage !== null && $oldImage !== $image) {
-                delete_unused_uploads([$oldImage]);
-            }
-            admin_log("{$collection} {$action} id={$id}");
-            header("Location: {$page}?action=edit&id={$id}&saved=1");
-            exit;
+        }
+        if ($errors) {
+            delete_unused_uploads(array_filter([$uploaded]));
         }
     }
 
@@ -135,13 +142,19 @@ function text_items_page(array $cfg): void
     if ($action === 'delete') {
         require_csrf();
         $id = (int)($_POST['id'] ?? 0);
-        $deleted = $find($id);
+        $deleted = null;
+        update_collection($collection, function (array $rows) use ($id, &$deleted) {
+            foreach ($rows as $row) {
+                if ((int)$row['id'] === $id) {
+                    $deleted = $row;
+                }
+            }
+            return $deleted === null ? null : array_values(array_filter($rows, fn($i) => (int)$i['id'] !== $id));
+        });
         if ($deleted === null) {
             header("Location: {$page}?undo_failed=1");
             exit;
         }
-        $items = array_values(array_filter($items, fn($i) => (int)$i['id'] !== $id));
-        save_collection($collection, $items);
         remember_recent_deletion($collection, $page, $deleted, array_filter([$deleted['image'] ?? null]));
         admin_log("{$collection} delete id={$id}");
         header("Location: {$page}?deleted=1");

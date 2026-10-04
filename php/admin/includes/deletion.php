@@ -69,15 +69,18 @@ function restore_recent_deletion(string $collection, string $token): ?array
     if ($id < 1) {
         return null;
     }
-    $rows = load_collection($collection);
-    foreach ($rows as $current) {
-        if ((int)($current['id'] ?? 0) === $id) {
-            return null;
+    $saved = update_collection($collection, function (array $rows) use ($id, $row) {
+        foreach ($rows as $current) {
+            if ((int)($current['id'] ?? 0) === $id) {
+                return null;
+            }
         }
+        $rows[] = $row;
+        return $rows;
+    });
+    if ($saved === null) {
+        return null;
     }
-
-    $rows[] = $row;
-    save_collection($collection, $rows);
     unset($_SESSION['recent_deletion']);
     return $row;
 }
