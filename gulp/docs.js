@@ -214,6 +214,13 @@ gulp.task("files:docs", function() {
     .pipe(gulp.dest("./docs/files/"));
 });
 
+gulp.task("video:docs", function() {
+  return gulp
+    .src("./src/video/**/*")
+    .pipe(changed("./docs/video/"))
+    .pipe(gulp.dest("./docs/video/"));
+});
+
 gulp.task("js:docs", function() {
   return gulp
     .src("./src/js/*.js")

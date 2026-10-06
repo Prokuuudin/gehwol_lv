@@ -206,6 +206,13 @@ gulp.task("files:dev", function() {
     .pipe(gulp.dest("./build/files/"));
 });
 
+gulp.task("video:dev", function() {
+  return gulp
+    .src("./src/video/**/*")
+    .pipe(changed("./build/video/"))
+    .pipe(gulp.dest("./build/video/"));
+});
+
 gulp.task("phpAdmin:dev", function() {
   return gulp
     .src("./php/**/*", { dot: true })
@@ -251,6 +258,7 @@ gulp.task("watch:dev", function() {
   );
   gulp.watch("./src/img/**/*", gulp.parallel("images:dev"));
   gulp.watch("./src/files/**/*", gulp.parallel("files:dev"));
+  gulp.watch("./src/video/**/*", gulp.parallel("video:dev"));
   gulp.watch("./src/js/**/*.js", gulp.parallel("js:dev"));
   gulp.watch(
     "./src/img/svgicons/*",

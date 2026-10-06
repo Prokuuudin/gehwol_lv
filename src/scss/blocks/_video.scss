@@ -1,0 +1,39 @@
+.video__card {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+// Рамка повторяет карточки новостей: светлый фон и акцентная полоса слева
+.video__frame {
+	position: relative;
+	aspect-ratio: 16 / 9;
+	background-color: var(--accent-tint);
+	border-left: 4px solid var(--accent);
+	overflow: hidden;
+	transition: box-shadow var(--motion-base) var(--ease-out);
+
+	&:hover,
+	&:focus-within {
+		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+	}
+}
+
+.video__player {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	background-color: #000;
+}
+
+.video__caption {
+	margin: 15px 0 0;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--text-color);
+
+	@include mobile {
+		font-size: 16px;
+	}
+}

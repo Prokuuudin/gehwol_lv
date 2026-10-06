@@ -90,6 +90,12 @@ function scrollRevealFunc() {
     distance: "18px",
   });
 
+  ScrollReveal().reveal(`.video__card`, {
+    delay: 120,
+    origin: "bottom",
+    distance: "18px",
+  });
+
   ScrollReveal().reveal(
     `.category__breadcrumbs, .category__title, .category__intro, .product-detail, .legal-page__content`,
     {

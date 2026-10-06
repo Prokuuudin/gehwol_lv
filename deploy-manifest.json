@@ -3466,6 +3466,14 @@
       "source": "docs/img/svgsprite/stack/svg/sprite.stack.svg"
     },
     {
+      "path": "img/video-poster.jpg",
+      "source": "docs/img/video-poster.jpg"
+    },
+    {
+      "path": "img/video-poster.webp",
+      "source": "docs/img/video-poster.webp"
+    },
+    {
       "path": "js/index.bundle.js",
       "source": "docs/js/index.bundle.js"
     },
@@ -3692,6 +3700,10 @@
     {
       "path": "robots.txt",
       "source": "docs/robots.txt"
+    },
+    {
+      "path": "video/video_ready_for_winter.mp4",
+      "source": "docs/video/video_ready_for_winter.mp4"
     }
   ]
 }
