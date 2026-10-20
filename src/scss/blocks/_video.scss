@@ -1,6 +1,16 @@
+.video__list {
+	display: grid;
+	gap: 48px;
+
+	@include mobile {
+		gap: 32px;
+	}
+}
+
 .video__card {
 	max-width: 960px;
 	margin: 0 auto;
+	width: 100%;
 }
 
 // Рамка повторяет карточки новостей: светлый фон и акцентная полоса слева

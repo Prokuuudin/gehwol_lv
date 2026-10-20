@@ -6,8 +6,9 @@
 Options -Indexes
 
 RewriteEngine On
-# Short admin address: /admin and /admin/ -> /php/admin/ (302, so browsers do not cache it forever)
-RewriteRule ^admin/?$ /php/admin/ [R=302,L]
+# Short admin address, including the previously used /index.html/admin variant.
+# 302 keeps browsers from caching the compatibility redirect forever.
+RewriteRule ^(?:index\.html/)?admin/?$ /php/admin/ [R=302,L]
 RewriteRule ^$ php/site.php [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -22,14 +23,14 @@ RewriteRule (^|/)\.(?!well-known/) - [F]
 # PHP settings when PHP runs as an Apache module (PHP-FPM reads .user.ini instead)
 <IfModule mod_php.c>
     php_flag display_errors Off
-    php_value upload_max_filesize 10M
-    php_value post_max_size 64M
+    php_value upload_max_filesize 256M
+    php_value post_max_size 272M
     php_value max_file_uploads 20
 </IfModule>
 <IfModule mod_php7.c>
     php_flag display_errors Off
-    php_value upload_max_filesize 10M
-    php_value post_max_size 64M
+    php_value upload_max_filesize 256M
+    php_value post_max_size 272M
     php_value max_file_uploads 20
 </IfModule>
 

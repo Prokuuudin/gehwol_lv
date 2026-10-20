@@ -11,6 +11,7 @@ const UPLOAD_ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp'];
 const UPLOAD_ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 const UPLOAD_MAX_BYTES = 10 * 1024 * 1024;
 const UPLOAD_MAX_PIXELS = 40_000_000;
+const VIDEO_UPLOAD_MAX_BYTES = 256 * 1024 * 1024;
 const IMAGE_MAX_SIDE = 1600;
 const UPLOAD_ROOT = __DIR__ . '/../../uploads';
 const ORPHAN_UPLOAD_MIN_AGE = 24 * 3600;
@@ -43,6 +44,68 @@ function image_processing_available(): bool
 function random_image_name(): string
 {
     return bin2hex(random_bytes(16));
+}
+
+function is_under_video_size_limit(int $bytes): bool
+{
+    return $bytes > 0 && $bytes <= VIDEO_UPLOAD_MAX_BYTES;
+}
+
+/** Handles one MP4 entry of $_FILES and stores it without trusting the browser MIME type. */
+function process_uploaded_video(array $file, string $section = 'videos'): string
+{
+    $error = (int)($file['error'] ?? UPLOAD_ERR_NO_FILE);
+    if ($error !== UPLOAD_ERR_OK) {
+        throw new UploadException(match ($error) {
+            UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE => 'Video fails ir pārāk liels.',
+            UPLOAD_ERR_PARTIAL => 'Video fails augšupielādēts tikai daļēji. Mēģiniet vēlreiz.',
+            UPLOAD_ERR_NO_FILE => 'Video fails nav izvēlēts.',
+            default => 'Video failu neizdevās augšupielādēt (servera kļūda).',
+        });
+    }
+    if (!is_uploaded_file((string)$file['tmp_name'])) {
+        throw new UploadException('Video failu neizdevās augšupielādēt.');
+    }
+    return store_video((string)$file['tmp_name'], (string)$file['name'], $section);
+}
+
+/** Validate an ISO Base Media/MP4 file and copy it under a random public name. */
+function store_video(string $tmpPath, string $originalName, string $section = 'videos', string $uploadRoot = UPLOAD_ROOT): string
+{
+    $label = mb_substr(basename($originalName), 0, 80);
+    if (!preg_match('/^[a-z]+$/', $section)) {
+        throw new UploadException('Nederīga sadaļa.');
+    }
+    if (strtolower(pathinfo($originalName, PATHINFO_EXTENSION)) !== 'mp4') {
+        throw new UploadException("{$label}: atļauti tikai MP4 video faili.");
+    }
+    if (!is_under_video_size_limit((int)@filesize($tmpPath))) {
+        throw new UploadException("{$label}: video fails ir tukšs vai lielāks par " . (VIDEO_UPLOAD_MAX_BYTES / 1024 / 1024) . ' MB.');
+    }
+    $header = @file_get_contents($tmpPath, false, null, 0, 32);
+    if (!is_string($header) || strlen($header) < 12 || substr($header, 4, 4) !== 'ftyp') {
+        throw new UploadException("{$label}: fails nav derīgs MP4 video.");
+    }
+    if (function_exists('finfo_open')) {
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime = $finfo ? finfo_file($finfo, $tmpPath) : false;
+        if ($finfo) {
+            finfo_close($finfo);
+        }
+        if (!in_array($mime, ['video/mp4', 'application/mp4', 'application/octet-stream'], true)) {
+            throw new UploadException("{$label}: faila saturs neatbilst MP4 formātam.");
+        }
+    }
+
+    $dir = rtrim($uploadRoot, '/\\') . '/' . $section;
+    if (!is_dir($dir) && !@mkdir($dir, 0775, true)) {
+        throw new UploadException('Video mape nav pieejama. Sazinieties ar izstrādātāju.');
+    }
+    $name = random_image_name();
+    if (!@copy($tmpPath, "{$dir}/{$name}.mp4")) {
+        throw new UploadException('Video failu neizdevās saglabāt.');
+    }
+    return "uploads/{$section}/{$name}.mp4";
 }
 
 /**
@@ -173,7 +236,7 @@ function limit_image_size(GdImage $image): GdImage
     return $resized;
 }
 
-/** Every uploads/… path referenced by products, news and articles. */
+/** Every uploads/… path referenced by products, news, articles and videos. */
 function referenced_uploads(): array
 {
     $paths = [];
@@ -189,18 +252,26 @@ function referenced_uploads(): array
             }
         }
     }
+    foreach (load_collection('videos') as $row) {
+        foreach (['video', 'poster'] as $field) {
+            if (!empty($row[$field])) {
+                $paths[$row[$field]] = true;
+            }
+        }
+    }
     return $paths;
 }
 
-/** Deletes uploaded files (and their WebP copies) that no record uses any more. Never touches img/. */
+/** Deletes uploaded media (and image WebP copies) that no record uses any more. Never touches built assets. */
 function delete_unused_uploads(array $paths, string $uploadRoot = UPLOAD_ROOT): void
 {
     $used = referenced_uploads();
     foreach (array_unique($paths) as $path) {
-        if (isset($used[$path]) || !preg_match('~^uploads/([a-z]+)/([a-f0-9]{32})\.(jpg|png|webp)$~', $path, $m)) {
+        if (isset($used[$path]) || !preg_match('~^uploads/([a-z]+)/([a-f0-9]{32})\.(jpg|png|webp|mp4)$~', $path, $m)) {
             continue;
         }
-        foreach (array_unique([$m[3], 'webp']) as $ext) {
+        $extensions = $m[3] === 'mp4' ? ['mp4'] : array_unique([$m[3], 'webp']);
+        foreach ($extensions as $ext) {
             $file = rtrim($uploadRoot, '/\\') . "/{$m[1]}/{$m[2]}.{$ext}";
             if (is_file($file)) {
                 @unlink($file);
@@ -210,7 +281,7 @@ function delete_unused_uploads(array $paths, string $uploadRoot = UPLOAD_ROOT): 
 }
 
 /**
- * Deletes uploaded images that no data file and no backup mentions — left over when an admin's
+ * Deletes uploaded media that no data file and no backup mentions — left over when an admin's
  * undo buffer was never cleaned up (the session simply expired). Backups count as references,
  * so restoring a backup never loses its images. Files younger than a day are kept: they may
  * belong to a form being saved right now. Returns the number of deleted files.
@@ -223,7 +294,7 @@ function sweep_orphan_uploads(string $uploadRoot = UPLOAD_ROOT, ?string $dataDir
     }
     $deleted = 0;
     foreach (glob(rtrim($uploadRoot, '/\\') . '/*/*.*') ?: [] as $file) {
-        if (preg_match('~^([a-f0-9]{32})\.(jpg|png|webp)$~', basename($file), $m)
+        if (preg_match('~^([a-f0-9]{32})\.(jpg|png|webp|mp4)$~', basename($file), $m)
             && !str_contains($references, $m[1])
             && (int)@filemtime($file) < time() - ORPHAN_UPLOAD_MIN_AGE
             && @unlink($file)) {

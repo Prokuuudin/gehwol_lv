@@ -175,6 +175,27 @@ final class UploadTest extends TestCase
         process_uploaded_image(['name' => 'a.jpg', 'tmp_name' => '', 'error' => UPLOAD_ERR_INI_SIZE], 'products');
     }
 
+    public function test_mp4_video_is_validated_and_stored(): void
+    {
+        $source = $this->dir . '/source.mp4';
+        file_put_contents($source, pack('N', 24) . 'ftypisom' . str_repeat("\0", 128));
+
+        $path = store_video($source, 'academy.MP4', 'videos', $this->dir . '/uploads');
+
+        $this->assertMatchesRegularExpression('~^uploads/videos/[a-f0-9]{32}\.mp4$~', $path);
+        $this->assertFileEquals($source, $this->dir . '/' . $path);
+        $this->assertTrue(is_under_video_size_limit(filesize($source)));
+        $this->assertFalse(is_under_video_size_limit(VIDEO_UPLOAD_MAX_BYTES + 1));
+    }
+
+    public function test_fake_mp4_is_rejected(): void
+    {
+        $source = $this->dir . '/fake.mp4';
+        file_put_contents($source, '<?php echo "not a video"; ?>');
+        $this->expectException(UploadException::class);
+        store_video($source, 'fake.mp4', 'videos', $this->dir . '/uploads');
+    }
+
     public function test_unused_uploads_are_deleted_and_used_or_site_images_kept(): void
     {
         $root = $this->dir . '/uploads';
@@ -192,6 +213,22 @@ final class UploadTest extends TestCase
         $this->assertFileExists($this->dir . '/' . $used);
         $this->assertFileDoesNotExist($this->dir . '/' . $unused);
         $this->assertFileDoesNotExist($this->dir . '/uploads/products/' . str_repeat('b', 32) . '.webp');
+    }
+
+    public function test_unused_video_upload_is_deleted_but_referenced_video_is_kept(): void
+    {
+        $root = $this->dir . '/uploads';
+        mkdir($root . '/videos');
+        $used = 'uploads/videos/' . str_repeat('c', 32) . '.mp4';
+        $unused = 'uploads/videos/' . str_repeat('d', 32) . '.mp4';
+        file_put_contents($this->dir . '/' . $used, 'used');
+        file_put_contents($this->dir . '/' . $unused, 'unused');
+        save_collection('videos', [['id' => 1, 'video' => $used, 'poster' => null]]);
+
+        delete_unused_uploads([$used, $unused], $root);
+
+        $this->assertFileExists($this->dir . '/' . $used);
+        $this->assertFileDoesNotExist($this->dir . '/' . $unused);
     }
 
     public function test_sweep_removes_only_old_uploads_no_data_or_backup_mentions(): void

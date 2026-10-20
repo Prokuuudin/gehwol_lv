@@ -112,6 +112,49 @@ final class RenderTest extends TestCase
         $this->assertStringNotContainsString('Raksta melnraksts', $html);
     }
 
+    public function test_home_shows_multiple_published_videos_in_manual_order(): void
+    {
+        $video = fn(int $id, string $title, int $order, bool $published) => [
+            'id' => $id,
+            'title' => $title,
+            'video' => "uploads/videos/" . str_repeat((string)$id, 32) . '.mp4',
+            'poster' => null,
+            'sort_order' => $order,
+            'published' => $published,
+        ];
+        save_collection('videos', [
+            $video(1, 'Otrais video', 20, true),
+            $video(2, 'Pirmais video', 10, true),
+            $video(3, 'Melnraksta video', 5, false),
+        ]);
+
+        [, , $html] = site_response('/');
+
+        $this->assertSame(2, substr_count($html, 'class="video__card"'));
+        $this->assertLessThan(strpos($html, 'Otrais video'), strpos($html, 'Pirmais video'));
+        $this->assertStringNotContainsString('Melnraksta video', $html);
+        $this->assertStringContainsString('src="./uploads/videos/' . str_repeat('2', 32) . '.mp4"', $html);
+    }
+
+    public function test_home_hides_video_section_when_no_video_is_published(): void
+    {
+        save_collection('videos', []);
+        [, , $html] = site_response('/');
+        $this->assertStringNotContainsString('<section class="video"', $html);
+        $this->assertStringNotContainsString('<x-slot name="videos"', $html);
+    }
+
+    public function test_video_initializer_seeds_legacy_install_once_without_restoring_deleted_rows(): void
+    {
+        $this->assertFileDoesNotExist($this->dir . '/videos.json');
+        initialize_videos();
+        $this->assertCount(1, load_collection('videos'));
+
+        save_collection('videos', []);
+        initialize_videos();
+        $this->assertSame([], load_collection('videos'));
+    }
+
     public function test_news_page_shows_date(): void
     {
         [, , $html] = site_response('/jaunums-2.html');

@@ -215,6 +215,7 @@ tbody tr:hover td { background: #fafcfb; }
 .partners-table input[type="number"] { width: 100%; }
 .current-image { display: flex; padding: 12px; align-items: center; gap: 14px; border: 1px solid var(--line); border-radius: 8px; background: #fbfdfc; }
 .current-image .thumb { width: 76px; height: 76px; }
+.admin-video-preview { display: block; width: min(100%, 640px); aspect-ratio: 16 / 9; border-radius: 8px; background: #000; }
 
 .status-card { display: flex; margin-bottom: 18px; padding: 18px 20px; align-items: center; gap: 13px; }
 .status-card__icon { display: grid; width: 38px; height: 38px; flex: 0 0 auto; place-items: center; border-radius: 50%; font-weight: 800; }

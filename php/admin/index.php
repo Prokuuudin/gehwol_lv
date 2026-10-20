@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/partners.php';
+require_once __DIR__ . '/../includes/videos.php';
 require_once __DIR__ . '/includes/layout.php';
 
 require_login();
@@ -10,6 +11,7 @@ $sections = [
     ['label' => 'Produkti', 'count' => count(load_collection('products')), 'href' => 'products.php'],
     ['label' => 'Jaunumi', 'count' => count(load_collection('news')), 'href' => 'news.php'],
     ['label' => 'Raksti', 'count' => count(load_collection('articles')), 'href' => 'articles.php'],
+    ['label' => 'Video', 'count' => count(load_videos()), 'href' => 'videos.php'],
     ['label' => 'Partneri', 'count' => count(load_partners()), 'href' => 'partners.php'],
 ];
 

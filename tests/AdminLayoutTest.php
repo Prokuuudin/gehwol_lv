@@ -19,4 +19,9 @@ final class AdminLayoutTest extends TestCase
         self::assertStringContainsString('target="_blank" rel="noopener"', $html);
         self::assertStringContainsString('Uz vietni', $html);
     }
+
+    public function test_video_manager_is_in_admin_navigation(): void
+    {
+        self::assertSame('Video', admin_navigation_items()['videos.php']['label']);
+    }
 }

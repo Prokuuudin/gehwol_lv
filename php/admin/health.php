@@ -37,18 +37,22 @@ $checks[] = ['GD ar WebP (attēlu apstrāde)', image_processing_available(), 'be
 $checks[] = ['fileinfo (faila tipa pārbaude)', function_exists('finfo_open') ? true : null, 'ieteicams'];
 $checks[] = ['exif (foto pagriešana)', function_exists('exif_read_data') ? true : null, 'ieteicams'];
 $checks[] = ['display_errors izslēgts', !filter_var(ini_get('display_errors'), FILTER_VALIDATE_BOOLEAN), (string)ini_get('display_errors')];
-$checks[] = ['upload_max_filesize ≥ 10M', ini_bytes((string)ini_get('upload_max_filesize')) >= UPLOAD_MAX_BYTES, (string)ini_get('upload_max_filesize')];
+$checks[] = ['upload_max_filesize ≥ 256M', ini_bytes((string)ini_get('upload_max_filesize')) >= VIDEO_UPLOAD_MAX_BYTES, (string)ini_get('upload_max_filesize')];
+$checks[] = ['post_max_size > 256M', ini_bytes((string)ini_get('post_max_size')) > VIDEO_UPLOAD_MAX_BYTES, (string)ini_get('post_max_size')];
 $checks[] = ['HTTPS', is_https() ? true : null, is_https() ? '' : 'savienojums nav šifrēts'];
 
 $writable = ['php/data' => storage_dir(), 'php/data/backups' => backup_dir()];
-foreach (['products', 'news', 'articles'] as $section) {
-    $writable["uploads/{$section}"] = UPLOAD_ROOT . '/' . $section;
-}
 foreach ($writable as $label => $dir) {
     $exists = is_dir($dir);
     $checks[] = ["Rakstāms: {$label}", $label === 'php/data/backups' && !$exists ? null : ($exists && is_writable($dir)), $exists ? '' : 'nav mapes'];
 }
-foreach (['categories', 'products', 'news', 'articles'] as $collection) {
+foreach (['products', 'news', 'articles', 'videos'] as $section) {
+    $dir = UPLOAD_ROOT . '/' . $section;
+    $exists = is_dir($dir);
+    $canWrite = $exists ? is_writable($dir) : (is_dir(UPLOAD_ROOT) && is_writable(UPLOAD_ROOT));
+    $checks[] = ["Rakstāms: uploads/{$section}", $canWrite, $exists ? '' : 'mape tiks izveidota pirmajā augšupielādē'];
+}
+foreach (['categories', 'products', 'news', 'articles', 'videos'] as $collection) {
     try {
         $rows = load_collection($collection);
         $checks[] = ["Dati: {$collection}.json", $rows !== [] || $collection !== 'categories', count($rows) . ' ieraksti' . ($collection === 'categories' ? '' : ', publicēti: ' . count(array_filter($rows, 'is_published')))];

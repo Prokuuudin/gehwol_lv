@@ -11,6 +11,7 @@ require_once __DIR__ . '/storage.php';
 require_once __DIR__ . '/content.php';
 require_once __DIR__ . '/site-config.php';
 require_once __DIR__ . '/partners.php';
+require_once __DIR__ . '/videos.php';
 
 const TEMPLATE_DIR = __DIR__ . '/../templates';
 const HOME_ITEMS_LIMIT = 10;
@@ -396,13 +397,40 @@ function news_slide_html(string $href, array $item): string
         . '<h3 class="news__slide-title">' . e($item['title']) . '</h3></a></div>';
 }
 
+function video_card_html(array $video): string
+{
+    $src = (string)($video['video'] ?? '');
+    if (!is_safe_video_path($src)) {
+        return '';
+    }
+    $title = (string)($video['title'] ?? 'Video');
+    $poster = (string)($video['poster'] ?? '');
+    $posterAttribute = $poster !== '' && is_safe_img_src($poster) ? ' poster="./' . e(ltrim($poster, '/')) . '"' : '';
+    return '<figure class="video__card"><div class="video__frame"><video class="video__player" controls playsinline preload="none"'
+        . $posterAttribute . ' width="1920" height="1080" aria-label="' . e($title) . '">'
+        . '<source src="./' . e(ltrim($src, '/')) . '" type="video/mp4">'
+        . 'Jūsu pārlūkprogramma neatbalsta video atskaņošanu.</video></div>'
+        . '<figcaption class="video__caption">' . e($title) . '</figcaption></figure>';
+}
+
+function videos_section_html(): string
+{
+    $cards = implode('', array_filter(array_map(
+        'video_card_html',
+        sort_rows(array_values(array_filter(load_videos(), 'is_published')))
+    )));
+    return $cards === '' ? '' : '<section class="video" id="video"><div class="container">'
+        . '<h2 class="video__title title-2">Video</h2><div class="video__list">' . $cards . '</div></div></section>';
+}
+
 function render_home(): string
 {
     $news = array_slice(sorted_news(published('news')), 0, HOME_ITEMS_LIMIT);
     $articles = array_slice(sort_rows(published('articles')), 0, HOME_ITEMS_LIMIT);
     $html = load_template('index.html');
     $html = fill_slot($html, 'news', implode('', array_map(fn($n) => news_slide_html("jaunums-{$n['id']}.html", $n), $news)));
-    return fill_slot($html, 'articles', implode('', array_map(fn($a) => news_slide_html("raksts-{$a['id']}.html", $a), $articles)));
+    $html = fill_slot($html, 'articles', implode('', array_map(fn($a) => news_slide_html("raksts-{$a['id']}.html", $a), $articles)));
+    return fill_slot($html, 'videos', videos_section_html());
 }
 
 function render_not_found(): string

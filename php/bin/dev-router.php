@@ -9,6 +9,10 @@ putenv('GEHWOL_PUBLIC_DIR=' . $root . '/docs');
 
 $path = rawurldecode((string)parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
+if (in_array($path, ['/admin', '/admin/', '/index.html/admin', '/index.html/admin/'], true)) {
+    header('Location: /php/admin/', true, 302);
+    return true;
+}
 if (preg_match('~^/(php/admin|uploads)/~', $path)) {
     return false; // served from the project root
 }

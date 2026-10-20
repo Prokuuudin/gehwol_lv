@@ -3542,6 +3542,10 @@
       "source": "php/admin/products.php"
     },
     {
+      "path": "php/admin/videos.php",
+      "source": "php/admin/videos.php"
+    },
+    {
       "path": "php/bin/.htaccess",
       "source": "php/bin/.htaccess"
     },
@@ -3596,6 +3600,10 @@
     {
       "path": "php/includes/validation.php",
       "source": "php/includes/validation.php"
+    },
+    {
+      "path": "php/includes/videos.php",
+      "source": "php/includes/videos.php"
     },
     {
       "path": "php/site.php",

@@ -13,7 +13,7 @@ const OUT = path.join(ROOT, 'release');
 const DEPLOY_MANIFEST = path.join(ROOT, 'deploy-manifest.json');
 const withData = process.argv.includes('--with-data');
 
-const DATA_FILES = ['categories.json', 'products.json', 'news.json', 'articles.json', 'admin_users.json'];
+const DATA_FILES = ['categories.json', 'products.json', 'news.json', 'articles.json', 'videos.json', 'admin_users.json'];
 const DEV_ONLY_PHP = new Set(['php/bin/dev-router.php', 'php/bin/render-all.php', 'php/bin/migrate.php']);
 
 function copyTree(from, to, keep = () => true) {
@@ -63,7 +63,7 @@ copyTree(path.join(ROOT, 'php'), path.join(OUT, 'php'), (rel, entry) => {
 });
 
 // 3. empty upload folders with their protection (existing server uploads stay untouched)
-for (const section of ['products', 'news', 'articles']) {
+for (const section of ['products', 'news', 'articles', 'videos']) {
   fs.mkdirSync(path.join(OUT, 'uploads', section), { recursive: true });
   fs.writeFileSync(path.join(OUT, 'uploads', section, '.gitkeep'), '');
 }
