@@ -9,6 +9,8 @@ RewriteEngine On
 # Short admin address, including the previously used /index.html/admin variant.
 # 302 keeps browsers from caching the compatibility redirect forever.
 RewriteRule ^(?:index\.html/)?admin/?$ /php/admin/ [R=302,L]
+# Keep a single public URL for the homepage. Query parameters are preserved.
+RewriteRule ^index\.html$ / [R=301,L]
 RewriteRule ^$ php/site.php [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

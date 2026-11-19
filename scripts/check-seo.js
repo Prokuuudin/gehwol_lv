@@ -16,9 +16,11 @@ for (const file of files) {
   assert(!html.includes('@@'), `${file}: unresolved include`);
   assert(!html.includes('<x-slot'), `${file}: unfilled template slot`);
   assert(!/href="#"/.test(html), `${file}: link without target (href="#")`);
+  assert(!/href="(?:\.\.\/|\.\/)*index\.html(?:[#?"])/.test(html), `${file}: internal link uses duplicate homepage URL`);
   assert(/<main id="main">/.test(html) && html.includes('href="#main"'), `${file}: skip link / main landmark`);
   const title = html.match(/<title>(.*?)<\/title>/s)?.[1];
   assert(title && !titles.has(title), `${file}: missing or duplicate title`);
+  if (file === 'index.html') assert(title.startsWith(config.siteName), `${file}: title must start with the site name`);
   titles.add(title);
   assert(/<meta[^>]*name="description"[^>]*content="[^"]+"/.test(html), `${file}: description`);
   const canonical = [...html.matchAll(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"/g)];
@@ -29,6 +31,9 @@ for (const file of files) {
   const scripts = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
   assert.equal(scripts.length, 1, `${file}: JSON-LD count`);
   const graph = JSON.parse(scripts[0][1])['@graph'];
+  const website = graph.find(g => g['@type'] === 'WebSite');
+  assert.equal(website?.name, config.siteName, `${file}: WebSite name`);
+  assert(website?.alternateName?.includes('Gehwol.lv'), `${file}: WebSite alternate name`);
   const breadcrumbs = graph.find(g => g['@type'] === 'BreadcrumbList');
   if (file !== 'index.html') {
     assert(breadcrumbs, `${file}: breadcrumbs`);

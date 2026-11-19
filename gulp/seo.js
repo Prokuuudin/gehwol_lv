@@ -70,7 +70,7 @@ function enhance(html, filename) {
   });
   if (!base) return html;
   const organization = { '@type': 'Organization', '@id': `${base}/#organization`, name: config.organizationName, url: `${base}/`, telephone: '+37127055700', email: 'versia@load.lv', address: { '@type': 'PostalAddress', streetAddress: 'Dzērbenes 14, 306.C', addressLocality: 'Rīga', postalCode: 'LV-1006', addressCountry: 'LV' } };
-  const graph = [organization, { '@type': 'WebSite', '@id': `${base}/#website`, url: `${base}/`, name: config.siteName, inLanguage: 'lv', publisher: { '@id': organization['@id'] } }];
+  const graph = [organization, { '@type': 'WebSite', '@id': `${base}/#website`, url: `${base}/`, name: config.siteName, alternateName: ['GEHWOL Latvija', 'Gehwol.lv'], inLanguage: 'lv', publisher: { '@id': organization['@id'] } }];
   const crumbs = [{ '@type': 'ListItem', position: 1, name: 'Sākums', item: `${base}/` }];
   if (filename !== 'index.html') {
     const nav = (html.match(/<nav\b[^>]*class="category__breadcrumbs"[^>]*>([\s\S]*?)<\/nav>/) || [])[1] || '';

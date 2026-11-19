@@ -4,8 +4,9 @@
 // Templates contain <x-slot name="..."></x-slot> placeholders; everything else in them is the normal
 // built page (header, footer, typography, SEO tags for fixed pages).
 //
-// URLs are unchanged: produkts-N.html, jaunums-N.html, raksts-N.html, <category>.html, index.html,
-// and the fixed legal pages (rekviziti.html etc.), which are templates too because of the partner links.
+// URLs are unchanged: produkts-N.html, jaunums-N.html, raksts-N.html, <category>.html and
+// fixed legal pages (rekviziti.html etc.). The homepage has one canonical public URL (/);
+// /index.html permanently redirects to it.
 
 require_once __DIR__ . '/storage.php';
 require_once __DIR__ . '/content.php';
@@ -181,7 +182,7 @@ function head_html(array $page): string
     ];
     $graph = [
         $organization,
-        ['@type' => 'WebSite', '@id' => "{$base}/#website", 'url' => "{$base}/", 'name' => SITE_NAME, 'inLanguage' => 'lv', 'publisher' => ['@id' => $organization['@id']]],
+        ['@type' => 'WebSite', '@id' => "{$base}/#website", 'url' => "{$base}/", 'name' => SITE_NAME, 'alternateName' => ['GEHWOL Latvija', 'Gehwol.lv'], 'inLanguage' => 'lv', 'publisher' => ['@id' => $organization['@id']]],
     ];
     $items = [['@type' => 'ListItem', 'position' => 1, 'name' => 'Sākums', 'item' => "{$base}/"]];
     foreach ($page['crumbs'] as [$name, $path]) {
@@ -246,7 +247,7 @@ function shell_page(array $page, string $main): string
 
 function breadcrumbs_html(array $links, string $current): string
 {
-    $html = '<nav class="category__breadcrumbs" aria-label="Breadcrumbs"> <a href="index.html" class="category__crumb">Sākums</a>';
+    $html = '<nav class="category__breadcrumbs" aria-label="Breadcrumbs"> <a href="/" class="category__crumb">Sākums</a>';
     foreach ($links as [$name, $href]) {
         $html .= ' <span class="category__crumb-sep">/</span> <a href="' . e($href) . '" class="category__crumb">' . e($name) . '</a>';
     }
@@ -297,7 +298,7 @@ function render_product(int $id, bool $drafts = false): ?string
         ? '<p class="product-detail__active"><strong>Aktīvās vielas:</strong> ' . e($product['active_ingredients']) . '</p>'
         : '';
     $main = '<section class="category"><div class="container category__container">'
-        . breadcrumbs_html(array_merge([['Produkti', 'index.html#products']], $crumbs), $product['name'])
+        . breadcrumbs_html(array_merge([['Produkti', '/#products']], $crumbs), $product['name'])
         . '<h1 class="category__title">' . e($product['name']) . '</h1>'
         . '<div class="product-detail"><div class="product-detail__top">'
         . '<div class="product-detail__media">' . product_media_html($product) . '</div>'
@@ -329,7 +330,7 @@ function render_text_page(string $collection, int $id, bool $drafts = false): ?s
         ? '<div class="content-detail__media">' . picture_html($item['image'], $item['title'], 'eager') . '</div>'
         : '<div class="content-detail__media" aria-hidden="true"></div>';
     $main = '<section class="category"><div class="container category__container">'
-        . breadcrumbs_html([['Jaunumi un' . "\u{00A0}" . 'informācija', 'index.html#news']], $item['title'])
+        . breadcrumbs_html([['Jaunumi un' . "\u{00A0}" . 'informācija', '/#news']], $item['title'])
         . '<h1 class="category__title">' . e($item['title']) . '</h1>'
         . '<div class="content-detail">'
         . ($isNews ? '<p class="content-detail__meta">' . e(format_date_lv($item['date'] ?? null)) . '</p>' : '')
@@ -444,7 +445,7 @@ function render_not_found(): string
     $main = '<section class="category"><div class="container category__container">'
         . '<h1 class="category__title">Lapa nav atrasta</h1>'
         . '<p>Pieprasītā lapa neeksistē vai vairs nav pieejama.</p>'
-        . '<p><a href="index.html" class="btn-link">Uz sākumlapu →</a></p>'
+        . '<p><a href="/" class="btn-link">Uz sākumlapu →</a></p>'
         . '</div></section>';
     return shell_page([
         'path' => '404',
@@ -500,7 +501,10 @@ function site_response(string $path): array
     if (isset($legacyArticleRedirects[$path]) && find_published('articles', $legacyArticleRedirects[$path]) !== null) {
         return [301, $html, '', ['Location' => '/raksts-' . $legacyArticleRedirects[$path] . '.html']];
     }
-    if ($path === '/' || $path === '/index.html') {
+    if ($path === '/index.html') {
+        return [301, $html, '', ['Location' => '/']];
+    }
+    if ($path === '/') {
         return [200, $html, render_home()];
     }
     if ($path === '/sitemap.xml') {

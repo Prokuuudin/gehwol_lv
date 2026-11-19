@@ -175,7 +175,7 @@ if (!$editing): ?>
   <td class="table-meta"><?= htmlspecialchars(substr((string)($item['updated_at'] ?? ''), 0, 10)) ?></td>
   <td><div class="table-actions">
     <a class="button button--small" href="videos.php?action=edit&amp;id=<?= (int)$item['id'] ?>">Rediģēt</a>
-    <?php if (is_published($item)): ?><a class="button button--text button--small" href="../../index.html#video" target="_blank" rel="noopener">Skatīt</a><?php endif; ?>
+    <?php if (is_published($item)): ?><a class="button button--text button--small" href="/#video" target="_blank" rel="noopener">Skatīt</a><?php endif; ?>
     <?= delete_button($page, (int)$item['id']) ?>
   </div></td>
 </tr>
@@ -191,7 +191,7 @@ if (!$editing): ?>
 <?php if ($editing || $action === 'add'): ?>
 <div class="editor-actions">
   <a class="button" href="videos.php"><span aria-hidden="true">←</span> Atpakaļ uz sarakstu</a>
-  <?php if ($editing && is_published($editing)): ?><a class="button button--text" href="../../index.html#video" target="_blank" rel="noopener">Skatīt vietnē <span aria-hidden="true">↗</span></a><?php endif; ?>
+  <?php if ($editing && is_published($editing)): ?><a class="button button--text" href="/#video" target="_blank" rel="noopener">Skatīt vietnē <span aria-hidden="true">↗</span></a><?php endif; ?>
 </div>
 <form class="form-card admin-form" method="post" action="videos.php?action=<?= $editing ? 'edit&amp;id=' . (int)$editing['id'] : 'add' ?>" enctype="multipart/form-data" id="video-form">
   <?= csrf_field() ?>

@@ -112,6 +112,15 @@ final class RenderTest extends TestCase
         $this->assertStringNotContainsString('Raksta melnraksts', $html);
     }
 
+    public function test_index_html_permanently_redirects_to_canonical_homepage(): void
+    {
+        [$status, , $body, $headers] = site_response('/index.html');
+
+        $this->assertSame(301, $status);
+        $this->assertSame('', $body);
+        $this->assertSame('/', $headers['Location']);
+    }
+
     public function test_home_shows_multiple_published_videos_in_manual_order(): void
     {
         $video = fn(int $id, string $title, int $order, bool $published) => [
