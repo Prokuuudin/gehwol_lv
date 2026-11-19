@@ -7,6 +7,7 @@
 require_once __DIR__ . '/storage.php';
 
 const PARTNER_GROUPS = ['manufacturer' => 'Ražotājs', 'retailer' => 'Tirgotājs'];
+const HEALTHSTORE_PRODUCTS_URL = 'https://healthstore.lv/catalog/ortopedija/pedu_veseliba/?set_filter=y&MAX_SMART_FILTER_5568_1456054559=Y&MAX_SMART_FILTER_5568_4211120232=Y';
 
 function default_partners(): array
 {
@@ -18,7 +19,7 @@ function default_partners(): array
         $row('retailer', 'Apotheka', 'https://www.apotheka.lv/'),
         $row('retailer', 'Euroaptieka', 'https://www.euroaptieka.lv/l/gehwol'),
         $row('retailer', 'Hairshop', 'https://www.hairshop.lv/lv/gehwol'),
-        $row('retailer', 'Healthstore.lv', 'https://healthstore.lv/', '', 'img/partners/Healthstore1.png'),
+        $row('retailer', 'Healthstore.lv', HEALTHSTORE_PRODUCTS_URL, '', 'img/partners/Healthstore1.png'),
     ];
 }
 
@@ -56,6 +57,16 @@ function load_partners(): array
     // Healthstore card to that legacy list once; after the next admin save every row has the
     // key, so editors can remove the card normally without it being restored here.
     $legacy = $partners !== [] && !array_filter($partners, fn($p) => array_key_exists('logo', $p));
+    if ($legacy) {
+        foreach ($partners as &$partner) {
+            $host = strtolower((string)parse_url((string)($partner['url'] ?? ''), PHP_URL_HOST));
+            $path = (string)parse_url((string)($partner['url'] ?? ''), PHP_URL_PATH);
+            if (in_array($host, ['healthstore.lv', 'www.healthstore.lv'], true) && ($path === '' || $path === '/')) {
+                $partner['url'] = HEALTHSTORE_PRODUCTS_URL;
+            }
+        }
+        unset($partner);
+    }
     $hasHealthstore = (bool)array_filter($partners, function ($p): bool {
         $host = strtolower((string)parse_url((string)($p['url'] ?? ''), PHP_URL_HOST));
         return in_array($host, ['healthstore.lv', 'www.healthstore.lv'], true);

@@ -247,7 +247,7 @@ final class RenderTest extends TestCase
         foreach (['/', '/produkts-1.html', '/gehwol-classic.html', '/rekviziti.html', '/nav-tadas.html'] as $path) {
             [, , $html] = site_response($path);
             $this->assertStringContainsString('href="https://www.benu.lv/zimoli/gehwol"', $html, $path);
-            $this->assertStringContainsString('href="https://healthstore.lv/"', $html, $path);
+            $this->assertStringContainsString('href="' . e(HEALTHSTORE_PRODUCTS_URL) . '"', $html, $path);
             $this->assertStringContainsString('src="./img/partners/Healthstore1.png"', $html, $path);
             $this->assertStringContainsString('<small>GEHWOL ražotājs</small>', $html, $path);
             $this->assertStringNotContainsString('<x-slot', $html, $path);
@@ -289,8 +289,14 @@ final class RenderTest extends TestCase
         ];
         save_collection('partners', $legacy);
         [, , $html] = site_response('/');
-        $this->assertStringContainsString('href="https://healthstore.lv/"', $html);
+        $this->assertStringContainsString('href="' . e(HEALTHSTORE_PRODUCTS_URL) . '"', $html);
         $this->assertStringContainsString('src="./img/partners/Healthstore1.png"', $html);
+
+        save_collection('partners', [
+            ['group' => 'retailer', 'name' => 'Healthstore.lv', 'subtitle' => '', 'url' => 'https://healthstore.lv/'],
+        ]);
+        [, , $html] = site_response('/');
+        $this->assertStringContainsString('href="' . e(HEALTHSTORE_PRODUCTS_URL) . '"', $html);
 
         save_collection('partners', [
             ['group' => 'retailer', 'name' => 'Vecais tirgotājs', 'subtitle' => '', 'url' => 'https://vecais.lv/', 'logo' => ''],
