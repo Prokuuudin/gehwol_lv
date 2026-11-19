@@ -63,7 +63,7 @@ copyTree(path.join(ROOT, 'php'), path.join(OUT, 'php'), (rel, entry) => {
 });
 
 // 3. empty upload folders with their protection (existing server uploads stay untouched)
-for (const section of ['products', 'news', 'articles', 'videos']) {
+for (const section of ['products', 'news', 'articles', 'videos', 'partners']) {
   fs.mkdirSync(path.join(OUT, 'uploads', section), { recursive: true });
   fs.writeFileSync(path.join(OUT, 'uploads', section, '.gitkeep'), '');
 }

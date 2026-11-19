@@ -46,7 +46,7 @@ foreach ($writable as $label => $dir) {
     $exists = is_dir($dir);
     $checks[] = ["Rakstāms: {$label}", $label === 'php/data/backups' && !$exists ? null : ($exists && is_writable($dir)), $exists ? '' : 'nav mapes'];
 }
-foreach (['products', 'news', 'articles', 'videos'] as $section) {
+foreach (['products', 'news', 'articles', 'videos', 'partners'] as $section) {
     $dir = UPLOAD_ROOT . '/' . $section;
     $exists = is_dir($dir);
     $canWrite = $exists ? is_writable($dir) : (is_dir(UPLOAD_ROOT) && is_writable(UPLOAD_ROOT));

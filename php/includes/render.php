@@ -47,8 +47,14 @@ function partners_html(): string
 {
     $links = array_fill_keys(array_keys(PARTNER_GROUPS), '');
     foreach (load_partners() as $p) {
-        $links[$p['group']] .= '<li> <a class="partners__link" href="' . e($p['url']) . '" target="_blank" rel="noopener noreferrer">'
-            . '<span>' . e($p['name']) . '</span>' . ($p['subtitle'] !== '' ? ' <small>' . e($p['subtitle']) . '</small>' : '') . '</a></li>';
+        $logo = partner_logo($p);
+        $itemClass = $logo ? ' class="partners__item partners__item--logo"' : ' class="partners__item"';
+        $linkClass = $logo ? 'partners__link partners__link--logo' : 'partners__link';
+        $content = $logo
+            ? picture_html($logo['src'], $logo['alt'], 'lazy')
+            : '<span>' . e($p['name']) . '</span>' . ($p['subtitle'] !== '' ? ' <small>' . e($p['subtitle']) . '</small>' : '');
+        $links[$p['group']] .= '<li' . $itemClass . '> <a class="' . $linkClass . '" href="' . e($p['url']) . '" target="_blank" rel="noopener noreferrer">'
+            . $content . '</a></li>';
     }
     $cards = '';
     if ($links['manufacturer'] !== '') {

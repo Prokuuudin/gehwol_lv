@@ -231,6 +231,29 @@ final class UploadTest extends TestCase
         $this->assertFileDoesNotExist($this->dir . '/' . $unused);
     }
 
+    public function test_partner_logo_upload_is_kept_while_referenced(): void
+    {
+        $root = $this->dir . '/uploads';
+        mkdir($root . '/partners');
+        $used = 'uploads/partners/' . str_repeat('e', 32) . '.png';
+        $unused = 'uploads/partners/' . str_repeat('f', 32) . '.png';
+        foreach ([$used, $unused] as $path) {
+            touch($this->dir . '/' . $path);
+            touch($this->dir . '/' . preg_replace('/\.png$/', '.webp', $path));
+        }
+        save_collection('partners', [[
+            'group' => 'retailer', 'name' => 'Partneris', 'subtitle' => '',
+            'url' => 'https://partneris.lv/', 'logo' => $used,
+        ]]);
+
+        delete_unused_uploads([$used, $unused], $root);
+
+        $this->assertFileExists($this->dir . '/' . $used);
+        $this->assertFileExists($this->dir . '/uploads/partners/' . str_repeat('e', 32) . '.webp');
+        $this->assertFileDoesNotExist($this->dir . '/' . $unused);
+        $this->assertFileDoesNotExist($this->dir . '/uploads/partners/' . str_repeat('f', 32) . '.webp');
+    }
+
     public function test_sweep_removes_only_old_uploads_no_data_or_backup_mentions(): void
     {
         $uploads = $this->dir . '/uploads/products';

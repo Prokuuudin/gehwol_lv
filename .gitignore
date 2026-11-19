@@ -12,9 +12,11 @@ php/data/admin_users.json
 uploads/products/*
 uploads/news/*
 uploads/articles/*
+uploads/partners/*
 !uploads/products/.gitkeep
 !uploads/news/.gitkeep
 !uploads/articles/.gitkeep
+!uploads/partners/.gitkeep
 !uploads/.htaccess
 php/data/backups/
 php/data/*.lock

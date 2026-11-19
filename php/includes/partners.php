@@ -1,7 +1,7 @@
 <?php
 // php/includes/partners.php
 // Manufacturer and retailer links shown above the footer on every public page.
-// Stored in php/data/partners.json as an ordered list of {group, name, subtitle, url};
+// Stored in php/data/partners.json as an ordered list of {group, name, subtitle, url, logo};
 // until the admin saves the list for the first time, the built-in list below is used.
 
 require_once __DIR__ . '/storage.php';
@@ -10,15 +10,39 @@ const PARTNER_GROUPS = ['manufacturer' => 'Ražotājs', 'retailer' => 'Tirgotāj
 
 function default_partners(): array
 {
-    $row = fn(string $group, string $name, string $url, string $subtitle = '') =>
-        ['group' => $group, 'name' => $name, 'subtitle' => $subtitle, 'url' => $url];
+    $row = fn(string $group, string $name, string $url, string $subtitle = '', string $logo = '') =>
+        ['group' => $group, 'name' => $name, 'subtitle' => $subtitle, 'url' => $url, 'logo' => $logo];
     return [
         $row('manufacturer', 'Eduard Gerlach GmbH', 'https://www.gehwol.de/', 'GEHWOL ražotājs'),
         $row('retailer', 'BENU Aptieka', 'https://www.benu.lv/zimoli/gehwol'),
         $row('retailer', 'Apotheka', 'https://www.apotheka.lv/'),
         $row('retailer', 'Euroaptieka', 'https://www.euroaptieka.lv/l/gehwol'),
         $row('retailer', 'Hairshop', 'https://www.hairshop.lv/lv/gehwol'),
+        $row('retailer', 'Healthstore.lv', 'https://healthstore.lv/', '', 'img/partners/Healthstore1.png'),
     ];
+}
+
+/** Only built partner assets and files uploaded through the partner editor are accepted. */
+function is_partner_logo_path(string $path): bool
+{
+    return (bool)preg_match(
+        '~^(?:img/partners/[a-zA-Z0-9_.@+-]+|uploads/partners/[a-f0-9]{32})\.(?:jpe?g|png|webp)$~i',
+        $path
+    );
+}
+
+/** A branded image for partners that have supplied one. Old Healthstore rows get the built-in logo. */
+function partner_logo(array $partner): ?array
+{
+    $src = trim((string)($partner['logo'] ?? ''));
+    if (!array_key_exists('logo', $partner)) {
+        $host = strtolower((string)parse_url((string)($partner['url'] ?? ''), PHP_URL_HOST));
+        $src = in_array($host, ['healthstore.lv', 'www.healthstore.lv'], true) ? 'img/partners/Healthstore1.png' : '';
+    }
+    if (!is_partner_logo_path($src)) {
+        return null;
+    }
+    return ['src' => $src, 'alt' => trim((string)($partner['name'] ?? ''))];
 }
 
 function load_partners(): array
@@ -47,8 +71,9 @@ function partners_from_form(mixed $posted): array
             'name' => trim((string)($p['name'] ?? '')),
             'subtitle' => trim((string)($p['subtitle'] ?? '')),
             'url' => trim((string)($p['url'] ?? '')),
+            'logo' => !empty($p['logo_remove']) ? '' : trim((string)($p['logo'] ?? '')),
         ];
-        if (!empty($p['remove']) || ($row['name'] === '' && $row['url'] === '' && $row['subtitle'] === '')) {
+        if (!empty($p['remove']) || ($row['name'] === '' && $row['url'] === '' && $row['subtitle'] === '' && $row['logo'] === '')) {
             continue;
         }
         if (!mb_check_encoding(implode('', $row), 'UTF-8')) {
@@ -61,6 +86,10 @@ function partners_from_form(mixed $posted): array
         }
         if (!is_partner_url($row['url'])) {
             $errors[] = "{$label}: saitei jābūt pilnai adresei, piemēram, https://www.example.lv/.";
+        }
+        if ($row['logo'] !== '' && !is_partner_logo_path($row['logo'])) {
+            $errors[] = "{$label}: nederīgs logotipa ceļš.";
+            $row['logo'] = '';
         }
         if (mb_strlen($row['name']) > 100 || mb_strlen($row['subtitle']) > 100 || strlen($row['url']) > 500) {
             $errors[] = "{$label}: teksts ir pārāk garš.";

@@ -247,6 +247,8 @@ final class RenderTest extends TestCase
         foreach (['/', '/produkts-1.html', '/gehwol-classic.html', '/rekviziti.html', '/nav-tadas.html'] as $path) {
             [, , $html] = site_response($path);
             $this->assertStringContainsString('href="https://www.benu.lv/zimoli/gehwol"', $html, $path);
+            $this->assertStringContainsString('href="https://healthstore.lv/"', $html, $path);
+            $this->assertStringContainsString('src="./img/partners/Healthstore1.png"', $html, $path);
             $this->assertStringContainsString('<small>GEHWOL ražotājs</small>', $html, $path);
             $this->assertStringNotContainsString('<x-slot', $html, $path);
         }
@@ -263,12 +265,15 @@ final class RenderTest extends TestCase
 
     public function test_saved_partners_replace_the_built_in_list(): void
     {
+        $logo = 'uploads/partners/' . str_repeat('a', 32) . '.png';
         save_collection('partners', [
-            ['group' => 'retailer', 'name' => 'Aptieka <b>', 'subtitle' => '', 'url' => 'https://aptieka.example.lv/?a=1&b=2'],
+            ['group' => 'retailer', 'name' => 'Aptieka <b>', 'subtitle' => '', 'url' => 'https://aptieka.example.lv/?a=1&b=2', 'logo' => $logo],
         ]);
         [, , $html] = site_response('/');
         $this->assertStringContainsString('href="https://aptieka.example.lv/?a=1&amp;b=2"', $html);
-        $this->assertStringContainsString('<span>Aptieka &lt;b&gt;</span>', $html);
+        $this->assertStringContainsString('class="partners__link partners__link--logo"', $html);
+        $this->assertStringContainsString('src="./' . $logo . '"', $html);
+        $this->assertStringContainsString('alt="Aptieka &lt;b&gt;"', $html);
         $this->assertStringNotContainsString('benu.lv', $html);
         $this->assertStringNotContainsString('GEHWOL ražotājs</h2>', $html, 'empty group is hidden');
 
@@ -280,21 +285,23 @@ final class RenderTest extends TestCase
     public function test_partner_form_rows(): void
     {
         [$rows, $errors] = partners_from_form([
-            ['sort_order' => '2', 'group' => 'retailer', 'name' => ' B ', 'subtitle' => '', 'url' => 'https://b.lv/'],
-            ['sort_order' => '1', 'group' => 'manufacturer', 'name' => 'A', 'subtitle' => 'Ražotājs', 'url' => 'https://a.de/'],
+            ['sort_order' => '2', 'group' => 'retailer', 'name' => ' B ', 'subtitle' => '', 'url' => 'https://b.lv/', 'logo' => 'uploads/partners/' . str_repeat('b', 32) . '.png'],
+            ['sort_order' => '1', 'group' => 'manufacturer', 'name' => 'A', 'subtitle' => 'Ražotājs', 'url' => 'https://a.de/', 'logo' => 'img/partners/a.png', 'logo_remove' => '1'],
             ['sort_order' => '3', 'group' => 'retailer', 'name' => 'C', 'subtitle' => '', 'url' => 'https://c.lv/', 'remove' => '1'],
             ['sort_order' => '4', 'group' => 'hacker', 'name' => '', 'subtitle' => '', 'url' => ''],
         ]);
         $this->assertSame([], $errors);
         $this->assertSame(['A', 'B'], array_column($rows, 'name'));
         $this->assertSame(['manufacturer', 'retailer'], array_column($rows, 'group'));
+        $this->assertSame(['', 'uploads/partners/' . str_repeat('b', 32) . '.png'], array_column($rows, 'logo'));
 
         [, $errors] = partners_from_form([
             ['group' => 'retailer', 'name' => '', 'url' => 'https://x.lv/'],
             ['group' => 'retailer', 'name' => 'X', 'url' => 'javascript:alert(1)'],
             ['group' => 'retailer', 'name' => 'Y', 'url' => 'www.y.lv'],
+            ['group' => 'retailer', 'name' => 'Z', 'url' => 'https://z.lv/', 'logo' => '../php/data/products.json'],
         ]);
-        $this->assertCount(3, $errors);
+        $this->assertCount(4, $errors);
     }
 
     public function test_missing_slot_is_an_error(): void

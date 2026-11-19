@@ -207,12 +207,17 @@ tbody tr:hover td { background: #fafcfb; }
 .images td:first-child { width: 80px; }
 .images input[type="number"] { width: 76px; }
 .images td:last-child, .images th:last-child { text-align: center; }
-.partners-table { min-width: 600px; table-layout: fixed; }
+.partners-table { min-width: 980px; table-layout: fixed; }
 .partners-table th, .partners-table td { padding: 10px 6px; }
 .partners-table th:first-child, .partners-table td:first-child { width: 72px; padding-left: 12px; }
 .partners-table th:nth-child(2) { width: 132px; }
+.partners-table th:nth-child(6) { width: 220px; }
 .partners-table th:last-child { width: 64px; padding-right: 12px; }
 .partners-table input[type="number"] { width: 100%; }
+.partner-logo-controls { display: grid; gap: 7px; }
+.partner-logo-preview { display: block; width: 100%; max-width: 200px; height: 66px; padding: 3px; border: 1px solid var(--line); border-radius: 7px; object-fit: contain; background: #fff; }
+.partner-logo-remove { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; cursor: pointer; }
+.partner-logo-cell input[type="file"] { min-width: 0; font-size: 12px; }
 .current-image { display: flex; padding: 12px; align-items: center; gap: 14px; border: 1px solid var(--line); border-radius: 8px; background: #fbfdfc; }
 .current-image .thumb { width: 76px; height: 76px; }
 .admin-video-preview { display: block; width: min(100%, 640px); aspect-ratio: 16 / 9; border-radius: 8px; background: #000; }

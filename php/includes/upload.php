@@ -236,7 +236,7 @@ function limit_image_size(GdImage $image): GdImage
     return $resized;
 }
 
-/** Every uploads/… path referenced by products, news, articles and videos. */
+/** Every uploads/… path referenced by products, news, articles, videos and partners. */
 function referenced_uploads(): array
 {
     $paths = [];
@@ -257,6 +257,11 @@ function referenced_uploads(): array
             if (!empty($row[$field])) {
                 $paths[$row[$field]] = true;
             }
+        }
+    }
+    foreach (load_collection('partners') as $row) {
+        if (!empty($row['logo'])) {
+            $paths[$row['logo']] = true;
         }
     }
     return $paths;
