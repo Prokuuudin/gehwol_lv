@@ -47,7 +47,24 @@ function partner_logo(array $partner): ?array
 
 function load_partners(): array
 {
-    return file_exists(storage_path('partners')) ? load_collection('partners') : default_partners();
+    if (!file_exists(storage_path('partners'))) {
+        return default_partners();
+    }
+    $partners = load_collection('partners');
+
+    // Lists saved before logo management existed have no `logo` key. Add the newly supplied
+    // Healthstore card to that legacy list once; after the next admin save every row has the
+    // key, so editors can remove the card normally without it being restored here.
+    $legacy = $partners !== [] && !array_filter($partners, fn($p) => array_key_exists('logo', $p));
+    $hasHealthstore = (bool)array_filter($partners, function ($p): bool {
+        $host = strtolower((string)parse_url((string)($p['url'] ?? ''), PHP_URL_HOST));
+        return in_array($host, ['healthstore.lv', 'www.healthstore.lv'], true);
+    });
+    if ($legacy && !$hasHealthstore) {
+        $defaults = default_partners();
+        $partners[] = $defaults[array_key_last($defaults)];
+    }
+    return $partners;
 }
 
 function is_partner_url(string $url): bool

@@ -282,6 +282,23 @@ final class RenderTest extends TestCase
         $this->assertStringNotContainsString('class="partners"', $html);
     }
 
+    public function test_legacy_saved_partner_list_gets_new_healthstore_card_only_until_next_save(): void
+    {
+        $legacy = [
+            ['group' => 'retailer', 'name' => 'Vecais tirgotājs', 'subtitle' => '', 'url' => 'https://vecais.lv/'],
+        ];
+        save_collection('partners', $legacy);
+        [, , $html] = site_response('/');
+        $this->assertStringContainsString('href="https://healthstore.lv/"', $html);
+        $this->assertStringContainsString('src="./img/partners/Healthstore1.png"', $html);
+
+        save_collection('partners', [
+            ['group' => 'retailer', 'name' => 'Vecais tirgotājs', 'subtitle' => '', 'url' => 'https://vecais.lv/', 'logo' => ''],
+        ]);
+        [, , $html] = site_response('/');
+        $this->assertStringNotContainsString('healthstore.lv', $html);
+    }
+
     public function test_partner_form_rows(): void
     {
         [$rows, $errors] = partners_from_form([
