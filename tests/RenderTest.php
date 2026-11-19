@@ -259,6 +259,8 @@ final class RenderTest extends TestCase
             $this->assertStringContainsString('href="' . e(HEALTHSTORE_PRODUCTS_URL) . '"', $html, $path);
             $this->assertStringContainsString('src="./img/partners/Healthstore1.png"', $html, $path);
             $this->assertStringContainsString('<small>GEHWOL ražotājs</small>', $html, $path);
+            $this->assertStringContainsString('class="partners__card partners__card--manufacturer"', $html, $path);
+            $this->assertStringContainsString('<use href="./img/svgsprite/sprite.symbol.svg#logo"></use>', $html, $path);
             $this->assertStringNotContainsString('<x-slot', $html, $path);
         }
     }

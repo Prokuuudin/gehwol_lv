@@ -37,6 +37,24 @@
 	color: var(--accent-dark);
 }
 
+.partners__manufacturer-logo {
+	display: flex;
+	flex: 1 1 auto;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	min-height: 180px;
+	padding: clamp(12px, 3vw, 36px) 0;
+}
+
+.partners__manufacturer-logo-svg {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 220px;
+	fill: var(--text-color);
+}
+
 .partners__links {
 	display: grid;
 	gap: 12px;
@@ -161,6 +179,11 @@
 
 	.partners__title {
 		margin-bottom: 18px;
+	}
+
+	.partners__manufacturer-logo {
+		min-height: 140px;
+		padding: 8px 0 24px;
 	}
 
 	.partners__links--retail {

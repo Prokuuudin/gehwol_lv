@@ -59,7 +59,9 @@ function partners_html(): string
     }
     $cards = '';
     if ($links['manufacturer'] !== '') {
-        $cards .= '<article class="partners__card"><h2 class="partners__title">GEHWOL ražotājs</h2>'
+        $cards .= '<article class="partners__card partners__card--manufacturer"><h2 class="partners__title">GEHWOL ražotājs</h2>'
+            . '<div class="partners__manufacturer-logo" aria-hidden="true"><svg class="partners__manufacturer-logo-svg" focusable="false">'
+            . '<use href="./img/svgsprite/sprite.symbol.svg#logo"></use></svg></div>'
             . '<ul class="partners__links">' . $links['manufacturer'] . '</ul></article>';
     }
     if ($links['retailer'] !== '') {
